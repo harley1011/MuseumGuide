@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify')
 var ngAnnotate = require('gulp-ng-annotate')
 
 var paths = {
-  sass: ['./scss/*.scss', './scss/partials/*'],
+  sass: ['./scss/ionic.app.scss', './scss/partials/*'],
   controllers: ['./www/js/controllers/*.js'],
   services: ['./www/js/services/*.js'],
   directives: ['./www/js/directives/*.js']

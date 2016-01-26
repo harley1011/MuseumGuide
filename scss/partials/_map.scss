@@ -2,21 +2,19 @@
   position: absolute !important;
   right: 10px !important;
   bottom: 40px !important;
-  background-color: $calm;
-  border-radius: 25px;
+
 
 }
-
 .zoom-button-plus {
-  background-color: transparent;
   display: block;
-  border-radius: 25px;
-
+  background-color: $calm;
+  border-radius: 25px 25px 0px 0px;
 }
 
 .zoom-button-minus {
+  background-color: $calm;
 
-  background-color: transparent;
   display: block;
-  border-radius: 25px;
+  border-radius: 0px 0px 25px 25px;
+
 }
