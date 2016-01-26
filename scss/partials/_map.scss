@@ -1,0 +1,22 @@
+.zoom-buttons {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 40px !important;
+  background-color: $calm;
+  border-radius: 25px;
+
+}
+
+.zoom-button-plus {
+  background-color: transparent;
+  display: block;
+  border-radius: 25px;
+
+}
+
+.zoom-button-minus {
+
+  background-color: transparent;
+  display: block;
+  border-radius: 25px;
+}
