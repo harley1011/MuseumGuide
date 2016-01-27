@@ -18,3 +18,17 @@
   border-radius: 0px 0px 25px 25px;
 
 }
+
+.map-div {
+  height: 100%;
+  overflow:auto;
+
+  img {
+    display: block;
+  }
+}
+canvas {
+  background:url('../img/one.png');
+  height:100%;
+
+}
