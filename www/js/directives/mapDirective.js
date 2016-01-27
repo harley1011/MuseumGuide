@@ -13,16 +13,21 @@ angular.module('directives')
                 //canvas.width = element.find('div')[0].offsetWidth;   /// use integer values
                 canvas.height = element.find('div')[0].offsetHeight;
                 var img = new Image();
-                img.src = "img/one.png";
+                img.src = "img/one-small.png";
                 img.onload = function(){
                     console.log("image loaded");
                     scope.draw();
                 }
+                scope.zoom = function(){
+                    console.log("zoom");
+                    ctx.scale(2, 2);
+                }
                 scope.draw = function() {
                     canvas.width = canvas.height * (img.width / img.height);
 
+                    ctx.drawImage(img, 0,0, canvas.width, canvas.height);
                     /// step 1 - resize to 50%
-                    var oc = document.createElement('canvas'),
+                  /*  var oc = document.createElement('canvas'),
                         octx = oc.getContext('2d');
 
                     oc.width = img.width * 0.5;
@@ -33,8 +38,9 @@ angular.module('directives')
                     octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
 
                     /// step 3, resize to final size
+                    ctx.imageSmoothingEnabled = false;
                     ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
-                        0, 0, canvas.width, canvas.height);
+                        0, 0, canvas.width, canvas.height);*/
                 }
             }
 
