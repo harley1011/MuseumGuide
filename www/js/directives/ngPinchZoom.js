@@ -5,7 +5,7 @@ angular.module('directives')
      * @restrict A
      * @scope false
      **/
-    .directive('ngPinchZoom', function() {
+    .directive('ngPinchZoom', function($rootScope) {
 
         var _directive =  {
             restrict : 'A',
@@ -49,8 +49,9 @@ angular.module('directives')
             var moveX = 0;
             var moveY = 0;
 
-            var image = new Image();
-            image.onload = function() {
+
+            $rootScope.$on('mapLoaded', function() {
+                console.log('In pinch zoom loaded');
                 elWidth = element[0].clientWidth;
                 elHeight = element[0].clientHeight;
 
@@ -62,13 +63,9 @@ angular.module('directives')
                 element.on('touchstart', touchstartHandler);
                 element.on('touchmove', touchmoveHandler);
                 element.on('touchend', touchendHandler);
-            };
+            });
 
-            if (attrs.ngSrc) {
-                image.src = attrs.ngSrc;
-            } else {
-                image.src = attrs.src;
-            }
+
 
             /**
              * @param {object} evt

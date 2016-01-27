@@ -1,5 +1,5 @@
 angular.module('directives')
-    .directive('map', function () {
+    .directive('map', function ($rootScope) {
         return {
             restrict: 'E',
             templateUrl: 'templates/map.html',
@@ -11,6 +11,7 @@ angular.module('directives')
                 img.onload = function () {
                     angular.element(mapImageDiv).css('height', mapDiv.offsetHeight + 'px');
                     angular.element(mapImageDiv).css('width', mapDiv.offsetHeight * (img.width / img.height) + 'px');
+                    $rootScope.$broadcast('mapLoaded');
                 }
 
             }
