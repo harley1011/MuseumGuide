@@ -85,6 +85,12 @@ angular.module('starter', ['ionic', 'controllers', 'directives'])
                     }
                 }
             })
+        
+         .state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tabs.html'
+  })
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/levelOne');
