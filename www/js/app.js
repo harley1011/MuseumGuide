@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives'])
                 url: '/levelOne',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/levelOne.html'
+                        templateUrl: 'templates/levelOne.html',
+                        controller: 'mapCtrl'
                     }
                 }
             })
