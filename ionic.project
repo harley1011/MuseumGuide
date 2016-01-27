@@ -2,7 +2,7 @@
   "name": "MuseumGuide",
   "app_id": "",
   "gulpStartupTasks": [
-    "sass",
+    "default",
     "watch"
   ],
   "watchPatterns": [
