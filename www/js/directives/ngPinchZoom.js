@@ -50,9 +50,10 @@ angular.module('directives')
             var moveY = 0;
 
             $rootScope.$on('zoomIn', function(){
+                console.log('here');
                 scale += .2;
-                positionX = -elWidth / 4;
-                positionY =  -elHeight / 4;
+                positionX = (elWidth - (elWidth * scale)) / 2;
+                positionY =  (elHeight - (elHeight * scale)) / 2;
                 console.log(scale);
                 transformElement();
 
@@ -60,6 +61,8 @@ angular.module('directives')
 
             $rootScope.$on('zoomOut', function(){
                 scale -= .2;
+                positionX = (elWidth - (elWidth * scale)) / 2;
+                positionY =  (elHeight - (elHeight * scale)) / 2;
                 console.log(scale);
                 transformElement();
 
