@@ -14,6 +14,12 @@ angular.module('directives')
                     $rootScope.$broadcast('mapLoaded');
                 }
 
+                scope.zoomIn = function(){
+                    $rootScope.$broadcast('zoomIn');
+                }
+                scope.zoomOut = function(){
+                    $rootScope.$broadcast('zoomOut');
+                }
             }
 
         }

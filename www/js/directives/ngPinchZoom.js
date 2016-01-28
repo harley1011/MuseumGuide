@@ -49,7 +49,21 @@ angular.module('directives')
             var moveX = 0;
             var moveY = 0;
 
+            $rootScope.$on('zoomIn', function(){
+                scale += .2;
+                positionX = -elWidth / 4;
+                positionY =  -elHeight / 4;
+                console.log(scale);
+                transformElement();
 
+            });
+
+            $rootScope.$on('zoomOut', function(){
+                scale -= .2;
+                console.log(scale);
+                transformElement();
+
+            });
             $rootScope.$on('mapLoaded', function() {
                 console.log('In pinch zoom loaded');
                 elWidth = element[0].clientWidth;
@@ -193,7 +207,7 @@ angular.module('directives')
                 var transition  = duration ? 'all cubic-bezier(0,0,.5,1) ' + duration + 's' : '';
                 var matrixArray = [scale, 0, 0, scale, positionX, positionY];
                 var matrix      = 'matrix(' + matrixArray.join(',') + ')';
-
+                console.log("Scale: ", scale, " PositionX: ", positionX, " PositionY:", positionY);
                 element.css({
                     '-webkit-transition' : transition,
                     transition           : transition,
