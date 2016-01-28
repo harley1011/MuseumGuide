@@ -1,7 +1,7 @@
 .zoom-buttons {
   position: absolute !important;
   right: 10px !important;
-  bottom: 40px !important;
+  bottom: 10px !important;
 
 
 }
@@ -29,6 +29,7 @@
   height: 100%;
   overflow:auto;
 
+
   img {
     display: block;
   }
@@ -47,4 +48,20 @@ canvas {
   width: 8px;
   height: 8px;
   position: absolute;
+}
+
+.level-mark {
+  display: table-cell;
+  text-align: center;
+}
+
+.level-div {
+  height: 100%;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.bar-header-levels {
+  height: 30px !important;
 }

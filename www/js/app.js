@@ -22,7 +22,10 @@ angular.module('starter', ['ionic', 'controllers', 'directives'])
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        $ionicConfigProvider.tabs.position('bottom');
+        $ionicConfigProvider.platform.ios.tabs.style('standard');
+        $ionicConfigProvider.platform.android.tabs.style('standard');
         $stateProvider
 
             .state('app', {
@@ -32,10 +35,16 @@ angular.module('starter', ['ionic', 'controllers', 'directives'])
                 controller: 'AppCtrl'
             })
 
-            .state('app.levelOne', {
+            .state('tab', {
+                url: '/tab',
+                abstract: true,
+                templateUrl: 'templates/tabs.html'
+            })
+
+            .state('tab.levelOne', {
                 url: '/levelOne',
                 views: {
-                    'menuContent': {
+                    'tab-one': {
                         templateUrl: 'templates/levelOne.html',
                         controller: 'mapCtrl'
                     }
@@ -86,13 +95,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives'])
                     }
                 }
             })
-        
-         .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/levelOne');
+        $urlRouterProvider.otherwise('/tab/levelOne');
     });
