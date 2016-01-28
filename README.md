@@ -1,3 +1,6 @@
+#Build Status LM-MainNode CI
+![build status](http://prive.myds.me:3000/museum/museum/badge?branche=master)
+
 # Getting Started
 
 There are a few ways you can run this application from the command line.
@@ -9,7 +12,7 @@ The commands:
 # Project Structure
 The project uses AngularJS so the three main components will be directives, controllers, and services
 
-To create a controller create a new javascript file in the controllers folder. 
+To create a controller create a new javascript file in the controllers folder.
 Add the following code below and replace AppCtrl with the name of the controller
 
 angular.module('controllers')
