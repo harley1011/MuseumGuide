@@ -5,12 +5,12 @@ angular.module('directives')
      * @restrict A
      * @scope false
      **/
-    .directive('ngPinchZoom', function($rootScope) {
+    .directive('ngPinchZoom', function ($rootScope) {
 
-        var _directive =  {
-            restrict : 'A',
-            scope    : false,
-            link     : _link
+        var _directive = {
+            restrict: 'A',
+            scope: false,
+            link: _link
         };
 
         function _link(scope, element, attrs) {
@@ -49,39 +49,46 @@ angular.module('directives')
             var moveX = 0;
             var moveY = 0;
 
-            $rootScope.$on('zoomIn', function(){
-                console.log('here');
-                scale += .2;
-                positionX = (elWidth - (elWidth * scale)) / 2;
-                positionY =  (elHeight - (elHeight * scale)) / 2;
-                console.log(scale);
-                transformElement();
+            $rootScope.$on('zoomIn', function () {
+                if (scale < 2.6) {
+                    scale += .2;
+                    positionX -= elWidth * .1;
+                    positionY -= elHeight * .1;
+                    //    positionX = (elWidth - (elWidth * scale)) / 2;
+                    //  positionY =  (elHeight - (elHeight * scale)) / 2;
+
+                    transformElement();
+                }
 
             });
 
-            $rootScope.$on('zoomOut', function(){
-                scale -= .2;
-                positionX = (elWidth - (elWidth * scale)) / 2;
-                positionY =  (elHeight - (elHeight * scale)) / 2;
-                console.log(scale);
-                transformElement();
+            $rootScope.$on('zoomOut', function () {
+                if (scale > 1) {
+
+                    scale -= .2;
+                    positionX += elWidth * .1;
+                    positionY += elHeight * .1;
+                    //  positionX = (elWidth - (elWidth * scale)) / 2;
+                    //   positionY =  (elHeight - (elHeight * scale)) / 2;
+
+                    transformElement();
+                }
 
             });
-            $rootScope.$on('mapLoaded', function() {
+            $rootScope.$on('mapLoaded', function () {
                 console.log('In pinch zoom loaded');
                 elWidth = element[0].clientWidth;
                 elHeight = element[0].clientHeight;
 
                 element.css({
-                    '-webkit-transform-origin' : '0 0',
-                    'transform-origin'         : '0 0'
+                    '-webkit-transform-origin': '0 0',
+                    'transform-origin': '0 0'
                 });
 
                 element.on('touchstart', touchstartHandler);
                 element.on('touchmove', touchmoveHandler);
                 element.on('touchend', touchendHandler);
             });
-
 
 
             /**
@@ -207,15 +214,15 @@ angular.module('directives')
              * @param {number} [duration]
              */
             function transformElement(duration) {
-                var transition  = duration ? 'all cubic-bezier(0,0,.5,1) ' + duration + 's' : '';
+                var transition = duration ? 'all cubic-bezier(0,0,.5,1) ' + duration + 's' : '';
                 var matrixArray = [scale, 0, 0, scale, positionX, positionY];
-                var matrix      = 'matrix(' + matrixArray.join(',') + ')';
+                var matrix = 'matrix(' + matrixArray.join(',') + ')';
                 console.log("Scale: ", scale, " PositionX: ", positionX, " PositionY:", positionY);
                 element.css({
-                    '-webkit-transition' : transition,
-                    transition           : transition,
-                    '-webkit-transform'  : matrix + ' translate3d(0,0,0)',
-                    transform            : matrix
+                    '-webkit-transition': transition,
+                    transition: transition,
+                    '-webkit-transform': matrix + ' translate3d(0,0,0)',
+                    transform: matrix
                 });
             }
         }
