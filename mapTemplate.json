@@ -1,0 +1,46 @@
+{
+  "map": {
+    "levels": [
+      {
+        "level": 1,
+        "mapImage": "img/levelOne.svg",
+        "mapImageWidth": "100px",
+        "mapImageHeight": "200px",
+        "mapPoints": [
+          {
+            "pointID": 1,
+            "leftPosition": 20,
+            "topPosition": 91.8,
+            "color": "#00008B",
+            "radius": "8px",
+            "mappedBeaconID": 1,
+            "defaultMediaForPoint": {
+              "images": [
+                {
+                  "url": "img/dog.png",
+                  "detailTextEN": "This is a picture of a dog",
+                  "detailTextFR": "C'est un picture du chien"
+                }
+              ],
+              "audio": [
+                {
+                  "url": "audio/dogBark.mp3",
+                  "autoPlayWhenEnterPoint": true,
+                  "autoPlayDistance": 10
+                }
+              ],
+              "video": [
+                {
+                  "url": "img/dog.mov",
+                  "detailTextEN": "This is a video of the old building",
+                  "detailTextFR": "C'est un video du"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "currentStoryline": {}
+  }
+}
