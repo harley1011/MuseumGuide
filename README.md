@@ -13,7 +13,7 @@ The commands:
 The project uses AngularJS so the three main components will be directives, controllers, and services
 
 To create a controller create a new javascript file in the controllers folder.
-Add the following code below and replace AppCtrl with the name of the controller
+Add the following code below and replace AppCtrl with the name of the controller.
 
 angular.module('controllers')
     .controller('AppCtrl', function($scope) {
