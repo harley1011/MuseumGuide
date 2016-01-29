@@ -1,5 +1,5 @@
 #Build Status LM-MainNode CI
-![build status](http://prive.myds.me:3000/museum/museum/badge?branche=master)
+![build status](http://prive.myds.me:3000/harley1011/museumguide/badge?branche=master)
 
 # Getting Started
 
