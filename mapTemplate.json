@@ -1,46 +1,139 @@
 {
-  "map": {
-    "levels": [
-      {
-        "level": 1,
-        "mapImage": "img/levelOne.svg",
-        "mapImageWidth": "100px",
-        "mapImageHeight": "200px",
-        "mapPoints": [
+  "point": [
+    {
+      "id": "undefined", //int or SHA1 hash
+      "type": "", //string {"poi","fac","dir"}
+      "subtype": "", //string {"washroom", "stairs", ...}
+      "coordinate": {
+        "x": 0, //float, percentage (0-100)
+        "y": 0, //float, percentage (0-100)
+        "z": 0, //int (1-5)
+      },
+      "neighbours": [], //int[] or string[] SHA1 hash
+      "beacon_id": "undefined", //int or SHA1 hash
+      "style": {
+        "color": "#000000", //string, HEX Color
+        "radius": "0px", //string, px
+      },
+      "media": {
+        "events": [
           {
-            "pointID": 1,
-            "leftPosition": 20,
-            "topPosition": 91.8,
-            "color": "#00008B",
-            "radius": "8px",
-            "mappedBeaconID": 1,
-            "defaultMediaForPoint": {
-              "images": [
-                {
-                  "url": "img/dog.png",
-                  "detailTextEN": "This is a picture of a dog",
-                  "detailTextFR": "C'est un picture du chien"
-                }
-              ],
-              "audio": [
-                {
-                  "url": "audio/dogBark.mp3",
-                  "autoPlayWhenEnterPoint": true,
-                  "autoPlayDistance": 10
-                }
-              ],
-              "video": [
-                {
-                  "url": "img/dog.mov",
-                  "detailTextEN": "This is a video of the old building",
-                  "detailTextFR": "C'est un video du"
-                }
-              ]
+            "id": "undefined", //int or SHA1 hash
+            "type": "", //string, {"time", "user"},
+            "start": 0, //positive int, in seconds
+            "end": -1, //positive int, in seconds
+            "media_id": [], //int[] or string[] SHA1 hash - all media ids that must start
+          }
+        ],
+        "text/plain": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "en_us": "", //string
+            "fr_ca": "", //string
+          },
+        ],
+        "image/*": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "url": "", //string, url - where the content must be stored
+            "remote_url": "" //string, url - where the content must be fetched on initial load
+            "alt_text": {
+              "en_us": "", //string
+              "fr_ca": "", //string
+            },
+            "detail_text": {
+              "en_us": "", //string
+              "fr_ca": "", //string
             }
           }
-        ]
+        ],
+        "application/xml": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "content": "", //string, xml
+          }
+        ],
+        "audio/*": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "url": "", //string, url
+            "remote_url": "", //string, url
+            "volume_max": 0, //int, percentage (0,100)
+            "volume_min": 0, //int, percentage (0,100)
+            "volume_curve": 0, //string, {"constant", "fadein", "fadeout"}
+            "default_autoplay_distance": -1, //positive int in meters
+          },
+        ],
+        "video/*": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "url": "", //string, url
+            "remote_url": "", //string, url
+            "volume": 0, //int, percentage (0,100)
+            "default_autoplay_distance": -1, //positive int in meters
+            "detail_text": {
+              "en_us": "", //string
+              "fr_ca": "", //string
+            }
+          },
+        ],
+      },
+    }
+  ],
+  "level": [
+    {
+      "number": "undefined", //int (1-5)
+      "name": "undefined", //string
+      "map": {
+        "url": "undefined", //string, url
+        "width": "undefined", //string, px
+        "height": "undefined" //string, px
+      },
+      "points": [] //int[] or string[] SHA1 hash
+    }
+  ],
+  "storyline": [
+    {
+      "id": "undefined", //int or SHA1 hash
+      "name": {
+        "en_us": "", //string
+        "fr_ca": "", //string
+      },
+      "description": {
+        "en_us": "", //string
+        "fr_ca": "", //string
+      },
+      "media": {
+        "text/plain": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "en_us": "", //string
+            "fr_ca": "", //string
+          },
+        ],
+        "image/*": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "url": "", //string, url - where the content must be stored
+            "remote_url": "" //string, url - where the content must be fetched on initial load
+            "alt_text": {
+              "en_us": "", //string
+              "fr_ca": "", //string
+            },
+            "detail_text": {
+              "en_us": "", //string
+              "fr_ca": "", //string
+            }
+          }
+        ],
+        "application/xml": [
+          {
+            "id": "undefined", //int or SHA1 hash
+            "content": "", //string, xml
+          }
+        ],
       }
-    ],
-    "currentStoryline": {}
-  }
+      "points": [], //int[] or string[] SHA1 hash
+    }
+  ],
 }
