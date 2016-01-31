@@ -3,6 +3,42 @@
         <div class="point-div" map-point ng-repeat="mapPoint in mapPoints" point="mapPoint"></div>
     </div>
     <!-- <canvas ng-click="draw()" id="myCanvas" ng-pinch-zoom max-scale=“1”></canvas> -->
+
+    <!-- Testing layer iBeacon -->
+    <div ng-controller="iBeaconCtrl">
+        <div class="list">
+           <div class="item" ng-repeat="(key, value) in beacons">
+               <div class="row">
+                   <div class="col truncate">
+                       {{value.uuid}}
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col">
+                       major: {{value.major}}
+                   </div>
+                   <div class="col">
+                       minor: {{value.minor}}
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col">
+                       {{value.proximity}}
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+
+
+    <style>
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <!-- EO Testing layer iBeacon -->
 </div>
 <div class="zoom-buttons">
     <button ng-click="zoomIn()" class="button zoom-button-plus">+</button>
