@@ -1,4 +1,4 @@
-angular.module('controllers', ['ionic', 'ngCordovaBeacon'])
+angular.module('controllers')
 
 .controller('iBeaconCtrl', function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
 
