@@ -5,9 +5,9 @@
     <!-- <canvas ng-click="draw()" id="myCanvas" ng-pinch-zoom max-scale=“1”></canvas> -->
 
     <!-- Testing layer iBeacon -->
-    <div ng-controller="iBeaconCtrl">
+    <div ng-controller="mapCtrl">
         <div class="list">
-           <div class="item" ng-repeat="(key, value) in beacons">
+           <div class="item" ng-repeat="(key, value) in mapBeacons">
                <div class="row">
                    <div class="col truncate">
                        {{value.uuid}}

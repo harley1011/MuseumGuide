@@ -1,7 +1,7 @@
 angular.module('controllers')
-
+/*
 .controller('iBeaconCtrl', function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
-
+/*
   $scope.beacons = {};
 
   $ionicPlatform.ready(function() {
@@ -11,6 +11,7 @@ angular.module('controllers')
      * Events iBeacon in range
      * Retrieve all found beacons basic info
      */
+	 /*
     $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
      var uniqueBeaconKey;
 
@@ -29,5 +30,5 @@ angular.module('controllers')
     $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("School", "b9407f30-f5f8-466e-aff9-25556b57fe6d"));
 
     console.log("[iBeaconCtrl]: iBeacon registered.");
-  });
-})
+});
+})*/
