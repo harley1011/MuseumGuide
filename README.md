@@ -114,12 +114,12 @@ uuid: "b9407f30-f5f8-466e-aff9-25
 ```
 
 
-| Proximity           | Description           											 |    
-| :------------------- :|:----------------------------------------------------------:|
-|ProximityImmediate   | (strong signal; usually up to a few centimeters)			 |
-| ProximityNear       | (medium signal; usually up to a few meters)      			 |   
-| ProximityFar        | (weak signal; more than a few meters)    					 |   
-| ProximityUnknown    | (“hard to say”, usually when the signal is very, very weak)|    
+ Proximity           | Description           											
+ -------------------|----------------------------------------------------------
+ProximityImmediate   | (strong signal; usually up to a few centimeters)			 
+ ProximityNear       | (medium signal; usually up to a few meters)      			 
+ ProximityFar        | (weak signal; more than a few meters)    					    
+ ProximityUnknown    | (“hard to say”, usually when the signal is very, very weak)   
 
 
 # Full example of a the test repeater
