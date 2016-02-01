@@ -7,9 +7,9 @@ angular.module('directives')
             },
             link: function (scope, element, attrs) {
                 var lineDiv = element;
-                lineDiv.css('left', scope.line["position"]["x"] + 'px');
-                lineDiv.css('top', scope.line["position"]["y"] + 'px');
-                lineDiv.css('width', scope.line["magnitude"] + 'px');
+                lineDiv.css('left', scope.line["position"]["x"] + '%');
+                lineDiv.css('top', scope.line["position"]["y"] + '%');
+                lineDiv.css('width', scope.line["magnitude"] + '%');
                 lineDiv.css('border-top', scope.line["height"] + " solid " + scope.line["color"]);
                 lineDiv.css({
                     '-moz-transform': 'rotate(' + scope.line["angle"] + 'deg)',
