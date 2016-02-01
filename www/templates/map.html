@@ -2,7 +2,7 @@
     <div class="map-image" src="img/one.png" style="margin:auto;" ng-pinch-zoom max-scale="1">
         <div class="point-div" map-point ng-repeat="mapPoint in mapPoints" point="mapPoint"></div>
     </div>
-    <!-- <canvas ng-click="draw()" id="myCanvas" ng-pinch-zoom max-scale=“1”></canvas> -->
+    <!-- <canvas ng-click="draw()" id="myCanvas" ng-pinch-zoom max-scale=“1”></canvas>
 
     <!-- Testing layer iBeacon -->
     <div ng-controller="mapCtrl">
@@ -10,26 +10,36 @@
            <div class="item" ng-repeat="(key, value) in mapBeacons">
                <div class="row">
                    <div class="col truncate">
-                       {{value.uuid}}
+                       {{value.beacon.uuid}}
                    </div>
                </div>
                <div class="row">
                    <div class="col">
-                       major: {{value.major}}
+                       major: {{value.beacon.major}}
                    </div>
                    <div class="col">
-                       minor: {{value.minor}}
+                       minor: {{value.beacon.minor}}
                    </div>
                </div>
                <div class="row">
                    <div class="col">
-                       {{value.proximity}}
+                       {{value.beacon.proximity}}
                    </div>
+				   <div class="col">
+					   rssi: {{value.beacon.rssi}}
+				   </div>
                </div>
+			   <div class="row">
+				   <div class="col">
+					   accuracy: {{value.beacon.accuracy}}
+				   </div>
+				<div class="col">
+					tx: {{value.beacon.tx}}
+				</div>
+			   </div>
            </div>
         </div>
     </div>
-
 
     <style>
         .truncate {

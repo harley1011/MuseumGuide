@@ -4,14 +4,11 @@ angular.module('controllers')
         var beaconSrvc = iBeaconSrvc.BeaconBuilder;
         beaconSrvc.init();
 
-        $scope.mapBeacons = beaconSrvc.beaconCollection;
-
-        console.warn($scope.mapBeacons);
-
         $scope.$on(beaconSrvc.notifyEvent, function(event, value){
         	$scope.mapBeacons = value;
 			$scope.$apply();
-			console.warn($scope.mapBeacons);
+			//console.log("[mapCtrl] Beacon range update triggered");
+			//console.warn($scope.mapBeacons);
         });
 
 
