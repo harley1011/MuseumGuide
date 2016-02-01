@@ -1,0 +1,27 @@
+{
+  "point": [
+    {
+      "uuid": null,
+      "type": null,
+      "subtype": null,
+      "coordinate": null,
+      "neighbours": [],
+      "beacons": [],
+      "primary_beacon": null,
+      "border_color": "rgba(0,0,0,1)",
+      "background_color": "rgba(0,0,0,0)",
+      "color": "rgba(0,0,0,1)",
+      "radius": "0px",
+      "events": [
+        {
+          "uuid": null,
+          "type": null,
+          "start": 0,
+          "end": -1,
+          "media_id": [],
+          "next": [],
+        }
+      ],
+    }
+  ],
+}

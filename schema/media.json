@@ -1,0 +1,54 @@
+{
+  "media": {
+    "text/plain": [
+      {
+        "uuid": "undefined"
+        "en_us": ""
+        "fr_ca": ""
+      },
+    ],
+    "image/*": [
+      {
+        "uuid": "undefined", //int or SHA1 hash
+        "url": "", //string, url - where the content must be stored
+        "alt_text": {
+          "en_us": "", //string
+          "fr_ca": "", //string
+        },
+        "detail_text": {
+          "en_us": "", //string
+          "fr_ca": "", //string
+        }
+      }
+    ],
+    "application/xml": [
+      {
+        "uuid": "undefined", //int or SHA1 hash
+        "content": "", //string, xml
+      }
+    ],
+    "audio/*": [
+      {
+        "uuid": "undefined", //int or SHA1 hash
+        "url": "", //string, url
+        "loop": false,
+        "volume_max": 0, //int, percentage (0,100)
+        "volume_min": 0, //int, percentage (0,100)
+        "volume_curve": 0, //string, {"constant", "fadein", "fadeout", "distance"}
+        "fadeout_on_end": false,
+      },
+    ],
+    "video/*": [
+      {
+        "uuid": "undefined", //int or SHA1 hash
+        "url": "", //string, url
+        "volume": 0, //int, percentage (0,100)
+        "default_autoplay_distance": -1, //positive int in meters
+        "detail_text": {
+          "en_us": "", //string
+          "fr_ca": "", //string
+        }
+      },
+    ],
+  },
+}
