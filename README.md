@@ -170,3 +170,19 @@ ProximityImmediate   | (strong signal; usually up to a few centimeters)
 </style>
 <!-- EO Testing layer iBeacon -->
 ```
+
+### iBeacon proposed build procedure
+`$ gulp;ionic build android; ionic run android`
+
+## Problem Solving
+###1. `cordova is undefined`
+ if you get the error message `cordova is undefined` while using `ionic serve` it's because `cordova.js` is only built
+when you run the code on a phone. To resolve the problem, add your browser as a platform like this `ionic platform add browser --usegit`
+then use `ionic build browser` and `ionic run browser`. You might need to add the class `platform-browser` in the body tag of the index.html file.
+Don't forget to refresh the webpage if you update the source code.
+
+1. `ionic platform add browser --usegit`
+2. add class `platform-browser` in the tag `<body ng-app="start" class="platform-browser">` if not present
+3. `ionic build browser`
+4. `ionic run browser`
+5. Refresh page if nothing happen
