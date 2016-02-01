@@ -38,7 +38,7 @@ angular.module('services')
                 registeredTime: _timeInSecond()
             };
         }
-
+		
         _clearInactiveBeacons();
     }
 

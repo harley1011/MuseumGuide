@@ -2,13 +2,12 @@ angular.module('controllers')
     .controller('mapCtrl', function($scope, iBeaconSrvc) {
 
         var beaconSrvc = iBeaconSrvc.BeaconBuilder;
-        beaconSrvc.init();
+        beaconSrvc.init(); // Intialize beacon services
 
+		// Listen to proximity change events
         $scope.$on(beaconSrvc.notifyEvent, function(event, value){
         	$scope.mapBeacons = value;
 			$scope.$apply();
-			//console.log("[mapCtrl] Beacon range update triggered");
-			//console.warn($scope.mapBeacons);
         });
 
 
