@@ -29,7 +29,9 @@ The command "gulp default" will append all these files in the folders controller
 
 # IBeacon
 
-Getting proximity data from the IBeacons service
+Getting proximity data from the IBeacons service using Ranging.
+[Understand Ranging](http://developer.estimote.com/ibeacon/tutorial/part-3-ranging-beacons/),
+[Ranging vs Monitoring](https://community.estimote.com/hc/en-us/articles/203356607-What-are-region-Monitoring-and-Ranging-)
 
 Checklist
 ==============
@@ -39,10 +41,10 @@ Checklist
 
 Getting Started
 ===============
- Required service:
+Location:
 `www > js > services > iBeaconSrvs.js`
 
-1. Create a new region and add your iBeacons
+###1. Create a new region and add your iBeacons
 
 ```javascript     
 function _registerBeaconRegions() {
@@ -53,7 +55,7 @@ function _registerBeaconRegions() {
     }
 ```
 
-2. Listen to iBeacons events from your controllers
+###2. Listen to iBeacons events from your controllers
 ```javascript
 angular.module('controllers')
     .controller('myCtrl', function($scope, iBeaconSrvc) {
@@ -68,7 +70,7 @@ angular.module('controllers')
         });
 ```
 
-3. Understand what your are listening to
+###3. Understand what your are listening to
 
 The value returned from the listener events (notifyEvent = "$iBeaconSrvc:beaconRangeChange")
 
@@ -98,6 +100,25 @@ Example of data you can retrieve from the above collection:
 {{value.beacon.accuracy}}
 {{value.beacon.tx}}
 ```
+
+```
+accuracy: 0.19
+major: "513"
+minor: "45686"
+proximity: "ProximityImmediate"
+rssi: -61
+tx: -74
+uuid: "b9407f30-f5f8-466e-aff9-25
+```
+
+
+| Proximity           | Description           											 |    
+| :------------------- :|:----------------------------------------------------------:|
+|ProximityImmediate   | (strong signal; usually up to a few centimeters)			 |
+| ProximityNear       | (medium signal; usually up to a few meters)      			 |   
+| ProximityFar        | (weak signal; more than a few meters)    					 |   
+| ProximityUnknown    | (“hard to say”, usually when the signal is very, very weak)|    
+
 
 # Full example of a the test repeater
 ```html
