@@ -1,9 +1,7 @@
-CI ![build status](http://prive.myds.me:3000/harley1011/museumguide/badge?branche=master)
+![build status](http://prive.myds.me:3000/harley1011/museumguide/badge?branche=master)
 
-## Table of Contents
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-	- [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [IBeacon](#ibeacon)
