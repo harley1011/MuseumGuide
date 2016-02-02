@@ -12,6 +12,7 @@
 		- [iBeacon proposed build procedure](#ibeacon-proposed-build-procedure)
 	- [Problem Solving](#problem-solving)
 		- [1. `cordova is undefined`](#1-cordova-is-undefined)
+- [Unit Testing](#unit-testing)
 - [CI Automated Test](#ci-automated-test)
 - [Changelog](#changelog)
 
@@ -203,16 +204,27 @@ Don't forget to refresh the webpage if you update the source code.
 
 1. `ionic platform add browser --usegit`
 2. add class `platform-browser` in the tag `<body ng-app="start" class="platform-browser">` if not present
-3. `ionic build browser`
-4. `ionic run browser`
-5. Refresh page if nothing happen
+3. `npm test`
+4. `ionic build browser`
+5. `ionic run browser`
+6. Refresh page if nothing happen
 
+* Note for step 3, if you get error message concerning karma, please refer to the  [Unit Testing](#unit-testing) section.
+
+
+# Unit Testing
+The project uses Karma and Jasmine to run our unit test. Please install the fallowing package and run `npm test.
+
+```
+npm install karma
+npm install -g karma-cli
+npm install phantomjs-prebuilt --save-dev
+npm test
+```
 
 # CI Automated Test
 
 When changes are made on master, develop or release branch, an automated test will run on the CI server. What your slack channel #build and your JobID to see if you broke something.
-
-
 
 
 # Changelog
