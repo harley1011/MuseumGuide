@@ -6,7 +6,9 @@ angular.module('directives')
                 point: '=point'
             },
             link: function (scope, element, attrs) {
+                console.log("[mapPointDirective]: Printing Map Points.");
                 console.log(scope.point);
+
                 var pointDiv = element;
                 pointDiv.css('left', scope.point.left + '%');
                 pointDiv.css('top', scope.point.top + '%');

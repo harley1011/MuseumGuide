@@ -1,0 +1,15 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.unarin.cordova.beacon": {
+            "PACKAGE_NAME": "com.ionicframework.museumguide385031"
+        }
+    },
+    "dependent_plugins": {}
+}
