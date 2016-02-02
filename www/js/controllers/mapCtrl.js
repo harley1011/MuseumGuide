@@ -3,6 +3,15 @@ angular.module('controllers')
 
 		console.log('[mapCtrl] loaded');
 
+		var beaconSrvc = iBeaconSrvc.BeaconBuilder;
+        beaconSrvc.init(); // Intialize beacon services
+
+        // Listen to proximity change events
+        $scope.$on(beaconSrvc.notifyEvent, function(event, value){
+            $scope.mapBeacons = value;
+            $scope.$apply();
+        });
+
 		var mapData = {
 			"point": [{
 				"id": 1, //int or SHA1 hash
