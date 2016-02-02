@@ -9,3 +9,4 @@ www/js/controllers.js
 www/css/ionic.app.css
 www/css/ionic.app.min.css
 .idea/
+tests/coverage
