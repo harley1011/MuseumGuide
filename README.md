@@ -1,6 +1,23 @@
 #Build Status LM-MainNode CI
 ![build status](http://prive.myds.me:3000/harley1011/museumguide/badge?branche=master)
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Build Status LM-MainNode CI](#build-status-lm-mainnode-ci)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [IBeacon](#ibeacon)
+		- [1. Create a new region and add your iBeacons](#1-create-a-new-region-and-add-your-ibeacons)
+		- [2. Listen to iBeacons events from your controllers](#2-listen-to-ibeacons-events-from-your-controllers)
+		- [3. Understand what your are listening to](#3-understand-what-your-are-listening-to)
+- [Full example of a the test repeater](#full-example-of-a-the-test-repeater)
+		- [iBeacon proposed build procedure](#ibeacon-proposed-build-procedure)
+	- [Problem Solving](#problem-solving)
+		- [1. `cordova is undefined`](#1-cordova-is-undefined)
+- [CI Automated Test](#ci-automated-test)
+
+<!-- /TOC -->
+
 # Getting Started
 
 There are a few ways you can run this application from the command line.
@@ -172,7 +189,11 @@ ProximityImmediate   | (strong signal; usually up to a few centimeters)
 ```
 
 ### iBeacon proposed build procedure
-`$ gulp;ionic build android; ionic run android`
+DEPRECATED: `$ gulp;ionic build android; ionic run android`
+
+You may now use: `npm test; ionic build; ionic run android` to test your changes. The first command `npm test` will run gulp and also run the unit-test.
+The second `ionic build android; ionic run android` will launch debug on your phone.
+
 
 ## Problem Solving
 ###1. `cordova is undefined`
@@ -186,3 +207,8 @@ Don't forget to refresh the webpage if you update the source code.
 3. `ionic build browser`
 4. `ionic run browser`
 5. Refresh page if nothing happen
+
+
+# CI Automated Test
+
+When changes are made on master, develop or release branch, an automated test will run on the CI server. What your slack channel #build and your JobID to see if you broke something.
