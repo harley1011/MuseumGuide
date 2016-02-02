@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
 
-            }
+            } 
             if (window.StatusBar) {
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 templateUrl: 'templates/menu.html',
                 controller: 'AppCtrl'
             })
-            
+
             .state('level', {
                 url: '/level',
                 abstract: true,
