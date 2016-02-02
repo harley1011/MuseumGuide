@@ -34,6 +34,12 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 templateUrl: 'templates/menu.html',
                 controller: 'AppCtrl'
             })
+            
+            .state('level', {
+                url: '/level',
+                abstract: true,
+                templateUrl: 'templates/menu-level.html'
+            })
 
             .state('tab', {
                 url: '/tab',
@@ -51,16 +57,17 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 }
             })
 
-            .state('app.levelTwo', {
+            .state('tab.levelTwo', {
                 url: '/levelTwo',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/levelTwo.html'
+                        templateUrl: 'templates/levelTwo.html',
+                        controller: 'mapCtrl'
                     }
                 }
             })
 
-            .state('app.levelThree', {
+            .state('tab.levelThree', {
                 url: '/levelThree',
                 views: {
                     'menuContent': {
@@ -69,7 +76,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 }
             })
 
-            .state('app.levelFour', {
+            .state('tab.levelFour', {
                 url: '/levelFour',
                 views: {
                     'menuContent': {
