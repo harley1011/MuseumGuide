@@ -18,8 +18,8 @@ module.exports = function(config) {
 	  '../www/lib/ionic/js/angular/angular.js',
 	  '../www/js/pluginsRsc/*.js',
 	  '../www/js/*.js',
-	  '../www/lib/angular-mocks/angular-mocks.js',
-      '../tests/**/*.js'
+	  '../tests/lib/angular-mocks/angular-mocks.js',
+	  '../tests/ionic/**/*.js'
     ],
 
 
