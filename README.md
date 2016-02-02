@@ -13,6 +13,7 @@
 	- [Problem Solving](#problem-solving)
 		- [1. `cordova is undefined`](#1-cordova-is-undefined)
 - [CI Automated Test](#ci-automated-test)
+- [Changelog](#changelog)
 
 <!-- /TOC -->
 
@@ -210,3 +211,13 @@ Don't forget to refresh the webpage if you update the source code.
 # CI Automated Test
 
 When changes are made on master, develop or release branch, an automated test will run on the CI server. What your slack channel #build and your JobID to see if you broke something.
+
+
+
+
+# Changelog
+
+0.1
+-------------
+- Get direction between POI
+- Getting location information from iBeacons
