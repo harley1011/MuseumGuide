@@ -9,15 +9,15 @@ angular.module('controllers')
               "type": "poi", //string {"poi","fac","dir"}
               "subtype": "", //string {"washroom", "stairs", ...}
               "coordinate": {
-                "x": 120, //float, percentage (0-100)
-                "y": 1506, //float, percentage (0-100)
+                "x": 120, //float, px
+                "y": 1506, //float, px
                 "z": 1, //int (1-5)
               },
               "neighbours": [2,3], //int[] or string[] SHA1 hash
               "beacon_id": "undefined", //int or SHA1 hash
               "style": {
                 "color": "#00008B", //string, HEX Color
-                "diameter": 6, //float, px
+                "diameter": 12, //float, px
               },
             },
             {
@@ -25,15 +25,15 @@ angular.module('controllers')
               "type": "poi", //string {"poi","fac","dir"}
               "subtype": "", //string {"washroom", "stairs", ...}
               "coordinate": {
-                "x": 230, //float, percentage (0-100)
-                "y": 1372, //float, percentage (0-100)
+                "x": 230, //float, px
+                "y": 1372, //float, px
                 "z": 1, //int (1-5)
               },
               "neighbours": [1,3], //int[] or string[] SHA1 hash
               "beacon_id": "undefined", //int or SHA1 hash
               "style": {
                 "color": "#a6a6a6", //string, HEX Color
-                "diameter": 6, //float, px
+                "diameter": 12, //float, px
               },
             },
             {
@@ -41,15 +41,15 @@ angular.module('controllers')
               "type": "dir", //string {"poi","fac","dir"}
               "subtype": "", //string {"washroom", "stairs", ...}
               "coordinate": {
-                "x": 258, //float, percentage (0-100)
-                "y": 1516, //float, percentage (0-100)
+                "x": 260, //float, px
+                "y": 1516, //float, px
                 "z": 1, //int (1-5)
               },
-              "neighbours": [1,2,4], //int[] or string[] SHA1 hash
+              "neighbours": [1,2,4,6], //int[] or string[] SHA1 hash
               "beacon_id": "undefined", //int or SHA1 hash
               "style": {
                 "color": "#a6a6a6", //string, HEX Color
-                "diameter": 6, //float, px
+                "diameter": 12, //float, px
               },
             },
             {
@@ -57,15 +57,15 @@ angular.module('controllers')
               "type": "dir", //string {"poi","fac","dir"}
               "subtype": "", //string {"washroom", "stairs", ...}
               "coordinate": {
-                "x": 274, //float, percentage (0-100)
-                "y": 1485, //float, percentage (0-100)
+                "x": 274, //float, px
+                "y": 1485, //float, px
                 "z": 1, //int (1-5)
               },
               "neighbours": [3,5], //int[] or string[] SHA1 hash
               "beacon_id": "undefined", //int or SHA1 hash
               "style": {
                 "color": "#a6a6a6", //string, HEX Color
-                "diameter": 6, //float, px
+                "diameter": 12, //float, px
               },
             },
             {
@@ -73,15 +73,31 @@ angular.module('controllers')
               "type": "poi", //string {"poi","fac","dir"}
               "subtype": "", //string {"washroom", "stairs", ...}
               "coordinate": {
-                "x": 520, //float, percentage (0-100)
-                "y": 1503, //float, percentage (0-100)
+                "x": 520, //float, px
+                "y": 1503, //float, px
                 "z": 1, //int (1-5)
               },
               "neighbours": [4], //int[] or string[] SHA1 hash
               "beacon_id": "undefined", //int or SHA1 hash
               "style": {
                 "color": "#00008B", //string, HEX Color
-                "diameter": 6, //float, px
+                "diameter": 12, //float, px
+              },
+            },
+            {
+              "id": 6, //int or SHA1 hash
+              "type": "poi", //string {"poi","fac","dir"}
+              "subtype": "", //string {"washroom", "stairs", ...}
+              "coordinate": {
+                "x": 270, //float, px
+                "y": 1580, //float, px
+                "z": 1, //int (1-5)
+              },
+              "neighbours": [3], //int[] or string[] SHA1 hash
+              "beacon_id": "undefined", //int or SHA1 hash
+              "style": {
+                "color": "#00008B", //string, HEX Color
+                "diameter": 12, //float, px
               },
             }
           ],
@@ -108,7 +124,7 @@ angular.module('controllers')
                 "en_us": "This is the first story.", //string
                 "fr_ca": "", //string
               },
-              "points": [1,5], //int[] or string[] SHA1 hash
+              "points": [1,6,5] //int[] or string[] SHA1 hash
             }
           ],
         };
@@ -139,7 +155,8 @@ angular.module('controllers')
         angular.forEach(points, function(point, key) {
             if(storyPoints.indexOf(point["id"]) != -1 && point["coordinate"]["z"] == currentFloor) {
                 var diameter = point["style"]["diameter"]
-                $scope.mapPoints.push({left: (100*(point["coordinate"]["x"]-diameter/2)/imgDimensions["width"]), top: (100*(point["coordinate"]["y"]-diameter/2)/imgDimensions["height"]), color: point["style"]["color"], diameter: diameter});
+                $scope.mapPoints.push({left: toPercentage(point["coordinate"]["x"]-(diameter/2),imgDimensions["width"]), top: toPercentage(point["coordinate"]["y"]-(diameter/2),
+                    imgDimensions["height"]), color: point["style"]["color"], diameterX: toPercentage(diameter,imgDimensions["width"]), diameterY: toPercentage(diameter,imgDimensions["height"])});
             }
         });
 
@@ -164,7 +181,7 @@ angular.module('controllers')
 
 function lineVector(point1, point2, imgDimensions){
     var vector = [];
-    vector["magnitude"] = 100*vectorMagnitude(point1, point2)/imgDimensions["width"];
+    vector["magnitude"] = toPercentage(vectorMagnitude(point1, point2),imgDimensions["width"]);
     vector["angle"] = Math.atan((point2["y"]-point1["y"])/(point2["x"]-point1["x"])) * 180/Math.PI; //in degrees
     console.log(vector["magnitude"] + ", " + vector["angle"]);
 
@@ -175,9 +192,13 @@ function lineVector(point1, point2, imgDimensions){
     if(point2["x"] < point1["x"])
         vector["angle"] += 180;
 
-    vector["position"] = {"x": (100*point1["x"]/imgDimensions["width"]), "y": (100*point1["y"]/imgDimensions["height"])};
+    vector["position"] = {"x": toPercentage(point1["x"],imgDimensions["width"]), "y": toPercentage(point1["y"],imgDimensions["height"])};
 
     return vector;
+}
+
+function toPercentage(num, imgDimension){
+    return 100*num/imgDimension;
 }
 
 function vectorMagnitude(point1, point2){
@@ -194,6 +215,7 @@ function storyLinePath(storyLine, points){
     var path = [];
     var current = pointsList["" + storyPoints[0]];
     for(var i = 1; i < storyPoints.length; i++){
+        console.log("Building path to POI " + storyPoints[i]);
         var destination = pointsList["" + storyPoints[i]];
         path = path.concat(dijkstra(current,destination,points));
         current = destination;
@@ -209,14 +231,26 @@ function dijkstra(source, destination, points){
 
     //go through each story point of interest
     var path = [];
-    var current = source;
+    var current = pointsList["" + source["id"]];
+    current["visited"] = true;
     current["minDistance"] = 0;
     while(current["id"] != destination["id"]){
         var closestNeighbour = null;
         var neighbours = current["neighbours"];
-        angular.forEach(neighbours, function(neighbourID, key) {
+        console.log("Current: " + current["id"]);
+        var allVisited = true;
+        for(var i = 0; i < neighbours.length; i++){
+            var neighbourID = neighbours[i];
             var neighbour = pointsList["" + neighbourID];
+            if(neighbourID == destination["id"]){
+                closestNeighbour = neighbour;
+                allVisited = false;
+                console.log("Found POI " + neighbour["id"]);
+                break;
+            }
+
             if(!neighbour["visited"]) {
+                allVisited = false;
                 var distance = vectorMagnitude(current,neighbour) + current["minDistance"];
                 if(distance < neighbour["minDistance"] || neighbour["minDistance"] == -1)
                     neighbour["minDistance"] = distance;
@@ -224,10 +258,23 @@ function dijkstra(source, destination, points){
                 if(closestNeighbour == null || neighbour["minDistance"] < closestNeighbour["minDistance"])
                     closestNeighbour = neighbour;
             }
-        });
+
+            var visitedString = "";
+            if(neighbour["visited"])
+                visitedString = " (V)";
+            console.log("Neighbour " + neighbour["id"] + visitedString + " minD " + neighbour["minDistance"].toFixed(2));
+        }
         current["visited"] = true;
-        path.push([current, closestNeighbour]);
-        current = closestNeighbour;
+
+        if(allVisited){
+            var previousPath = path.pop();
+            current = previousPath[0];
+            console.log("Dead end");
+        }
+        else{
+            path.push([current, closestNeighbour]);
+            current = closestNeighbour;
+        }
     }
 
     return path;

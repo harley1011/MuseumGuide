@@ -11,8 +11,8 @@ angular.module('directives')
                 pointDiv.css('left', scope.point.left + '%');
                 pointDiv.css('top', scope.point.top + '%');
                 pointDiv.css('border-color', scope.point.color);
-                pointDiv.css('width', scope.point.diameter + 'px');
-                pointDiv.css('height', scope.point.diameter + 'px');
+                pointDiv.css('width', scope.point.diameterX + '%');
+                pointDiv.css('height', scope.point.diameterY + '%');
             }
 
         }
