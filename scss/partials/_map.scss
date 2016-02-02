@@ -45,8 +45,13 @@ canvas {
 .point-div {
   border-radius: 50%;
   border: 2px solid red;
+  background-color: #ffffff;
   width: 8px;
   height: 8px;
+  position: absolute;
+}
+
+.line-div {
   position: absolute;
 }
 
