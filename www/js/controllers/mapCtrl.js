@@ -187,20 +187,13 @@ angular.module('controllers')
             width: $scope.currentLevel.map.width,
             height: $scope.currentLevel.map.height
         };
-        var levels = mapData["level"];
-       /* angular.forEach(levels, function (level, key) {
-            if (level["number"] == currentFloor) {
-                imgDimensions["width"] = level["map"]["width"];
-                imgDimensions["height"] = level["map"]["height"];
-            }
-        }); */
 
         //store points of interest to be shown on the map
         $scope.mapPoints = [];
         var points = mapData.point;
         var storyPoints = story.points;
         angular.forEach(points, function (point, key) {
-            if (storyPoints.indexOf(point["id"]) != -1 && point["coordinate"]["z"] == currentFloor) {
+            if (storyPoints.indexOf(point["id"]) != -1 && point["coordinate"]["z"] == $scope.currentLevel.number) {
                 var diameter = point["style"]["diameter"]
                 $scope.mapPoints.push({
                     left: toPercentage(point["coordinate"]["x"] - (diameter / 2), imgDimensions["width"]),
