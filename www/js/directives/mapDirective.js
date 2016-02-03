@@ -3,17 +3,21 @@ angular.module('directives')
         return {
             restrict: 'E',
             templateUrl: 'templates/map.html',
-            scope: {
-                level: '=level'
-            },
             link: function (scope, element, attrs) {
                 var mapDiv = element.find('div')[0];
                 var mapImageDiv = element.find('div')[1];
-                loadImage(scope.level.map.url);
+                loadImage(scope.currentLevel.map.url);
 
                 scope.$watch('level', function(newValue, oldValue) {
-                    loadImage(scope.level.map.url);
+                    loadImage(scope.currentLevel.map.url);
                 });
+
+                scope.zoomIn = function(){
+                    $rootScope.$broadcast('zoomIn');
+                }
+                scope.zoomOut = function(){
+                    $rootScope.$broadcast('zoomOut');
+                }
 
                 function loadImage(url){
                     console.log('loading img'+ url);
@@ -24,12 +28,6 @@ angular.module('directives')
                         angular.element(mapImageDiv).css('width', mapDiv.offsetHeight * (img.width / img.height) + 'px');
                         $rootScope.$broadcast('mapLoaded');
                     }
-                }
-                scope.zoomIn = function(){
-                    $rootScope.$broadcast('zoomIn');
-                }
-                scope.zoomOut = function(){
-                    $rootScope.$broadcast('zoomOut');
                 }
             }
 
