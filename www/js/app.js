@@ -47,63 +47,17 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 templateUrl: 'templates/tabs.html'
             })
 
-            .state('tab.levelOne', {
-                url: '/levelOne',
+            .state('tab.level', {
+                url: '/level',
                 views: {
                     'tab-one': {
-                        templateUrl: 'templates/levelOne.html',
+                        templateUrl: 'templates/level.html',
                         controller: 'mapCtrl'
-                    }
-                }
-            })
-
-            .state('tab.levelTwo', {
-                url: '/levelTwo',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelTwo.html',
-                        controller: 'mapCtrl'
-                    }
-                }
-            })
-
-            .state('tab.levelThree', {
-                url: '/levelThree',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelThree.html'
-                    }
-                }
-            })
-
-            .state('tab.levelFour', {
-                url: '/levelFour',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelFour.html'
-                    }
-                }
-            })
-
-            .state('app.levelFive', {
-                url: '/levelOne',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelFive.html'
-                    }
-                }
-            })
-
-            .state('app.levelSix', {
-                url: '/levelSix',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelSix.html'
                     }
                 }
             })
 
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/levelOne');
+        $urlRouterProvider.otherwise('/tab/level');
     });
