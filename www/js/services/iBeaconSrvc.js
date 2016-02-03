@@ -14,14 +14,16 @@ angular.module('services')
 
     BeaconBuilder.init = function() {
         $ionicPlatform.ready(function() {
-            $cordovaBeacon.requestWhenInUseAuthorization(); // ios only location permissionå
+            if (!ionic.Platform.is('browser')) {
+                $cordovaBeacon.requestWhenInUseAuthorization(); // ios only location permissionå
 
-            $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
-                buildBeaconCollection(pluginResult);
-                notifyBeaconsRangeChange();
-            });
+                $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function (event, pluginResult) {
+                    buildBeaconCollection(pluginResult);
+                    notifyBeaconsRangeChange();
+                });
 
-            registerBeaconRegions();
+                registerBeaconRegions();
+            }
         });
     };
 
