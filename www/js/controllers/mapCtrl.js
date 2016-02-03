@@ -114,7 +114,7 @@ angular.module('controllers')
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
-                "number": 1, //int (1-5)
+                "number": 2, //int (1-5)
                 "name": "Level Two", //string
                 "map": {
                     "url": "img/one-small.png", //string, url
@@ -123,35 +123,33 @@ angular.module('controllers')
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
-                    "number": 1, //int (1-5)
-                    "name": "Level Three", //string
-                    "map": {
-                        "url": "img/one-small.png", //string, url
-                        "width": 770, //int, px
-                        "height": 1637 //int, px
-                    },
-                    "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
+                "number": 3, //int (1-5)
+                "name": "Level Three", //string
+                "map": {
+                    "url": "img/one-small.png", //string, url
+                    "width": 770, //int, px
+                    "height": 1637 //int, px
                 },
-                {
-                    "number": 1, //int (1-5)
-                    "name": "Level Four", //string
-                    "map": {
-                        "url": "img/one-small.png", //string, url
-                        "width": 770, //int, px
-                        "height": 1637 //int, px
-                    },
-                    "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
+                "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
+            }, {
+                "number": 4, //int (1-5)
+                "name": "Level Four", //string
+                "map": {
+                    "url": "img/one-small.png", //string, url
+                    "width": 770, //int, px
+                    "height": 1637 //int, px
                 },
-                {
-                    "number": 1, //int (1-5)
-                    "name": "Level Five", //string
-                    "map": {
-                        "url": "img/one-small.png", //string, url
-                        "width": 770, //int, px
-                        "height": 1637 //int, px
-                    },
-                    "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
-                }],
+                "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
+            }, {
+                "number": 5, //int (1-5)
+                "name": "Level Five", //string
+                "map": {
+                    "url": "img/one-small.png", //string, url
+                    "width": 770, //int, px
+                    "height": 1637 //int, px
+                },
+                "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
+            }],
             "storyline": [{
                 "id": 1, //int or SHA1 hash
                 "name": {
@@ -174,11 +172,11 @@ angular.module('controllers')
 
         var currentFloor = 1; //TODO this value will later on be assigned
         var storyLineNum = 1; //TODO this value will later on be assigned
-        var storyLines = mapData["storyline"];
+        var storyLines = mapData.storyline;
         var story = null;
 
         angular.forEach(storyLines, function (storyLine, key) {
-            if (storyLine["id"] == storyLineNum)
+            if (storyLine.id == storyLineNum)
                 story = storyLine;
         });
 
@@ -193,15 +191,14 @@ angular.module('controllers')
         var points = mapData.point;
         var storyPoints = story.points;
         angular.forEach(points, function (point, key) {
-            if (storyPoints.indexOf(point["id"]) != -1 && point["coordinate"]["z"] == $scope.currentLevel.number) {
-                var diameter = point["style"]["diameter"]
+            if (storyPoints.indexOf(point.id) != -1 && point.coordinate.z == $scope.currentLevel.number) {
+                var diameter = point.style.diameter;
                 $scope.mapPoints.push({
-                    left: toPercentage(point["coordinate"]["x"] - (diameter / 2), imgDimensions["width"]),
-                    top: toPercentage(point["coordinate"]["y"] - (diameter / 2),
-                        imgDimensions["height"]),
-                    color: point["style"]["color"],
-                    diameterX: toPercentage(diameter, imgDimensions["width"]),
-                    diameterY: toPercentage(diameter, imgDimensions["height"])
+                    left: toPercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
+                    top: toPercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
+                    color: point.style.color,
+                    diameterX: toPercentage(diameter, imgDimensions.width),
+                    diameterY: toPercentage(diameter, imgDimensions.height)
                 });
             }
         });
@@ -213,8 +210,8 @@ angular.module('controllers')
         $scope.mapLines = [];
         angular.forEach(paths, function (path, key) {
             var vector = lineVector(path[0], path[1], imgDimensions);
-            vector["color"] = '#ff3333';
-            vector["height"] = '1px';
+            vector.color = '#ff3333';
+            vector.height = '1px';
             $scope.mapLines.push(vector);
         });
 
@@ -222,20 +219,20 @@ angular.module('controllers')
 
         function lineVector(point1, point2, imgDimensions) {
             var vector = [];
-            vector["magnitude"] = toPercentage(vectorMagnitude(point1, point2), imgDimensions["width"]);
-            vector["angle"] = Math.atan((point2["y"] - point1["y"]) / (point2["x"] - point1["x"])) * 180 / Math.PI; //in degrees
-            console.log(vector["magnitude"] + ", " + vector["angle"]);
+            vector.magnitude = toPercentage(vectorMagnitude(point1, point2), imgDimensions.width);
+            vector.angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI; //in degrees
+            console.log(vector.magnitude + ", " + vector.angle);
 
             // point1 - (3,4)  point2 - (4,3)   deg = -45
             // point1 - (3,4)  point2 - (4,5)   deg = 45
             // point1 - (3,4)  point2 - (2,5)   deg = -45 ...should be (-45+180) = 135
             // point1 - (3,4)  point2 - (2,3)   deg = 45 ...should be (45+180) = 225
-            if (point2["x"] < point1["x"])
-                vector["angle"] += 180;
+            if (point2.x < point1.x)
+                vector.angle += 180;
 
-            vector["position"] = {
-                "x": toPercentage(point1["x"], imgDimensions["width"]),
-                "y": toPercentage(point1["y"], imgDimensions["height"])
+            vector.position = {
+                "x": toPercentage(point1.x, imgDimensions.width),
+                "y": toPercentage(point1.y, imgDimensions.height)
             };
 
             return vector;
@@ -246,11 +243,11 @@ angular.module('controllers')
         }
 
         function vectorMagnitude(point1, point2) {
-            return Math.sqrt(Math.pow((point2["x"] - point1["x"]), 2) + Math.pow((point2["y"] - point1["y"]), 2));
+            return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
         }
 
         function storyLinePath(storyLine, points) {
-            var storyPoints = storyLine["points"];
+            var storyPoints = storyLine.points;
 
             //copy necessary points information and index with the id
             var pointsList = getPointData(points);
@@ -275,40 +272,40 @@ angular.module('controllers')
 
             //go through each story point of interest
             var path = [];
-            var current = pointsList["" + source["id"]];
-            current["visited"] = true;
-            current["minDistance"] = 0;
-            while (current["id"] != destination["id"]) {
+            var current = pointsList["" + source.id];
+            current.visited = true;
+            current.minDistance = 0;
+            while (current.id != destination.id) {
                 var closestNeighbour = null;
-                var neighbours = current["neighbours"];
-                console.log("Current: " + current["id"]);
+                var neighbours = current.neighbours;
+                console.log("Current: " + current.id);
                 var allVisited = true;
                 for (var i = 0; i < neighbours.length; i++) {
                     var neighbourID = neighbours[i];
                     var neighbour = pointsList["" + neighbourID];
-                    if (neighbourID == destination["id"]) {
+                    if (neighbourID == destination.id) {
                         closestNeighbour = neighbour;
                         allVisited = false;
-                        console.log("Found POI " + neighbour["id"]);
+                        console.log("Found POI " + neighbour.id);
                         break;
                     }
 
-                    if (!neighbour["visited"]) {
+                    if (!neighbour.visited) {
                         allVisited = false;
-                        var distance = vectorMagnitude(current, neighbour) + current["minDistance"];
-                        if (distance < neighbour["minDistance"] || neighbour["minDistance"] == -1)
-                            neighbour["minDistance"] = distance;
+                        var distance = vectorMagnitude(current, neighbour) + current.minDistance;
+                        if (distance < neighbour.minDistance || neighbour.minDistance == -1)
+                            neighbour.minDistance = distance;
 
-                        if (closestNeighbour == null || neighbour["minDistance"] < closestNeighbour["minDistance"])
+                        if (closestNeighbour == null || neighbour.minDistance < closestNeighbour.minDistance)
                             closestNeighbour = neighbour;
                     }
 
                     var visitedString = "";
-                    if (neighbour["visited"])
+                    if (neighbour.visited)
                         visitedString = " (V)";
-                    console.log("Neighbour " + neighbour["id"] + visitedString + " minD " + neighbour["minDistance"].toFixed(2));
+                    console.log("Neighbour " + neighbour.id + visitedString + " minD " + neighbour.minDistance.toFixed(2));
                 }
-                current["visited"] = true;
+                current.visited = true;
 
                 if (allVisited) {
                     var previousPath = path.pop();
@@ -329,13 +326,13 @@ angular.module('controllers')
             var pointsList = [];
             angular.forEach(points, function (point, key) {
                 var pointData = [];
-                pointData["id"] = point["id"];
-                pointData["x"] = point["coordinate"]["x"];
-                pointData["y"] = point["coordinate"]["y"];
-                pointData["visited"] = false;
-                pointData["minDistance"] = -1;
-                pointData["neighbours"] = point["neighbours"];
-                pointsList["" + point["id"]] = pointData;
+                pointData.id = point.id;
+                pointData.x = point.coordinate.x;
+                pointData.y = point.coordinate.y;
+                pointData.visited = false;
+                pointData.minDistance = -1;
+                pointData.neighbours = point.neighbours;
+                pointsList["" + point.id] = pointData;
             });
 
             return pointsList;
