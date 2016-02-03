@@ -166,7 +166,11 @@ angular.module('controllers')
             }],
         };
 
-        $scope.currentLevel = mapData["level"][0];
+        $scope.currentLevel = mapData.level[0];
+
+        $scope.changeLevel = function (level) {
+            $scope.currentLevel = mapData.level[level - 1];
+        };
 
         var currentFloor = 1; //TODO this value will later on be assigned
         var storyLineNum = 1; //TODO this value will later on be assigned
@@ -217,10 +221,6 @@ angular.module('controllers')
             vector["height"] = '1px';
             $scope.mapLines.push(vector);
         });
-
-        $scope.changeLevel = function (level) {
-            $scope.currentLevel = mapData.level[level - 1];
-        }
 
         ///////// INNER Functions   /////////////
 

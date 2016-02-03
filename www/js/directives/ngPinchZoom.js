@@ -76,7 +76,6 @@ angular.module('directives')
 
             });
             $rootScope.$on('mapLoaded', function () {
-                console.log('[ngPinchZoom]: Pinch zoom loaded');
                 elWidth = element[0].clientWidth;
                 elHeight = element[0].clientHeight;
 
