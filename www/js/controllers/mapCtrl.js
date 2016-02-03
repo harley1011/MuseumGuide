@@ -128,6 +128,8 @@ angular.module('controllers')
 			}],
 		};
 
+		$scope.currentLevel = mapData.level[0];
+
 		var currentFloor = 1; //TODO this value will later on be assigned
 		var storyLineNum = 1; //TODO this value will later on be assigned
 		var storyLines = mapData["storyline"];
@@ -180,7 +182,7 @@ angular.module('controllers')
 		});
 
 		$scope.changeLevel = function (level) {
-			console.log("Changing level to: " + level);
+			$scope.currentLevel = mapData.level[level];
 		}
 
 		///////// INNER Functions   /////////////
