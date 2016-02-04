@@ -76,7 +76,6 @@ angular.module('directives')
 
             });
             $rootScope.$on('mapLoaded', function () {
-                console.log('In pinch zoom loaded');
                 elWidth = element[0].clientWidth;
                 elHeight = element[0].clientHeight;
 
@@ -217,7 +216,6 @@ angular.module('directives')
                 var transition = duration ? 'all cubic-bezier(0,0,.5,1) ' + duration + 's' : '';
                 var matrixArray = [scale, 0, 0, scale, positionX, positionY];
                 var matrix = 'matrix(' + matrixArray.join(',') + ')';
-                console.log("Scale: ", scale, " PositionX: ", positionX, " PositionY:", positionY);
                 element.css({
                     '-webkit-transition': transition,
                     transition: transition,

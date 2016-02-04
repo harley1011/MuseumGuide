@@ -9,6 +9,7 @@
   display: block;
   background-color: $calm;
   border-radius: 25px 25px 0px 0px;
+  font-size: 19pt !important;
 }
 
 .zoom-button-minus {
@@ -45,8 +46,13 @@ canvas {
 .point-div {
   border-radius: 50%;
   border: 2px solid red;
+  background-color: #ffffff;
   width: 8px;
   height: 8px;
+  position: absolute;
+}
+
+.line-div {
   position: absolute;
 }
 
