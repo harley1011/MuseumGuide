@@ -47,6 +47,31 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 templateUrl: 'templates/tabs.html'
             })
 
+            .state('tab.view', {
+                url: '/view',
+                views: {
+                    'tab-view': {
+                        templateUrl: 'templates/view.html'
+                    }
+                }
+            }) 
+        
+            .state('tab.view.exploration', {
+                url: '/explore',
+                views: {
+                    'tab-explore': {
+                        templateUrl: 'templates/exploration.html'
+                    }
+                }
+            }) 
+            .state('tab.scan', {
+                url: '/scan',
+                views: {
+                    'tab-scan': {
+                        templateUrl: 'templates/scan.html'
+                    }
+                }
+            })
             .state('tab.level', {
                 url: '/level',
                 views: {
