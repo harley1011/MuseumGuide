@@ -5,24 +5,25 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-calm">
 
-  <!-- Profile Tab -->
-  <ion-tab title="Maps" icon-off="ion-ios-navigate-outline" icon-on="ion-ios-navigate" href="#/tab/level">
+     <!-- Postings Tab-->
+  <ion-tab title="View" icon-off="ion-ios-arrow-up" icon-on="ion-ios-arrow-up" href="#/tab/posting">
+    <ion-nav-view name="tab-posting"></ion-nav-view>
+  </ion-tab>
+  <!-- Maps Tab -->
+  <ion-tab title="Maps" icon-off="ion-map" icon-on="ion-map" href="#/tab/level">
     <ion-nav-view name="tab-one"></ion-nav-view>
   </ion-tab>
 
- <!-- Trending Tab -->
-  <ion-tab title="Scan" icon-off="ion-ios-search" icon-on="ion-ios-search" href="#/tab/feed">
+ <!-- Scan Tab -->
+  <ion-tab title="Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner" href="#/tab/feed">
     <ion-nav-view name="tab-feed"></ion-nav-view>
   </ion-tab>
-  <!-- Postings Tab-->
-  <ion-tab title="View" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper" href="#/tab/posting">
-    <ion-nav-view name="tab-posting"></ion-nav-view>
-  </ion-tab>
+ 
 
 
-    <!-- Messages Tab -->
-  <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/messages">
-    <ion-nav-view name="tab-messages"></ion-nav-view>
+    <!-- Settings Tab -->
+  <ion-tab title="Settings" icon-off="ion-gear-a" icon-on="ion-gear-a" href="#/tab/settings">
+    <ion-nav-view name="tab-settings"></ion-nav-view>
   </ion-tab>
  <!-- Favourites Tab -->
 
