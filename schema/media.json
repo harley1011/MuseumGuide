@@ -2,52 +2,43 @@
   "media": {
     "text/plain": [
       {
-        "uuid": "undefined"
-        "en_us": ""
-        "fr_ca": ""
+        "uuid": null,
+        "en_us": null,
+        "fr_ca": null
       },
     ],
     "image/*": [
       {
-        "uuid": "undefined", //int or SHA1 hash
-        "url": "", //string, url - where the content must be stored
-        "alt_text": {
-          "en_us": "", //string
-          "fr_ca": "", //string
-        },
-        "detail_text": {
-          "en_us": "", //string
-          "fr_ca": "", //string
-        }
+        "uuid": null,
+        "url": null,
+        "alt_text_uuid": null,
+        "detail_text_uuid": null
       }
     ],
     "application/xml": [
       {
-        "uuid": "undefined", //int or SHA1 hash
-        "content": "", //string, xml
+        "uuid": null,
+        "content": null,
       }
     ],
     "audio/*": [
       {
-        "uuid": "undefined", //int or SHA1 hash
-        "url": "", //string, url
+        "uuid": null,
+        "url": null,
         "loop": false,
-        "volume_max": 0, //int, percentage (0,100)
-        "volume_min": 0, //int, percentage (0,100)
-        "volume_curve": 0, //string, {"constant", "fadein", "fadeout", "distance"}
+        "volume_max": 0,
+        "volume_min": 0,
+        "volume_curve": null,
         "fadeout_on_end": false,
       },
     ],
     "video/*": [
       {
-        "uuid": "undefined", //int or SHA1 hash
-        "url": "", //string, url
-        "volume": 0, //int, percentage (0,100)
-        "default_autoplay_distance": -1, //positive int in meters
-        "detail_text": {
-          "en_us": "", //string
-          "fr_ca": "", //string
-        }
+        "uuid": null,
+        "url": null,
+        "volume": 0,
+        "default_autoplay_distance": -1,
+        "detail_text_uuid": null,
       },
     ],
   },
