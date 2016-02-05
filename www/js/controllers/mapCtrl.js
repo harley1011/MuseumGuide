@@ -108,45 +108,45 @@ angular.module('controllers')
                 "number": 1, //int (1-5)
                 "name": "Level One", //string
                 "map": {
-                    "url": "img/one-small.png", //string, url
-                    "width": 770, //int, px
-                    "height": 1637 //int, px
+                    "url": "img/level-one.png", //string, url
+                    "width": 809, //int, px
+                    "height": 1715 //int, px
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
                 "number": 2, //int (1-5)
                 "name": "Level Two", //string
                 "map": {
-                    "url": "img/one-small.png", //string, url
-                    "width": 770, //int, px
-                    "height": 1637 //int, px
+                    "url": "img/level-two.png", //string, url
+                    "width": 809, //int, px
+                    "height": 1715 //int, px
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
                 "number": 3, //int (1-5)
                 "name": "Level Three", //string
                 "map": {
-                    "url": "img/one-small.png", //string, url
-                    "width": 770, //int, px
-                    "height": 1637 //int, px
+                    "url": "img/level-three.png", //string, url
+                    "width": 809, //int, px
+                    "height": 1715 //int, px
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
                 "number": 4, //int (1-5)
                 "name": "Level Four", //string
                 "map": {
-                    "url": "img/one-small.png", //string, url
-                    "width": 770, //int, px
-                    "height": 1637 //int, px
+                    "url": "img/level-four.png", //string, url
+                    "width": 809, //int, px
+                    "height": 1715 //int, px
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }, {
                 "number": 5, //int (1-5)
                 "name": "Level Five", //string
                 "map": {
-                    "url": "img/one-small.png", //string, url
-                    "width": 770, //int, px
-                    "height": 1637 //int, px
+                    "url": "img/level-five.png", //string, url
+                    "width": 809, //int, px
+                    "height": 1715 //int, px
                 },
                 "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
             }],
