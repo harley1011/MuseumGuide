@@ -25,6 +25,7 @@ angular.module('directives')
                     img.onload = function () {
                         angular.element(mapImageDiv).css('height', mapDiv.offsetHeight + 'px');
                         angular.element(mapImageDiv).css('width', mapDiv.offsetHeight * (img.width / img.height) + 'px');
+                        angular.element(mapImageDiv).css('background-image', 'url(' + url + ')');
                         $rootScope.$broadcast('mapLoaded');
                     }
                 }
