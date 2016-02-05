@@ -168,7 +168,6 @@ angular.module('controllers')
 
         $scope.changeLevel = function (level) {
             $scope.currentLevel = mapData.level[level - 1];
-            console.log($scope.currentLevel);
         };
 
         var currentFloor = 1; //TODO this value will later on be assigned
