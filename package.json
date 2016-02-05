@@ -26,7 +26,8 @@
     "shelljs": "^0.3.0"
   },
   "scripts": {
-    "test": "gulp; karma start tests/unit-tests.conf.js --single-run"
+    "test": "gulp; karma start tests/unit-tests.conf.js --single-run",
+	"test-win": "gulp & karma start tests/unit-tests.conf.js --single-run"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
