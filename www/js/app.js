@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 }
             }) 
         
-            .state('tab.view.exploration', {
+            .state('tab.exploration', {
                 url: '/explore',
                 views: {
                     'tab-explore': {
