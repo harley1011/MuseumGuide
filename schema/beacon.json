@@ -8,7 +8,7 @@
       "identifier": null,
       "events": [
         {
-          "id": null,
+          "uuid": null,
           "distance": 0,
           "end": -1,
           "overlay": false,
