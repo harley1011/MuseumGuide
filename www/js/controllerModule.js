@@ -1,1 +1,1 @@
-angular.module('controllers', ['ngCordovaBeacon'])
+angular.module('controllers', [])
