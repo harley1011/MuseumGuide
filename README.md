@@ -66,12 +66,11 @@ Location:
 ###1. Create a new region and add your iBeacons
 
 ```javascript     
-function _registerBeaconRegions() {
-        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("identifier", "UUID"));
-        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("secondBeacon", "UUID"));
-		$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("thirdBeacon", "UUID"));
-		$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("NBeacon", "UUID"));
-    }
+beaconSrvc.registerBeaconRegions("identifier", "UUID");
+beaconSrvc.registerBeaconRegions("secondBeacon", "UUID");
+beaconSrvc.registerBeaconRegions("thirdBeacon", "UUID");
+beaconSrvc.registerBeaconRegions("NBeacon", "UUID");
+
 ```
 
 ###2. Listen to iBeacons events from your controllers
@@ -79,7 +78,8 @@ function _registerBeaconRegions() {
 angular.module('controllers')
     .controller('myCtrl', function($scope, iBeaconSrvc) {
 
-        var beaconSrvc = iBeaconSrvc.BeaconBuilder;
+        var beaconSrvc = iBeaconSrvc.BeaconBuilder;		
+		beaconSrvc.registerBeaconRegions("identifier", "UUID");¬
         beaconSrvc.init(); // Intialize beacon services
 
 		// Listen to proximity change events
@@ -139,7 +139,7 @@ ProximityImmediate   | (strong signal; usually up to a few centimeters)
  ProximityUnknown    | (“hard to say”, usually when the signal is very, very weak)   
 
 
-# Full example of a the test repeater
+# Full test example
 ```html
 <!-- Testing layer iBeacon -->
 <div ng-controller="mapCtrl">
