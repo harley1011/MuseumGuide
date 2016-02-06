@@ -1,12 +1,17 @@
 angular.module('controllers')
     .controller('mapCtrl', function ($scope, iBeaconSrvc) {
 
-        console.log('[mapCtrl] loaded');
-
         var beaconSrvc = iBeaconSrvc.BeaconBuilder;
-        beaconSrvc.init(); // Intialize beacon services
 
-        // Listen to proximity change events
+		//Register beacons
+		beaconSrvc.registerBeaconRegions("Ipod","8492e75f-4fd6-469d-b132-043fe94921d8");
+		beaconSrvc.registerBeaconRegions("School","b9407f30-f5f8-466e-aff9-25556b57fe6d");
+
+		// Intialize beacon services
+        beaconSrvc.init();
+
+
+        //Listen to proximity change events
         $scope.$on(beaconSrvc.notifyEvent, function (event, value) {
             $scope.mapBeacons = value;
             $scope.$apply();
@@ -221,7 +226,7 @@ angular.module('controllers')
             var vector = [];
             vector.magnitude = toPercentage(vectorMagnitude(point1, point2), imgDimensions.width);
             vector.angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI; //in degrees
-            console.log(vector.magnitude + ", " + vector.angle);
+            //console.log(vector.magnitude + ", " + vector.angle);
 
             // point1 - (3,4)  point2 - (4,3)   deg = -45
             // point1 - (3,4)  point2 - (4,5)   deg = 45
@@ -256,7 +261,7 @@ angular.module('controllers')
             var path = [];
             var current = pointsList["" + storyPoints[0]];
             for (var i = 1; i < storyPoints.length; i++) {
-                console.log("Building path to POI " + storyPoints[i]);
+                //console.log("Building path to POI " + storyPoints[i]);
                 var destination = pointsList["" + storyPoints[i]];
                 path = path.concat(dijkstra(current, destination, points));
                 current = destination;
@@ -278,7 +283,7 @@ angular.module('controllers')
             while (current.id != destination.id) {
                 var closestNeighbour = null;
                 var neighbours = current.neighbours;
-                console.log("Current: " + current.id);
+                //console.log("Current: " + current.id);
                 var allVisited = true;
                 for (var i = 0; i < neighbours.length; i++) {
                     var neighbourID = neighbours[i];
@@ -286,7 +291,7 @@ angular.module('controllers')
                     if (neighbourID == destination.id) {
                         closestNeighbour = neighbour;
                         allVisited = false;
-                        console.log("Found POI " + neighbour.id);
+                        //console.log("Found POI " + neighbour.id);
                         break;
                     }
 
@@ -303,14 +308,14 @@ angular.module('controllers')
                     var visitedString = "";
                     if (neighbour.visited)
                         visitedString = " (V)";
-                    console.log("Neighbour " + neighbour.id + visitedString + " minD " + neighbour.minDistance.toFixed(2));
+                    //console.log("Neighbour " + neighbour.id + visitedString + " minD " + neighbour.minDistance.toFixed(2));
                 }
                 current.visited = true;
 
                 if (allVisited) {
                     var previousPath = path.pop();
                     current = previousPath[0];
-                    console.log("Dead end");
+                    //console.log("Dead end");
                 } else {
                     path.push([current, closestNeighbour]);
                     current = closestNeighbour;
