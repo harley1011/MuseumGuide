@@ -194,6 +194,7 @@ DEPRECATED: `$ gulp;ionic build android; ionic run android`
 You may now use: `npm test; ionic build; ionic run android` to test your changes. The first command `npm test` will run gulp and also run the unit-test.
 The second `ionic build android; ionic run android` will launch debug on your phone.
 
+** Note Windows users have to replace `npm test` with `npm run-script test-win` **
 
 ## Problem Solving
 ###1. `cordova is undefined`
@@ -214,6 +215,8 @@ Don't forget to refresh the webpage if you update the source code.
 
 # Unit Testing
 The project uses Karma and Jasmine to run our unit test. Please install the fallowing package and run `npm test.
+
+** Note Windows users have to replace `npm test` with `npm run-script test-win` **
 
 ```
 npm install karma
