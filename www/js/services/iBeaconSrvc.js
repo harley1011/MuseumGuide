@@ -38,8 +38,8 @@ angular.module('services')
 		});
 	};
 
-	BeaconBuilder.testHasRegisteredRegions = function(){
-		if(BeaconBuilder.hasRegion === false){
+	BeaconBuilder.testHasRegisteredRegions = function () {
+		if (BeaconBuilder.hasRegion === false) {
 			throw new Error("[iBeaconSrvc] Please add one or more beacon region before calling init.");
 		}
 	};
@@ -58,8 +58,8 @@ angular.module('services')
 	 * register a collection of beacons regions
 	 */
 	BeaconBuilder.registerBeaconRegions = function (identifier, uuid) {
-		if(identifier && uuid){
-				BeaconBuilder.hasRegion = true;
+		if (identifier && uuid) {
+			BeaconBuilder.hasRegion = true;
 		}
 
 		BeaconBuilder.registeredRegion[identifier + uuid] = {
@@ -77,8 +77,8 @@ angular.module('services')
 		var tempRegisteredRegion = BeaconBuilder.registeredRegion;
 
 		for (var prop in tempRegisteredRegion) {
-			 var region = BeaconBuilder.registeredRegion[prop];
-			 $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(region.identifier, region.uuid));
+			var region = BeaconBuilder.registeredRegion[prop];
+			$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion(region.identifier, region.uuid));
 		}
 	};
 
@@ -143,10 +143,6 @@ angular.module('services')
 	};
 
 	return {
-		BeaconBuilder: {
-			init: BeaconBuilder.init,
-			notifyEvent: BeaconBuilder.notifyEvent,
-			registerBeaconRegions: BeaconBuilder.registerBeaconRegions
-		}
+		BeaconBuilder: BeaconBuilder
 	};
 })
