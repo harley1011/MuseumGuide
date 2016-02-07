@@ -22,10 +22,11 @@ angular.module('directives')
                 function loadImage(url){
                     var img = new Image();
                     img.src = url;
+                    angular.element(mapImageDiv).css('background-image', 'url(' + url + ')');
                     img.onload = function () {
+                        console.log('img loaded');
                         angular.element(mapImageDiv).css('height', mapDiv.offsetHeight + 'px');
                         angular.element(mapImageDiv).css('width', mapDiv.offsetHeight * (img.width / img.height) + 'px');
-                        angular.element(mapImageDiv).css('background-image', 'url(' + url + ')');
                         $rootScope.$broadcast('mapLoaded');
                     }
                 }

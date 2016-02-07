@@ -3,21 +3,23 @@
   right: 10px !important;
   bottom: 10px !important;
 
-
 }
 .zoom-button-plus {
   display: block;
   background-color: $calm;
   border-radius: 25px 25px 0px 0px;
   font-size: 19pt !important;
+  width: 34px;
+  border: 0px;
 }
 
 .zoom-button-minus {
-  background-color: $calm;
-
   display: block;
+  background-color: $calm;
   border-radius: 0px 0px 25px 25px;
-
+  font-size: 19pt !important;
+  width: 34px;
+  border: 0px;
 }
 .map-image {
   background-size: cover;
@@ -28,7 +30,6 @@
 .map-div {
   height: 100%;
   overflow:auto;
-
 
   img {
     display: block;
