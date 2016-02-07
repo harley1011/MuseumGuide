@@ -1,34 +1,46 @@
-/*describe('controllers', function () {
-    var $rootScope,
-        $compile;
+describe('controllers', function () {
+    var storyLinePathSrvc,
+        iBeaconSrvc1,
+        mapDataSrvc,
+        scope;
 
     beforeEach(module('controllers')); // load controllers module from project
 
-    beforeEach(module('services'));
+    beforeEach(function () {
+        module('services');
+        module(function ($provide) {
+            $provide.service('iBeaconSrvc', function () {
+                this.BeaconBuilder = {
+                    registerBeaconRegions: function (identifier, uuid) {
+                    },
+                    init: function(){
 
-    beforeEach(module('my.templates'));
+                    },
+                    notifyEvent: ""
+                }
+            });
+        });
 
-    beforeEach(inject(function(_$controller_, _iBeaconSrvc_, _storyLinePathSrvc_, _mapDataSrvc_){
-        // The injector unwraps the underscores (_) from around the parameter names when matching
+    });
+
+    beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _mapDataSrvc_, $rootScope) {
+        scope=$rootScope.$new();
         $controller = _$controller_;
-        $service = _$service_;
-        iBeaconSrvc = _iBeaconSrvc_;
         storyLinePathSrvc = _storyLinePathSrvc_;
+        iBeaconSrvc1 = iBeaconSrvc;
         mapDataSrvc = _mapDataSrvc_;
     }));
 
     describe('map controller test', function () {
         it('SHOULD TEST', function () {
-            var $scope = {};
             var controller = $controller('mapCtrl', {
-                $scope: $scope,
+                $scope: scope,
                 storyLinePathSrvc: storyLinePathSrvc,
-                iBeaconSrvc: iBeaconSrvc,
+                iBeaconSrvc: iBeaconSrvc1,
                 mapDataSrvc: mapDataSrvc
             });
-            $scope.grade();
-            expect($scope.currentLevel.number).toEqual(1);
+            expect(scope.currentLevel.number).toEqual(1);
         });
     });
 
-});*/
+});

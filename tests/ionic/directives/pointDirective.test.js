@@ -18,7 +18,6 @@ describe('point directives tests', function () {
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
             scope.point = testDataMapPoints()[0];
-            console.log(scope.point);
             var compiledElement = $compile(angular.element('<div class="point-div" map-point point="point"></div>'))(scope);
             scope.$digest();
             expect(compiledElement.attr('style')).toEqual('left: 10%; top: 10%;');
