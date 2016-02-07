@@ -1,4 +1,4 @@
-angular.module('directives')
+angular.module('ngPinchZoom', [])
     /**
      * @ngdoc directive
      * @name ngPinchZoom
