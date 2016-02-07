@@ -51,6 +51,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 url: '/view',
                 views: {
                     'tab-view': {
+
                         templateUrl: 'templates/view.html',
                         controller: 'viewCtrl'
                     }
