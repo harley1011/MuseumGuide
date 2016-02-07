@@ -31,7 +31,7 @@ describe('iBeaconSrvc', function () {
 	});
 
 	it('should have an event named $iBeaconSrvc:beaconRangeChange', function () {
-		expect(beaconSrvc.notifyEvent).toEqual('$iBeaconSrvc:beaconRangeChange');
+		expect(beaconSrvc.notifyEvent).toEqual('$iBeaconSrvc:beaconRangeChang');
 	});
 
 });
