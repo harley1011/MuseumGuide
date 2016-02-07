@@ -1,4 +1,4 @@
-describe('directives', function () {
+describe('map directive tests', function () {
     var $rootScope,
         $compile;
 
@@ -7,14 +7,13 @@ describe('directives', function () {
     beforeEach(module('my.templates'));
 
     beforeEach(inject(function (_$rootScope_, _$compile_, $injector) {
-
         $rootScope = _$rootScope_;
         $compile = _$compile_;
     }));
 
 
 
-    describe('map directive test', function () {
+    describe('test cases for map directive test', function () {
         it('should produce the correct dom structure', function () {
             var scope = $rootScope.$new();
             scope.currentLevel = testDataCurrentLevel();
