@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
                 url: '/view',
                 views: {
                     'tab-view': {
-                        templateUrl: 'templates/view.html'
+                        templateUrl: 'templates/view.html',
+                        controller: 'viewCtrl'
                     }
                 }
             }) 
@@ -59,7 +60,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services'])
             .state('tab.exploration', {
                 url: '/explore',
                 views: {
-                    'tab-explore': {
+                    'tab-view': {
                         templateUrl: 'templates/exploration.html'
                     }
                 }
