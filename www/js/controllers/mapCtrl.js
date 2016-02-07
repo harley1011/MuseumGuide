@@ -1,12 +1,17 @@
 angular.module('controllers')
     .controller('mapCtrl', function ($scope, iBeaconSrvc) {
 
-        console.log('[mapCtrl] loaded');
-
         var beaconSrvc = iBeaconSrvc.BeaconBuilder;
-        beaconSrvc.init(); // Intialize beacon services
 
-        // Listen to proximity change events
+		//Register beacons
+		beaconSrvc.registerBeaconRegions("Ipod","8492e75f-4fd6-469d-b132-043fe94921d8");
+		beaconSrvc.registerBeaconRegions("School","b9407f30-f5f8-466e-aff9-25556b57fe6d");
+
+		// Intialize beacon services
+        beaconSrvc.init();
+
+
+        //Listen to proximity change events
         $scope.$on(beaconSrvc.notifyEvent, function (event, value) {
             $scope.mapBeacons = value;
             $scope.$apply();
@@ -321,7 +326,7 @@ angular.module('controllers')
             var vector = [];
             vector.magnitude = toPercentage(vectorMagnitude(point1, point2), imgDimensions.width);
             vector.angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI; //in degrees
-            console.log(vector.magnitude + ", " + vector.angle);
+            //console.log(vector.magnitude + ", " + vector.angle);
 
             // point1 - (3,4)  point2 - (4,3)   deg = -45
             // point1 - (3,4)  point2 - (4,5)   deg = 45

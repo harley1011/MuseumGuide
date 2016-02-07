@@ -66,12 +66,11 @@ Location:
 ###1. Create a new region and add your iBeacons
 
 ```javascript     
-function _registerBeaconRegions() {
-        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("identifier", "UUID"));
-        $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("secondBeacon", "UUID"));
-		$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("thirdBeacon", "UUID"));
-		$cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("NBeacon", "UUID"));
-    }
+beaconSrvc.registerBeaconRegions("identifier", "UUID");
+beaconSrvc.registerBeaconRegions("secondBeacon", "UUID");
+beaconSrvc.registerBeaconRegions("thirdBeacon", "UUID");
+beaconSrvc.registerBeaconRegions("NBeacon", "UUID");
+
 ```
 
 ###2. Listen to iBeacons events from your controllers
@@ -79,7 +78,8 @@ function _registerBeaconRegions() {
 angular.module('controllers')
     .controller('myCtrl', function($scope, iBeaconSrvc) {
 
-        var beaconSrvc = iBeaconSrvc.BeaconBuilder;
+        var beaconSrvc = iBeaconSrvc.BeaconBuilder;		
+		beaconSrvc.registerBeaconRegions("identifier", "UUID");¬
         beaconSrvc.init(); // Intialize beacon services
 
 		// Listen to proximity change events
@@ -139,7 +139,7 @@ ProximityImmediate   | (strong signal; usually up to a few centimeters)
  ProximityUnknown    | (“hard to say”, usually when the signal is very, very weak)   
 
 
-# Full example of a the test repeater
+# Full test example
 ```html
 <!-- Testing layer iBeacon -->
 <div ng-controller="mapCtrl">
@@ -194,6 +194,7 @@ DEPRECATED: `$ gulp;ionic build android; ionic run android`
 You may now use: `npm test; ionic build; ionic run android` to test your changes. The first command `npm test` will run gulp and also run the unit-test.
 The second `ionic build android; ionic run android` will launch debug on your phone.
 
+** Note Windows users have to replace `npm test` with `npm run-script test-win` **
 
 ## Problem Solving
 ###1. `cordova is undefined`
@@ -214,6 +215,8 @@ Don't forget to refresh the webpage if you update the source code.
 
 # Unit Testing
 The project uses Karma and Jasmine to run our unit test. Please install the fallowing package and run `npm test.
+
+** Note Windows users have to replace `npm test` with `npm run-script test-win` **
 
 ```
 npm install karma
