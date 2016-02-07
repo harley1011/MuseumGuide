@@ -60,13 +60,17 @@ angular.module('controllers')
             angular.forEach(points, function (point, key) {
                 if ((storyPoints.indexOf(point.id) != -1 && point.coordinate.z == $scope.currentLevel.number) || (point.type == "fac" && point.coordinate.z == $scope.currentLevel.number)  || (point.type == "dir" && point.coordinate.z == $scope.currentLevel.number)) {
                     var diameter = point.style.diameter;
+                    var current = false;
+                    if(storyPoints.indexOf(point.id) == 0) //the current point is going to be the first in the storyline for now
+                        current = true;
                     $scope.mapPoints.push({
                         id: point.id,
                         left: storyLinePathSrvc.toPercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
                         top: storyLinePathSrvc.toPercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
                         color: point.style.color,
                         diameterX: storyLinePathSrvc.toPercentage(diameter, imgDimensions.width),
-                        diameterY: storyLinePathSrvc.toPercentage(diameter, imgDimensions.height)
+                        diameterY: storyLinePathSrvc.toPercentage(diameter, imgDimensions.height),
+                        current: current
                     });
                 }
             });
