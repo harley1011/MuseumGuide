@@ -11,7 +11,7 @@ angular.module('services')
                 "z": 1, //int (1-5)
             },
             "neighbours": [2], //int[] or string[] SHA1 hash
-            "beacon_id": "undefined", //int or SHA1 hash
+            "beacon_id": "b9407f30-f5f8-466e-aff9-25556b57fe6d", //int or SHA1 hash
             "style": {
                 "color": "#00008B", //string, HEX Color
                 "diameter": 40, //float, px
@@ -71,7 +71,7 @@ angular.module('services')
                 "z": 1, //int (1-5)
             },
             "neighbours": [4, 6], //int[] or string[] SHA1 hash
-            "beacon_id": "undefined", //int or SHA1 hash
+            "beacon_id": "8492e75f-4fd6-469d-b132-043fe94921d8", //int or SHA1 hash
             "style": {
                 "color": "#00008B", //string, HEX Color
                 "diameter": 40, //float, px

@@ -13,12 +13,12 @@ angular.module('services')
  *   });
  */
 .service('iBeaconSrvc', function ($rootScope, $ionicPlatform, $cordovaBeacon) {
-	
+
 	var BeaconBuilder = {};
 
 	BeaconBuilder.counter = 0;
 	BeaconBuilder.hasRegion = false;
-	BeaconBuilder.inactivelimitSec = 5;
+	BeaconBuilder.inactivelimitSec = 1;
 	BeaconBuilder.registeredRegion = {};
 	BeaconBuilder.beaconCollection = {};
 	BeaconBuilder.notifyEvent = "$iBeaconSrvc:beaconRangeChange";
