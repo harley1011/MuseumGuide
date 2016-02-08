@@ -1,79 +1,82 @@
 .zoom-buttons {
-  position: absolute !important;
-  right: 10px !important;
-  bottom: 10px !important;
-
+    position: absolute !important;
+    right   : 10px !important;
+    bottom  : 10px !important;
 }
 .zoom-button-plus {
-  display: block;
-  background-color: $calm;
-  border-radius: 25px 25px 0px 0px;
-  font-size: 19pt !important;
-  width: 34px;
-  border: 0px;
+    display         : block;
+    background-color: $calm;
+    border-radius   : 25px 25px 0 0;
+    font-size       : 19pt !important;
+    width           : 34px;
+    color           : #FFF;
+    border          : 0;
 }
-
 .zoom-button-minus {
-  display: block;
-  background-color: $calm;
-  border-radius: 0px 0px 25px 25px;
-  font-size: 19pt !important;
-  width: 34px;
-  border: 0px;
+    display         : block;
+    background-color: $calm;
+    border-radius   : 0 0 25px 25px;
+    font-size       : 21pt !important;
+    width           : 34px;
+    border          : 0;
+    color           : #FFF;
 }
 .map-image {
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  //height:100%;
+    background-size  : cover;
+    background-repeat: no-repeat;
+    position         : relative;
+    //height:100%;
 }
 .map-div {
-  height: 100%;
-  overflow:auto;
-
-  img {
-    display: block;
-  }
+    height  : 100%;
+    overflow: auto;
+    img {
+        display: block;
+    }
 }
 canvas {
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+    padding-left : 0;
+    padding-right: 0;
+    margin-left  : auto;
+    margin-right : auto;
+    display      : block;
 }
-
 .point-div {
-  border-radius: 50%;
-  background-color: #ffffff;
-  color: #ffffff;
-  font-size: 50%;
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  text-align: center;
+    border-radius   : 50%;
+    background-color: #ffffff;
+    color           : #ffffff;
+    font-size       : 50%;
+    width           : 8px;
+    height          : 8px;
+    position        : absolute;
+    text-align      : center;
 }
-
 .current-point-light {
-  background-color: #ff3300 !important;
+    background-color: #ff3300 !important;
 }
-
 .line-div {
-  position: absolute;
+    position: absolute;
 }
-
 .level-mark {
-  display: table-cell;
-  text-align: center;
+    display   : table-cell;
+    text-align: center;
 }
-
+a.level-mark {
+    color      : #FFF;
+    font-weight: bold;
+    font-size  : 12pt;
+}
 .level-div {
-  height: 100%;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+    height      : 100%;
+    display     : table;
+    width       : 100%;
+    table-layout: fixed;
 }
-
+.level-name {
+    height : 100%;
+    display: table;
+    width  : 100%;
+}
 .bar-header-levels {
-  height: 30px !important;
+    height: 32px !important;
 }

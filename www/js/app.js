@@ -47,12 +47,49 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 templateUrl: 'templates/tabs.html'
             })
 
+            .state('tab.view', {
+                url: '/view',
+                views: {
+                    'tab-view': {
+
+                        templateUrl: 'templates/view.html',
+                        controller: 'viewCtrl'
+                    }
+                }
+            }) 
+        
+            .state('tab.exploration', {
+                url: '/explore',
+                views: {
+                    'tab-view': {
+                        templateUrl: 'templates/exploration.html'
+                    }
+                }
+            }) 
+            .state('tab.scan', {
+                url: '/scan',
+                views: {
+                    'tab-scan': {
+                        templateUrl: 'templates/scan.html'
+                    }
+                }
+            })
             .state('tab.level', {
                 url: '/level',
                 views: {
                     'tab-one': {
                         templateUrl: 'templates/level.html',
                         controller: 'mapCtrl'
+                    }
+                }
+            })
+        
+         .state('tab.settings', {
+                url: '/settings',
+                views: {
+                    'tab-settings': {
+                        templateUrl: 'templates/settings.html'
+                        
                     }
                 }
             })
