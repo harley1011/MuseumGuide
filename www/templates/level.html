@@ -1,12 +1,16 @@
-<ion-view view-title="{{currentLevel.name}}"> 
-    <ion-header-bar class="bar-subheader bar-dark bar-header-levels">
-        <div class="level-div">
+<ion-view view-title="Free Exploration" > 
+    <ion-header-bar class="bar-subheader bar-calm bar-header-levels">
+        <div class="level-div" ng-show="open">
+            <a ng-click="open = !open" class="level-mark"><i class="icon ion-chevron-up"></i></a>
             <a ng-click="changeLevel(1)" class="level-mark">1</a>
             <a ng-click="changeLevel(2)" class="level-mark">2</a>
             <a ng-click="changeLevel(3)" class="level-mark">3</a>
             <a ng-click="changeLevel(4)" class="level-mark">4</a>
-            <a ng-click="changeLevel(5)" class="level-mark">5</a>
+            <a ng-click="changeLevel(5)" class="level-mark">5</a>      
         </div>
+        <div class="level-name" ng-hide="open">
+            <a ng-click="open = !open" class="level-mark"><i class="icon ion-chevron-down"></i></a>
+            <a class="level-mark">{{currentLevel.name}}</a></div>
     </ion-header-bar>
     <ion-content scroll="false" overflow-scroll="true">
         <map></map>
