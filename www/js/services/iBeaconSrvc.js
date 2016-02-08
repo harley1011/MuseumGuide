@@ -1,3 +1,4 @@
+
 angular.module('services')
 
 /*
@@ -12,6 +13,7 @@ angular.module('services')
  *   });
  */
 .service('iBeaconSrvc', function ($rootScope, $ionicPlatform, $cordovaBeacon) {
+	
 	var BeaconBuilder = {};
 
 	BeaconBuilder.counter = 0;
@@ -143,6 +145,10 @@ angular.module('services')
 	};
 
 	return {
-		BeaconBuilder: BeaconBuilder
+		BeaconBuilder: {
+			init: BeaconBuilder.init,
+			notifyEvent: BeaconBuilder.notifyEvent,
+			registerBeaconRegions: BeaconBuilder.registerBeaconRegions
+		}
 	};
 })

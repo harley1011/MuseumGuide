@@ -10,16 +10,18 @@
   background-color: $calm;
   border-radius: 25px 25px 0px 0px;
   font-size: 19pt !important;
+  width: 34px;
   color: #FFF;
+  border: 0px;
 }
 
 .zoom-button-minus {
-  background-color: $calm;
-  color: #FFF;
   display: block;
+  background-color: $calm;
   border-radius: 0px 0px 25px 25px;
-    font-size: 21pt !important;
-
+  font-size: 21pt !important;
+  width: 34px;
+  border: 0px;
 }
 .map-image {
   background-size: cover;
@@ -30,7 +32,6 @@
 .map-div {
   height: 100%;
   overflow:auto;
-
 
   img {
     display: block;
@@ -46,11 +47,17 @@ canvas {
 
 .point-div {
   border-radius: 50%;
-  border: 2px solid red;
   background-color: #ffffff;
+  color: #ffffff;
+  font-size: 50%;
   width: 8px;
   height: 8px;
   position: absolute;
+  text-align: center;
+}
+
+.current-point-light {
+  background-color: #ff3300 !important;
 }
 
 .line-div {
