@@ -13,10 +13,10 @@
 }
 .main-menu-list {
     div:nth-child(odd) {
-        background-color: forestgreen;
+        background-color: #45A763;
     }
     div:nth-child(even) {
-        background-color: limegreen;
+        background-color: #8FAF19;
     }
     div {
         color: white;
@@ -30,10 +30,10 @@
     transition-property: left, right;
     z-index: 20;
     div:nth-child(odd) {
-        background-color: royalblue;
+        background-color: #3E8CBB;
     }
     div:nth-child(even) {
-        background-color: rebeccapurple;
+        background-color: #52498C;
     }
     div {
         color: white;
