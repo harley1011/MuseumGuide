@@ -58704,12 +58704,22 @@ function($scope, $element, $ionicHistory) {
           self.slideMenuOpen = true;
         }
       }
-      else {
+      else if (tab.mapView) {
         self.firstTimeIgnore = true;
       }
-
-      console.log('yeea');
     }
+    else if (self.slideMenuOpen)
+    {
+      self.$tabsContainerElement.removeClass('bottom-container-top');
+      self.$tabsContainerElement.addClass('bottom-container-bottom');
+      self.slideMenuOpen = false;
+      self.firstTimeIgnore = false;
+    }
+    else 
+    {
+      self.firstTimeIgnore = false;
+    }
+
     if (isNumber(tab)) {
       tabIndex = tab;
       if (tabIndex >= self.tabs.length) return;
