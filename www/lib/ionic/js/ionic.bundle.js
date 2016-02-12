@@ -58689,8 +58689,21 @@ function($scope, $element, $ionicHistory) {
 
   self.select = function(tab, shouldEmitEvent) {
     var tabIndex;
+
     if (tab.mapView && tab.$tabSelected)
     {
+      if (self.slideMenuOpen)
+      {
+        self.$tabsContainerElement.removeClass('bottom-container-top');
+        self.$tabsContainerElement.addClass('bottom-container-bottom');
+        self.slideMenuOpen = false;
+      }
+      else {
+        self.$tabsContainerElement.removeClass('bottom-container-bottom');
+        self.$tabsContainerElement.addClass('bottom-container-top');
+        self.slideMenuOpen = true;
+      }
+
       console.log('yeea');
     }
     if (isNumber(tab)) {
@@ -63859,7 +63872,6 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
           href: '@'
         });
 
-        console.log($scope);
         tabsCtrl.add($scope);
         $scope.$on('$destroy', function() {
           if (!$scope.$tabsDestroy) {
@@ -64077,11 +64089,13 @@ function($ionicTabsDelegate, $ionicConfig) {
     compile: function(tElement) {
       //We cannot use regular transclude here because it breaks element.data()
       //inheritance on compile
-      var innerElementNavbar = jqLite('<div class="tab-nav tabs">');
+      var innerElementDiv = jqLite('<div class="bottom-container bottom-container-bottom">');
+      var innerElementNavbar = jqLite('<div class="tab-nav tabs slide-tab">');
       innerElementNavbar.append(tElement.contents());
-      tElement.append(innerElementNavbar)
+      innerElementDiv.append(innerElementNavbar)
               .addClass('tabs-' + $ionicConfig.tabs.position() + ' tabs-' + $ionicConfig.tabs.style());
-      tElement.append(jqLite('<bottom-slide-up></bottom-slide-up>'))
+      innerElementDiv.append(jqLite('<bottom-slide-up></bottom-slide-up>'));
+      tElement.append(innerElementDiv);
          // .addClass('bottom');
 
 
@@ -64094,6 +64108,7 @@ function($ionicTabsDelegate, $ionicConfig) {
         tabsCtrl.$scope = $scope;
         tabsCtrl.$element = $element;
         tabsCtrl.$tabsElement = jqLite($element[0].querySelector('.tabs'));
+        tabsCtrl.$tabsContainerElement = jqLite($element[0].querySelector('.bottom-container'));
 
         $scope.$watch(function() { return $element[0].className; }, function(value) {
           var isTabsTop = value.indexOf('tabs-top') !== -1;

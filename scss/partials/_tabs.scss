@@ -1,0 +1,21 @@
+.slide-tab {
+    position: relative !important;
+    z-index: 10;
+}
+
+.bottom-container {
+    width: 100%;
+    z-index: 10;
+    position: absolute !important;
+    transition-duration: 1s;
+    transition-property: bottom;
+}
+
+.bottom-container-bottom {
+    bottom: -213px !important;
+}
+
+.bottom-container-top {
+    bottom: 0px !important;
+}
+
