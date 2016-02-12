@@ -25,4 +25,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/_map";
 @import "partials/_tabs";
 
+.no-margin {
+  margin: 0px !important;
+}
 

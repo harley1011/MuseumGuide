@@ -1,8 +1,28 @@
 .slide-tab {
     position: relative !important;
     z-index: 10;
+    background-color: $calm;
+    color: white;
+}
+.bottom-slide-container {
+    width: 200%;
+    .list {
+        float: left;
+        width: 50%;
+    }
 }
 
+.sub-menu-list
+{
+    left: 25%;
+    transition-duration: .5s;
+    transition-property: left, right;
+    z-index: 20;
+}
+
+.slide-sub-menu-list {
+    left: -50%;
+}
 .bottom-container {
     width: 100%;
     z-index: 10;

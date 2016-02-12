@@ -58692,16 +58692,20 @@ function($scope, $element, $ionicHistory) {
 
     if (tab.mapView && tab.$tabSelected)
     {
-      if (self.slideMenuOpen)
-      {
-        self.$tabsContainerElement.removeClass('bottom-container-top');
-        self.$tabsContainerElement.addClass('bottom-container-bottom');
-        self.slideMenuOpen = false;
+      if (self.firstTimeIgnore) {
+        if (self.slideMenuOpen) {
+          self.$tabsContainerElement.removeClass('bottom-container-top');
+          self.$tabsContainerElement.addClass('bottom-container-bottom');
+          self.slideMenuOpen = false;
+        }
+        else {
+          self.$tabsContainerElement.removeClass('bottom-container-bottom');
+          self.$tabsContainerElement.addClass('bottom-container-top');
+          self.slideMenuOpen = true;
+        }
       }
       else {
-        self.$tabsContainerElement.removeClass('bottom-container-bottom');
-        self.$tabsContainerElement.addClass('bottom-container-top');
-        self.slideMenuOpen = true;
+        self.firstTimeIgnore = true;
       }
 
       console.log('yeea');
