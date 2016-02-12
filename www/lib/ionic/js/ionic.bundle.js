@@ -58689,6 +58689,10 @@ function($scope, $element, $ionicHistory) {
 
   self.select = function(tab, shouldEmitEvent) {
     var tabIndex;
+    if (tab.mapView && tab.$tabSelected)
+    {
+      console.log('yeea');
+    }
     if (isNumber(tab)) {
       tabIndex = tab;
       if (tabIndex >= self.tabs.length) return;
@@ -63846,7 +63850,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         var tabCtrl = ctrls[1];
         var isTabContentAttached = false;
         $scope.$tabSelected = false;
-
+        $scope.mapView = $attr.mapView;
         $ionicBind($scope, $attr, {
           onSelect: '&',
           onDeselect: '&',
@@ -63855,6 +63859,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
           href: '@'
         });
 
+        console.log($scope);
         tabsCtrl.add($scope);
         $scope.$on('$destroy', function() {
           if (!$scope.$tabsDestroy) {
@@ -63878,6 +63883,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         $scope.$on('$stateChangeSuccess', selectIfMatchesState);
         selectIfMatchesState();
         function selectIfMatchesState() {
+
           if (tabCtrl.tabMatchesState()) {
             tabsCtrl.select($scope, false);
           }
@@ -64071,11 +64077,13 @@ function($ionicTabsDelegate, $ionicConfig) {
     compile: function(tElement) {
       //We cannot use regular transclude here because it breaks element.data()
       //inheritance on compile
-      var innerElement = jqLite('<div class="tab-nav tabs">');
-      innerElement.append(tElement.contents());
-
-      tElement.append(innerElement)
+      var innerElementNavbar = jqLite('<div class="tab-nav tabs">');
+      innerElementNavbar.append(tElement.contents());
+      tElement.append(innerElementNavbar)
               .addClass('tabs-' + $ionicConfig.tabs.position() + ' tabs-' + $ionicConfig.tabs.style());
+      tElement.append(jqLite('<bottom-slide-up></bottom-slide-up>'))
+         // .addClass('bottom');
+
 
       return { pre: prelink, post: postLink };
       function prelink($scope, $element, $attr, tabsCtrl) {
