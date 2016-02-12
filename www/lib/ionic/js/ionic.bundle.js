@@ -58689,16 +58689,21 @@ function($scope, $element, $ionicHistory) {
 
   self.select = function(tab, shouldEmitEvent) {
     var tabIndex;
-
     if (tab.mapView && tab.$tabSelected)
     {
       if (self.firstTimeIgnore) {
-        if (self.slideMenuOpen) {
+        if (self.subMenuActive)
+        {
+            self.backToMenu();
+        }
+        else if (self.slideMenuOpen) {
+          self.changeIconForTab('ion-navicon-round');
           self.$tabsContainerElement.removeClass('bottom-container-top');
           self.$tabsContainerElement.addClass('bottom-container-bottom');
           self.slideMenuOpen = false;
         }
         else {
+          self.changeIconForTab('ion-qr-scanner');
           self.$tabsContainerElement.removeClass('bottom-container-bottom');
           self.$tabsContainerElement.addClass('bottom-container-top');
           self.slideMenuOpen = true;
@@ -58710,10 +58715,15 @@ function($scope, $element, $ionicHistory) {
     }
     else if (self.slideMenuOpen)
     {
+      self.changeIconForTab('ion-navicon-round');
       self.$tabsContainerElement.removeClass('bottom-container-top');
       self.$tabsContainerElement.addClass('bottom-container-bottom');
       self.slideMenuOpen = false;
       self.firstTimeIgnore = false;
+      if (self.subMenuActive)
+      {
+        self.backToMenu();
+      }
     }
     else 
     {
@@ -63844,6 +63854,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         attrStr('hidden', attr.hidden) +
         attrStr('disabled', attr.disabled) +
         attrStr('class', attr['class']) +
+        attrStr('map-view', attr.mapView) +
         '></ion-tab-nav>';
 
       //Remove the contents of the element so we can compile them later, if tab is selected
@@ -63998,6 +64009,7 @@ IonicModule
       title: '@',
       icon: '@',
       iconOn: '@',
+      mapView: '@',
       iconOff: '@',
       badge: '=',
       hidden: '@',
@@ -64011,6 +64023,14 @@ IonicModule
 
       //Remove title attribute so browser-tooltip does not apear
       $element[0].removeAttribute('title');
+      if ($attrs.mapView)
+      {
+        tabsCtrl.changeIconForTab = function(icon) 
+        {
+          $scope.iconOn = icon;
+          $scope.iconOff = icon;
+        }
+      }
 
       $scope.selectTab = function(e) {
         e.preventDefault();

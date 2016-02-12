@@ -11,13 +11,34 @@
         width: 50%;
     }
 }
-
+.main-menu-list {
+    div:nth-child(odd) {
+        background-color: forestgreen;
+    }
+    div:nth-child(even) {
+        background-color: limegreen;
+    }
+    div {
+        color: white;
+        border: 0px none !important;
+    }
+}
 .sub-menu-list
 {
     left: 25%;
     transition-duration: .5s;
     transition-property: left, right;
     z-index: 20;
+    div:nth-child(odd) {
+        background-color: royalblue;
+    }
+    div:nth-child(even) {
+        background-color: rebeccapurple;
+    }
+    div {
+        color: white;
+        border: 0px none !important;
+    }
 }
 
 .slide-sub-menu-list {
@@ -32,7 +53,7 @@
 }
 
 .bottom-container-bottom {
-    bottom: -213px !important;
+    bottom: -205px !important;
 }
 
 .bottom-container-top {
