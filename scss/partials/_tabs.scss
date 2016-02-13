@@ -29,6 +29,9 @@
     transition-duration: .5s;
     transition-property: left, right;
     z-index: 20;
+    height: 205px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     div:nth-child(odd) {
         background-color: #3E8CBB;
     }
