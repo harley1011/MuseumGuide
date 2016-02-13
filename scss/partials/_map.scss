@@ -58,13 +58,16 @@ canvas {
     position: absolute;
 }
 .level-mark {
-    display   : table-cell;
+    display   : inline-block;
     text-align: center;
 }
 a.level-mark {
     color      : #FFF;
     font-weight: bold;
     font-size  : 12pt;
+    margin: 0 15px;
+    width: 25px;
+    height: 25px;
 }
 .level-div {
     height      : 100%;
@@ -79,4 +82,13 @@ a.level-mark {
 }
 .bar-header-levels {
     height: 32px !important;
+}
+
+a.selected-level {
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    background-color: #FFF;
+    color: $calm !important;
+    padding: 1px;
+    
 }
