@@ -58689,38 +58689,7 @@ function($scope, $element, $ionicHistory) {
 
   self.select = function(tab, shouldEmitEvent) {
     var tabIndex;
-    if (tab.mapView && tab.$tabSelected)
-    {
-        if (self.subMenuActive)
-        {
-            self.backToMenu();
-        }
-        else if (self.slideMenuOpen)
-        {
-          self.changeIconForTab('icon-arrowUp');
-          self.$tabsContainerElement.removeClass('bottom-container-top');
-          self.$tabsContainerElement.addClass('bottom-container-bottom');
-          self.slideMenuOpen = false;
-        }
-        else
-        {
-          self.changeIconForTab('icon-arrowDown');
-          self.$tabsContainerElement.removeClass('bottom-container-bottom');
-          self.$tabsContainerElement.addClass('bottom-container-top');
-          self.slideMenuOpen = true;
-        }
-    }
-    else if (self.slideMenuOpen)
-    {
-      self.changeIconForTab('icon-arrowUp');
-      self.$tabsContainerElement.removeClass('bottom-container-top');
-      self.$tabsContainerElement.addClass('bottom-container-bottom');
-      self.slideMenuOpen = false;
-      if (self.subMenuActive)
-      {
-        self.backToMenu();
-      }
-    }
+    self.closeMenuIfOpen();
 
     if (isNumber(tab)) {
       tabIndex = tab;
@@ -63835,6 +63804,9 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
       //We create the tabNavTemplate in the compile phase so that the
       //attributes we pass down won't be interpolated yet - we want
       //to pass down the 'raw' versions of the attributes
+      var slideButton = attr.SlideButton;
+
+
       var tabNavTemplate = '<ion-tab-nav' +
         attrStr('ng-click', attr.ngClick) +
         attrStr('title', attr.title) +
@@ -63846,7 +63818,6 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         attrStr('hidden', attr.hidden) +
         attrStr('disabled', attr.disabled) +
         attrStr('class', attr['class']) +
-        attrStr('map-view', attr.mapView) +
         '></ion-tab-nav>';
 
       //Remove the contents of the element so we can compile them later, if tab is selected
@@ -63912,7 +63883,6 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         $scope.$on('$stateChangeSuccess', selectIfMatchesState);
         selectIfMatchesState();
         function selectIfMatchesState() {
-          console.log($scope.mapView);
           if (tabCtrl.tabMatchesState()) {
             tabsCtrl.select($scope, false);
           }
@@ -64015,14 +63985,6 @@ IonicModule
 
       //Remove title attribute so browser-tooltip does not apear
       $element[0].removeAttribute('title');
-      if ($attrs.mapView)
-      {
-        tabsCtrl.changeIconForTab = function(icon)
-        {
-          $scope.iconOn = icon;
-          $scope.iconOff = icon;
-        }
-      }
 
       $scope.selectTab = function(e) {
         e.preventDefault();

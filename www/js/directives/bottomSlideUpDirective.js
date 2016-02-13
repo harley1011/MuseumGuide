@@ -35,18 +35,20 @@ angular.module('directives')
                         id: 7
                     }
                 ];
-                ctrls[0].subMenuActive = false;
+                var tabsCtrl = ctrls[0];
+                var subMenuElement = angular.element(element[0].querySelector('.sub-menu-list'));
+                tabsCtrl.subMenuActive = false;
 
-                ctrls[0].backToMenu = function () {
-                    ctrls[0].subMenuActive = false;
-                    ctrls[0].changeIconForTab('icon-arrowDown');
-                    angular.element(element[0].querySelector('.sub-menu-list')).removeClass('slide-sub-menu-list');
+                tabsCtrl.backToMenu = function () {
+                    tabsCtrl.subMenuActive = false;
+                    tabsCtrl.changeIconForTab('icon-arrowDown');
+                    subMenuElement.removeClass('slide-sub-menu-list');
                     console.log('back to menu');
                 }
                 scope.choseStoryLines = function () {
-                    ctrls[0].subMenuActive = true;
-                    ctrls[0].changeIconForTab('icon-arrowBack');
-                    angular.element(element[0].querySelector('.sub-menu-list')).addClass('slide-sub-menu-list');
+                    tabsCtrl.subMenuActive = true;
+                    tabsCtrl.changeIconForTab('icon-arrowBack');
+                    subMenuElement.addClass('slide-sub-menu-list');
                 }
 
                 scope.findFacilities = function () {
@@ -55,6 +57,7 @@ angular.module('directives')
 
                 scope.choseStoryLine = function (storyLine) {
                     console.log(storyLine);
+                    tabsCtrl.closeMenuIfOpen();
                 }
             }
         }
