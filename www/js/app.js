@@ -83,6 +83,14 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                     }
                 }
             })
+        .state('tab.language', {
+                url: '/language',
+                views: {
+                    'tab-settings': {
+                        templateUrl: 'templates/language.html'
+                    }
+                }
+            })
 
 
         // if none of the above states are matched, use this as the fallback
