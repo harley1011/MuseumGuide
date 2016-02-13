@@ -47,17 +47,6 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 templateUrl: 'templates/tabs.html'
             })
 
-            .state('tab.view', {
-                url: '/view',
-                views: {
-                    'tab-view': {
-
-                        templateUrl: 'templates/view.html',
-                        controller: 'viewCtrl'
-                    }
-                }
-            }) 
-        
             .state('tab.exploration', {
                 url: '/explore',
                 views: {
@@ -65,7 +54,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                         templateUrl: 'templates/exploration.html'
                     }
                 }
-            }) 
+            })
             .state('tab.scan', {
                 url: '/scan',
                 views: {
@@ -83,13 +72,22 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                     }
                 }
             })
+
         
          .state('tab.settings', {
                 url: '/settings',
                 views: {
                     'tab-settings': {
                         templateUrl: 'templates/settings.html'
-                        
+
+                    }
+                }
+            })
+        .state('tab.language', {
+                url: '/language',
+                views: {
+                    'tab-settings': {
+                        templateUrl: 'templates/language.html'
                     }
                 }
             })

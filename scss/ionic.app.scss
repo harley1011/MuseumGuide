@@ -23,5 +23,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "partials/_map";
+@import "partials/_tabs";
+@import "partials/_icons";
 
-
+.no-margin {
+  margin: 0px !important;
+}
