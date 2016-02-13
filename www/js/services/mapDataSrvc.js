@@ -181,6 +181,111 @@ angular.module('services')
                     "color": "#00008B", //string, HEX Color
                     "diameter": 40, //float, px
                 },
+            }, {
+                "id": 13, //int or SHA1 hash
+                "type": "poi", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 100, //float, px
+                    "y": 450, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [14], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 14, //int or SHA1 hash
+                "type": "dir", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 220, //float, px
+                    "y": 440, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [13, 15], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 15, //int or SHA1 hash
+                "type": "dir", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 220, //float, px
+                    "y": 860, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [14, 16], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 16, //int or SHA1 hash
+                "type": "dir", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 500, //float, px
+                    "y": 860, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [15, 17], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 17, //int or SHA1 hash
+                "type": "dir", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 480, //float, px
+                    "y": 450, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [16, 18], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 18, //int or SHA1 hash
+                "type": "dir", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 500, //float, px
+                    "y": 320, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [17, 19], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
+            }, {
+                "id": 19, //int or SHA1 hash
+                "type": "poi", //string {"poi","fac","dir"}
+                "subtype": "", //string {"washroom", "stairs", ...}
+                "coordinate": {
+                    "x": 600, //float, px
+                    "y": 325, //float, px
+                    "z": 1, //int (1-5)
+                },
+                "neighbours": [18], //int[] or string[] SHA1 hash
+                "beacon_id": "undefined", //int or SHA1 hash
+                "style": {
+                    "color": "#00008B", //string, HEX Color
+                    "diameter": 40, //float, px
+                },
             }],
             "level": [{
                 "number": 1, //int (1-5)
@@ -190,7 +295,7 @@ angular.module('services')
                     "width": 809, //int, px
                     "height": 1715 //int, px
                 },
-                "points": [1, 2, 3, 4, 5, 6] //int[] or string[] SHA1 hash
+                "points": [1, 2, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19] //int[] or string[] SHA1 hash
             }, {
                 "number": 2, //int (1-5)
                 "name": "Level Two", //string
@@ -247,10 +352,10 @@ angular.module('services')
                         "fr_ca": "", //string
                     },
                     "description": {
-                        "en_us": "This is the first story.", //string
+                        "en_us": "This is the second story.", //string
                         "fr_ca": "", //string
                     },
-                    "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
+                    "points": [1, 3, 5] //int[] or string[] SHA1 hash
                 }
                 , {
                     "id": 3, //int or SHA1 hash
@@ -259,10 +364,10 @@ angular.module('services')
                         "fr_ca": "", //string
                     },
                     "description": {
-                        "en_us": "This is the first story.", //string
+                        "en_us": "This is the third story.", //string
                         "fr_ca": "", //string
                     },
-                    "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
+                    "points": [13, 19] //int[] or string[] SHA1 hash
                 },
                 {
                     "id": 4, //int or SHA1 hash
@@ -271,7 +376,7 @@ angular.module('services')
                         "fr_ca": "", //string
                     },
                     "description": {
-                        "en_us": "This is the first story.", //string
+                        "en_us": "This is the fourth story.", //string
                         "fr_ca": "", //string
                     },
                     "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
@@ -283,7 +388,7 @@ angular.module('services')
                         "fr_ca": "", //string
                     },
                     "description": {
-                        "en_us": "This is the first story.", //string
+                        "en_us": "This is the fifth story.", //string
                         "fr_ca": "", //string
                     },
                     "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
@@ -295,7 +400,7 @@ angular.module('services')
                         "fr_ca": "", //string
                     },
                     "description": {
-                        "en_us": "This is the first story.", //string
+                        "en_us": "This is the sixth story.", //string
                         "fr_ca": "", //string
                     },
                     "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
