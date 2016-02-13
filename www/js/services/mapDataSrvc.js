@@ -250,7 +250,7 @@ angular.module('services')
                         "en_us": "This is the first story.", //string
                         "fr_ca": "", //string
                     },
-                    "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
+                    "points": [1, 3, 5] //int[] or string[] SHA1 hash
                 }
                 , {
                     "id": 3, //int or SHA1 hash

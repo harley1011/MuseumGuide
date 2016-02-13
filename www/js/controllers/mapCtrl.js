@@ -17,6 +17,12 @@ angular.module('controllers')
 				prepareData(mapData);
 			};
 
+			$scope.$on('storyLineChosen', function(event, storyLine) {
+				var mapData = mapDataSrvc.mapData;
+				$scope.storyLineID = storyLine.id;
+				prepareData(mapData);
+			});
+
 			prepareData(mapData);
 		})();
 
@@ -42,9 +48,13 @@ angular.module('controllers')
 		function prepareData(mapData) {
 			//console.log("Prepare Data");
 
-			var storyLineNum = 1; //TODO this value will later on be assigned
 			var storyLines = mapData.storyline;
 			var story = null;
+
+			if($scope.storyLineID == null)
+				$scope.storyLineID = storyLines[0].id;
+
+			var storyLineNum = $scope.storyLineID;
 
 			//get storyline
 			angular.forEach(storyLines, function (storyLine, key) {
@@ -65,8 +75,7 @@ angular.module('controllers')
 
 			angular.forEach(points, function (point, key) {
 				if ((storyPoints.indexOf(point.id) != -1 && point.coordinate.z == $scope.currentLevel.number) ||
-					(point.type == "fac" && point.coordinate.z == $scope.currentLevel.number) ||
-					(point.type == "dir" && point.coordinate.z == $scope.currentLevel.number)) {
+					(point.type == "fac" && point.coordinate.z == $scope.currentLevel.number)) {
 
 					var diameter = point.style.diameter;
 					var current = false;
