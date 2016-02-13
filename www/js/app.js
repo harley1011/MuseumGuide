@@ -34,6 +34,12 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 templateUrl: 'templates/menu.html',
                 controller: 'AppCtrl'
             })
+        
+            .state('start', {
+                url: '/start',
+                templateUrl: 'templates/start.html',
+                controller: 'langCtrl'
+            }) 
 
             .state('level', {
                 url: '/level',
@@ -57,6 +63,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                     }
                 }
             }) 
+            
         
             .state('tab.exploration', {
                 url: '/explore',
@@ -104,5 +111,5 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
 
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/level');
+        $urlRouterProvider.otherwise('/start');
     });
