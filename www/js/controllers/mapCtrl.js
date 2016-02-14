@@ -3,8 +3,6 @@ angular.module('controllers')
 		var mapData;
 
 		(function init() {
-			trackBeacons();
-
 			//get JSON map data
 			mapData = mapDataSrvc.mapData;
 
@@ -24,6 +22,7 @@ angular.module('controllers')
 			});
 
 			prepareData(mapData);
+			trackBeacons();
 		})();
 
 
@@ -40,14 +39,12 @@ angular.module('controllers')
 			//Listen to proximity change events
 			$scope.$on(beaconSrvc.notifyEvent, function (event, value) {
 				$scope.mapBeacons = value;
-				$scope.$apply();
 				prepareData(mapData);
+				$scope.$apply();
 			});
 		}
 
 		function prepareData(mapData) {
-			//console.log("Prepare Data");
-
 			var storyLines = mapData.storyline;
 			var story = null;
 
@@ -82,7 +79,6 @@ angular.module('controllers')
 
 					//Match beacon with points
 					angular.forEach($scope.mapBeacons, function (beaconInrange, key) {
-						console.log(beaconInrange);
 
 						if (current === false) {
 							if (point.beacon_id === beaconInrange.beacon.uuid && beaconInrange.beacon.proximity === "ProximityImmediate") {
