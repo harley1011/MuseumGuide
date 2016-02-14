@@ -3,8 +3,8 @@ angular.module('controllers')
 		var mapData;
 
 		(function init() {
-			//get JSON map data
-			mapData = mapDataSrvc.mapData;
+
+			mapData = mapDataSrvc.mapData; //get JSON map data
 
 			$scope.currentLevel = mapData.level[0];
 			$scope.showID = false; //set to true to show point IDs on the map
@@ -15,7 +15,7 @@ angular.module('controllers')
 				prepareData(mapData);
 			};
 
-			$scope.$on('storyLineChosen', function(event, storyLine) {
+			$scope.$on('storyLineChosen', function (event, storyLine) {
 				var mapData = mapDataSrvc.mapData;
 				$scope.storyLineID = storyLine.id;
 				prepareData(mapData);
@@ -38,9 +38,25 @@ angular.module('controllers')
 
 			//Listen to proximity change events
 			$scope.$on(beaconSrvc.notifyEvent, function (event, value) {
-				$scope.mapBeacons = value;
-				prepareData(mapData);
-				$scope.$apply();
+
+				$scope.$apply(function(){
+					$scope.mapBeacons = value;
+					updateMapPointsBlink();
+				});
+			});
+		}
+
+		function updateMapPointsBlink() {
+
+			angular.forEach($scope.mapPoints, function (point, pkey) {
+				$scope.mapPoints[pkey].current = false;
+
+				angular.forEach($scope.mapBeacons, function (beaconInrange, bkey) {
+					if (point.beaconId === beaconInrange.beacon.uuid && beaconInrange.beacon.proximity === "ProximityImmediate") {
+						$scope.mapPoints[pkey].current = true;
+					}
+				});
+
 			});
 		}
 
@@ -48,7 +64,7 @@ angular.module('controllers')
 			var storyLines = mapData.storyline;
 			var story = null;
 
-			if($scope.storyLineID == null)
+			if ($scope.storyLineID == null)
 				$scope.storyLineID = storyLines[0].id;
 
 			var storyLineNum = $scope.storyLineID;
@@ -77,20 +93,9 @@ angular.module('controllers')
 					var diameter = point.style.diameter;
 					var current = false;
 
-					//Match beacon with points
-					angular.forEach($scope.mapBeacons, function (beaconInrange, key) {
-
-						if (current === false) {
-							if (point.beacon_id === beaconInrange.beacon.uuid && beaconInrange.beacon.proximity === "ProximityImmediate") {
-								 //the current point is going to be the first in the storyline for now
-								current = true;
-								return;
-							}
-						}
-					});
-
 					$scope.mapPoints.push({
 						id: point.id,
+						beaconId: point.beacon_id,
 						left: storyLinePathSrvc.toPercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
 						top: storyLinePathSrvc.toPercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
 						color: point.style.color,

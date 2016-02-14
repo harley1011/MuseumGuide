@@ -11,6 +11,16 @@ angular.module('directives')
 
                 var pointDiv = element;
 
+
+				scope.$watch(function(){return scope.point;}, function(newValue, oldValue) {
+					if(scope.point.current)
+						pointDiv.addClass('current-point');
+					else {
+						pointDiv.removeClass('current-point');
+						pointDiv.removeClass('current-point-light');
+					}
+                }, true);
+
                 if(scope.point.current)
                     pointDiv.addClass('current-point');
 

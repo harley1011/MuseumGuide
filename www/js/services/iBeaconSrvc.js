@@ -51,7 +51,6 @@ angular.module('services')
 	 */
 	BeaconBuilder.initBeaconListener = function () {
 		$rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function (event, pluginResult) {
-			console.log(pluginResult.beacons);
 			BeaconBuilder.buildDetectedBeaconCollection(pluginResult);
 			BeaconBuilder.notifyBeaconsRangeChange();
 		});
