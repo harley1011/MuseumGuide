@@ -212,6 +212,10 @@ Don't forget to refresh the webpage if you update the source code.
 
 * Note for step 3, if you get error message concerning karma, please refer to the  [Unit Testing](#unit-testing) section.
 
+###2. Building for Android Problems
+The project uses crosswalk webview to standardize the representation of the application between different Android devices.
+
+To build Android with crosswalk you must have Google Repository and Android Support Repository installed. To install these open up Android SDK manager but typing android in the cmd line. You'll see a list of folders, find the folder extras and install both Google Repository and Android Support Repository.
 
 # Unit Testing
 The project uses Karma and Jasmine to run our unit test. Please install the fallowing package and run `npm test.
