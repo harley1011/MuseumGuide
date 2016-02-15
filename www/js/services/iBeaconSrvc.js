@@ -18,7 +18,7 @@ angular.module('services')
 
 	BeaconBuilder.counter = 0;
 	BeaconBuilder.hasRegion = false;
-	BeaconBuilder.inactivelimitSec = 5;
+	BeaconBuilder.inactivelimitSec = 3;
 	BeaconBuilder.registeredRegion = {};
 	BeaconBuilder.beaconCollection = {};
 	BeaconBuilder.notifyEvent = "$iBeaconSrvc:beaconRangeChange";
@@ -125,11 +125,6 @@ angular.module('services')
 	 */
 	BeaconBuilder.clearInactiveBeacons = function () {
 
-		if (BeaconBuilder.counter < 2) {
-			BeaconBuilder.counter += 1;
-			return;
-		}
-
 		var nowInSec = BeaconBuilder.timeInSecond();
 		var tempBeaconCollection = BeaconBuilder.beaconCollection;
 
@@ -141,7 +136,6 @@ angular.module('services')
 				delete BeaconBuilder.beaconCollection[prop];
 			}
 		}
-		BeaconBuilder.counter = 0;
 	};
 
 	return {
