@@ -26,6 +26,23 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/_tabs";
 @import "partials/_icons";
 
+
+.start {
+    background-image: url("../img/mosaic.png");
+}
 .no-margin {
   margin: 0px !important;
+}
+
+.start-box {
+    text-align: center;
+    width: 64%;
+    height: 10%;
+    margin: 52% auto 0;
+}
+
+.start-logo-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    outline: 3px solid #FFF;
+    outline-offset: 8px;
 }

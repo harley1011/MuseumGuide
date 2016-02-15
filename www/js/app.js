@@ -35,6 +35,12 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 controller: 'AppCtrl'
             })
 
+            .state('start', {
+                url: '/start',
+                templateUrl: 'templates/start.html',
+                controller: 'langCtrl'
+            })
+
             .state('level', {
                 url: '/level',
                 abstract: true,
@@ -54,7 +60,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                         templateUrl: 'templates/exploration.html'
                     }
                 }
-            })
+            }) 
             .state('tab.scan', {
                 url: '/scan',
                 views: {
@@ -72,7 +78,6 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                     }
                 }
             })
-
         
          .state('tab.settings', {
                 url: '/settings',
