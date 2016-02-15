@@ -1,0 +1,12 @@
+<div class="bottom-slide-container">
+    <div class="list main-menu-list no-margin">
+        <div class="item" ng-click="choseStoryLines()">Chose Storyline</div>
+        <div class="item" ng-click="findFacilities()">Find Facilities</div>
+        <div class="item" ng-click="find()">Child Quest</div>
+        <div class="item" ng-click="find()">About Museum</div>
+    </div>
+
+    <div class="list no-margin sub-menu-list">
+        <div class="item" ng-repeat="storyline in storyLines" ng-click="choseStoryLine(storyline)">{{storyline.name.en_us}}</div>
+    </div>
+</div>

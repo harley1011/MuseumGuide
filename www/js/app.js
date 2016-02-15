@@ -34,12 +34,12 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 templateUrl: 'templates/menu.html',
                 controller: 'AppCtrl'
             })
-        
+
             .state('start', {
                 url: '/start',
                 templateUrl: 'templates/start.html',
                 controller: 'langCtrl'
-            }) 
+            })
 
             .state('level', {
                 url: '/level',
@@ -53,18 +53,6 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 templateUrl: 'templates/tabs.html'
             })
 
-            .state('tab.view', {
-                url: '/view',
-                views: {
-                    'tab-view': {
-
-                        templateUrl: 'templates/view.html',
-                        controller: 'viewCtrl'
-                    }
-                }
-            }) 
-            
-        
             .state('tab.exploration', {
                 url: '/explore',
                 views: {
@@ -96,7 +84,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
                 views: {
                     'tab-settings': {
                         templateUrl: 'templates/settings.html'
-                        
+
                     }
                 }
             })
@@ -111,5 +99,5 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services','ngC
 
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/start');
+        $urlRouterProvider.otherwise('/tab/level');
     });
