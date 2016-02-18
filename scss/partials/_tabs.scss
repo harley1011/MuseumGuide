@@ -21,6 +21,10 @@
     div {
         color: white;
         border: 0px none !important;
+
+        &:active {
+            background-color: #E39F20;
+        }
     }
 }
 .sub-menu-list
@@ -41,6 +45,10 @@
     div {
         color: white;
         border: 0px none !important;
+
+        &:active {
+            background-color: #E39F20;
+        }
     }
 
 }
