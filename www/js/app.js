@@ -103,14 +103,14 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/level');
+	$urlRouterProvider.otherwise('/start');
 
 	/**
 	 * configures partial languages loader
 	 */
 
 	$translateProvider.useLoader('$translatePartialLoader', {
-		urlTemplate: '/js/languages/{part}/{lang}.json'
+		urlTemplate: './js/languages/{part}/{lang}.json'
 	});
 
 	// load 'en' table on startup
