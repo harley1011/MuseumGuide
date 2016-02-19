@@ -1,6 +1,5 @@
 angular.module('controllers')
 .controller('langCtrl', function($scope, $state, $translate) {
-
     $scope.english = function () {
         console.log("Speaking English");
 		$scope.changeLanguage("en");

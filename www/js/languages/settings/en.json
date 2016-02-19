@@ -1,4 +1,6 @@
 {
+	"SET_VIEW": "Settings",
+	"SET_LANGVIEW": "Languages",
 	"SET_CHG_NAME": "Change Name",
 	"SET_CHG_LANG": "Change Language",
 	"SET_HELP": "Help",
