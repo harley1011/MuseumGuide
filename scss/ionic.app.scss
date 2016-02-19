@@ -29,6 +29,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .start {
     background-image: url("../img/mosaic.png");
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover!important;
 }
 .no-margin {
   margin: 0px !important;
