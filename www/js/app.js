@@ -87,7 +87,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 			url: '/settings',
 			views: {
 				'tab-settings': {
-					templateUrl: 'templates/settings.html'
+					templateUrl: 'templates/settings.html',
+					controller: 'settingsCtrl'
 
 				}
 			}

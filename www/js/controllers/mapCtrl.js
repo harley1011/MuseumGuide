@@ -3,7 +3,7 @@ angular.module('controllers')
 		var mapData;
 
 		(function init() {
-			$translatePartialLoader.addPart('map');//translation
+			$translatePartialLoader.addPart('map');
 
 			mapData = mapDataSrvc.mapData; //get JSON map data
 
