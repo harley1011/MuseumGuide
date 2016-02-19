@@ -96,7 +96,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 			url: '/language',
 			views: {
 				'tab-settings': {
-					templateUrl: 'templates/language.html'
+					templateUrl: 'templates/language.html',
+					controller: 'langCtrl'
 				}
 			}
 		});
