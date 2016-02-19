@@ -115,7 +115,6 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 		urlTemplate: './js/languages/{part}/{lang}.json'
 	});
 
-	// load 'en' table on startup
 	$translateProvider.preferredLanguage('fr');
-	 $translateProvider.useSanitizeValueStrategy('escape');
+	$translateProvider.useSanitizeValueStrategy('escape');
 });
