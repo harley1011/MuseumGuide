@@ -5,10 +5,7 @@ describe('controllers', function () {
 		scope;
 
 	beforeEach(module('controllers')); // load controllers module from project
-
-	beforeEach(module('pascalprecht.translate', function ($translatePartialLoaderProvider) {
-		$provider = $translatePartialLoaderProvider;
-	}));
+	beforeEach(module('pascalprecht.translate'));
 
 	beforeEach(function () {
 		module('services');
