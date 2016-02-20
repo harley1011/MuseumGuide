@@ -12,4 +12,5 @@ www/css/ionic.app.min.css
 tests/coverage
 plugins/android.json
 plugins/browser.json
+plugins/cordova-plugin-crosswalk-webview
 npm-debug.log

@@ -17,12 +17,14 @@ module.exports = function (config) {
         files: [
             '../www/lib/ionic/js/angular/angular.js',
 			'../www/lib/ionic/js/ionic.js',
-            '../www/js/pluginsRsc/*.js',
+            '../www/js/pluginsRsc/ng-cordova-beacon.js',
             '../www/js/*.js',
             '../tests/lib/angular-mocks/angular-mocks.js',
             '../tests/ionic/**/*.js',
             '../www/templates/*.html',
-            '../tests/lib/jquery.min.js'
+            '../tests/lib/jquery.min.js',
+			'../www/js/pluginsRsc/angular-translate.js',
+			'../www/js/pluginsRsc/angular-translate-loader-partial.js',
         ],
 
 

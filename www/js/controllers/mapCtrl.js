@@ -1,8 +1,9 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, iBeaconSrvc, storyLinePathSrvc, mapDataSrvc) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, mapDataSrvc) {
 		var mapData;
 
 		(function init() {
+			$translatePartialLoader.addPart('map');
 
 			mapData = mapDataSrvc.mapData; //get JSON map data
 
