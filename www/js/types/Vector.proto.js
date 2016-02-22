@@ -11,17 +11,16 @@ var Vector = (function (){
     // point1 - (3,4)  point2 - (2,3)   deg = 45 ...should be (45+180) = 225
 
     //Private properties
-    var vector = {
-      calculateMagnitude: function(point1, point2) {
-          return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
-      },
-      calculatePercentage: function(pos, max) {
-          return 100 * pos / max;
-      },
-      calculateAngle: function(point1, point2){
-        var angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI;//in degrees
-        return ((point2.x < point1.x)? angle + 180 : angle);
-      },
+    var vector = {};
+    vector.calculateMagnitude = function(point1, point2) {
+        return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
+    };
+    vector.calculatePercentage = function(pos, max) {
+        return 100 * pos / max;
+    };
+    vector.calculateAngle = function(point1, point2){
+      var angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI;//in degrees
+      return ((point2.x < point1.x)? angle + 180 : angle);
     };
     vector.magnitude = vector.calculatePercentage(vector.calculateMagnitude(point1, point2), dimension.width);
     vector.angle = vector.calculateAngle(point1, point2);
