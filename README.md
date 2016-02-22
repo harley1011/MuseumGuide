@@ -236,7 +236,14 @@ When changes are made on master, develop or release branch, an automated test wi
 
 # Changelog
 
-0.1
+v0.1
 -------------
 - Get direction between POI
 - Getting location information from iBeacons
+
+
+v1.0.0
+------------
+- Everything from v0.1
+- Sprint 1
+- Sprint 2 
