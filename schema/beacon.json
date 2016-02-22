@@ -1,0 +1,20 @@
+{
+  "beacon": [
+    {
+      "uuid": null,
+      "coordinate": null,
+      "major": 0,
+      "minor": 0,
+      "identifier": null,
+      "events": [
+        {
+          "uuid": null,
+          "distance": 0,
+          "end": -1,
+          "overlay": false,
+          "media_id": [],
+        }
+      ],
+    }
+  ],
+}

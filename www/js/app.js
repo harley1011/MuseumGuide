@@ -4,99 +4,117 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'controllers', 'directives'])
+angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ngCordovaBeacon', 'ngPinchZoom', 'pascalprecht.translate'])
 
-    .run(function ($ionicPlatform) {
-        $ionicPlatform.ready(function () {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                cordova.plugins.Keyboard.disableScroll(true);
+.run(function ($ionicPlatform, $rootScope, $translate) {
+	$ionicPlatform.ready(function () {
+		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboards
+		// for form inputs)
+		if (window.cordova && window.cordova.plugins.Keyboard) {
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			cordova.plugins.Keyboard.disableScroll(true);
 
-            }
-            if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-            }
-        });
-    })
+		}
+		if (window.StatusBar) {
+			// org.apache.cordova.statusbar required
+			StatusBar.styleDefault();
+		}
+	});
 
-    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-        $ionicConfigProvider.tabs.position('bottom');
-        $ionicConfigProvider.platform.ios.tabs.style('standard');
-        $ionicConfigProvider.platform.android.tabs.style('standard');
-        $stateProvider
+	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+		$translate.refresh();
+	});
+})
 
-            .state('app', {
-                url: '/app',
-                abstract: true,
-                templateUrl: 'templates/menu.html',
-                controller: 'AppCtrl'
-            })
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $translatePartialLoaderProvider) {
+	$ionicConfigProvider.tabs.position('bottom');
+	$ionicConfigProvider.platform.ios.tabs.style('standard');
+	$ionicConfigProvider.platform.android.tabs.style('standard');
+	$stateProvider
 
-            .state('tab', {
-                url: '/tab',
-                abstract: true,
-                templateUrl: 'templates/tabs.html'
-            })
+		.state('app', {
+		url: '/app',
+		abstract: true,
+		templateUrl: 'templates/menu.html',
+		controller: 'AppCtrl'
+	})
 
-            .state('tab.levelOne', {
-                url: '/levelOne',
-                views: {
-                    'tab-one': {
-                        templateUrl: 'templates/levelOne.html',
-                        controller: 'mapCtrl'
-                    }
-                }
-            })
+	.state('start', {
+		url: '/start',
+		templateUrl: 'templates/start.html',
+		controller: 'langCtrl'
+	})
 
-            .state('app.levelTwo', {
-                url: '/levelTwo',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelTwo.html'
-                    }
-                }
-            })
+	.state('level', {
+		url: '/level',
+		abstract: true,
+		templateUrl: 'templates/menu-level.html'
+	})
 
-            .state('app.levelThree', {
-                url: '/levelThree',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelThree.html'
-                    }
-                }
-            })
+	.state('tab', {
+		url: '/tab',
+		abstract: true,
+		templateUrl: 'templates/tabs.html'
+	})
 
-            .state('app.levelFour', {
-                url: '/levelFour',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelFour.html'
-                    }
-                }
-            })
+	.state('tab.exploration', {
+			url: '/explore',
+			views: {
+				'tab-view': {
+					templateUrl: 'templates/exploration.html'
+				}
+			}
+		})
+		.state('tab.scan', {
+			url: '/scan',
+			views: {
+				'tab-scan': {
+					templateUrl: 'templates/scan.html'
+				}
+			}
+		})
+		.state('tab.level', {
+			url: '/level',
+			views: {
+				'tab-one': {
+					templateUrl: 'templates/level.html',
+					controller: 'mapCtrl'
+				}
+			}
+		})
 
-            .state('app.levelFive', {
-                url: '/levelOne',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelFive.html'
-                    }
-                }
-            })
+	.state('tab.settings', {
+			url: '/settings',
+			views: {
+				'tab-settings': {
+					templateUrl: 'templates/settings.html',
+					controller: 'settingsCtrl'
 
-            .state('app.levelSix', {
-                url: '/levelSix',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/levelSix.html'
-                    }
-                }
-            })
+				}
+			}
+		})
+		.state('tab.language', {
+			url: '/language',
+			views: {
+				'tab-settings': {
+					templateUrl: 'templates/language.html',
+					controller: 'langCtrl'
+				}
+			}
+		});
 
 
-        // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/levelOne');
-    });
+	// if none of the above states are matched, use this as the fallback
+	$urlRouterProvider.otherwise('/start');
+
+	/**
+	 * configures partial languages loader
+	 */
+
+	$translateProvider.useLoader('$translatePartialLoader', {
+		urlTemplate: './js/languages/{part}/{lang}.json'
+	});
+
+	$translateProvider.preferredLanguage('fr');
+	$translateProvider.useSanitizeValueStrategy('escape');
+});

@@ -1,67 +1,105 @@
 .zoom-buttons {
   position: absolute !important;
-  right: 10px !important;
-  bottom: 10px !important;
-
-
+  right   : 10px !important;
+  bottom  : 10px !important;
 }
 .zoom-button-plus {
-  display: block;
+  display         : block;
   background-color: $calm;
-  border-radius: 25px 25px 0px 0px;
+  border-radius   : 25px 25px 0 0;
+  font-size       : 19pt !important;
+  width           : 34px;
+  color           : #FFF;
+  border          : 0;
 }
-
 .zoom-button-minus {
+  display         : block;
   background-color: $calm;
-
-  display: block;
-  border-radius: 0px 0px 25px 25px;
-
+  border-radius   : 0 0 25px 25px;
+  font-size       : 21pt !important;
+  width           : 34px;
+  border          : 0;
+  color           : #FFF;
 }
 .map-image {
-  background-image: url('../img/one.png');
-  background-size: cover;
+  background-size  : cover;
   background-repeat: no-repeat;
-  position: relative;
+  position         : relative;
   //height:100%;
 }
 .map-div {
-  height: 100%;
-  overflow:auto;
-
-
+  height  : 100%;
+  overflow: auto;
   img {
     display: block;
   }
 }
 canvas {
-  padding-left: 0;
+  padding-left : 0;
   padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  margin-left  : auto;
+  margin-right : auto;
+  display      : block;
 }
-
 .point-div {
-  border-radius: 50%;
-  border: 2px solid red;
-  width: 8px;
-  height: 8px;
+  border-radius   : 50%;
+  background-color: #ffffff;
+  color           : #ffffff;
+  font-size       : 50%;
+  width           : 8px;
+  height          : 8px;
+  position        : absolute;
+  text-align      : center;
+}
+.current-point-light {
+  background-color: #ff3300 !important;
+}
+.line-div {
   position: absolute;
 }
-
 .level-mark {
-  display: table-cell;
+  display   : inline-block;
   text-align: center;
 }
-
+a.level-mark {
+  color      : #FFF;
+  font-weight: bold;
+  font-size  : 12pt;
+  margin: 0 9px;
+  width: 25px;
+  height: 25px;
+}
 .level-div {
-  height: 100%;
-  display: table;
-  width: 100%;
+  height      : 100%;
+  display     : table;
+  width       : 100%;
   table-layout: fixed;
+  text-align: center;
+}
+.level-name {
+  height : 100%;
+  display: table;
+  width  : 100%;
+}
+.bar-header-levels {
+  height: 35px !important;
 }
 
-.bar-header-levels {
-  height: 30px !important;
+a.selected-level {
+  border: 1px solid #FFF;
+  border-radius: 50px;
+  background-color: #FFF;
+  color: $calm !important;
+  padding: 1px;
+
+}
+
+.level-title {
+  font-weight: bold;
+  margin-right: 13px;
+}
+
+.has-subheader {
+  top: 76px !important;
+
 }

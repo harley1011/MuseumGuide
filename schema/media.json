@@ -1,0 +1,47 @@
+{
+  "media": {
+    "text/plain": [
+      {
+        "uuid": null,
+        "en_us": null,
+        "fr_ca": null
+      },
+    ],
+    "image/*": [
+      {
+        "uuid": null,
+        "url": null,
+        "alt_text_uuid": null,
+        "detail_text_uuid": null
+        "width": null,
+        "height": null
+      }
+    ],
+    "application/xml": [
+      {
+        "uuid": null,
+        "content": null,
+      }
+    ],
+    "audio/*": [
+      {
+        "uuid": null,
+        "url": null,
+        "loop": false,
+        "volume_max": 0,
+        "volume_min": 0,
+        "volume_curve": null,
+        "fadeout_on_end": false,
+      },
+    ],
+    "video/*": [
+      {
+        "uuid": null,
+        "url": null,
+        "volume": 0,
+        "default_autoplay_distance": -1,
+        "detail_text_uuid": null,
+      },
+    ],
+  },
+}

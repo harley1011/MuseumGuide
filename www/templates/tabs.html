@@ -1,32 +1,15 @@
-<!--
-Create tabs with an icon and label, using the tabs-positive style.
-Each tab's child <ion-nav-view> directive will have its own
-navigation history that also transitions its views in and out.
--->
-<ion-tabs class="tabs-icon-top tabs-color-active-calm">
+<ion-tabs class="tabs-calm">
+    <ion-tab-slide-button icon="icon-arrowUp">
+    </ion-tab-slide-button>
 
-  <!-- Profile Tab -->
-  <ion-tab title="Maps" icon-off="ion-ios-navigate-outline" icon-on="ion-ios-navigate" href="#/tab/profile">
-    <ion-nav-view name="tab-one"></ion-nav-view>
-  </ion-tab>
+    <ion-tab icon-off="icon-scanQR" icon-on="icon-scanQR" href="#/tab/scan">
+        <ion-nav-view name="tab-scan"></ion-nav-view>
+    </ion-tab>
 
- <!-- Trending Tab -->
-  <ion-tab title="Scan" icon-off="ion-ios-search" icon-on="ion-ios-search" href="#/tab/feed">
-    <ion-nav-view name="tab-feed"></ion-nav-view>
-  </ion-tab>
-  <!-- Postings Tab-->
-  <ion-tab title="View" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper" href="#/tab/posting">
-    <ion-nav-view name="tab-posting"></ion-nav-view>
-  </ion-tab>
-
-
-    <!-- Messages Tab -->
-  <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/messages">
-    <ion-nav-view name="tab-messages"></ion-nav-view>
-  </ion-tab>
- <!-- Favourites Tab -->
-
-
-
-
+    <ion-tab icon-off="icon-map" icon-on="icon-map" href="#/tab/level">
+        <ion-nav-view name="tab-one"></ion-nav-view>
+    </ion-tab>
+    <ion-tab icon-off="icon-setting" icon-on="icon-setting" href="#/tab/settings">
+        <ion-nav-view name="tab-settings"></ion-nav-view>
+    </ion-tab>
 </ion-tabs>
