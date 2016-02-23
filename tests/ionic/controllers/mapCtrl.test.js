@@ -1,11 +1,9 @@
 describe('controllers', function () {
 	var storyLinePathSrvc,
 		iBeaconSrvc1,
-		JSONFactorySrvc,
 		scope;
 
 	beforeEach(module('controllers')); // load controllers module from project
-
 	beforeEach(module('pascalprecht.translate'));
 
 	beforeEach(function () {
@@ -18,7 +16,14 @@ describe('controllers', function () {
 
 					},
 					notifyEvent: ""
-				}
+				};
+			});
+			$provide.service('transferProtocolSrvc', function () {
+				this.read = function(url){
+						if(url === "mapData"){
+							return mapData();
+						}
+					};
 			});
 
 		});
@@ -36,51 +41,20 @@ describe('controllers', function () {
 
 	describe('map controller test', function () {
 		it('should generate at least the points of interest', function () {
-			var mockMapData = mapData(),
-					tps = {
-						download: function(url){},
-						read: function(url){
-							if(url === "mapData"){
-								return mockMapData;
-							}
-						},
-						exists: function(url, locally){},
-						hasChanged: function(url){ return false; },
-						monitor: function(url){},
-					};
-			var JSONSrvc = $service('JSONFactorySrvc', {
-				transferProtocolSrvc: tps
-			});
 			var controller = $controller('mapCtrl', {
 				$scope: scope,
 				storyLinePathSrvc: storyLinePathSrvc,
 				iBeaconSrvc: iBeaconSrvc1,
-				JSONFactorySrvc: JSONSrvc
 			});
 			expect(scope.mapPoints.length).toBeGreaterThan(3);
 		});
 
 		it('should generate all the lines in the path', function () {
-			var mockMapData = mapData(),
-					tps = {
-						download: function(url){},
-						read: function(url){
-							if(url === "mapData"){
-								return mockMapData;
-							}
-						},
-						exists: function(url, locally){},
-						hasChanged: function(url){ return false; },
-						monitor: function(url){},
-					};
-			var JSONSrvc = $service('JSONFactorySrvc', {
-				transferProtocolSrvc: tps
-			});
+			var mockMapData = mapData();
 			var controller = $controller('mapCtrl', {
 				$scope: scope,
 				storyLinePathSrvc: storyLinePathSrvc,
 				iBeaconSrvc: iBeaconSrvc1,
-				JSONFactorySrvc: JSONSrvc
 			});
 			expect(scope.mapLines.length).toBeGreaterThan(4);
 		});
