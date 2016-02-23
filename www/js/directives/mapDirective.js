@@ -8,7 +8,7 @@ angular.module('directives')
                 var mapImageDiv = element.find('div')[1];
                 loadImage(scope.currentFloor.getPlan().getURL());
 
-                scope.$watch('currentLevel', function(newValue, oldValue) {
+                scope.$watch('currentFloor', function(newValue, oldValue) {
                     loadImage(scope.currentFloor.getPlan().getURL());
                 });
 
