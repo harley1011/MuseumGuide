@@ -11,27 +11,38 @@ var Vector = (function (){
     // point1 - (3,4)  point2 - (2,3)   deg = 45 ...should be (45+180) = 225
 
     //Private properties
-    var vector = {};
-    vector.calculateMagnitude = function(point1, point2) {
-        return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
-    };
-    vector.calculatePercentage = function(pos, max) {
-        return 100 * pos / max;
-    };
-    vector.calculateAngle = function(point1, point2){
-      var angle = Math.atan((point2.y - point1.y) / (point2.x - point1.x)) * 180 / Math.PI;//in degrees
-      return ((point2.x < point1.x)? angle + 180 : angle);
-    };
-    vector.magnitude = vector.calculatePercentage(vector.calculateMagnitude(point1, point2), dimension.width);
-    vector.angle = vector.calculateAngle(point1, point2);
-    vector.color = '#ff3333';
-    vector.height = '1px';
-    vector.coordinates = {
-        "x": vector.calculatePercentage(point1.x, dimension.width),
-        "y": vector.calculatePercentage(point1.y, dimension.height)
+    var vector = {
+      magnitude: Vector.calculatePercentage(Vector.calculateMagnitude(point1, point2), dimension.width),
+      angle: Vector.calculateAngle(point1, point2),
+      color: '#ff3333',
+      height: '1px',
+      coordinates: {
+          "x": Vector.calculatePercentage(point1.getCoordinates().x, dimension.width),
+          "y": Vector.calculatePercentage(point1.getCoordinates().y, dimension.height)
+      },
     };
     privateData.set(this, vector);
   }
+
+  //Static functions
+  Vector.calculateMagnitude = function(point1, point2) {
+    var coord1 = point1.getCoordinates(),
+        coord2 = point2.getCoordinates();
+    return Math.sqrt(Math.pow((coord2.x - coord1.x), 2) + Math.pow((coord2.y - coord1.y), 2));
+  };
+
+  Vector.calculatePercentage = function(pos, max) {
+      return 100 * pos / max;
+  };
+
+  Vector.calculateAngle = function(point1, point2){
+    var coord1 = point1.getCoordinates(),
+        coord2 = point2.getCoordinates();
+    var angle = Math.atan((coord2.y - coord1.y) / (coord2.x - coord1.x)) * 180 / Math.PI;//in degrees
+    return ((coord2.x < coord1.x)? angle + 180 : angle);
+  };
+
+
 
   //Specifies the constructor function on the prototype
   Vector.prototype.constructor = Vector;

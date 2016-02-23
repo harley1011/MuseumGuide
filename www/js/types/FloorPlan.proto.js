@@ -14,7 +14,7 @@ var FloorPlan = (function (){
 
   FloorPlan.prototype.constructor = FloorPlan;
 
-  FloorPlan.prototype.getNumber = function(){
+  FloorPlan.prototype.getURL = function(){
     return privateData.get(this).url;
   };
 
