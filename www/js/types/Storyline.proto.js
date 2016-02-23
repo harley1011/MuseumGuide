@@ -26,11 +26,15 @@ var Storyline = (function (){
     return privateData.get(this).title;
   };
 
+  Storyline.prototype.getPoints = function(){
+    return privateData.get(this).points;
+  };
+
   Storyline.prototype.getDescription = function(){
     return privateData.get(this).description;
   };
 
-  Storyline.prototype.getWalkingTimes = function(){
+  Storyline.prototype.getWalkingTime = function(){
     return privateData.get(this).walkingTime;
   };
 
