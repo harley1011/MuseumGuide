@@ -1,10 +1,11 @@
 describe('controllers', function () {
 	var storyLinePathSrvc,
 		iBeaconSrvc1,
-		mapDataSrvc,
+		JSONFactorySrvc,
 		scope;
 
 	beforeEach(module('controllers')); // load controllers module from project
+
 	beforeEach(module('pascalprecht.translate'));
 
 	beforeEach(function () {
@@ -25,33 +26,61 @@ describe('controllers', function () {
 	});
 
 
-	beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _mapDataSrvc_, $rootScope) {
+	beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope) {
 		scope = $rootScope.$new();
 		$controller = _$controller_;
 		storyLinePathSrvc = _storyLinePathSrvc_;
 		iBeaconSrvc1 = iBeaconSrvc;
-		mapDataSrvc = _mapDataSrvc_;
+		JSONFactorySrvc = _JSONFactorySrvc_;
 	}));
 
 	describe('map controller test', function () {
 		it('should generate at least the points of interest', function () {
-			var mockMapData = mapData();
+			var mockMapData = mapData(),
+					tps = {
+						download: function(url){},
+						read: function(url){
+							if(url === "mapData"){
+								return mockMapData;
+							}
+						},
+						exists: function(url, locally){},
+						hasChanged: function(url){ return false; },
+						monitor: function(url){},
+					};
+			var JSONSrvc = $service('JSONFactorySrvc', {
+				transferProtocolSrvc: tps
+			});
 			var controller = $controller('mapCtrl', {
 				$scope: scope,
 				storyLinePathSrvc: storyLinePathSrvc,
 				iBeaconSrvc: iBeaconSrvc1,
-				mapDataSrvc: mockMapData
+				JSONFactorySrvc: JSONSrvc
 			});
 			expect(scope.mapPoints.length).toBeGreaterThan(3);
 		});
 
 		it('should generate all the lines in the path', function () {
-			var mockMapData = mapData();
+			var mockMapData = mapData(),
+					tps = {
+						download: function(url){},
+						read: function(url){
+							if(url === "mapData"){
+								return mockMapData;
+							}
+						},
+						exists: function(url, locally){},
+						hasChanged: function(url){ return false; },
+						monitor: function(url){},
+					};
+			var JSONSrvc = $service('JSONFactorySrvc', {
+				transferProtocolSrvc: tps
+			});
 			var controller = $controller('mapCtrl', {
 				$scope: scope,
 				storyLinePathSrvc: storyLinePathSrvc,
 				iBeaconSrvc: iBeaconSrvc1,
-				mapDataSrvc: mockMapData
+				JSONFactorySrvc: JSONSrvc
 			});
 			expect(scope.mapLines.length).toBeGreaterThan(4);
 		});
