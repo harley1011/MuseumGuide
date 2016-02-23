@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (mapDataSrvc, $rootScope, $translatePartialLoader) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader) {
 
 		return {
 			require: ['^ionTabs'],
@@ -8,7 +8,7 @@ angular.module('directives')
 			link: function (scope, element, attrs, ctrls) {
 				$translatePartialLoader.addPart('bottomSlideUp');
 
-				scope.storyLines = mapDataSrvc.mapData.storyline;
+				scope.storyLines = JSONFactorySrvc.load("storylines");
 				var tabsCtrl = ctrls[0];
 				var subMenuElement = angular.element(element[0].querySelector('.sub-menu-list'));
 				tabsCtrl.subMenuActive = false;

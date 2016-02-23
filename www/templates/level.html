@@ -2,11 +2,11 @@
     <ion-header-bar class="bar-subheader bar-calm bar-header-levels">
         <div class="level-div">
             <span class="level-mark level-title" translate="FLOOR"></span>
-            <a ng-class="{'selected-level': currentLevel.number == 1}" class="level-mark" ng-click="changeLevel(1)" >1</a>
-            <a ng-class="{'selected-level': currentLevel.number == 2}" class="level-mark" ng-click="changeLevel(2)" >2</a>
-            <a ng-class="{'selected-level': currentLevel.number == 3}" class="level-mark" ng-click="changeLevel(3)">3</a>
-            <a ng-class="{'selected-level': currentLevel.number == 4}" class="level-mark" ng-click="changeLevel(4)">4</a>
-            <a ng-class="{'selected-level': currentLevel.number == 5}" class="level-mark" ng-click="changeLevel(5)">5</a>
+            <a ng-class="{'selected-level': currentFloor.getNumber() == 1}" class="level-mark" ng-click="changeFloor(1)" >1</a>
+            <a ng-class="{'selected-level': currentFloor.getNumber() == 2}" class="level-mark" ng-click="changeFloor(2)" >2</a>
+            <a ng-class="{'selected-level': currentFloor.getNumber() == 3}" class="level-mark" ng-click="changeFloor(3)">3</a>
+            <a ng-class="{'selected-level': currentFloor.getNumber() == 4}" class="level-mark" ng-click="changeFloor(4)">4</a>
+            <a ng-class="{'selected-level': currentFloor.getNumber() == 5}" class="level-mark" ng-click="changeFloor(5)">5</a>
 
         </div>
     </ion-header-bar>
