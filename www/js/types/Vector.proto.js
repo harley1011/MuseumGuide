@@ -30,7 +30,6 @@ var Vector = (function (){
         "x": vector.calculatePercentage(point1.x, dimension.width),
         "y": vector.calculatePercentage(point1.y, dimension.height)
     };
-
     privateData.set(this, vector);
   }
 

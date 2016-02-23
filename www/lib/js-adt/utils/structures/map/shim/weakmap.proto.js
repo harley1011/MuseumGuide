@@ -146,10 +146,11 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.entries = function(){
       var map = privateData[this.uuid],
-          entries = [];
+          entries = [],
+          key, val;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i],
-            val = map.values[i];
+        key = map.keys[i],
+        val = map.values[i];
         if(key !== null){
           entries.push([key,val]);
         }
@@ -158,10 +159,11 @@ if (typeof WeakMap === 'undefined' ||
     };
 
     WeakMap.prototype.forEach = function(callback, thisArg){
-      var map = privateData[this.uuid];
+      var map = privateData[this.uuid],
+          key, val;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i],
-            val = map.values[i];
+        key = map.keys[i];
+        val = map.values[i];
         if(key !== null){
           if(thisArg !== undefined){
             thisArg.callback(key, val);
@@ -174,9 +176,10 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.keys = function(){
       var map = privateData[this.uuid],
-          arr = [];
+          arr = [],
+          key;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i];
+        key = map.keys[i];
         if(key !== null){
           arr.push(key);
         }
@@ -186,10 +189,11 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.values = function(){
       var map = privateData[this.uuid],
-          arr = [];
+          arr = [],
+          key, val;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i],
-            val = map.values[i];
+        key = map.keys[i];
+        val = map.values[i];
         if(key !== null){
           arr.push(val);
         }
@@ -270,14 +274,14 @@ if (typeof WeakMap === 'undefined' ||
     WeakMap.prototype.size = 0;
 
     WeakMap.prototype.get = function(k){
-      return privateData.get(this).wm.set(k,v);
+      return privateData.get(this).wm.get(k);
     };
 
     WeakMap.prototype.set = function(k,v){
       var map = privateData.get(this);
       if(k !== undefined && k !== null && (typeof k === 'object' || typeof k === 'function')){
         map.wm.set(k,v);
-        keys.push(k);
+        map.keys.push(k);
         Object.defineProperty(k, map.id, {
           writable: true,
           enumerable: false,
@@ -295,7 +299,7 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.delete = function(k){
       var map = privateData.get(this);
-      if(k !== undefined && k !== null && k[map.id] !== undefined && map.wm.delete()){
+      if(k !== undefined && k !== null && k[map.id] !== undefined && map.wm.delete(k)){
         map.keys[k[map.id]] = null;
         k[map.id] = null;
         this.size--;
@@ -307,24 +311,30 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.entries = function(){
       var map = privateData.get(this),
-          entries = [];
+          entries = [],
+          key, val;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i],
-            val = map.wm.get(key);
-        entries.push([key,val]);
+        key = map.keys[i];
+        if(key !== null){
+          val = map.wm.get(key);
+          entries.push([key,val]);
+        }
       }
       return entries;
     };
 
     WeakMap.prototype.forEach = function(callback, thisArg){
-      var map = privateData.get(this);
+      var map = privateData.get(this),
+          key, val;
       for(var i = 0 ; i < map.keys.length ; i++){
-        var key = map.keys[i],
-            val = map.wm.get(key);
-        if(thisArg !== undefined){
-          thisArg.callback(key, val);
-        }else{
-          callback(key, val);
+        key = map.keys[i];
+        if(key !== null){
+          val = map.wm.get(key);
+          if(thisArg !== undefined){
+            thisArg.callback(key, val);
+          }else{
+            callback(key, val);
+          }
         }
       }
     };
@@ -336,9 +346,13 @@ if (typeof WeakMap === 'undefined' ||
 
     WeakMap.prototype.values = function(){
       var map = privateData.get(this),
-          values = [];
+          values = [],
+          key;
       for(var i = 0 ; i < map.keys.length ; i++){
-        values.push(map.wm.get(map.keys[i]));
+        key = map.keys[i];
+        if(key !== null){
+          values.push(map.wm.get(key));
+        }
       }
       return values;
     };
