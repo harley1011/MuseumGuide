@@ -7,19 +7,19 @@ angular.module('directives')
             },
             link: function (scope, element, attrs) {
                 var lineDiv = element;
-                lineDiv.css('left', scope.line.position.x + '%');
-                lineDiv.css('top', scope.line.position.y + '%');
-                lineDiv.css('width', scope.line.magnitude + '%');
-                lineDiv.css('border-top', scope.line.height + " dashed " + scope.line.color);
+                lineDiv.css('left', scope.line.getCoordinates().x + '%');
+                lineDiv.css('top', scope.line.getCoordinates().y + '%');
+                lineDiv.css('width', scope.line.getMagnitude() + '%');
+                lineDiv.css('border-top', scope.line.getHeight() + " dashed " + scope.line.getColor());
                 lineDiv.css({
-                    '-moz-transform': 'rotate(' + scope.line.angle + 'deg)',
-                    '-webkit-transform': 'rotate(' + scope.line.angle + 'deg)',
-                    '-o-transform': 'rotate(' + scope.line.angle + 'deg)',
-                    '-ms-transform': 'rotate(' + scope.line.angle + 'deg)',
-                    'transform': 'rotate(' + scope.line.angle + 'deg)'
+                    '-moz-transform': 'rotate(' + scope.line.getAngle() + 'deg)',
+                    '-webkit-transform': 'rotate(' + scope.line.getAngle() + 'deg)',
+                    '-o-transform': 'rotate(' + scope.line.getAngle() + 'deg)',
+                    '-ms-transform': 'rotate(' + scope.line.getAngle() + 'deg)',
+                    'transform': 'rotate(' + scope.line.getAngle() + 'deg)'
                 });
                 lineDiv.css('transform-origin', 'center left');
             }
 
-        }
-    })
+        };
+    });

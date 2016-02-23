@@ -65,7 +65,7 @@ angular.module('controllers')
 			var storyLines = mapData.storyline;
 			var story = null;
 
-			if ($scope.storyLineID == null)
+			if ($scope.storyLineID === undefined)
 				$scope.storyLineID = storyLines[0].id;
 
 			var storyLineNum = $scope.storyLineID;
@@ -97,11 +97,11 @@ angular.module('controllers')
 					$scope.mapPoints.push({
 						id: point.id,
 						beaconId: point.beacon_id,
-						left: storyLinePathSrvc.toPercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
-						top: storyLinePathSrvc.toPercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
+						left: storyLinePathSrvc.calculatePercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
+						top: storyLinePathSrvc.calculatePercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
 						color: point.style.color,
-						diameterX: storyLinePathSrvc.toPercentage(diameter, imgDimensions.width),
-						diameterY: storyLinePathSrvc.toPercentage(diameter, imgDimensions.height),
+						diameterX: storyLinePathSrvc.calculatePercentage(diameter, imgDimensions.width),
+						diameterY: storyLinePathSrvc.calculatePercentage(diameter, imgDimensions.height),
 						current: current
 					});
 				}
@@ -113,11 +113,8 @@ angular.module('controllers')
 			$scope.mapLines = [];
 			angular.forEach(paths, function (path, key) {
 				if (path[2]) { //if line needs to be drawn
-					var vector = storyLinePathSrvc.lineVector(path[0], path[1], imgDimensions);
-					vector.color = '#ff3333';
-					vector.height = '1px';
-					$scope.mapLines.push(vector);
+					$scope.mapLines.push(new Vector(path[0], path[1], imgDimensions));
 				}
 			});
 		}
-	})
+	});

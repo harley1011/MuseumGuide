@@ -14,10 +14,12 @@ var paths = {
   sass: ['./scss/ionic.app.scss', './scss/partials/*'],
   controllers: ['./www/js/controllers/*.js'],
   services: ['./www/js/services/*.js'],
-  directives: ['./www/js/directives/*.js']
+  directives: ['./www/js/directives/*.js'],
+  types: ['./www/js/types/*.js'],
+  jsadt: ['./www/lib/js-adt/test/global.ut.js', './www/lib/js-adt/utils/structures/map/shim/weakmap.proto.js']
 };
 
-gulp.task('default', ['sass', 'controllers', 'services', 'directives']);
+gulp.task('default', ['sass', 'js-adt', 'controllers', 'services', 'directives', 'types']);
 
 gulp.task('controllers', function (done) {
   gulp.src(['./www/js/controllerModule.js', paths.controllers[0]])
@@ -51,6 +53,29 @@ gulp.task('directives', function (done) {
       .pipe(gulp.dest('./www/js'))
       .on('end', done);
 });
+
+gulp.task('types', function (done) {
+  gulp.src(['./www/js/types.proto.js', paths.types[0]])
+      .pipe(sourcemaps.init())
+      .pipe(concat('types.js'))
+     // .pipe(ngAnnotate())
+      // .pipe(uglify())
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('./www/js'))
+      .on('end', done);
+});
+
+gulp.task('js-adt', function (done) {
+  gulp.src(['./www/js/types.proto.js', paths.jsadt[0], paths.jsadt[1]])
+      .pipe(sourcemaps.init())
+      .pipe(concat('js-adt.js'))
+     // .pipe(ngAnnotate())
+      // .pipe(uglify())
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('./www/js'))
+      .on('end', done);
+});
+
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
