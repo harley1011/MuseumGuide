@@ -242,8 +242,9 @@ v0.1
 - Getting location information from iBeacons
 
 
-v1.0.0
+v1.0.1
 ------------
 - Everything from v0.1
 - Sprint 1
-- Sprint 2 
+- Sprint 2
+- SAD refactoring [2/3]
