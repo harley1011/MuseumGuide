@@ -35,7 +35,7 @@ var GraphicalPoint = (function (){
 
   GraphicalPoint.prototype.getBeaconID = function(){
     var point = privateData.get(this).point;
-    return point instanceof GraphicalPointOfInterest ? point.getBeaconID() : undefined;
+    return point instanceof PointOfInterest ? point.getBeaconID() : undefined;
   };
 
   GraphicalPoint.prototype.getDisplayOptions = function(){
