@@ -1,5 +1,5 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $ionicPopup) {
 		var mapData = {};
 
 		(function init() {
@@ -14,6 +14,7 @@ angular.module('controllers')
 			$scope.showID = false; //set to true to show point IDs on the map
 
 			$scope.changeFloor = function (z) {
+				showPopup();
 				$scope.currentFloor = mapData.floor[z - 1];
 				prepareData(mapData);
 			};
@@ -27,6 +28,25 @@ angular.module('controllers')
 			trackBeacons();
 		})();
 
+
+		function showPopup (title, message) {
+			$ionicPopup.show({
+				template: 'Hi, You have arrived! Tap on "More details" for additional information about this area.',
+				title: 'Notification',
+				custom: true,
+				buttons: [
+					{ text: '',
+						type: 'button-cancel ion-close-circled'},
+					{
+						text: 'More Details',
+						type: 'button-more-details',
+						onTap: function(e) {
+							console.log('go to details page here')
+						}
+					}
+				]
+			});
+		}
 
 		function trackBeacons() {
 			var beaconSrvc = iBeaconSrvc.BeaconBuilder;
