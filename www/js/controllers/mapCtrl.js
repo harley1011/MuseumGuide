@@ -62,6 +62,7 @@ angular.module('controllers')
 							$scope.$broadcast('updateMapPointsBlink', {});
 							return true;
 						}else{
+							$scope.$broadcast('updateMapPointsBlink', {});
 							$scope.mapPoints[key].setCurrent(false);
 							return false;
 						}
