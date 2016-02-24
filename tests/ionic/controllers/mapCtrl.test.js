@@ -51,7 +51,15 @@ describe('controllers', function () {
                 iBeaconSrvc: iBeaconSrvc1,
                 JSONFactorySrvc: JSONFactorySrvc
             });
-            expect(scope.mapPoints.length).toBeGreaterThan(3);
+            expect(
+							(function(){
+								var count = 0;
+								for(var key in scope.mapPoints){
+									if(scope.mapPoints[key] instanceof GraphicalPoint)
+										count++;
+								}
+								return count;
+							})()).toBeGreaterThan(3);
         });
 
         it('should generate all the lines in the path', function () {
@@ -307,10 +315,6 @@ describe('controllers', function () {
                 },
                 "points": [1, 3, 5, 12] //int[] or string[] SHA1 hash
             }],
-        };
-
-        return {
-            mapData: mapData
         };
     }
 
