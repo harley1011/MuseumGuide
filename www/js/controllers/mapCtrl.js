@@ -50,19 +50,26 @@ angular.module('controllers')
 
 		function updateMapPointsBlink() {
 			var points = $scope.mapPoints,
-				key;
+					found = false,
+					key,
+					//Took it out of the forEach because creating a function for each point is hefty
+					loopFunc = function (points, key, beaconInrange, bkey) {
+						if (points[key].getBeaconID() &&
+								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
+								beaconInrange.beacon.proximity === "ProximityImmediate") {
+							$scope.mapPoints[key].setCurrent(true);
+							return true;
+						}
+						return false;
+					};
 
-			//Took it out of the forEach because creating a function for each point is hefty
-			var loopFunc = function (points, key, beaconInrange) {
-				if (points[key].getBeaconID() &&
-						points[key].getBeaconID() === beaconInrange.beacon.uuid &&
-						beaconInrange.beacon.proximity === "ProximityImmediate") {
-					$scope.mapPoints[key].setCurrent(true);
-				}
-			};
 			for(var key in points){
 				points[key].setCurrent(false);
-				angular.forEach($scope.mapBeacons, loopFunc(points, key, beaconInrange));
+				for(var bkey in $scope.mapBeacons){
+					found = loopFunc(points, key, $scope.mapBeacons[bkey], bkey);
+					if(found) break;
+				}
+				if(found) break;
 			}
 		}
 
