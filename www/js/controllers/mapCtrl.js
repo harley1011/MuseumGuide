@@ -62,7 +62,7 @@ angular.module('controllers')
 			};
 			for(var key in points){
 				points[key].setCurrent(false);
-				angular.forEach($scope.mapBeacons, loopFunc(beaconInrange, bkey));
+				angular.forEach($scope.mapBeacons, loopFunc(points, key, beaconInrange));
 			}
 		}
 
