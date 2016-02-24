@@ -22,7 +22,7 @@ angular.module('controllers')
 				$scope.storyLineID = storyLine.getUUID();
 				prepareData(mapData);
 			});
-			
+
 			prepareData(mapData);
 			trackBeacons();
 		})();
@@ -51,7 +51,6 @@ angular.module('controllers')
 		function updateMapPointsBlink() {
 			console.log("updateMapPointsBlink");
 			var points = $scope.mapPoints,
-					found = false,
 					key,
 					//Took it out of the forEach because creating a function for each point is hefty
 					loopFunc = function (points, key, beaconInrange, bkey) {
@@ -62,16 +61,16 @@ angular.module('controllers')
 							$scope.mapPoints[key].setCurrent(true);
 							$scope.$broadcast('updateMapPointsBlink', {});
 							return true;
+						}else{
+							$scope.mapPoints[key].setCurrent(false);
+							return false;
 						}
-						return false;
 					};
 			for(var key in points){
 				points[key].setCurrent(false);
 				for(var bkey in $scope.mapBeacons){
-					found = loopFunc(points, key, $scope.mapBeacons[bkey], bkey);
-					if(found) break;
+					loopFunc(points, key, $scope.mapBeacons[bkey], bkey);
 				}
-				if(found) break;
 			}
 		}
 
