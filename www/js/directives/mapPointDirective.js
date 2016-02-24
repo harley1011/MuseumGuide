@@ -11,8 +11,7 @@ angular.module('directives')
 
                 var pointDiv = element;
 
-
-				scope.$watch(function(){return scope.point;}, function(newValue, oldValue) {
+				scope.$on('updateMapPointsBlink', function() {
 					if(scope.point.isCurrent())
 						pointDiv.addClass('current-point');
 					else {

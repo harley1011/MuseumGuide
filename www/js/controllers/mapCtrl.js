@@ -1,5 +1,5 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
 		var mapData = {};
 
 		(function init() {
@@ -22,7 +22,7 @@ angular.module('controllers')
 				$scope.storyLineID = storyLine.getUUID();
 				prepareData(mapData);
 			});
-
+			
 			prepareData(mapData);
 			trackBeacons();
 		})();
@@ -49,20 +49,22 @@ angular.module('controllers')
 		}
 
 		function updateMapPointsBlink() {
+			console.log("updateMapPointsBlink");
 			var points = $scope.mapPoints,
 					found = false,
 					key,
 					//Took it out of the forEach because creating a function for each point is hefty
 					loopFunc = function (points, key, beaconInrange, bkey) {
+						console.log(points[key].getBeaconID());
 						if (points[key].getBeaconID() &&
 								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
-								beaconInrange.beacon.proximity === "ProximityImmediate") {
+							beaconInrange.beacon.proximity === "ProximityImmediate") {
 							$scope.mapPoints[key].setCurrent(true);
+							$scope.$broadcast('updateMapPointsBlink', {});
 							return true;
 						}
 						return false;
 					};
-
 			for(var key in points){
 				points[key].setCurrent(false);
 				for(var bkey in $scope.mapBeacons){
