@@ -33,7 +33,7 @@
     transition-duration: .5s;
     transition-property: left, right;
     z-index: 20;
-    height: 205px;
+    height: 153px;
     overflow-y: scroll;
     overflow-x: hidden;
     div:nth-child(odd) {
@@ -69,7 +69,7 @@
 }
 
 .bottom-container-bottom {
-    bottom: -205px !important;
+    bottom: -153px !important;
 }
 
 .bottom-container-top {
