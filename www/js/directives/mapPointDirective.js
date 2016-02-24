@@ -11,9 +11,8 @@ angular.module('directives')
 
                 var pointDiv = element;
 
-
-				scope.$watch(function(){return scope.point;}, function(newValue, oldValue) {
-					if(scope.point.current)
+				scope.$on('updateMapPointsBlink', function() {
+					if(scope.point.isCurrent())
 						pointDiv.addClass('current-point');
 					else {
 						pointDiv.removeClass('current-point');
@@ -21,17 +20,17 @@ angular.module('directives')
 					}
                 }, true);
 
-                if(scope.point.current)
+                if(scope.point.isCurrent())
                     pointDiv.addClass('current-point');
-
-                pointDiv.css('left', scope.point.left + '%');
-                pointDiv.css('top', scope.point.top + '%');
-                pointDiv.css('background-color', scope.point.color);
-                pointDiv.css('width', scope.point.diameterX + '%');
-                pointDiv.css('height', scope.point.diameterY + '%');
+                var options = scope.point.getDisplayOptions();
+                pointDiv.css('left', options.left + '%');
+                pointDiv.css('top', options.top + '%');
+                pointDiv.css('background-color', scope.point.getColor());
+                pointDiv.css('width', options.diameter.x + '%');
+                pointDiv.css('height', options.diameter.y + '%');
 
                 if(scope.showID)
-                    pointDiv.text(scope.point.id);
+                    pointDiv.text(scope.point.getUUID());
 
                 var test = function() {
                     if(pointDiv.hasClass('current-point') && pointDiv.hasClass('current-point-light')){

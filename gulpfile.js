@@ -6,9 +6,9 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-cssnano');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
-var sourcemaps = require('gulp-sourcemaps')
-var uglify = require('gulp-uglify')
-var ngAnnotate = require('gulp-ng-annotate')
+var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');
 
 var paths = {
   sass: ['./scss/ionic.app.scss', './scss/partials/*'],
@@ -16,10 +16,16 @@ var paths = {
   services: ['./www/js/services/*.js'],
   directives: ['./www/js/directives/*.js'],
   types: ['./www/js/types/*.js'],
-  jsadt: ['./www/lib/js-adt/test/global.ut.js', './www/lib/js-adt/utils/structures/map/shim/weakmap.proto.js']
+  enums: ['./www/js/enums/*.js'],
+  jsadt: [
+    './www/lib/js-adt/test/global.ut.js',
+    './www/lib/js-adt/utils/structures/map/shim/weakmap.proto.js',
+    'www/lib/js-adt/utils/enums/enum.js'
+  ],
+
 };
 
-gulp.task('default', ['sass', 'js-adt', 'controllers', 'services', 'directives', 'types']);
+gulp.task('default', ['sass', 'js-adt', 'enums', 'types', 'controllers', 'services', 'directives']);
 
 gulp.task('controllers', function (done) {
   gulp.src(['./www/js/controllerModule.js', paths.controllers[0]])
@@ -54,8 +60,19 @@ gulp.task('directives', function (done) {
       .on('end', done);
 });
 
+gulp.task('enums', function (done) {
+  gulp.src([paths.enums[0]])
+      .pipe(sourcemaps.init())
+      .pipe(concat('enums.js'))
+     // .pipe(ngAnnotate())
+      // .pipe(uglify())
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('./www/js'))
+      .on('end', done);
+});
+
 gulp.task('types', function (done) {
-  gulp.src(['./www/js/types.proto.js', paths.types[0]])
+  gulp.src([paths.types[0]])
       .pipe(sourcemaps.init())
       .pipe(concat('types.js'))
      // .pipe(ngAnnotate())
@@ -66,7 +83,7 @@ gulp.task('types', function (done) {
 });
 
 gulp.task('js-adt', function (done) {
-  gulp.src(['./www/js/types.proto.js', paths.jsadt[0], paths.jsadt[1]])
+  gulp.src([paths.jsadt[0], paths.jsadt[1], paths.jsadt[2]])
       .pipe(sourcemaps.init())
       .pipe(concat('js-adt.js'))
      // .pipe(ngAnnotate())
@@ -75,7 +92,6 @@ gulp.task('js-adt', function (done) {
       .pipe(gulp.dest('./www/js'))
       .on('end', done);
 });
-
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -90,10 +106,12 @@ gulp.task('sass', function(done) {
       .pipe(gulp.dest('./www/css/'))
       .on('end', done);
 });
+
 gulp.task('import-icons', function(){
   gulp.src('./www/img/icons/trips/')
-      .pipe()
-})
+      .pipe();
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.controllers, ['controllers']);

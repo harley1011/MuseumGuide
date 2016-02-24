@@ -6,10 +6,10 @@ angular.module('directives')
             link: function (scope, element, attrs) {
                 var mapDiv = element.find('div')[0];
                 var mapImageDiv = element.find('div')[1];
-                loadImage(scope.currentLevel.map.url);
+                loadImage(scope.currentFloor.getPlan().getURL());
 
-                scope.$watch('currentLevel', function(newValue, oldValue) {
-                    loadImage(scope.currentLevel.map.url);
+                scope.$watch('currentFloor', function(newValue, oldValue) {
+                    loadImage(scope.currentFloor.getPlan().getURL());
                 });
 
                 scope.zoomIn = function(){

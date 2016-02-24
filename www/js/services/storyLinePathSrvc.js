@@ -1,49 +1,39 @@
 angular.module('services')
   .service('storyLinePathSrvc', function() {
 
-    function getPointData(points) {
-      //copy necessary points information and index with the id
-      var pointsList = [];
-      angular.forEach(points, function(point, key) {
-        var pointData = [];
-        pointData.id = point.id;
-        pointData.x = point.coordinate.x;
-        pointData.y = point.coordinate.y;
-        pointData.z = point.coordinate.z;
-        pointData.visited = false;
-        pointData.minDistance = -1;
-        pointData.neighbours = point.neighbours;
-        pointsList["" + point.id] = pointData;
-      });
-
-      return pointsList;
-    }
-
-    function calculateMagnitude(point1, point2) {
-        return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
-    }
-
-    function dijkstra($scope, source, destination, points) {
-
-      //copy necessary points information and index with the id
-      var pointsList = getPointData(points);
-
+    function dijkstra(floorNum, source, destination, points) {
+      //console.log(source);
+      //console.log(source.getUUID());
+      //console.log(destination);
+      //console.log(destination.getUUID());
+      //console.log(points);
+      for(var key in points){
+        points[key].minDistance = -1;
+        points[key].visited = false;
+      }
+      destination.minDistance = -1;
+      destination.visited = false;
       //go through each story point of interest
       var path = [];
-      var current = pointsList["" + source.id];
+      var current = source;
       current.visited = true;
       current.minDistance = 0;
-      while (current.id != destination.id) {
-        var closestNeighbour = null;
-        var neighbours = current.neighbours;
-        //console.log("Current: " + current.id);
-        var allVisited = true;
+      var whilecount = 0, forcount = 0;
+      while (current.getUUID() !== destination.getUUID()) {
+        //console.log("whilecount:" + whilecount++ );
+        var closestNeighbour = null,
+            neighbours = current.getNeighbourIDs(),
+            allVisited = true;
         for (var i = 0; i < neighbours.length; i++) {
-          var neighbourID = neighbours[i];
-          var neighbour = pointsList["" + neighbourID];
+          //console.log("forcount:" + forcount++ );
+          var neighbourID = neighbours[i],
+          neighbour = points[neighbourID];
+          //console.log(neighbour.minDistance);
+          //console.log(neighbour.visited);
 
           //check if the destination was found
-          if (neighbourID == destination.id) {
+          if (neighbourID === destination.getUUID()) {
+            //console.log("Here's destination");
             closestNeighbour = neighbour;
             allVisited = false;
             //console.log("Found POI " + neighbour.id);
@@ -52,19 +42,16 @@ angular.module('services')
 
           //check if neighbour has already been visited
           if (!neighbour.visited) {
+            //console.log("!neightbour.visited");
             allVisited = false;
-            var distance = calculateMagnitude(current, neighbour) + current.minDistance;
-            if (distance < neighbour.minDistance || neighbour.minDistance == -1)
+            var distance = Vector.calculateMagnitude(current, neighbour) + current.minDistance;
+            if (distance < neighbour.minDistance || neighbour.minDistance == -1){
               neighbour.minDistance = distance;
-
-            if (closestNeighbour === null || neighbour.minDistance < closestNeighbour.minDistance)
+            }
+            if (closestNeighbour === null || neighbour.minDistance < closestNeighbour.minDistance){
               closestNeighbour = neighbour;
+            }
           }
-
-          var visitedString = "";
-          if (neighbour.visited)
-            visitedString = " (V)";
-          //console.log("Neighbour " + neighbour.id + visitedString + " minD " + neighbour.minDistance.toFixed(2));
         }
         current.visited = true;
 
@@ -73,7 +60,7 @@ angular.module('services')
           current = previousPath[0];
           //console.log("Dead end");
         } else {
-          if (current.z == $scope.currentLevel.number)
+          if (current.getCoordinates().z == floorNum)
             path.push([current, closestNeighbour, true]);
           else
             path.push([current, closestNeighbour, false]);
@@ -84,21 +71,15 @@ angular.module('services')
     }
 
     return {
-      calculatePercentage: function(pos, max) {
-        return 100 * pos / max;
-      },
-      storyLinePath: function($scope, storyLine, points) {
-        var storyPoints = storyLine.points;
-
-        //copy necessary points information and index with the id
-        var pointsList = getPointData(points);
+      storyLinePath: function(floorNum, storyLine, points) {
+        var storyPoints = storyLine.getPoints();
 
         //find first point of storyline on current level
-        var current = null;
-        var currentIndex = 0;
+        var current = null,
+            currentIndex = 0;
         for (var i = 0; i < storyPoints.length; i++) {
-          var point = pointsList["" + storyPoints[i]];
-          if (point.z == $scope.currentLevel.number) {
+          var point = points[storyPoints[i]];
+          if (point.getCoordinates().z == floorNum) {
             current = point;
             break;
           }
@@ -109,7 +90,7 @@ angular.module('services')
         if (current === null) return null;
 
         if (currentIndex !== 0) { //if not at the start of the storyline, we need to draw the line leading to the POI
-          current = pointsList["" + storyPoints[currentIndex - 1]];
+          current = points[storyPoints[currentIndex - 1]];
         } else {
           currentIndex++;
         }
@@ -118,8 +99,8 @@ angular.module('services')
         var path = [];
         for (var i = currentIndex; i < storyPoints.length; i++) {
           //console.log("Building path to POI " + storyPoints[i]);
-          var destination = pointsList["" + storyPoints[i]];
-          path = path.concat(dijkstra($scope, current, destination, points));
+          var destination = points[storyPoints[i]];
+          path = path.concat(dijkstra(floorNum, current, destination, points));
           current = destination;
         }
 
