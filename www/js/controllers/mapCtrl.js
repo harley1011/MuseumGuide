@@ -19,7 +19,6 @@ angular.module('controllers')
 			};
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
-				var mapData = mapDataSrvc.mapData;
 				$scope.storyLineID = storyLine.getUUID();
 				prepareData(mapData);
 			});
