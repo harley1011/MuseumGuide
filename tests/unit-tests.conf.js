@@ -18,6 +18,7 @@ module.exports = function (config) {
             '../www/lib/ionic/js/angular/angular.js',
 			'../www/lib/ionic/js/ionic.js',
             '../www/js/pluginsRsc/ng-cordova-beacon.js',
+            '../www/js/js-adt.js',
             '../www/js/*.js',
             '../tests/lib/angular-mocks/angular-mocks.js',
             '../tests/ionic/**/*.js',

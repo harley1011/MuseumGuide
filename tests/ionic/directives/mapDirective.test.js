@@ -16,7 +16,7 @@ describe('map directive tests', function () {
     describe('test cases for map directive test', function () {
         it('should produce the correct dom structure', function () {
             var scope = $rootScope.$new();
-            scope.currentLevel = testDataCurrentLevel();
+            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -25,7 +25,7 @@ describe('map directive tests', function () {
 
         it('should load the image in the background of the map-image div', function () {
             var scope = $rootScope.$new();
-            scope.currentLevel = testDataCurrentLevel();
+            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -37,7 +37,7 @@ describe('map directive tests', function () {
 
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
-            scope.currentLevel = testDataCurrentLevel();
+            scope.currentFloor = testDataCurrentFloor();
             scope.mapPoints = testDataMapPoints();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
@@ -50,8 +50,8 @@ describe('map directive tests', function () {
     });
 
 
-    function testDataCurrentLevel() {
-        return {
+    function testDataCurrentFloor() {
+        return new Floor({
             "number": 1, //int (1-5)
             "name": "Level One", //string
             "map": {
@@ -60,11 +60,15 @@ describe('map directive tests', function () {
                 "height": 1715 //int, px
             },
             "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
-        };
+        });
     }
 
     function testDataMapPoints() {
-        return [{
+        var dimensions = {
+          "width": 809,
+          "height": 1715
+        };
+        var points = [{
             "id": 1, //int or SHA1 hash
             "type": "poi", //string {"poi","fac","dir"}
             "subtype": "", //string {"washroom", "stairs", ...}
@@ -97,7 +101,7 @@ describe('map directive tests', function () {
         }, {
             "id": 3, //int or SHA1 hash
             "type": "dir", //string {"poi","fac","dir"}
-            "subtype": "", //string {"washroom", "stairs", ...}
+            "subtype": "intersection", //string {"washroom", "stairs", ...}
             "coordinate": {
                 "x": 260, //float, px
                 "y": 1516, //float, px
@@ -112,7 +116,7 @@ describe('map directive tests', function () {
         }, {
             "id": 4, //int or SHA1 hash
             "type": "dir", //string {"poi","fac","dir"}
-            "subtype": "", //string {"washroom", "stairs", ...}
+            "subtype": "intersection", //string {"washroom", "stairs", ...}
             "coordinate": {
                 "x": 274, //float, px
                 "y": 1485, //float, px
@@ -155,5 +159,14 @@ describe('map directive tests', function () {
                 "diameter": 12, //float, px
             },
         }];
+
+        return [
+          new GraphicalPoint(new PointOfInterest(points[0]), dimensions),
+          new GraphicalPoint(new PointOfInterest(points[1]), dimensions),
+          new GraphicalPoint(new PointOfTransition(points[2]), dimensions),
+          new GraphicalPoint(new PointOfInterest(points[3]), dimensions),
+          new GraphicalPoint(new PointOfInterest(points[4]), dimensions),
+          new GraphicalPoint(new PointOfInterest(points[5]), dimensions),
+        ];
     }
 });

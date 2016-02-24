@@ -1,5 +1,5 @@
 angular.module('services')
-	.service('mapDataSrvc', function () {
+	.service('transferProtocolSrvc', function () {
 		var mapData = {
 			"point": [{
 				"id": 1, //int or SHA1 hash
@@ -403,6 +403,14 @@ angular.module('services')
 		};
 
 		return {
-			mapData: mapData
+			download: function(url){},
+			read: function(url){
+				if(url === "mapData"){
+					return mapData;
+				}
+			},
+			exists: function(url, locally){},
+			hasChanged: function(url){ return false; },
+			monitor: function(url){},
 		};
 	});

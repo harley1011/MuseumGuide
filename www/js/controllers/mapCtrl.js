@@ -1,24 +1,25 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, mapDataSrvc) {
-		var mapData;
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
+		var mapData = {};
 
 		(function init() {
 			$translatePartialLoader.addPart('map');
 
-			mapData = mapDataSrvc.mapData; //get JSON map data
+			mapData.point = JSONFactorySrvc.load("points");
+			mapData.storyline = JSONFactorySrvc.load("storylines");
+			mapData.beacon = JSONFactorySrvc.load("beacons");
+			mapData.floor = JSONFactorySrvc.load("floors");
 
-			$scope.currentLevel = mapData.level[0];
+			$scope.currentFloor = mapData.floor[0];
 			$scope.showID = false; //set to true to show point IDs on the map
 
-			$scope.changeLevel = function (level) {
-				var mapData = mapDataSrvc.mapData;
-				$scope.currentLevel = mapData.level[level - 1];
+			$scope.changeFloor = function (z) {
+				$scope.currentFloor = mapData.floor[z - 1];
 				prepareData(mapData);
 			};
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
-				var mapData = mapDataSrvc.mapData;
-				$scope.storyLineID = storyLine.id;
+				$scope.storyLineID = storyLine.getUUID();
 				prepareData(mapData);
 			});
 
@@ -48,76 +49,93 @@ angular.module('controllers')
 		}
 
 		function updateMapPointsBlink() {
+			console.log("updateMapPointsBlink");
+			var points = $scope.mapPoints,
+					key,
+					//Took it out of the forEach because creating a function for each point is hefty
+					loopFunc = function (points, key, beaconInrange, bkey) {
+						console.log(points[key].getBeaconID());
+						if (points[key].getBeaconID() &&
+								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
+							beaconInrange.beacon.proximity === "ProximityImmediate") {
+							$scope.mapPoints[key].setCurrent(true);
+							$scope.$broadcast('updateMapPointsBlink', {});
+							return true;
+						}else{
+							$scope.$broadcast('updateMapPointsBlink', {});
+							$scope.mapPoints[key].setCurrent(false);
+							return false;
+						}
+					};
+			for(var key in points){
+				points[key].setCurrent(false);
+				for(var bkey in $scope.mapBeacons){
+					loopFunc(points, key, $scope.mapBeacons[bkey], bkey);
+				}
+			}
+		}
 
-			angular.forEach($scope.mapPoints, function (point, pkey) {
-				$scope.mapPoints[pkey].current = false;
+		function getCurrentStoryline(mapData){
+			var storyLines = mapData.storyline,
+				story;
 
-				angular.forEach($scope.mapBeacons, function (beaconInrange, bkey) {
-					if (point.beaconId === beaconInrange.beacon.uuid && beaconInrange.beacon.proximity === "ProximityImmediate") {
-						$scope.mapPoints[pkey].current = true;
+			//get storyline
+			if ($scope.storyLineID === undefined){
+				$scope.storyLineID = storyLines[0].getUUID();
+				story = storyLines[0];
+			}else{
+				for(var i = 0; i < storyLines.length; i++) {
+					if (storyLines[i].getUUID() === $scope.storyLineID){
+						story = storyLines[i];
 					}
-				});
+				}
+			}
+			return story;
+		}
 
-			});
+		function getStorylineAndFloorPoints(mapData, story, floorNum){
+			//store points of interest to be shown on the map
+			var allpoints = mapData.point,
+					currpoints = {},
+					storyPoints = story.getPoints(),
+					dimensions = $scope.currentFloor.getPlan().getDimensions(),
+					pt, gpt, coord, id;
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				currpoints[pt.getUUID()] = pt;
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					 (storyPoints.indexOf(pt.getUUID()) != -1 ||
+					 (pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					//Adding points to be shown
+					gpt = new GraphicalPoint(pt, dimensions);
+					$scope.mapPoints[pt.getUUID()] = gpt;
+				}
+			}
+			return currpoints;
 		}
 
 		function prepareData(mapData) {
-			var storyLines = mapData.storyline;
-			var story = null;
+			var floorNum = $scope.currentFloor.getNumber(),
+					story = getCurrentStoryline(mapData),
+					dimensions = $scope.currentFloor.getPlan().getDimensions(),
+					points, paths;
 
-			if ($scope.storyLineID == null)
-				$scope.storyLineID = storyLines[0].id;
-
-			var storyLineNum = $scope.storyLineID;
-
-			//get storyline
-			angular.forEach(storyLines, function (storyLine, key) {
-				if (storyLine.id == storyLineNum)
-					story = storyLine;
-			});
-
-			//get image dimensions
-			var imgDimensions = {
-				width: $scope.currentLevel.map.width,
-				height: $scope.currentLevel.map.height
-			};
-
-			//store points of interest to be shown on the map
-			$scope.mapPoints = [];
-			var points = mapData.point;
-			var storyPoints = story.points;
-
-			angular.forEach(points, function (point, key) {
-				if ((storyPoints.indexOf(point.id) != -1 && point.coordinate.z == $scope.currentLevel.number) ||
-					(point.type == "fac" && point.coordinate.z == $scope.currentLevel.number)) {
-
-					var diameter = point.style.diameter;
-					var current = false;
-
-					$scope.mapPoints.push({
-						id: point.id,
-						beaconId: point.beacon_id,
-						left: storyLinePathSrvc.toPercentage(point.coordinate.x - (diameter / 2), imgDimensions.width),
-						top: storyLinePathSrvc.toPercentage(point.coordinate.y - (diameter / 2), imgDimensions.height),
-						color: point.style.color,
-						diameterX: storyLinePathSrvc.toPercentage(diameter, imgDimensions.width),
-						diameterY: storyLinePathSrvc.toPercentage(diameter, imgDimensions.height),
-						current: current
-					});
-				}
-			});
-
-			var paths = storyLinePathSrvc.storyLinePath($scope, story, points);
+			//store points of current storyline intersected with floor points
+			$scope.mapPoints = {};
+			points = getStorylineAndFloorPoints(mapData, story, floorNum);
 
 			//store lines connecting points of interest
 			$scope.mapLines = [];
-			angular.forEach(paths, function (path, key) {
-				if (path[2]) { //if line needs to be drawn
-					var vector = storyLinePathSrvc.lineVector(path[0], path[1], imgDimensions);
-					vector.color = '#ff3333';
-					vector.height = '1px';
-					$scope.mapLines.push(vector);
+			paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
+			if(paths !== null){
+				for(var i = 0; i < paths.length; i++){
+					if (paths[i][2]) { //if line needs to be drawn
+						$scope.mapLines.push(new Vector(paths[i][0], paths[i][1], dimensions));
+					}
 				}
-			});
+			}
 		}
-	})
+	});

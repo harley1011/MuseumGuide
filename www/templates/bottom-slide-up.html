@@ -7,6 +7,6 @@
     </div>
 
     <div class="list no-margin sub-menu-list">
-        <div class="item" ng-repeat="storyline in storyLines" ng-click="choseStoryLine(storyline)">{{storyline.name.en_us}}</div>
+        <div class="item" ng-repeat="storyline in storyLines" ng-click="choseStoryLine(storyline)">{{storyline.getTitle().en_us}}</div>
     </div>
 </div>
