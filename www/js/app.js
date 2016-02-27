@@ -101,6 +101,15 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 					controller: 'langCtrl'
 				}
 			}
+		})
+    .state('tab.details', {
+			url: '/details',
+			views: {
+				'tab-settings': {
+					templateUrl: 'templates/details.html'
+					
+				}
+			}
 		});
 
 
