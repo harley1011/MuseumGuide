@@ -106,8 +106,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 			url: '/details',
 			views: {
 				'tab-settings': {
-					templateUrl: 'templates/details.html'
-					
+					templateUrl: 'templates/details.html'	
 				}
 			}
 		});
