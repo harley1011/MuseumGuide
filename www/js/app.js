@@ -105,8 +105,9 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
     .state('tab.details', {
 			url: '/details',
 			views: {
-				'tab-settings': {
-					templateUrl: 'templates/details.html'	
+				'tab-one': {
+					templateUrl: 'templates/details.html',
+                    controller: 'mapCtrl'
 				}
 			}
 		});

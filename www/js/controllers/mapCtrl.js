@@ -1,5 +1,5 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $state) {
 		var mapData = {};
 
 		(function init() {
@@ -17,6 +17,10 @@ angular.module('controllers')
 				$scope.currentFloor = mapData.floor[z - 1];
 				prepareData(mapData);
 			};
+            
+            $scope.getDetails = function () {
+                $state.go('tab.details');
+            };
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				$scope.storyLineID = storyLine.getUUID();
