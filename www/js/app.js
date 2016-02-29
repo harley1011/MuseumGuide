@@ -87,7 +87,7 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 			views: {
 				'tab-one': {
 					templateUrl: 'templates/details.html',
-                    controller: 'mapCtrl'
+                    controller: 'detailsCtrl'
 				}
 			}
 		})

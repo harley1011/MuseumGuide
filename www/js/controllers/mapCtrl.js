@@ -1,10 +1,6 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $state, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $ionicPopup) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $ionicPopup) {
 		var mapData = {};
-
-        $scope.getDetails = function () {
-                $state.go('tab.details');
-        };
     
 		(function init() {
 			$translatePartialLoader.addPart('map');
