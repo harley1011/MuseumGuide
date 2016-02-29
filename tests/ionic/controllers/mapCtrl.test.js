@@ -2,7 +2,8 @@ describe('controllers', function () {
     var storyLinePathSrvc,
         iBeaconSrvc1,
         scope,
-        JSONFactorySrvc;
+        JSONFactorySrvc,
+        $ionicPopup;
 
     beforeEach(module('controllers')); // load controllers module from project
     beforeEach(module('pascalprecht.translate'));
@@ -30,17 +31,25 @@ describe('controllers', function () {
                 }
             });
 
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+
         });
 
     });
 
 
-    beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope) {
+    beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope, _$ionicPopup_) {
         scope = $rootScope.$new();
         $controller = _$controller_;
         storyLinePathSrvc = _storyLinePathSrvc_;
         iBeaconSrvc1 = iBeaconSrvc;
         JSONFactorySrvc = _JSONFactorySrvc_;
+        $ionicPopup = _$ionicPopup_;
     }));
 
     describe('map controller test', function () {
@@ -49,7 +58,8 @@ describe('controllers', function () {
                 $scope: scope,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc
+                JSONFactorySrvc: JSONFactorySrvc,
+                $ionicPopup: $ionicPopup
             });
             expect(
 							(function(){
@@ -68,7 +78,8 @@ describe('controllers', function () {
                 $scope: scope,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc
+                JSONFactorySrvc: JSONFactorySrvc,
+                $ionicPopup: $ionicPopup
             });
             expect(scope.mapLines.length).toBeGreaterThan(4);
         });

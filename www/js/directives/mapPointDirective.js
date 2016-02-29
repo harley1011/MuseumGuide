@@ -11,13 +11,13 @@ angular.module('directives')
 
                 var pointDiv = element;
 
-				scope.$on('updateMapPointsBlink', function() {
-					if(scope.point.isCurrent())
-						pointDiv.addClass('current-point');
-					else {
-						pointDiv.removeClass('current-point');
-						pointDiv.removeClass('current-point-light');
-					}
+        				scope.$on('updateMapPointsBlink', function() {
+        					if(scope.point.isCurrent())
+        						pointDiv.addClass('current-point');
+        					else {
+        						pointDiv.removeClass('current-point');
+        						pointDiv.removeClass('current-point-light');
+        					}
                 }, true);
 
                 if(scope.point.isCurrent())

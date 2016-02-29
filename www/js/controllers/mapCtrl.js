@@ -1,5 +1,5 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
+	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $ionicPopup) {
 		var mapData = {};
 
 		(function init() {
@@ -14,12 +14,14 @@ angular.module('controllers')
 			$scope.showID = false; //set to true to show point IDs on the map
 
 			$scope.changeFloor = function (z) {
+				showPopup(null,null);
 				$scope.currentFloor = mapData.floor[z - 1];
 				prepareData(mapData);
 			};
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				$scope.storyLineID = storyLine.getUUID();
+				$scope.alreadyPopup = [];
 				prepareData(mapData);
 			});
 
@@ -27,6 +29,34 @@ angular.module('controllers')
 			trackBeacons();
 		})();
 
+
+		function showPopup (title, message) {
+			var titleDisplayed = 'Notification';
+			var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
+
+			if(title !== null && title !== "")
+				titleDisplayed = title;
+
+			if(message !== null && message !== "")
+				messageDisplayed = message;
+
+			$ionicPopup.show({
+				template: messageDisplayed,
+				title: titleDisplayed,
+				custom: true,
+				buttons: [
+					{ text: '',
+						type: 'button-cancel ion-close-circled'},
+					{
+						text: 'More Details',
+						type: 'button-more-details',
+						onTap: function(e) {
+							console.log('go to details page here')
+						}
+					}
+				]
+			});
+		}
 
 		function trackBeacons() {
 			var beaconSrvc = iBeaconSrvc.BeaconBuilder;
@@ -50,6 +80,9 @@ angular.module('controllers')
 
 		function updateMapPointsBlink() {
 			console.log("updateMapPointsBlink");
+			if($scope.alreadyPopup === undefined)
+				$scope.alreadyPopup = [];
+
 			var points = $scope.mapPoints,
 					key,
 					//Took it out of the forEach because creating a function for each point is hefty
@@ -59,6 +92,10 @@ angular.module('controllers')
 								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
 							beaconInrange.beacon.proximity === "ProximityImmediate") {
 							$scope.mapPoints[key].setCurrent(true);
+							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
+								$scope.alreadyPopup.push(points[key].getUUID());
+								showPopup(points[key].getUUID(),points[key].getUUID());
+							}
 							$scope.$broadcast('updateMapPointsBlink', {});
 							return true;
 						}else{
