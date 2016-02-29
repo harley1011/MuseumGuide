@@ -2,6 +2,7 @@ describe('controllers', function () {
     var storyLinePathSrvc,
         iBeaconSrvc1,
         scope,
+        $state,
         JSONFactorySrvc,
         $ionicPopup;
 
@@ -37,14 +38,21 @@ describe('controllers', function () {
                     }
                 }
             });
+            $provide.service('$state', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
 
         });
 
     });
 
 
-    beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope, _$ionicPopup_) {
+    beforeEach(inject(function (_$controller_, _$state_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope, _$ionicPopup_) {
         scope = $rootScope.$new();
+        $state = _$state_;
         $controller = _$controller_;
         storyLinePathSrvc = _storyLinePathSrvc_;
         iBeaconSrvc1 = iBeaconSrvc;
@@ -56,6 +64,7 @@ describe('controllers', function () {
         it('should generate at least the points of interest', function () {
             var controller = $controller('mapCtrl', {
                 $scope: scope,
+                $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
                 JSONFactorySrvc: JSONFactorySrvc,
@@ -76,6 +85,7 @@ describe('controllers', function () {
             var mockMapData = mapData();
             var controller = $controller('mapCtrl', {
                 $scope: scope,
+                $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
                 JSONFactorySrvc: JSONFactorySrvc,
