@@ -1,7 +1,11 @@
 angular.module('controllers')
-	.controller('mapCtrl', function ($scope, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval, $state) {
+	.controller('mapCtrl', function ($scope, $state, $translatePartialLoader, iBeaconSrvc, storyLinePathSrvc, JSONFactorySrvc, $interval) {
 		var mapData = {};
 
+        $scope.getDetails = function () {
+                $state.go('tab.details');
+        };
+    
 		(function init() {
 			$translatePartialLoader.addPart('map');
 
@@ -18,10 +22,7 @@ angular.module('controllers')
 				prepareData(mapData);
 			};
             
-            $scope.getDetails = function () {
-                $state.go('tab.details');
-            };
-
+           
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				$scope.storyLineID = storyLine.getUUID();
 				prepareData(mapData);
