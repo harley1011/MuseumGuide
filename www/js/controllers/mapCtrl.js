@@ -14,7 +14,6 @@ angular.module('controllers')
 			$scope.showID = false; //set to true to show point IDs on the map
 
 			$scope.changeFloor = function (z) {
-				showPopup(null,null);
 				$scope.currentFloor = mapData.floor[z - 1];
 				prepareData(mapData);
 			};
