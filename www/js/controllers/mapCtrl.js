@@ -21,6 +21,7 @@ angular.module('controllers')
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				$scope.storyLineID = storyLine.getUUID();
+				$scope.alreadyPopup = [];
 				prepareData(mapData);
 			});
 
@@ -98,10 +99,6 @@ angular.module('controllers')
 							$scope.$broadcast('updateMapPointsBlink', {});
 							return true;
 						}else{
-							if($scope.alreadyPopup.indexOf(points[key].getUUID()) != -1) {
-								//remove the poi from the already popped up list
-								$scope.alreadyPopup.splice($scope.alreadyPopup.indexOf(points[key].getUUID()), 1);
-							}
 							$scope.$broadcast('updateMapPointsBlink', {});
 							$scope.mapPoints[key].setCurrent(false);
 							return false;
