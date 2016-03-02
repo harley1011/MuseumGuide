@@ -3,7 +3,7 @@ angular.module('services')
     var medias = {},
       mediaType = new MediaType(),
       lang = new Language();
-    return {
+    var mediaSrvc = {
       getMedia: function(uuid) {
         if(typeof uuid === 'string'){
           return medias[uuid] === undefined ? []: [medias[uuid]];
@@ -47,4 +47,6 @@ angular.module('services')
         }
       }
     };
+    mediaSrvc.loadMedia();
+    return mediaSrvc;
   });
