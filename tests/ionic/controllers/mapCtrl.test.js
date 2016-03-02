@@ -2,7 +2,9 @@ describe('controllers', function () {
     var storyLinePathSrvc,
         iBeaconSrvc1,
         scope,
-        JSONFactorySrvc;
+        $state,
+        JSONFactorySrvc,
+        $ionicPopup;
 
     beforeEach(module('controllers')); // load controllers module from project
     beforeEach(module('pascalprecht.translate'));
@@ -30,26 +32,43 @@ describe('controllers', function () {
                 }
             });
 
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+            $provide.service('$state', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+
         });
 
     });
 
 
-    beforeEach(inject(function (_$controller_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope) {
+    beforeEach(inject(function (_$controller_, _$state_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope, _$ionicPopup_) {
         scope = $rootScope.$new();
+        $state = _$state_;
         $controller = _$controller_;
         storyLinePathSrvc = _storyLinePathSrvc_;
         iBeaconSrvc1 = iBeaconSrvc;
         JSONFactorySrvc = _JSONFactorySrvc_;
+        $ionicPopup = _$ionicPopup_;
     }));
 
     describe('map controller test', function () {
         it('should generate at least the points of interest', function () {
             var controller = $controller('mapCtrl', {
                 $scope: scope,
+                $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc
+                JSONFactorySrvc: JSONFactorySrvc,
+                $ionicPopup: $ionicPopup
             });
             expect(
 							(function(){
@@ -66,9 +85,11 @@ describe('controllers', function () {
             var mockMapData = mapData();
             var controller = $controller('mapCtrl', {
                 $scope: scope,
+                $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc
+                JSONFactorySrvc: JSONFactorySrvc,
+                $ionicPopup: $ionicPopup
             });
             expect(scope.mapLines.length).toBeGreaterThan(4);
         });

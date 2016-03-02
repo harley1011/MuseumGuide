@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ngCordovaBeacon', 'ngPinchZoom', 'pascalprecht.translate'])
+angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ngCordovaBeacon', 'ngPinchZoom', 'pascalprecht.translate', 'ui.router'])
 
 .run(function ($ionicPlatform, $rootScope, $translate) {
 	$ionicPlatform.ready(function () {
@@ -79,6 +79,15 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 				'tab-one': {
 					templateUrl: 'templates/level.html',
 					controller: 'mapCtrl'
+				}
+			}
+		})
+    .state('tab.details', {
+			url: '/details',
+			views: {
+				'tab-one': {
+					templateUrl: 'templates/details.html',
+                    controller: 'detailsCtrl'
 				}
 			}
 		})
