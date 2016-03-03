@@ -53582,6 +53582,20 @@ var POPUP_TPL =
     '</div>' +
   '</div>';
 
+
+  var POPUP_TPL_CUSTOM =
+      '<div class="popup-container" ng-class="cssClass">' +
+        '<div class="popup">' +
+            '<div class="popup-head">' +
+              '<h3 class="popup-title" ng-bind-html="title"></h3>' +
+      '</div>' +
+      '<div class="popup-body">' +
+      '</div>' +
+      '<div class="popup-button-notification" ng-show="buttons.length">' +
+        '<button ng-repeat="button in buttons" ng-click="$buttonTapped(button, $event)"  ng-class="button.type || \'button-default\'" ng-bind-html="button.text"></button>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
 /**
  * @ngdoc service
  * @name $ionicPopup
@@ -53854,12 +53868,22 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
     options = extend({
       scope: null,
       title: '',
-      buttons: []
+      buttons: [],
+      custom: null
     }, options || {});
 
     var self = {};
     self.scope = (options.scope || $rootScope).$new();
-    self.element = jqLite(POPUP_TPL);
+
+      if (options.custom)
+      {
+          self.element = jqLite(POPUP_TPL_CUSTOM);
+      }
+      else
+      {
+          self.element = jqLite(POPUP_TPL);
+      }
+
     self.responseDeferred = $q.defer();
 
     $ionicBody.get().appendChild(self.element[0]);

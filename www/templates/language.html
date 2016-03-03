@@ -3,9 +3,15 @@
         {{ 'SET_LANGVIEW' | translate }}
     </ion-nav-title>
     <ion-content>
-        <ion-list>
-            <ion-item ng-click="changeToEnglish()">English</ion-item>
-            <ion-item ng-click="changeToFrench()">Français</ion-item>
+        <ion-list ng-model="english">
+            <ion-item class="item-icon-left" ng-click="changeToEnglish()">
+                <i class="icon ion-ios-checkmark-empty" ng-show="isEnglish()"></i>
+                English
+            </ion-item>
+            <ion-item class="item-icon-left" ng-click="changeToFrench()">
+                <i class="icon ion-ios-checkmark-empty" ng-show="!isEnglish()"></i>
+                Français
+            </ion-item>
         </ion-list>
     </ion-content>
 </ion-view>
