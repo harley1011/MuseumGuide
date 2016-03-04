@@ -2,6 +2,8 @@ describe('map directive tests', function () {
     var $rootScope,
         $compile;
 
+    beforeEach(module('services'));
+
     beforeEach(module('directives')); // load controllers module from project
 
     beforeEach(module('my.templates'));
