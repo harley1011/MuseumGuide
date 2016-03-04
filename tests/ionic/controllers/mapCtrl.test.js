@@ -50,13 +50,12 @@ describe('controllers', function () {
     });
 
 
-    beforeEach(inject(function (_$controller_, _$state_, _storyLinePathSrvc_, iBeaconSrvc, _JSONFactorySrvc_, $rootScope, _$ionicPopup_) {
+    beforeEach(inject(function (_$controller_, _$state_, _storyLinePathSrvc_, iBeaconSrvc, $rootScope, _$ionicPopup_) {
         scope = $rootScope.$new();
         $state = _$state_;
         $controller = _$controller_;
         storyLinePathSrvc = _storyLinePathSrvc_;
         iBeaconSrvc1 = iBeaconSrvc;
-        JSONFactorySrvc = _JSONFactorySrvc_;
         $ionicPopup = _$ionicPopup_;
     }));
 
@@ -67,7 +66,6 @@ describe('controllers', function () {
                 $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc,
                 $ionicPopup: $ionicPopup
             });
             expect(
@@ -82,13 +80,11 @@ describe('controllers', function () {
         });
 
         it('should generate all the lines in the path', function () {
-            var mockMapData = mapData();
             var controller = $controller('mapCtrl', {
                 $scope: scope,
                 $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                JSONFactorySrvc: JSONFactorySrvc,
                 $ionicPopup: $ionicPopup
             });
             expect(scope.mapLines.length).toBeGreaterThan(4);

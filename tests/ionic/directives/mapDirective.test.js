@@ -16,7 +16,6 @@ describe('map directive tests', function () {
     describe('test cases for map directive test', function () {
         it('should produce the correct dom structure', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -25,7 +24,6 @@ describe('map directive tests', function () {
 
         it('should load the image in the background of the map-image div', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -37,7 +35,6 @@ describe('map directive tests', function () {
 
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             scope.mapPoints = testDataMapPoints();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
