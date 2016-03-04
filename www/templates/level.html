@@ -15,15 +15,8 @@
     </ion-header-bar>
     <!-- Audio -->
     <ion-header-bar class=" bar-subheader map-audio-container">
-        <div class="input-group" ng-controller="audioCtrl">
-            <div class="item range">
-                <i class="icon ion-play" ng-click="audio.paused ? audio.play() : audio.pause()"></i>
-                <i class="icon ion-stop" ng-click="audio.restart()"></i>
-                <input class="ng-valid ng-dirty ng-touched ng-valid-parse" type="range" min="0" max="1" step="0.01" ng-model="audio.progress">
-            </div>
-        </div>
+        <map-audio></map-audio>
     </ion-header-bar>
-
     <!-- Map -->
     <ion-content scroll="false" overflow-scroll="true" position-bars-and-content>
         <map></map>
