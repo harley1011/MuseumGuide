@@ -1,10 +1,12 @@
+
 <div class="map-div">
-  <div class="map-image" style="margin:auto;" ng-pinch-zoom max-scale="1">
-    <div class="line-div" map-line ng-repeat="mapLine in mapLines" line="mapLine"></div>
-    <div class="point-div" map-point ng-repeat="mapPoint in mapPoints" point="mapPoint"></div>
-  </div>
-  <div class="zoom-buttons">
+    <div class="map-image" style="margin:auto;" ng-pinch-zoom max-scale="1">
+        <div class="line-div" map-line ng-repeat="mapLine in mapLines" line="mapLine"></div>
+        <div class="point-div" map-point ng-click="getDetails()" ng-repeat="mapPoint in mapPoints" point="mapPoint"></div>
+    </div>
+</div>
+
+<div class="zoom-buttons">
     <button ng-click="zoomIn()" class="zoom-button-plus">+</button>
     <button ng-click="zoomOut()" class="zoom-button-minus">-</button>
-  </div>
 </div>

@@ -83,7 +83,7 @@ a.level-mark {
 }
 .bar-header-levels {
     height          : 35px !important;
-    background-color: $level;
+    background-color: $energized;
 }
 a.selected-level {
   border: 1px solid #FFF;
@@ -105,5 +105,5 @@ a.selected-level {
 // Map audio
 .map-audio-container {
     background-color: $mapAudio;
-    opacity: 0.7;
+    opacity: 0.8;
 }
