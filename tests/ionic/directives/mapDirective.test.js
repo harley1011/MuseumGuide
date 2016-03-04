@@ -2,15 +2,21 @@ describe('map directive tests', function () {
     var $rootScope,
         $compile;
 
-    beforeEach(module('services'));
-
     beforeEach(module('directives')); // load controllers module from project
-
+    beforeEach(module('services'));
     beforeEach(module('my.templates'));
 
-    beforeEach(inject(function (_$rootScope_, _$compile_, $injector) {
+    beforeEach(inject(function (_$rootScope_, _$compile_, $injector,
+      _storylineSrvc_, _mediaSrvc_, _pointSrvc_, _floorSrvc_, _textSrvc_) {
         $rootScope = _$rootScope_;
+        storylineSrvc = _storylineSrvc_;
+        mediaSrvc = _mediaSrvc_;
+        pointSrvc = _pointSrvc_;
+        floorSrvc = _floorSrvc_;
+        textSrvc = _textSrvc_;
         $compile = _$compile_;
+
+        floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([1])[0]);
     }));
 
 
@@ -37,7 +43,6 @@ describe('map directive tests', function () {
 
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
-            scope.mapPoints = testDataMapPoints();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
