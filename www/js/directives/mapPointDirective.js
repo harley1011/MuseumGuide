@@ -1,5 +1,5 @@
 angular.module('directives')
-    .directive('mapPoint', function() {
+    .directive('mapPoint', function(pointSrvc) {
         return {
             restrict: 'A',
             scope: {
@@ -12,7 +12,7 @@ angular.module('directives')
                 var pointDiv = element;
 
         				scope.$on('updateMapPointsBlink', function() {
-        					if(scope.point.isCurrent())
+        					if(pointSrvc.isCurrent(scope.point.getUUID()))
         						pointDiv.addClass('current-point');
         					else {
         						pointDiv.removeClass('current-point');
@@ -20,7 +20,7 @@ angular.module('directives')
         					}
                 }, true);
 
-                if(scope.point.isCurrent())
+                if(pointSrvc.isCurrent(scope.point.getUUID()))
                     pointDiv.addClass('current-point');
                 var options = scope.point.getDisplayOptions();
                 pointDiv.css('left', options.left + '%');
