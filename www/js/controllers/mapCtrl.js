@@ -21,7 +21,7 @@ angular.module('controllers')
 			$scope.getDetails = function () {
 	            $state.go('tab.details');
 	        };
-			
+
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				$scope.storyLineID = storyLine.getUUID();
 				$scope.alreadyPopup = [];
@@ -90,12 +90,15 @@ angular.module('controllers')
 						if (points[key].getBeaconID() &&
 								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
 							beaconInrange.beacon.proximity === "ProximityImmediate") {
+
 							$scope.mapPoints[key].setCurrent(true);
+							$scope.$broadcast('updateMapPointsBlink', {});
+
 							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
 								$scope.alreadyPopup.push(points[key].getUUID());
 								showPopup(points[key].getUUID(),points[key].getUUID());
 							}
-							$scope.$broadcast('updateMapPointsBlink', {});
+
 							return true;
 						}else{
 							$scope.$broadcast('updateMapPointsBlink', {});
