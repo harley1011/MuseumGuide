@@ -5,6 +5,11 @@ angular.module('directives')
             templateUrl: 'templates/audio.html',
             link: function(scope, element, attrs) {
                 scope.audio = ngAudio.load("../www/audio/bird.mp3"); // returns NgAudioObject
+
+                element.on('$destroy',  function(){
+                    console.log("should stop");
+                    scope.audio.stop();
+                });
             }
         };
     });
