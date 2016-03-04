@@ -528,7 +528,7 @@ angular.module('services')
       download: function(url) {},
       read: function(url) {
         if (url === "mapData") {
-          return mapData;
+          return JSON.parse(JSON.stringify(mapData));
         }
       },
       exists: function(url, locally) {},

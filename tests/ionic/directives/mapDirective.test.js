@@ -6,6 +6,37 @@ describe('map directive tests', function () {
     beforeEach(module('services'));
     beforeEach(module('my.templates'));
 
+    beforeEach(function () {
+        module('services');
+        module(function ($provide) {
+            $provide.service('iBeaconSrvc', function () {
+                this.BeaconBuilder = {
+                    registerBeaconRegions: function (identifier, uuid) {
+                    },
+                    init: function () {
+
+                    },
+                    notifyEvent: ""
+                };
+            });
+
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+            $provide.service('$state', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+
+        });
+
+    });
+
     beforeEach(inject(function (_$rootScope_, _$compile_, $injector,
       _storylineSrvc_, _mediaSrvc_, _pointSrvc_, _floorSrvc_, _textSrvc_) {
         $rootScope = _$rootScope_;
@@ -53,20 +84,6 @@ describe('map directive tests', function () {
 
         });
     });
-
-
-    function testDataCurrentFloor() {
-        return new Floor({
-            "number": 1, //int (1-5)
-            "name": "Level One", //string
-            "map": {
-                "url": "img/level-one.png", //string, url
-                "width": 809, //int, px
-                "height": 1715 //int, px
-            },
-            "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
-        });
-    }
 
     function testDataMapPoints() {
         var dimensions = {

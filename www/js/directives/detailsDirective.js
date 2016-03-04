@@ -13,7 +13,6 @@ angular.module('directives')
           var point = pointSrvc.getCurrentPoint(),
               story = storylineSrvc.getCurrentStoryline(),
               texts, media, uuids;
-
           texts = textSrvc.getTexts(
           {
             uuid: point.getUUID(),
