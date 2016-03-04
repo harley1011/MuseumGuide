@@ -14,10 +14,10 @@ angular.module('directives')
 
                 scope.zoomIn = function(){
                     $rootScope.$broadcast('zoomIn');
-                }
+                };
                 scope.zoomOut = function(){
                     $rootScope.$broadcast('zoomOut');
-                }
+                };
 
                 function loadImage(url){
                     var img = new Image();
@@ -28,9 +28,9 @@ angular.module('directives')
                         angular.element(mapImageDiv).css('width', mapDiv.offsetHeight * (img.width / img.height) + 'px');
                         angular.element(mapImageDiv).css('background-image', 'url(' + url + ')');
                         $rootScope.$broadcast('mapLoaded');
-                    }
+                    };
                 }
             }
 
-        }
+        };
     });
