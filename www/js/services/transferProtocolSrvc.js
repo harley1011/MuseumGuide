@@ -6,7 +6,7 @@ angular.module('services')
       "id": 1,
       "name": {
         "en_us": "Story 1",
-        "fr_ca": "",
+        "fr_ca": "Histoire 1",
       },
       "description": {
         "en_us": "This is the first story.",
@@ -20,7 +20,7 @@ angular.module('services')
       "id": 2,
       "name": {
         "en_us": "Story 2",
-        "fr_ca": "",
+        "fr_ca": "Histoire 2",
       },
       "description": {
         "en_us": "This is the second story.",
@@ -48,7 +48,7 @@ angular.module('services')
       "id": 4,
       "name": {
         "en_us": "Story 4",
-        "fr_ca": "",
+        "fr_ca": "Histoire 4",
       },
       "description": {
         "en_us": "This is the fourth story.",
@@ -62,7 +62,7 @@ angular.module('services')
       "id": 5,
       "name": {
         "en_us": "Story 5",
-        "fr_ca": "",
+        "fr_ca": "Histoire 5",
       },
       "description": {
         "en_us": "This is the fifth story.",
@@ -76,7 +76,7 @@ angular.module('services')
       "id": 6,
       "name": {
         "en_us": "Story 6",
-        "fr_ca": "",
+        "fr_ca": "Histoire 6",
       },
       "description": {
         "en_us": "This is the sixth story.",
@@ -101,6 +101,36 @@ angular.module('services')
         "color": "#00008B",
         "diameter": 40,
       },
+      "storyPoint": [
+        {
+          "storylineID": 1,
+          "title": [{
+            "language": "en",
+            "title": "Nipper: Searching for his master's voice"
+          }, {
+            "language": "fr",
+            "title": "Nipper: À la recherche de la voix de son maître"
+          }],
+          "description": [{
+            "language": "en",
+            "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
+          }, {
+            "language": "fr",
+            "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
+          }],
+          "media": {
+            "image": [{
+              "path": "img/1a.png",
+              "language": "en",
+              "caption": "2. Floor, stop at bottom of stairs getting into building 5a from the MOEB, the visitor is being informed that he/she is walking through the women's and men's coat room, then passing through the showroom."
+            }, {
+              "path": "img/1a.png",
+              "language": "fr",
+              "caption": "Deuxième étage, en s'arrêtant à la base des marches donnant sur le bâtiment 5a à partir du MOEB: Le visiteur est informé qu'il/elle/ille se situ.e dans ce qui composait autrefois le vestiaire pour les hommes et pour les femmes. Il/elle/ille est informé.e que la salle suivant servait autrefois en tant que showroom."
+            }]
+          }
+        }
+      ]
     }, {
       "type": "dir",
       "subtype": "",
@@ -354,8 +384,9 @@ angular.module('services')
         "diameter": 40,
       },
     }];
-
+    var alreadyDefinedStoryPoints;
     for (var i = 0; i < 19; i++) {
+      alreadyDefinedStoryPoints = [];
       pt = oldPoints[i];
       pt.id = i + 1;
       pt.media = {
@@ -389,9 +420,15 @@ angular.module('services')
         "language": "fr",
         "description": "Description du Point " + (i + 1)
       }];
-      pt.storyPoint = [];
+      if(pt.storyPoint === undefined){
+        pt.storyPoint = [];
+      }else{
+        for(var k = 0 ; k < pt.storyPoint.length ; k++){
+          alreadyDefinedStoryPoints.push(pt.storyPoint[k].storylineID);
+        }
+      }
       for (var j = 0; j < storylines.length; j++) {
-        if (storylines[j].points.indexOf(i + 1) !== -1) {
+        if (storylines[j].points.indexOf(i + 1) !== -1 && alreadyDefinedStoryPoints.indexOf(storylines[j].id) === -1) {
           pt.storyPoint.push({
             "storylineID": storylines[j].id,
             "title": [{

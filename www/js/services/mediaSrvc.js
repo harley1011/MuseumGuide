@@ -1,8 +1,8 @@
 angular.module('services')
   .service('mediaSrvc', function(JSONFactorySrvc) {
     var medias = {},
-      mediaType = new MediaType(),
-      lang = new Language();
+      lang = new Language(),
+      mediaType = new MediaType();
     var mediaSrvc = {
       getMedia: function(uuid) {
         if(typeof uuid === 'string'){
@@ -23,10 +23,11 @@ angular.module('services')
         var arr = [];
         for (var i = 0 ; i < uuids.length; i++) {
           if (medias[uuids[i]] instanceof Media &&
-            mediaType.getTypeValue(medias[uuids[i]].getLanguage()) === language) {
+            lang.getTypeValue(medias[uuids[i]].getLanguage()) === language) {
             arr.push(medias[uuids[i]]);
           }
         }
+        return arr;
       },
       getMediaByType: function(uuids, type) {
         var arr = [];
@@ -36,6 +37,7 @@ angular.module('services')
             arr.push(medias[uuids[i]]);
           }
         }
+        return arr;
       },
       loadMedia: function() {
         var arr = JSONFactorySrvc.load("media"),

@@ -15,7 +15,8 @@ angular.module('services')
         storylines: [],
         storylinePoints: {},
         floors: [],
-        media: []
+        media: [],
+        texts: {},
       },
       getPoints: function(transmission) {
         var raw = transmission.point,
@@ -30,6 +31,7 @@ angular.module('services')
               case "poi":
                 this.extractBeaconFromPoint(raw[i]);
                 this.extractMediaFromPoint(raw[i]);
+                this.extractTextFromPoint(raw[i]);
                 this.compileStorylinePoints(raw[i]);
                 pt = new PointOfInterest(raw[i]);
                 points.push(pt);
@@ -85,6 +87,30 @@ angular.module('services')
           }
         }
         return uuids;
+      },
+      extractTextFromPoint: function(raw) {
+        var texts = {};
+        //extract media uuids from point and assign to storyline "none"
+        texts.none = this.extractTextFromTextProperties(raw);
+        if (raw.storyPoint) {
+          for (var i = 0; i < raw.storyPoint.length; i++) {
+            //extract media uuids from point and assign to storyline ID
+            texts[raw.storyPoint[i].storylineID] = this.extractTextFromTextProperties(raw.storyPoint[i]);
+            raw.storyPoint[i].title = null;
+            raw.storyPoint[i].description = null;
+          }
+        }
+        this.store.texts[raw.id] = texts;
+      },
+      extractTextFromTextProperties: function(raw){
+        var title = {}, description = {};
+        for(var i = 0 ; i < raw.title.length ; i++){
+          title[raw.title[i].language] = raw.title[i].title;
+        }
+        for(var i = 0 ; i < raw.description.length ; i++){
+          description[raw.description[i].language] = raw.description[i].description;
+        }
+        return {title: title, description: description};
       },
       compileStorylinePoints: function(raw) {
         if (raw.storyPoint) {
@@ -156,6 +182,18 @@ angular.module('services')
         } else {
           return this.store.media.slice();
         }
+      },
+      getTexts: function(transmission) {
+        var count = 0;
+        for(key in this.store.texts){
+          count++;
+        }
+        if (count === 0) {
+          this.getPoints(transmission);
+          return this.store.texts;
+        } else {
+          return this.store.texts;
+        }
       }
     };
     return {
@@ -176,6 +214,9 @@ angular.module('services')
             break;
           case "media":
             q = Factory.getMedia(tps.read("mapData"));
+            break;
+          case "texts":
+            q = Factory.getTexts(tps.read("mapData"));
             break;
           default:
             q = undefined;
