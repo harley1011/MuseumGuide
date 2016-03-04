@@ -43,6 +43,7 @@ describe('map directive tests', function () {
 
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
+            scope.mapPoints = testDataMapPoints();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
