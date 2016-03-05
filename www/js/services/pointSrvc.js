@@ -1,7 +1,7 @@
 angular.module('services')
   .service('pointSrvc', function(JSONFactorySrvc) {
     var points = {},
-        currentPoint;
+        currentPoint, beaconInRangePoint;
     var pointSrvc = {
       getPointsByUUID: function(uuids){
         var arr = [];
@@ -21,6 +21,24 @@ angular.module('services')
         if(point instanceof Point){
           currentPoint = point.getUUID();
         }
+      },
+      getPointInRange: function() {
+        return beaconInRangePoint !== undefined? points[beaconInRangePoint] : undefined;
+      },
+      setPointInRange: function(point) {
+        if(point instanceof Point){
+          beaconInRangePoint = point.getUUID();
+        }
+      },
+      isInRange: function(uuid) {
+        return beaconInRangePoint !== undefined? beaconInRangePoint === uuid : false;
+      },
+      getNonGraphicalPoint: function(point){
+        if(point instanceof GraphicalPoint){
+					return points[point.getUUID()] !== undefined ? points[point.getUUID()] : undefined;
+				}else if(point instanceof Point){
+					return point;
+				}
       },
       getPoints: function() {
         var arr = [];

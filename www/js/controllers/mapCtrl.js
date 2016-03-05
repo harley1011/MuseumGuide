@@ -19,11 +19,11 @@ angular.module('controllers')
 			};
 
 			$scope.setCurrentPoint = function(point){
-				if(point instanceof GraphicalPoint){
-					pointSrvc.setCurrentPoint(pointSrvc.getPointsByUUID([point.getUUID()])[0]);
-				}else if(point instanceof Point){
-					pointSrvc.setCurrentPoint(point);
-				}
+				pointSrvc.setCurrentPoint(pointSrvc.getNonGraphicalPoint(point));
+			};
+
+			$scope.setPointInRange = function(point){
+				pointSrvc.setPointInRange(pointSrvc.getNonGraphicalPoint(point));
 			};
 
 			$scope.getDetails = function() {
@@ -90,7 +90,6 @@ angular.module('controllers')
 		}
 
 		function updateMapPointsBlink() {
-			console.log("updateMapPointsBlink");
 			if($scope.alreadyPopup === undefined)
 				$scope.alreadyPopup = [];
 
@@ -98,11 +97,10 @@ angular.module('controllers')
 					key,
 					//Took it out of the forEach because creating a function for each point is hefty
 					loopFunc = function (points, key, beaconInrange, bkey) {
-						console.log(points[key].getBeaconID());
 						if (points[key].getBeaconID() &&
 								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
 							beaconInrange.beacon.proximity === "ProximityImmediate") {
-							$scope.setCurrentPoint($scope.mapPoints[key]);
+							$scope.setPointInRange($scope.mapPoints[key]);
 							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
 								$scope.alreadyPopup.push(points[key].getUUID());
 								showPopup(points[key].getUUID(),points[key].getUUID());
