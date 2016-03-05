@@ -1,11 +1,12 @@
 .zoom-buttons {
     position: absolute !important;
-    right   : 10px !important;
-    bottom  : 10px !important;
+    right   : 20px !important;
+    bottom  : 50px !important;
 }
 .zoom-button-plus {
     display         : block;
     background-color: $calm;
+    opacity: 0.8;
     border-radius   : 25px 25px 0 0;
     font-size       : 19pt !important;
     width           : 34px;
@@ -15,6 +16,7 @@
 .zoom-button-minus {
     display         : block;
     background-color: $calm;
+    opacity: 0.8;
     border-radius   : 0 0 25px 25px;
     font-size       : 21pt !important;
     width           : 34px;
