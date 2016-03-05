@@ -140,6 +140,9 @@ angular.module('controllers')
 		}
 
 		function getStorylineAndFloorPoints(story, floorNum){
+			console.log("Should stop playing");
+			$scope.$broadcast('stopBeaconPlayer', {});
+
 			//store points of interest to be shown on the map
 			var allpoints = pointSrvc.getPoints(),
 					currpoints = {},

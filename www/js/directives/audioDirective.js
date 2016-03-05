@@ -48,6 +48,13 @@ angular.module('directives')
                 });
 
                 /**
+                 * @event stopBeaconPlayer Stop the map's background music
+                 */
+                scope.$on('stopBeaconPlayer', function(event, data) {
+                    audioPlayer.stopBeaconPlayer();
+                });
+
+                /**
                  * list of player location attrs.player
                  */
                 audioPlayer.location = {
@@ -67,13 +74,20 @@ angular.module('directives')
                 };
 
                 /**
-                 * Stop iBeacon player
+                 * Pause iBeacon player
                  */
                 audioPlayer.pauseBeaconPlayer = function() {
-                    console.log(audioPlayer.isBeaconPlayer() + attrs.player);
                     if (scope.audio && audioPlayer.isBeaconPlayer()) {
-                        console.log('Im in pause beacon player');
                         scope.audio.pause();
+                    }
+                };
+
+                /**
+                 * Stop iBeacon player
+                 */
+                audioPlayer.stopBeaconPlayer = function() {
+                    if (scope.audio && audioPlayer.isBeaconPlayer()) {
+                        scope.audio.stop();
                     }
                 };
 
