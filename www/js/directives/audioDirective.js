@@ -1,5 +1,5 @@
 angular.module('directives')
-    .directive('mapAudio', function(ngAudio) {
+    .directive('mapAudio', function(ngAudio,$rootScope) {
         return {
             restrict: 'AE',
             templateUrl: 'templates/audio.html',
@@ -12,7 +12,7 @@ angular.module('directives')
                  */
                 scope.audioClicked = function() {
                     if (audioPlayer.isBeaconPlayer() === false){
-                        scope.$emit('pauseBeaconPlayer', {});
+                        $rootScope.beaconAudio.pause();
                     }
 
                     if (scope.audio.paused) {
@@ -32,7 +32,7 @@ angular.module('directives')
                 });
 
                 /**
-                 * @event stopMapAudioPlayer Stops the map's background music
+                 * @event playBeaconPlayer Play the map's background music
                  */
                 scope.$on('playBeaconPlayer', function(event, data) {
                     //if(data.path){
@@ -41,7 +41,7 @@ angular.module('directives')
                 });
 
                 /**
-                 * @event pauseBeaconPlayer Stops the map's background music
+                 * @event pauseBeaconPlayer Pause the map's background music
                  */
                 scope.$on('pauseBeaconPlayer', function(event, data) {
                     audioPlayer.pauseBeaconPlayer();
@@ -62,6 +62,7 @@ angular.module('directives')
                     if (audioPlayer.isBeaconPlayer()) {
                         scope.audio = ngAudio.load("../www/audio/bird.mp3"); // returns NgAudioObject
                         scope.audio.play();
+                        $rootScope.beaconAudio = scope.audio;
                     }
                 };
 
