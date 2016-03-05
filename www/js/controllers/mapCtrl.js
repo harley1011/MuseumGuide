@@ -112,6 +112,7 @@ angular.module('controllers')
 							return false;
 						}
 					};
+			pointSrvc.setPointOutOfRange();
 			for(var key in points){
 				for(var bkey in $scope.mapBeacons){
 					loopFunc(points, key, $scope.mapBeacons[bkey], bkey);

@@ -30,6 +30,9 @@ angular.module('services')
           beaconInRangePoint = point.getUUID();
         }
       },
+      setPointOutOfRange: function() {
+        beaconInRangePoint = undefined;
+      },
       isInRange: function(uuid) {
         return beaconInRangePoint !== undefined? beaconInRangePoint === uuid : false;
       },
