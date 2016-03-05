@@ -99,7 +99,7 @@ angular.module('controllers')
 					loopFunc = function (points, key, beaconInrange, bkey) {
 						if (points[key].getBeaconID() &&
 								points[key].getBeaconID() === beaconInrange.beacon.uuid &&
-							beaconInrange.beacon.proximity === "ProximityImmediate") {
+							beaconInrange.beacon.proximity === iBeaconSrvc.BeaconBuilder.proximity.immediate) {
 							$scope.setPointInRange($scope.mapPoints[key]);
 							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
 								$scope.alreadyPopup.push(points[key].getUUID());
