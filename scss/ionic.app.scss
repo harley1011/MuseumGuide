@@ -44,15 +44,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     text-align: center;
     width: 64%;
     height: 10%;
-    margin: 52% auto 0;
+    margin: 46% auto 0;
 }
 
 .start-logo-box {
     background-color: rgba(255, 255, 255, 0.7);
     outline: 3px solid #FFF;
     outline-offset: 8px;
+    padding-top: 40px;
 }
 
 .start-button {
+    margin-top: 15px;
     width: 90px;
 }
