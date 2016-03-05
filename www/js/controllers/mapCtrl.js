@@ -71,7 +71,6 @@ angular.module('controllers')
 
 			//Listen to proximity change events
 			$scope.$on(beaconSrvc.notifyEvent, function (event, value) {
-
 				$scope.$apply(function(){
 					$scope.mapBeacons = value;
 					updateMapPointsBlink();
@@ -94,9 +93,11 @@ angular.module('controllers')
 							$scope.mapPoints[key].setCurrent(true);
 							$scope.$broadcast('updateMapPointsBlink', {});
 
+
 							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
 								$scope.alreadyPopup.push(points[key].getUUID());
 								showPopup(points[key].getUUID(),points[key].getUUID());
+								$scope.$broadcast('playBeaconPlayer', {});
 							}
 
 							return true;
