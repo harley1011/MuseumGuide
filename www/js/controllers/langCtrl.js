@@ -1,7 +1,7 @@
 angular.module('controllers')
-.controller('langCtrl', function($scope, $state, $translate, $ionicHistory) {
+.controller('langCtrl', function($scope, $rootScope, $state, $translate, $ionicHistory) {
     $scope.currentLanguage = $translate.use() == 'en' ? 'en' : 'fr';
-    
+
     $scope.english = function () {
 		$scope.changeLanguage("en");
         $state.go('tab.level');
@@ -24,8 +24,9 @@ angular.module('controllers')
 
   $scope.changeLanguage = function (langKey) {
     $translate.use(langKey);
+    $rootScope.$broadcast('changeLanguage', langKey);
   };
-    
+
     $scope.isEnglish = function() {
         if($scope.currentLanguage == 'en') {
             return true;
