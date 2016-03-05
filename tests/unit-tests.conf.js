@@ -38,7 +38,12 @@ module.exports = function (config) {
         preprocessors: {
             '../www/js/controllers/*.js': ['coverage'],
             '../www/js/services/*.js': ['coverage'],
-            '../www/js/*.js': ['coverage'],
+            '../www/js/app.js': ['coverage'],
+            '../www/js/controllers.js': ['coverage'],
+            '../www/js/directives.js': ['coverage'],
+            '../www/js/enums.js': ['coverage'],
+            '../www/js/services.js': ['coverage'],
+            '../www/js/types.js': ['coverage'],
             "../www/templates/*.html": ["ng-html2js"]
         },
 

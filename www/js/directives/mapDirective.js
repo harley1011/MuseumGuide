@@ -1,15 +1,15 @@
 angular.module('directives')
-    .directive('map', function ($rootScope) {
+    .directive('map', function ($rootScope, floorSrvc) {
         return {
             restrict: 'E',
             templateUrl: 'templates/map.html',
             link: function (scope, element, attrs) {
                 var mapDiv = element.find('div')[0];
                 var mapImageDiv = element.find('div')[1];
-                loadImage(scope.currentFloor.getPlan().getURL());
+                loadImage(floorSrvc.getCurrentFloor().getPlan().getURL());
 
                 scope.$watch('currentFloor', function(newValue, oldValue) {
-                    loadImage(scope.currentFloor.getPlan().getURL());
+                    loadImage(floorSrvc.getCurrentFloor().getPlan().getURL());
                 });
 
                 scope.zoomIn = function(){
@@ -31,6 +31,5 @@ angular.module('directives')
                     };
                 }
             }
-
         };
     });

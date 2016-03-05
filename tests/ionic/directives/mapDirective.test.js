@@ -3,12 +3,51 @@ describe('map directive tests', function () {
         $compile;
 
     beforeEach(module('directives')); // load controllers module from project
-
+    beforeEach(module('services'));
     beforeEach(module('my.templates'));
 
-    beforeEach(inject(function (_$rootScope_, _$compile_, $injector) {
+    beforeEach(function () {
+        module('services');
+        module(function ($provide) {
+            $provide.service('iBeaconSrvc', function () {
+                this.BeaconBuilder = {
+                    registerBeaconRegions: function (identifier, uuid) {
+                    },
+                    init: function () {
+
+                    },
+                    notifyEvent: ""
+                };
+            });
+
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+            $provide.service('$state', function () {
+                return {
+                    show: function () {
+                    }
+                }
+            });
+
+        });
+
+    });
+
+    beforeEach(inject(function (_$rootScope_, _$compile_, $injector,
+      _storylineSrvc_, _mediaSrvc_, _pointSrvc_, _floorSrvc_, _textSrvc_) {
         $rootScope = _$rootScope_;
+        storylineSrvc = _storylineSrvc_;
+        mediaSrvc = _mediaSrvc_;
+        pointSrvc = _pointSrvc_;
+        floorSrvc = _floorSrvc_;
+        textSrvc = _textSrvc_;
         $compile = _$compile_;
+
+        floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([1])[0]);
     }));
 
 
@@ -16,7 +55,6 @@ describe('map directive tests', function () {
     describe('test cases for map directive test', function () {
         it('should produce the correct dom structure', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -25,7 +63,6 @@ describe('map directive tests', function () {
 
         it('should load the image in the background of the map-image div', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
@@ -37,7 +74,6 @@ describe('map directive tests', function () {
 
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
-            scope.currentFloor = testDataCurrentFloor();
             scope.mapPoints = testDataMapPoints();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
@@ -48,20 +84,6 @@ describe('map directive tests', function () {
 
         });
     });
-
-
-    function testDataCurrentFloor() {
-        return new Floor({
-            "number": 1, //int (1-5)
-            "name": "Level One", //string
-            "map": {
-                "url": "img/level-one.png", //string, url
-                "width": 809, //int, px
-                "height": 1715 //int, px
-            },
-            "points": [1, 2, 3, 4] //int[] or string[] SHA1 hash
-        });
-    }
 
     function testDataMapPoints() {
         var dimensions = {

@@ -13,7 +13,7 @@ var PointOfInterest = (function (){
       neighbours: raw.neighbours,
       title: null,
       description: null,
-      media: null
+      media: typeof raw.media === "object" ? raw.media : null
     };
     privateData.set(this, privateMembers);
   }
@@ -63,6 +63,10 @@ var PointOfInterest = (function (){
 
   PointOfInterest.prototype.getMedia = function(){
     return privateData.get(this).media;
+  };
+
+  PointOfInterest.prototype.getMediaForStoryline = function(storyline){
+    return privateData.get(this).media[storyline];
   };
 
   //@Override
