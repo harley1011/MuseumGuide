@@ -1,5 +1,5 @@
 angular.module('directives')
-    .directive('mapAudio', function(ngAudio,$rootScope) {
+    .directive('mapAudio', function(ngAudio, $rootScope) {
         return {
             restrict: 'AE',
             templateUrl: 'templates/audio.html',
@@ -11,8 +11,11 @@ angular.module('directives')
                  * Handles audio click from directive
                  */
                 scope.audioClicked = function() {
-                    if (audioPlayer.isBeaconPlayer() === false){
-                        $rootScope.beaconAudio.pause();
+                    console.log(scope.audio);
+                    if (audioPlayer.isBeaconPlayer() === false) {
+                        if ($rootScope.beaconAudio) {
+                            $rootScope.beaconAudio.pause();
+                        }
                     }
 
                     if (scope.audio.paused) {
