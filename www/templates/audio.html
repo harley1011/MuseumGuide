@@ -1,9 +1,9 @@
 
     <div class="input-group ">
         <div class="range">
-            <i class="icon ion-play light" ng-click="audioClicked()"></i>
+            <i class="icon ion-play light audio-play-pause" ng-click="audioClicked()"></i>
             <input class="ng-valid ng-dirty ng-touched ng-valid-parse" type="range" min="0" max="1" step="0.01" ng-model="audio.progress">
             <div class="light">{{audio.currentTime | trackTime}}</div>
-          &nbsp; <i class="button-cancel ion-close-circled"></i>
+            <i style="border-left: 3px solid #FFF; margin-left:10px; padding:10px" class="icon ion-close-circled light" ng-click="hideBeaconPlayer()"> </i>
         </div>
     </div>

@@ -8,6 +8,7 @@ angular.module('controllers')
 			//dead feature, can only be triggered by modifying the code
 			$scope.showID = false;
 			$scope.mapPoints = {};
+			$scope.hideBeaconPlayerContainer = true;
 
 			$scope.changeFloor = function (z) {
 				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
@@ -28,6 +29,11 @@ angular.module('controllers')
 
 			$scope.getDetails = function() {
 					$state.go('tab.details');
+			};
+
+			$scope.hideBeaconPlayer = function(){
+				$scope.hideBeaconPlayerContainer = true;
+				$scope.$broadcast('stopBeaconPlayer', {});
 			};
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
@@ -104,6 +110,8 @@ angular.module('controllers')
 							if($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
 								$scope.alreadyPopup.push(points[key].getUUID());
 								showPopup(points[key].getUUID(),points[key].getUUID());
+
+								$scope.hideBeaconPlayerContainer = false; // could be moved to directive
 								$scope.$broadcast('playBeaconPlayer', {});
 							}
 							$scope.$broadcast('updateMapPointsBlink', {});
@@ -140,7 +148,6 @@ angular.module('controllers')
 		}
 
 		function getStorylineAndFloorPoints(story, floorNum){
-			console.log("Should stop playing");
 			$scope.$broadcast('stopBeaconPlayer', {});
 
 			//store points of interest to be shown on the map
