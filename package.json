@@ -30,7 +30,7 @@
     "test": "gulp; karma start tests/unit-tests.conf.js --single-run",
     "test-win": "gulp & karma start tests/unit-tests.conf.js --single-run",
     "build-apk": "npm test; ionic build android;ionic run android ",
-    "build-apk-win": "npm run-script test-win; ionic build android; ionic run android "
+    "build-apk-win": "npm run-script test-win & ionic build android & ionic run android "
   },
   "cordovaPlugins": [
     "cordova-plugin-device",

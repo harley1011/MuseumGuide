@@ -2,6 +2,7 @@
     <ion-nav-title>
         {{ 'MAP' | translate }}
     </ion-nav-title>
+    <!-- Level -->
     <ion-header-bar class="bar-subheader bar-energized bar-header-levels">
         <div class="level-div">
             <span class="level-mark level-title" translate="FLOOR"></span>
@@ -10,10 +11,16 @@
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 3}" class="level-mark" ng-click="changeFloor(3)">3</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 4}" class="level-mark" ng-click="changeFloor(4)">4</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 5}" class="level-mark" ng-click="changeFloor(5)">5</a>
-
         </div>
+        
     </ion-header-bar>
-    <ion-content scroll="false" overflow-scroll="true">
+    <!-- Audio -->
+    <ion-header-bar class=" bar-subheader map-audio-container" ng-hide="hideBeaconPlayerContainer" position-bars-and-content>
+        <map-audio player="beaconPlayer"></map-audio>
+    </ion-header-bar>
+
+    <!-- Map -->
+    <ion-content scroll="false" overflow-scroll="true" >
         <map></map>
     </ion-content>
 </ion-view>
