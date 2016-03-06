@@ -15,14 +15,12 @@
         </div>
     </ion-header-bar>
     <!-- Audio -->
-    <ion-header-bar class=" bar-subheader map-audio-container" ng-hide="hideBeaconPlayerContainer">
+    <ion-header-bar class=" bar-subheader map-audio-container" ng-hide="hideBeaconPlayerContainer" position-bars-and-content>
         <map-audio player="beaconPlayer"></map-audio>
     </ion-header-bar>
-    
-    <!-- Map -->
-    <div ng-hide="hideBeaconPlayerContainer" position-bars-and-content></div>
-    <ion-content scroll="false" overflow-scroll="true" >
 
+    <!-- Map -->
+    <ion-content scroll="false" overflow-scroll="true" >
         <map></map>
     </ion-content>
 </ion-view>

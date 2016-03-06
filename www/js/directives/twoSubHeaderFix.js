@@ -8,7 +8,7 @@ angular.module('directives')
 
       link: function(scope, element) {
 
-        var offsetTop = 43;
+        var offsetTop = -26;
 
         // Get the parent node of the ion-content
         var parent = angular.element(element[0].parentNode);

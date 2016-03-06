@@ -20,10 +20,9 @@ angular.module('directives')
 
                     if(attrs.player === audioPlayer.location.detailPlayer){
                         element[0].querySelector('.audio-play-pause').classList.remove('light');
+                        element[0].querySelector('.audio-player-time').classList.remove('light');
                     }
                 })();
-
-
 
                 /**
                  * Handles audio click from directive
