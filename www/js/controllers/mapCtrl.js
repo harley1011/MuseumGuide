@@ -8,7 +8,7 @@ angular.module('controllers')
 			//dead feature, can only be triggered by modifying the code
 			$scope.showID = false;
 			$scope.mapPoints = {};
-			$scope.hideBeaconPlayerContainer = false;
+			$scope.hideBeaconPlayerContainer = true;
 
 			$scope.changeFloor = function (z) {
 				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
