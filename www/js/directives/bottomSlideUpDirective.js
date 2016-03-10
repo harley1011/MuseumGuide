@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup, $translate) {
 
 		return {
 			require: ['^ionTabs'],
@@ -30,14 +30,26 @@ angular.module('directives')
 				};
 
 				scope.choseStoryLine = function (storyLine) {
+					console.log(storyLine.getTitle());
 
-					showPopup(null, null);
+					showPopup(null, null, storyLine);
 				};
 
 
-				function showPopup (title, message) {
-					var titleDisplayed = 'Notification';
-					var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
+				function showPopup (title, message, storyLine) {
+					var titleDisplayed;
+					var messageDisplayed;
+					if ($translate.use() == 'fr')
+					{
+						titleDisplayed = storyLine.getTitle().fr_ca;
+						messageDisplayed = storyLine.getDescription().fr_ca;
+					}
+					else
+					{
+						titleDisplayed = storyLine.getTitle().en_us;
+						messageDisplayed = storyLine.getDescription().en_us;
+					}
+
 
 					if(title !== null && title !== "")
 						titleDisplayed = title;
