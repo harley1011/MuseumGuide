@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup) {
 
 		return {
 			require: ['^ionTabs'],
@@ -30,9 +30,41 @@ angular.module('directives')
 				};
 
 				scope.choseStoryLine = function (storyLine) {
-					tabsCtrl.closeMenuIfOpen();
-					$rootScope.$broadcast('storyLineChosen', storyLine);
+
+					showPopup(null, null);
 				};
+
+
+				function showPopup (title, message) {
+					var titleDisplayed = 'Notification';
+					var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
+
+					if(title !== null && title !== "")
+						titleDisplayed = title;
+
+					if(message !== null && message !== "")
+						messageDisplayed = message;
+
+					$ionicPopup.show({
+						template: messageDisplayed,
+						title: titleDisplayed,
+						custom: true,
+						buttons: [
+							{ text: '',
+								type: 'button-cancel ion-close-circled'},
+							{
+								text: 'Chose Storyline',
+								type: 'button-more-details',
+								onTap: function(e) {
+									tabsCtrl.closeMenuIfOpen();
+									$rootScope.$broadcast('storyLineChosen', storyLine);
+								}
+							}
+						]
+					});
+				}
 			}
+
+
 		};
 	});
