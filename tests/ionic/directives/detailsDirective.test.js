@@ -21,7 +21,14 @@ describe('details directive tests', function () {
                   }
                 };
             });
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function(data){
+                    }
+                };
+            });
         });
+
     });
 
     beforeEach(inject(function (_$rootScope_, _$compile_, $injector, _$translate_,
