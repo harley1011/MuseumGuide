@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup, $translate) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup, $translate, storylineSrvc) {
 
 		return {
 			require: ['^ionTabs'],
@@ -31,62 +31,12 @@ angular.module('directives')
 
 				scope.choseStoryLine = function (storyLine) {
 					console.log(storyLine.getDescription());
-
-					showPopup(null, null, storyLine);
+					storylineSrvc.storylinePopup(storyLine, $translate.use(), function(){
+						tabsCtrl.closeMenuIfOpen();
+						$rootScope.$broadcast('storyLineChosen', storyLine);
+					})
 				};
 
-
-				function showPopup (title, message, storyLine) {
-					var titleDisplayed;
-					var messageDisplayed = "";
-					var walkTime = storyLine.getWalkingTime();
-					var numFloors = storyLine.getNumFloors();
-					var thumbnail = storyLine.getThumbnail();
-
-					if ($translate.use() == 'fr')
-					{
-						titleDisplayed = storyLine.getTitle().fr_ca;
-						messageDisplayed = storyLine.getDescription().fr_ca;
-					}
-					else
-					{
-						titleDisplayed = storyLine.getTitle().en_us;
-						messageDisplayed = storyLine.getDescription().en_us;
-					}
-
-					if(title !== null && title !== "")
-						titleDisplayed = title;
-
-					if(message !== null && message !== "")
-						messageDisplayed = message;
-
-					if (walkTime && walkTime.length > 0)
-					{
-						messageDisplayed += '</br></br> Walking time is around ' + walkTime + ' minutes'
-					}
-					if (numFloors && numFloors.length > 0)
-					{
-						messageDisplayed += '</br></br>' + numFloors + ' floors covered'
-					}
-
-					$ionicPopup.show({
-						template: messageDisplayed,
-						title: titleDisplayed,
-						custom: true,
-						buttons: [
-							{ text: '',
-								type: 'button-cancel ion-close-circled'},
-							{
-								text: 'Chose Storyline',
-								type: 'button-more-details',
-								onTap: function(e) {
-									tabsCtrl.closeMenuIfOpen();
-									$rootScope.$broadcast('storyLineChosen', storyLine);
-								}
-							}
-						]
-					});
-				}
 			}
 
 
