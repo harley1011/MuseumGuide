@@ -54,7 +54,6 @@ angular.module('directives')
 						messageDisplayed = storyLine.getDescription().en_us;
 					}
 
-
 					if(title !== null && title !== "")
 						titleDisplayed = title;
 
@@ -70,8 +69,6 @@ angular.module('directives')
 						messageDisplayed += '</br></br>' + numFloors + ' floors covered'
 					}
 
-
-					console.log(messageDisplayed);
 					$ionicPopup.show({
 						template: messageDisplayed,
 						title: titleDisplayed,
