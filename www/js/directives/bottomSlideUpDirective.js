@@ -30,7 +30,7 @@ angular.module('directives')
 				};
 
 				scope.choseStoryLine = function (storyLine) {
-					console.log(storyLine.getTitle());
+					console.log(storyLine.getDescription());
 
 					showPopup(null, null, storyLine);
 				};
@@ -38,7 +38,11 @@ angular.module('directives')
 
 				function showPopup (title, message, storyLine) {
 					var titleDisplayed;
-					var messageDisplayed;
+					var messageDisplayed = "";
+					var walkTime = storyLine.getWalkingTime();
+					var numFloors = storyLine.getNumFloors();
+					var thumbnail = storyLine.getThumbnail();
+
 					if ($translate.use() == 'fr')
 					{
 						titleDisplayed = storyLine.getTitle().fr_ca;
@@ -57,6 +61,17 @@ angular.module('directives')
 					if(message !== null && message !== "")
 						messageDisplayed = message;
 
+					if (walkTime && walkTime.length > 0)
+					{
+						messageDisplayed += '</br></br> Walking time is around ' + walkTime + ' minutes'
+					}
+					if (numFloors && numFloors.length > 0)
+					{
+						messageDisplayed += '</br></br>' + numFloors + ' floors covered'
+					}
+
+
+					console.log(messageDisplayed);
 					$ionicPopup.show({
 						template: messageDisplayed,
 						title: titleDisplayed,
