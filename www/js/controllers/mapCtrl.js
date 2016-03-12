@@ -12,7 +12,7 @@ angular.module('controllers')
 
 			$scope.changeFloor = function (z) {
 				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
-				prepareData();
+				executeMode();
 			};
 
 			$scope.getCurrentFloorNumber = function () {
@@ -79,15 +79,7 @@ angular.module('controllers')
 				$scope.mode = 1;
 			}
 
-			if($scope.mode === 1)
-				//storyline mode
-				prepareData();
-			else if($scope.mode === 2)
-				//free roaming mode
-				find();
-			else if($scope.mode === 3)
-				//find facilities
-				findFacilities();
+			executeMode();
 			trackBeacons();
 		})();
 
@@ -217,6 +209,18 @@ angular.module('controllers')
 			return currpoints;
 		}
 
+		function executeMode(){
+			if($scope.mode === 1)
+				//storyline mode
+				prepareData();
+			else if($scope.mode === 2)
+				//free roaming mode
+				find();
+			else if($scope.mode === 3)
+				//find facilities
+				findFacilities();
+		}
+
 		function prepareData() {
 			if($scope.mode !== 1)
 				return;
@@ -246,6 +250,24 @@ angular.module('controllers')
 			console.log("Find!!");
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
+			var allpoints = pointSrvc.getPoints(),
+					floorNum = floorSrvc.getCurrentFloor().getNumber(),
+					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
+					pt, coord, gpt;
+
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					((pt instanceof PointOfInterest) ||
+					(pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					//Adding points to be shown
+					gpt = new GraphicalPoint(pt, dimensions);
+					$scope.mapPoints[pt.getUUID()] = gpt;
+				}
+			}
 		};
 
 		function findFacilities() {
