@@ -30,8 +30,8 @@ angular.module('directives')
 					$rootScope.$broadcast('storyLineChosen', storyLine);
 				};
 
-				scope.find = function () {
-					$rootScope.$broadcast('find');
+				scope.freeRoam = function () {
+					$rootScope.$broadcast('freeRoam');
 				};
 
 				scope.findFacilities = function () {

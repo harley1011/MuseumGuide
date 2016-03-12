@@ -55,9 +55,9 @@ angular.module('controllers')
 				prepareData();
 			});
 
-			$scope.$on('find', function (event, storyLine) {
+			$scope.$on('freeRoam', function (event, storyLine) {
 				$scope.mode = 2;
-				find();
+				freeRoam();
 			});
 
 			$scope.$on('findFacilities', function (event, storyLine) {
@@ -215,7 +215,7 @@ angular.module('controllers')
 				prepareData();
 			else if($scope.mode === 2)
 				//free roaming mode
-				find();
+				freeRoam();
 			else if($scope.mode === 3)
 				//find facilities
 				findFacilities();
@@ -246,8 +246,7 @@ angular.module('controllers')
 			}
 		}
 
-		function find() {
-			console.log("Find!!");
+		function freeRoam() {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
 			var allpoints = pointSrvc.getPoints(),
@@ -271,7 +270,6 @@ angular.module('controllers')
 		};
 
 		function findFacilities() {
-			console.log("Find Facilities!!");
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
 		};
