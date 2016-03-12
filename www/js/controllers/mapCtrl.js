@@ -36,6 +36,10 @@ angular.module('controllers')
 				$scope.$broadcast('stopBeaconPlayer', {});
 			};
 
+			$scope.getTitle = function(){
+				return "Hello World";
+			}
+
 			$scope.$on('storyLineChosen', function (event, storyLine) {
 				storylineSrvc.setCurrentStoryline(storyLine);
 				$scope.alreadyPopup = [];
