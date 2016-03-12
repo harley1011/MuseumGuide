@@ -37,13 +37,27 @@ angular.module('controllers')
 			};
 
 			$scope.getTitle = function(){
-				var storyline = getCurrentStoryline();
 				var title = "Hello World";
-				if(storyline !== undefined){
+				if($scope.mode === 1){
+					var storyline = getCurrentStoryline();
+					if(storyline !== undefined){
+						if($translate.use() === "en")
+							title = storyline.getTitle().en_us;
+						else if($translate.use() === "fr")
+							title = storyline.getTitle().fr_ca;
+					}
+				}
+				else if($scope.mode === 2){
 					if($translate.use() === "en")
-						title = storyline.getTitle().en_us;
+						title = "Free Roaming";
 					else if($translate.use() === "fr")
-						title = storyline.getTitle().fr_ca;
+						title = "Marche Libre";
+				}
+				else if($scope.mode === 3){
+					if($translate.use() === "en")
+						title = "Find Facilities";
+					else if($translate.use() === "fr")
+						title = "Trouver Des Installations";
 				}
 				return title;
 			}
