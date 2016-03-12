@@ -37,7 +37,7 @@ angular.module('controllers')
 			};
 
 			$scope.getTitle = function(){
-				var storyline = storylineSrvc.getCurrentStoryline();
+				var storyline = getCurrentStoryline();
 				var title = "Hello World";
 				if(storyline !== undefined){
 					if($translate.use() === "en")
