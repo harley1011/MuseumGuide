@@ -37,7 +37,11 @@ angular.module('controllers')
 			};
 
 			$scope.getTitle = function(){
-				return "Hello World";
+				var storyline = storylineSrvc.getCurrentStoryline();
+				var title = "Hello World";
+				if(storyline !== undefined)
+					title = storyline.getTitle().en_us;
+				return title;
 			}
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
