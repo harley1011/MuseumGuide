@@ -49,13 +49,43 @@ angular.module('controllers')
 			}
 
 			$scope.$on('storyLineChosen', function (event, storyLine) {
+				$scope.mode = 1;
+				storylineSrvc.setCurrentStoryline(storyLine);
+				$scope.alreadyPopup = [];
+				prepareData();
+			});
+
+			$scope.$on('find', function (event, storyLine) {
+				find();
+			});
+
+			$scope.$on('findFacilities', function (event, storyLine) {
+				findFacilities();
+			});
+
+			$scope.$on('storyLineChosen', function (event, storyLine) {
+				$scope.mode = 1;
 				storylineSrvc.setCurrentStoryline(storyLine);
 				$scope.alreadyPopup = [];
 				prepareData();
 			});
 
 			$scope.changeFloor(1);
-			prepareData();
+
+			if($scope.mode === undefined){
+				//storyline mode
+				$scope.mode = 2;
+			}
+
+			if($scope.mode === 1)
+				//storyline mode
+				prepareData();
+			else if($scope.mode === 2)
+				//free roaming mode
+				find();
+			else if($scope.mode === 3)
+				//find facilities
+				findFacilities();
 			trackBeacons();
 		})();
 
@@ -186,6 +216,9 @@ angular.module('controllers')
 		}
 
 		function prepareData() {
+			if($scope.mode !== 1)
+				return;
+
 			var floorNum = floorSrvc.getCurrentFloor().getNumber(),
 					story = getCurrentStoryline(),
 					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
@@ -206,4 +239,16 @@ angular.module('controllers')
 				}
 			}
 		}
+
+		function find() {
+			console.log("Find!!");
+			$scope.mapPoints = {};
+			$scope.mapLines = {};
+		};
+
+		function findFacilities() {
+			console.log("Find Facilities!!");
+			$scope.mapPoints = {};
+			$scope.mapLines = {};
+		};
 	});
