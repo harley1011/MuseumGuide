@@ -31,12 +31,10 @@ angular.module('directives')
 				};
 
 				scope.find = function () {
-					console.log("Find");
 					$rootScope.$broadcast('find');
 				};
 
 				scope.findFacilities = function () {
-					console.log("Find Facilities");
 					$rootScope.$broadcast('findFacilities');
 				};
 			}

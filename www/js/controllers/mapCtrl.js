@@ -56,10 +56,12 @@ angular.module('controllers')
 			});
 
 			$scope.$on('find', function (event, storyLine) {
+				$scope.mode = 2;
 				find();
 			});
 
 			$scope.$on('findFacilities', function (event, storyLine) {
+				$scope.mode = 3;
 				findFacilities();
 			});
 
@@ -74,7 +76,7 @@ angular.module('controllers')
 
 			if($scope.mode === undefined){
 				//storyline mode
-				$scope.mode = 2;
+				$scope.mode = 1;
 			}
 
 			if($scope.mode === 1)
