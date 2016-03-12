@@ -1,6 +1,6 @@
 angular.module('controllers')
 	.controller('mapCtrl',
-	function ($scope, $state, $translatePartialLoader, $ionicPopup, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc) {
+	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc) {
 
 		(function init() {
 			$translatePartialLoader.addPart('map');
@@ -39,8 +39,12 @@ angular.module('controllers')
 			$scope.getTitle = function(){
 				var storyline = storylineSrvc.getCurrentStoryline();
 				var title = "Hello World";
-				if(storyline !== undefined)
-					title = storyline.getTitle().en_us;
+				if(storyline !== undefined){
+					if($translate.use() === "en")
+						title = storyline.getTitle().en_us;
+					else if($translate.use() === "fr")
+						title = storyline.getTitle().fr_ca;
+				}
 				return title;
 			}
 
