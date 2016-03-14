@@ -32,7 +32,12 @@ describe('map directive tests', function () {
                     }
                 }
             });
-
+            $provide.service('$ionicPopup', function () {
+                return {
+                    show: function(data){
+                    }
+                };
+            });
         });
 
     });
