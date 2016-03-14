@@ -9,9 +9,9 @@ var Storyline = (function (){
       title: raw.name,
       description: raw.description,
       points: raw.points,
-      walkingTime: null,
-      numFloors: null,
-      thumbnail: null
+      walkingTime: raw.walkingTimeInMinutes,
+      numFloors: raw.floorsCovered,
+      thumbnail: raw.thumbnail
     };
     privateData.set(this, privateMembers);
   }
