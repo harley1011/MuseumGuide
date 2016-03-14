@@ -34,7 +34,7 @@ angular.module('services')
       "id": 3,
       "name": {
         "en_us": "Story 3",
-        "fr_ca": "",
+        "fr_ca": "Histoire 3",
       },
       "description": {
         "en_us": "This is the third story.",

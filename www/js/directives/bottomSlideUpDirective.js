@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, $ionicPopup, $translate, storylineSrvc) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader) {
 
 		return {
 			require: ['^ionTabs'],
@@ -25,16 +25,20 @@ angular.module('directives')
 					subMenuElement.addClass('slide-sub-menu-list');
 				};
 
-				scope.findFacilities = function () {
-
-				};
-
 				scope.choseStoryLine = function (storyLine) {
 					console.log(storyLine.getDescription());
 					storylineSrvc.storylinePopup(storyLine, $translate.use(), function(){
 						tabsCtrl.closeMenuIfOpen();
 						$rootScope.$broadcast('storyLineChosen', storyLine);
 					})
+				};
+
+				scope.freeRoam = function () {
+					$rootScope.$broadcast('freeRoam');
+				};
+
+				scope.findFacilities = function () {
+					$rootScope.$broadcast('findFacilities');
 				};
 
 			}
