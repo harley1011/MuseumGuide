@@ -25,13 +25,17 @@ angular.module('directives')
 					subMenuElement.addClass('slide-sub-menu-list');
 				};
 
-				scope.findFacilities = function () {
-
-				};
-
 				scope.choseStoryLine = function (storyLine) {
 					tabsCtrl.closeMenuIfOpen();
 					$rootScope.$broadcast('storyLineChosen', storyLine);
+				};
+
+				scope.freeRoam = function () {
+					$rootScope.$broadcast('freeRoam');
+				};
+
+				scope.findFacilities = function () {
+					$rootScope.$broadcast('findFacilities');
 				};
 			}
 		};
