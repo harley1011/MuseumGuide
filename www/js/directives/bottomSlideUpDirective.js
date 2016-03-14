@@ -1,5 +1,5 @@
 angular.module('directives')
-	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader) {
+	.directive('bottomSlideUp', function (JSONFactorySrvc, $rootScope, $translatePartialLoader, storylineSrvc, $translate) {
 
 		return {
 			require: ['^ionTabs'],
@@ -26,7 +26,6 @@ angular.module('directives')
 				};
 
 				scope.choseStoryLine = function (storyLine) {
-					console.log(storyLine.getDescription());
 					storylineSrvc.storylinePopup(storyLine, $translate.use(), function(){
 						tabsCtrl.closeMenuIfOpen();
 						$rootScope.$broadcast('storyLineChosen', storyLine);
