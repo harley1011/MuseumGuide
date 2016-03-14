@@ -58,3 +58,56 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     margin-top: 15px;
     width: 90px;
 }
+
+.tutorial {
+    background-color: #E39F20;   
+}
+
+.tutorial-2 {
+    background-color: #C9CB24;   
+}
+
+.tutorial-list {
+    background-color: $calm;   
+}
+.tutorial-msg {
+    color: #FFF;
+    font-size: 30pt;
+    display: inline-block;
+    margin-top: 140px;
+    margin-left: 60px;
+    line-height: 44px;
+    margin-bottom: 18px;
+}
+
+.tutorial-button { 
+    right: 0;
+    position: absolute;
+    margin-right: 45px;
+    bottom: 0;
+    margin-bottom: 110px;
+}
+
+a.button-icon.icon-nextWelcome:before {
+    font-size: 45px;
+}
+
+a.button-icon {
+    text-decoration: none;   
+}
+
+.tutorial-list {
+  div.item:nth-child(odd) {
+        background-color: #3E8CBB;
+    }
+    div.item:nth-child(even) {
+        background-color: #52498C;
+    }
+    div.item {
+        color: white;
+        border: 0px none !important;
+        &:active {
+            background-color: #E39F20;
+        }
+    }   
+}
