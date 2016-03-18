@@ -10,7 +10,7 @@ angular.module('services')
       },
       "description": {
         "en_us": "This is the first story.",
-        "fr_ca": "",
+        "fr_ca": "Ceci est la première histoire",
       },
       "thumbnail": "/path/to/nowhere/thumb.png",
       "walkingTimeInMinutes": "20",
@@ -34,7 +34,7 @@ angular.module('services')
       "id": 3,
       "name": {
         "en_us": "Story 3",
-        "fr_ca": "",
+        "fr_ca": "Histoire 3",
       },
       "description": {
         "en_us": "This is the third story.",

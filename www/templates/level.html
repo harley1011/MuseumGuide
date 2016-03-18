@@ -1,18 +1,18 @@
 <ion-view>
     <ion-nav-title>
-        {{ 'MAP' | translate }}
+        {{getTitle()}}
     </ion-nav-title>
     <!-- Level -->
     <ion-header-bar class="bar-subheader bar-energized bar-header-levels">
-        <div class="level-div">
-            <span class="level-mark level-title" translate="FLOOR"></span>
+        <div class="level-div" ng-controller="tutoCtrl">
+            <span class="level-mark level-title" translate="FLOOR" ng-click="openModal()"></span>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 1}" class="level-mark" ng-click="changeFloor(1)" >1</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 2}" class="level-mark" ng-click="changeFloor(2)" >2</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 3}" class="level-mark" ng-click="changeFloor(3)">3</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 4}" class="level-mark" ng-click="changeFloor(4)">4</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 5}" class="level-mark" ng-click="changeFloor(5)">5</a>
         </div>
-        
+
     </ion-header-bar>
     <!-- Audio -->
     <ion-header-bar class=" bar-subheader map-audio-container" ng-hide="hideBeaconPlayerContainer" position-bars-and-content>
@@ -23,4 +23,5 @@
     <ion-content scroll="false" overflow-scroll="true" >
         <map></map>
     </ion-content>
+    
 </ion-view>
