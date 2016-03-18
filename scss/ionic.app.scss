@@ -89,7 +89,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 a.button-icon.icon-nextWelcome:before {
-    font-size: 45px;
+    font-size: 37px;
 }
 
 a.button-icon {
@@ -116,6 +116,23 @@ a.button-icon {
     color: #FFF; 
 }
 
+.overlay-button { 
+    right: 0;
+    position: absolute;
+    margin-right: 45px;
+    bottom: 0;
+    margin-bottom: 40vh;
+    font-size: 20pt;
+}
+
+.tag {
+    position: absolute;
+    width: 100px;
+    margin-left: -76px;
+    margin-top: 15px;
+        
+}
+
 .overlay-levels {
     margin-top: 44px;
     height: 35px;
@@ -131,6 +148,26 @@ a.button-icon {
     display: inline-block;
     border-radius: 7px;
     padding-top: 4px;
+}
+
+.overlay-levels-arrow {
+//    border: 1px solid red;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    margin-top: 72px;
+    z-index: 4;
+    padding: 0;
+    text-align: center;
+}
+
+.overlay-levels-arrow > div {
+    border-left: 1px solid white;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    display: inline-block;
 }
 
 .overlay-levels-desc {
