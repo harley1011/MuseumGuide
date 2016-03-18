@@ -18,6 +18,9 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 
 $calm:                            #1A9DCE !default;
+$mapAudio:                        #000;
+$energized:                       #D55611 !default;
+$dark:                            #666 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
@@ -25,7 +28,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/_map";
 @import "partials/_tabs";
 @import "partials/_icons";
-
+@import "partials/_popup";
 
 .start {
     background-image: url("../img/mosaic.png");
@@ -41,11 +44,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     text-align: center;
     width: 64%;
     height: 10%;
-    margin: 52% auto 0;
+    margin: 46% auto 0;
 }
 
 .start-logo-box {
     background-color: rgba(255, 255, 255, 0.7);
     outline: 3px solid #FFF;
     outline-offset: 8px;
+    padding-top: 40px;
+}
+
+.start-button {
+    margin-top: 15px;
+    width: 90px;
 }

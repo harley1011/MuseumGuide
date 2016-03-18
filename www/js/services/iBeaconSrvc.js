@@ -23,6 +23,19 @@ angular.module('services')
 	BeaconBuilder.beaconCollection = {};
 	BeaconBuilder.notifyEvent = "$iBeaconSrvc:beaconRangeChange";
 
+	/**
+	 *	ProximityImmediate	(strong signal; usually up to a few centimeters)
+	 *	ProximityNear	(medium signal; usually up to a few meters)
+	 *	ProximityFar	(weak signal; more than a few meters)
+	 *	ProximityUnknown	(“hard to say”, usually when the signal is very, very weak)
+	 */
+	BeaconBuilder.proximity = {
+		immediate: "ProximityImmediate",
+		near: "ProximityNear",
+		far: "ProximityFar",
+		unknown: "ProximityUnknown"
+	};
+
 	/*
 	 * Initialize iBeacon services
 	 */
@@ -142,7 +155,8 @@ angular.module('services')
 		BeaconBuilder: {
 			init: BeaconBuilder.init,
 			notifyEvent: BeaconBuilder.notifyEvent,
-			registerBeaconRegions: BeaconBuilder.registerBeaconRegions
+			registerBeaconRegions: BeaconBuilder.registerBeaconRegions,
+			proximity: BeaconBuilder.proximity
 		}
 	};
 })

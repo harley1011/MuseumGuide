@@ -15,15 +15,10 @@ var GraphicalPoint = (function (){
     wrapper.display.diameter = {};
     wrapper.display.diameter.x = wrapper.calculatePercentage(point.getDiameter(), context.width);
     wrapper.display.diameter.y = wrapper.calculatePercentage(point.getDiameter(), context.height);
-    wrapper.current = false;
     privateData.set(this, wrapper);
   }
 
   GraphicalPoint.prototype.constructor = GraphicalPoint;
-
-  GraphicalPoint.prototype.getUUID = function(){
-    return privateData.get(this).id;
-  };
 
   GraphicalPoint.prototype.getCoordinates = function(){
     return privateData.get(this).point.getCoordinates();
@@ -53,14 +48,6 @@ var GraphicalPoint = (function (){
 
   GraphicalPoint.prototype.getDiameter = function(){
     return privateData.get(this).diameter;
-  };
-
-  GraphicalPoint.prototype.isCurrent = function(){
-    return privateData.get(this).current;
-  };
-
-  GraphicalPoint.prototype.setCurrent = function(current){
-    privateData.get(this).current = current;
   };
 
   GraphicalPoint.prototype.destructor = function(){
