@@ -53,16 +53,19 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 
     .state('tutorial', {
 		url: '/tutorial',
-		templateUrl: 'templates/tutorial.html'
+		templateUrl: 'templates/tutorial.html',
+        controller: 'tutoCtrl'
 	})
 	.state('tutorial2', {
 		url: '/tutorial-2',
-		templateUrl: 'templates/tutorial-2.html'
+		templateUrl: 'templates/tutorial-2.html',
+        controller: 'tutoCtrl'
 	})
     
     .state('tutorial3', {
 		url: '/tutorial-list',
-		templateUrl: 'templates/tutorial-list.html'
+		templateUrl: 'templates/tutorial-list.html',
+        controller: 'tutoCtrl'
 	})
     .state('tab', {
 		url: '/tab',

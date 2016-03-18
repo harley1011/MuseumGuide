@@ -1,8 +1,8 @@
 angular.module('controllers')
-.controller('tutoCtrl', function($scope, $ionicModal) {
+.controller('tutoCtrl', function($scope, $ionicModal, $translatePartialLoader) {
  
 // s
-    
+    $translatePartialLoader.addPart('tutorial');
     $ionicModal.fromTemplateUrl('templates/tutorial-modal.html', {
       scope: $scope,
       animation: 'ease-in'
@@ -34,22 +34,8 @@ angular.module('controllers')
       console.log('Modal is shown!');
     });
 
-    $scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
 
-    $scope.showImage = function(index) {
-      switch(index) {
-        case 1:
-          $scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
-          break;
-        case 2:
-          $scope.imageSrc  = 'http://ionicframework.com/img/ionic_logo.svg';
-          break;
-        case 3:
-          $scope.imageSrc  = 'http://ionicframework.com/img/homepage/phones-weather-demo@2x.png';
-          break;
-      }
-      $scope.openModal();
-    }
+   
     // eo
     
 });
