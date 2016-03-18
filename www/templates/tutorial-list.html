@@ -3,22 +3,22 @@
        <div class="tutorial-msg">
         {{ 'TUTO_SELECT' | translate }}
         </div>
-        <ion-list class="selection-list">
-            <ion-item class="item-icon-left" href="#/tab/level">
+        <ion-list class="selection-list" ng-controller="mapCtrl">
+            <ion-item class="item-icon-left" href="#/tab/level" ng-click="openModal()">
                 <i class="icon icon-freeBird"></i>
                 Free Exploration
             </ion-item>
             <ion-item class="item-icon-left" href="#/tab/level">
                 <i class="icon icon-nipper"></i>
-                Storyline
+                Storyline 1
             </ion-item>
             <ion-item class="item-icon-left" href="#/tab/level">
                 <i class="icon icon-nipper"></i>
-                Storyline
+                Storyline 2 
             </ion-item>
             <ion-item class="item-icon-left" href="#/tab/level">
                 <i class="icon icon-nipper"></i>
-                Storyline
+                Storyline 3
             </ion-item>
         </ion-list>
     </ion-content>

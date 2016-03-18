@@ -4,12 +4,12 @@ angular.module('controllers')
 
     $scope.english = function () {
 		$scope.changeLanguage("en");
-        $state.go('tab.level');
+        $state.go('tutorial');
     };
 
 	$scope.french = function () {
 		$scope.changeLanguage("fr");
-        $state.go('tab.level');
+        $state.go('tutorial');
 	};
 
     $scope.changeToEnglish = function () {

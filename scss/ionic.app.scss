@@ -100,9 +100,21 @@ a.button-icon {
     ion-item.item:nth-child(odd) > a.item-content {
         background-color: #3E8CBB;
     }
+    
+    ion-item:nth-child(odd) {
+        background-color: #3E8CBB;
+        padding-left: 48px;
+    }
+    
     ion-item.item:nth-child(even) > a.item-content {
         background-color: #52498C;
     }
+    
+    ion-item:nth-child(even) {
+        background-color: #52498C;
+        padding-left: 48px;
+    }
+    
     ion-item.item {
         color: white;
         border: 0px none !important;
@@ -119,7 +131,7 @@ a.button-icon {
 .overlay-button { 
     right: 0;
     position: absolute;
-    margin-right: 45px;
+    margin-right: 40px;
     bottom: 0;
     margin-bottom: 40vh;
     font-size: 20pt;
