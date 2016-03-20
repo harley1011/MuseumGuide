@@ -51,7 +51,23 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 		templateUrl: 'templates/menu-level.html'
 	})
 
-	.state('tab', {
+    .state('tutorial', {
+		url: '/tutorial',
+		templateUrl: 'templates/tutorial.html',
+        controller: 'tutoCtrl'
+	})
+	.state('tutorial2', {
+		url: '/tutorial-2',
+		templateUrl: 'templates/tutorial-2.html',
+        controller: 'tutoCtrl'
+	})
+    
+    .state('tutorial3', {
+		url: '/tutorial-list',
+		templateUrl: 'templates/tutorial-list.html',
+        controller: 'tutoCtrl'
+	})
+    .state('tab', {
 		url: '/tab',
 		abstract: true,
 		templateUrl: 'templates/tabs.html'

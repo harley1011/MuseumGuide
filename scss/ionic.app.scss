@@ -29,6 +29,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/_tabs";
 @import "partials/_icons";
 @import "partials/_popup";
+@import "partials/_tutorial";
 
 .start {
     background-image: url("../img/mosaic.png");
@@ -58,3 +59,4 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     margin-top: 15px;
     width: 90px;
 }
+

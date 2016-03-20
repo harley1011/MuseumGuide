@@ -1,0 +1,85 @@
+ <ion-modal-view class="transparent">
+    <div class="modal image-modal transparent" ng-click="closeModal()">
+        <ion-pane class="transparent overlay">
+            <div class="overlay-levels">
+                <div>
+                    <div class="level-div"> 
+            <span class="level-mark level-title" translate="FLOOR"></span>
+            <a class="level-mark selected-level" style="color:#2c2c2c !important;">1</a>
+            <a class="level-mark">2</a>
+            <a class="level-mark">3</a>
+            <a class="level-mark">4</a>
+            <a class="level-mark">5</a>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay-levels-arrow">
+                <div></div>
+            </div>
+            <div class="overlay-levels-desc">
+                <div>
+                {{ 'TUTO_LEVELS' | translate }}
+                </div>
+            </div>
+            <div class="overlay-desc">
+                <div class="row">
+                    <div class="col col-25" style="height:70px;">
+                        <div>{{ 'TUTO_MENU' | translate }}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-25 col-offset-25">
+                    <div>{{ 'TUTO_QR' | translate }}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-25 col-offset-50">
+                    <div>{{ 'TUTO_MAP' | translate }}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-25 col-offset-75">
+                    <div>{{ 'TUT0_SETTINGS' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+             <div class="overlay-button"><span class="tag">{{ 'TUTO_OK' | translate }}</span>
+        <a class=" button-icon icon icon-nextWelcome" icon-on="icon-nextWelcome"></a>
+        </div>
+            <div class="overlay-arrows row">
+                <div class="col-25"><div style="height:172px">
+                    </div></div>
+                <div class="col-25"><div style="height:122px">
+                    </div></div>
+                <div class="col-25"><div style="height:71px">
+                    </div></div>
+                <div class="col-25"><div style="height:23px">
+                    </div></div>
+            </div>
+            <div class="overlay-tabs row">
+                <div class="col-25">
+                    <div>
+                        <i class="button-icon icon icon-arrowUp"></i>
+                    </div>
+
+            </div>  
+                <div class="col-25">
+                    <div>
+                    <i class="button-icon icon icon-scanQR"></i>
+                    </div>
+                    </div>
+                <div class="col-25">
+                    <div>
+                    <i class="button-icon icon icon-map"></i>
+                    </div>
+
+                </div>
+                <div class="col-25">
+                    <div>
+                    <i class="button-icon icon icon-setting"></i>
+                    </div>
+                    </div>
+              </div>             
+        </ion-pane>
+    </div>
+</ion-modal-view>
