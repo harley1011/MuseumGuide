@@ -1,8 +1,7 @@
 {
 	"SET_VIEW": "Réglage",
 	"SET_LANGVIEW": "Langues",
-	"SET_CHG_NAME": "Changer de Nom",
-	"SET_CHG_LANG": "Modifier la Langue",
+	"SET_CHG_LANG": "Modifier la langue",
 	"SET_HELP": "Aide",
-	"SET_ABOUT": "À Propos Musée des Ondes"
+	"SET_ABOUT": "À propos Musée des Ondes"
 }
