@@ -1,6 +1,6 @@
 angular.module('controllers')
 	.controller('mapCtrl',
-	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc) {
+	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc) {
 
 		(function init() {
 			$translatePartialLoader.addPart('map');
@@ -79,19 +79,26 @@ angular.module('controllers')
 				findFacilities();
 			});
 
-			$scope.$on('storyLineChosen', function (event, storyLine) {
-				$scope.mode = 1;
-				storylineSrvc.setCurrentStoryline(storyLine);
-				$scope.alreadyPopup = [];
-				prepareData();
-			});
+		
 
 			$scope.changeFloor(1);
 
+            
 			if($scope.mode === undefined){
 				//storyline mode
-				$scope.mode = 1;
-			}
+				
+                var exploreMode = exploreModeSrvc.getMode();
+                if(exploreMode == 0) {
+                    $scope.mode = 1;   
+                } else if(exploreMode == 1){
+                    $scope.mode = exploreModeSrvc.getMode();
+                    var story = exploreModeSrvc.getSelectedStoryline();
+                    storylineSrvc.setCurrentStoryline(story);
+                } else {
+                    $scope.mode = exploreModeSrvc.getMode();
+                }
+			} 
+
 
 			executeMode();
 			trackBeacons();

@@ -1,5 +1,5 @@
 angular.module('controllers')
-.controller('tutoCtrl', function($scope, $ionicModal, $translatePartialLoader) {
+.controller('tutoCtrl', function($scope, $state, $controller, $ionicModal, $translatePartialLoader, exploreModeSrvc) {
  
 // s
     $translatePartialLoader.addPart('tutorial');
@@ -34,8 +34,22 @@ angular.module('controllers')
       console.log('Modal is shown!');
     });
 
-
-   
+    $scope.freeMode = function() {
+        $scope.openModal();
+        exploreModeSrvc.setMode(2);
+         $state.go('tab.level');
+    };
+    
+    $scope.storyLineMode = function (story) {
+        $scope.openModal();
+        console.log("storyline selected");
+        exploreModeSrvc.setMode(1);
+        exploreModeSrvc.setStoryline(story);
+         $state.go('tab.level');
+  
+    };
+    
+    $scope.storyLines = exploreModeSrvc.getStorylines();
     // eo
     
 });
