@@ -85,7 +85,8 @@ angular.module('starter', ['ionic', 'controllers', 'directives', 'services', 'ng
 			url: '/scan',
 			views: {
 				'tab-scan': {
-					templateUrl: 'templates/scan.html'
+					templateUrl: 'templates/scan.html',
+					controller: 'scanCtrl'
 				}
 			}
 		})
