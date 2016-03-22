@@ -475,51 +475,31 @@ angular.module('services')
 
     var mapData = {
       "point": points,
-      "level": [{
-        "number": 1,
-        "name": "Level One",
-        "map": {
-          "url": "img/level-one.png",
-          "width": 809,
-          "height": 1715
-        },
-        "points": [1, 2, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19]
+      "floorPlan": [{
+        "floorID": 1,
+        "imagePath": "img/level-one.png",
+        "imageWidth": 809,
+        "imageHeight": 1715
       }, {
-        "number": 2,
-        "name": "Level Two",
-        "map": {
-          "url": "img/level-two.png",
-          "width": 809,
-          "height": 1715
-        },
-        "points": [7]
+        "floorID": 2,
+        "imagePath": "img/level-two.png",
+        "imageWidth": 809,
+        "imageHeight": 1715
       }, {
-        "number": 3,
-        "name": "Level Three",
-        "map": {
-          "url": "img/level-three.png",
-          "width": 809,
-          "height": 1715
-        },
-        "points": [8, 9]
+        "floorID": 3,
+        "imagePath": "img/level-three.png",
+        "imageWidth": 809,
+        "imageHeight": 1715
       }, {
-        "number": 4,
-        "name": "Level Four",
-        "map": {
-          "url": "img/level-four.png",
-          "width": 809,
-          "height": 1715
-        },
-        "points": []
+        "floorID": 4,
+        "imagePath": "img/level-four.png",
+        "imageWidth": 809,
+        "imageHeight": 1715
       }, {
-        "number": 5,
-        "name": "Level Five",
-        "map": {
-          "url": "img/level-five.png",
-          "width": 809,
-          "height": 1715
-        },
-        "points": []
+        "floorID": 5,
+        "imagePath": "img/level-five.png",
+        "imageWidth": 809,
+        "imageHeight": 1715
       }],
       "storyline": storylines,
     };

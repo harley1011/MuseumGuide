@@ -12,6 +12,7 @@ angular.module('controllers')
 
 			$scope.changeFloor = function (z) {
 				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
+				$scope.$broadcast('floorChanged', {});
 				executeMode();
 			};
 
@@ -79,17 +80,17 @@ angular.module('controllers')
 				findFacilities();
 			});
 
-		
+
 
 			$scope.changeFloor(1);
 
-            
+
 			if($scope.mode === undefined){
 				//storyline mode
-				
+
                 var exploreMode = exploreModeSrvc.getMode();
                 if(exploreMode == 0) {
-                    $scope.mode = 1;   
+                    $scope.mode = 1;
                 } else if(exploreMode == 1){
                     $scope.mode = exploreModeSrvc.getMode();
                     var story = exploreModeSrvc.getSelectedStoryline();
@@ -97,7 +98,7 @@ angular.module('controllers')
                 } else {
                     $scope.mode = exploreModeSrvc.getMode();
                 }
-			} 
+			}
 
 
 			executeMode();

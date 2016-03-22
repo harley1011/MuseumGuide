@@ -160,7 +160,7 @@ angular.module('services')
         return beacons;
       },
       getFloors: function(transmission) {
-        var raw = transmission.level,
+        var raw = transmission.floorPlan,
           floors = [];
         //Checks if storylines have not already been loaded
         if (this.store.floors.length === 0) {

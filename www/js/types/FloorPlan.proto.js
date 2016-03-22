@@ -5,9 +5,9 @@ var FloorPlan = (function (){
   //Constructor Function
   function FloorPlan(raw) {
     var privateMembers = {
-      url: raw.url,
-      width: raw.width,
-      height: raw.height,
+      url: raw.imagePath,
+      width: raw.imageWidth,
+      height: raw.imageHeight,
     };
     privateData.set(this, privateMembers);
   }
