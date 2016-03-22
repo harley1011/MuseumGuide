@@ -19,7 +19,7 @@ angular.module('services')
         texts: {},
       },
       getPoints: function(transmission) {
-        var raw = transmission.point,
+        var raw = transmission.node,
           points = [],
           beacons = [],
           pt;
