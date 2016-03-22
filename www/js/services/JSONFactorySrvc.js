@@ -26,25 +26,23 @@ angular.module('services')
         //Checks if points have not already been loaded
         if (this.store.points.length === 0) {
           //If not loads them
-          for (var i = 0; i < raw.length; i++) {
-            switch (raw[i].type) {
-              case "poi":
-                this.extractBeaconFromPoint(raw[i]);
-                this.extractMediaFromPoint(raw[i]);
-                this.extractTextFromPoint(raw[i]);
-                this.compileStorylinePoints(raw[i]);
-                pt = new PointOfInterest(raw[i]);
-                points.push(pt);
-                break;
-              case "dir":
-                raw[i].subtype = "intersection";
-              case "fac":
-                points.push(new PointOfTransition(raw[i]));
-                break;
-              default:
-                break;
-            }
+          //Load points of interest
+          var pois = raw.poi;
+          for (var i = 0; i < pois.length; i++) {
+            this.extractBeaconFromPoint(pois[i]);
+            this.extractMediaFromPoint(pois[i]);
+            this.extractTextFromPoint(pois[i]);
+            this.compileStorylinePoints(pois[i]);
+            pt = new PointOfInterest(pois[i]);
+            points.push(pt);
           }
+
+          //Load points of transition
+          var pots = raw.pot;
+          for (var i = 0; i < pots.length; i++) {
+            points.push(new PointOfTransition(pots[i]));
+          }
+
           this.store.points = points;
         } else {
           //else simply gives a shallow copy of array
@@ -53,7 +51,7 @@ angular.module('services')
         return points;
       },
       extractBeaconFromPoint: function(raw) {
-        if (raw.beacon_id != 'undefined') {
+        if (raw.iBeacon !== undefined && raw.iBeacon.uuid != 'undefined') {
           this.store.beacons.push(new Beacon(raw));
         }
       },

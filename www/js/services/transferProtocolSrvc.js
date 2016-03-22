@@ -119,17 +119,17 @@ angular.module('services')
           "image": [{
             "path": "/path/to/nowhere/img.png",
             "language": "en",
-            "caption": "This is an image caption for Point " + (i+1) + " with no storyline."
+            "caption": "This is an image caption for Point 1 with no storyline."
           }],
           "video": [{
             "path": "/path/to/nowhere/video.mp4",
             "language": "en",
-            "caption": "This is a video caption for Point " + (i+1) + " with no storyline."
+            "caption": "This is a video caption for Point 1 with no storyline."
           }],
           "audio": [{
             "path": "/path/to/nowhere/audio.mp3",
             "language": "en",
-            "caption": "This is an audio caption for Point " + (i+1) + " with no storyline."
+            "caption": "This is an audio caption for Point 1 with no storyline."
           }]
         },
   			"storyPoint": [
@@ -174,8 +174,88 @@ angular.module('services')
               }]
             }
           }]
-  			}
-      ]
+  			}, {
+    		  "id": 3,
+    			"title": [{
+              "language": "en",
+              "title": "Point 3 Title"
+            }, {
+              "language": "fr",
+              "title": "Titre du point 3"
+            }
+          ],
+          "description": [{
+              "language": "en",
+              "description": "Point 3 Description"
+            }, {
+              "language": "fr",
+              "description": "Description du Point 3"
+            }
+          ],
+          "x": 295,
+          "y": 1645,
+    			"floorID": 1,
+    			"iBeacon": {
+    				"uuid": "undefined",
+    				"major": "undefined",
+    				"minor": "undefined"
+    			},
+    			"media": {
+            "image": [{
+              "path": "/path/to/nowhere/img.png",
+              "language": "en",
+              "caption": "This is an image caption for Point " + (i+1) + " with no storyline."
+            }],
+            "video": [{
+              "path": "/path/to/nowhere/video.mp4",
+              "language": "en",
+              "caption": "This is a video caption for Point " + (i+1) + " with no storyline."
+            }],
+            "audio": [{
+              "path": "/path/to/nowhere/audio.mp3",
+              "language": "en",
+              "caption": "This is an audio caption for Point " + (i+1) + " with no storyline."
+            }]
+          },
+    			"storyPoint": [
+            {
+              "storylineID": 1,
+              "title": [{
+                  "language": "en",
+                  "title": "Nipper: Searching for his master's voice"
+                }, {
+                  "language": "fr",
+                  "title": "Nipper: À la recherche de la voix de son maître"
+                }
+              ],
+              "description": [{
+                  "language": "en",
+                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
+                }, {
+                  "language": "fr",
+                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
+                }
+              ],
+              "media": {
+                "image": [{
+                  "path": "/path/to/nowhere/img.png",
+                  "language": "en",
+                  "caption": "This is an image caption for Point 3 with the Story 1."
+                }],
+                "video": [{
+                  "path": "/path/to/nowhere/video.mp4",
+                  "language": "en",
+                  "caption": "This is a video caption for Point 3 with no storyline."
+                }],
+                "audio": [{
+                  "path": "/path/to/nowhere/audio.mp3",
+                  "language": "en",
+                  "caption": "This is an audio caption for Point 3 with no storyline."
+                }]
+              }
+          }]
+    		}
+      ],
       "pot": [{
     			"id": 2,
           "label": {
