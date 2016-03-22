@@ -45,6 +45,17 @@ var Storyline = (function (){
     return privateData.get(this).description;
   };
 
+  Storyline.prototype.getDescriptionWithLanguage = function(language){
+    var description;
+    var descriptions = privateData.get(this).description;
+    for(var i = 0; i < descriptions.length; i++) {
+      description = descriptions[i].description;
+      if(descriptions[i].language === language)
+        break;
+    }
+    return description;
+  };
+
   Storyline.prototype.getWalkingTime = function(){
     return privateData.get(this).walkingTime;
   };

@@ -2,139 +2,43 @@ angular.module('services')
   .service('transferProtocolSrvc', function() {
     var points = [],
       pt;
+
     var storylines = [{
-      "id": 1,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 1"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 1"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the first story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la première histoire"
-        }
-      ],
-      "path": [1, 3, 5, 12],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [1, 3, 5, 12]
     }, {
-      "id": 2,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 2"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 2"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the second story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la deuxième histoire"
-        }
-      ],
-      "path": [1, 3, 5],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [1, 3, 5]
     }, {
-      "id": 3,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 3"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 3"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the third story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la troisième histoire"
-        }
-      ],
-      "path": [13, 19],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [13, 19]
     }, {
-      "id": 4,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 4"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 4"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the fourth story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la quatrième histoire"
-        }
-      ],
-      "path": [1, 3, 5, 12],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [1, 3, 5, 12]
     }, {
-      "id": 5,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 5"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 5"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the fifth story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la cinquième histoire"
-        }
-      ],
-      "path": [1, 3, 5, 12],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [1, 3, 5, 12]
     }, {
-      "id": 6,
-      "title": [{
-          "language": "en_us",
-          "title": "Story 6"
-        }, {
-          "language": "fr_ca",
-          "title": "Histoire 6"
-        }
-      ],
-      "description": [{
-          "language": "en_us",
-          "description": "This is the sixth story."
-        }, {
-          "language": "fr_ca",
-          "description": "Ceci est la sixième histoire"
-        }
-      ],
-      "path": [1, 3, 5, 12],
-      "thumbnail": "/path/to/nowhere/thumb.png",
-      "walkingTimeInMinutes": "20",
-      "floorsCovered": "5"
+      "path": [1, 3, 5, 12]
     }];
+
+    //generate data for storylines
+    for(var i = 0; i < storylines.length; i++) {
+      var storyline = storylines[i];
+      storyline.id = (i+1);
+      storyline.title = [{
+          "language": "en_us",
+          "title": "Story " + (i+1)
+        }, {
+          "language": "fr_ca",
+          "title": "Histoire " + (i+1)
+      }];
+      storyline.description = [{
+          "language": "en_us",
+          "description": "This is the the description of story " + (i+1) + "."
+        }, {
+          "language": "fr_ca",
+          "description": "Ceci est la description de l'histoire " + (i+1) + "."
+      }];
+      storyline.thumbnail = "/path/to/nowhere/thumb.png";
+      storyline.walkingTimeInMinutes = "20";
+      storyline.floorsCovered = "5";
+    }
 
     var points = {
       "poi": [{

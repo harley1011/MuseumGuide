@@ -45,13 +45,13 @@ angular.module('services')
 
         if (language == 'fr')
         {
-          titleDisplayed = storyLine.getTitle().fr_ca;
-          messageDisplayed = storyLine.getDescription().fr_ca;
+          titleDisplayed = storyLine.getTitleWithLanguage("fr_ca");
+          messageDisplayed = storyLine.getDescriptionWithLanguage("fr_ca");
         }
         else
         {
-          titleDisplayed = storyLine.getTitle().en_us;
-          messageDisplayed = storyLine.getDescription().en_us;
+          titleDisplayed = storyLine.getTitleWithLanguage("en_us");
+          messageDisplayed = storyLine.getDescriptionWithLanguage("en_us");
         }
 
         if (walkTime && walkTime.length > 0)

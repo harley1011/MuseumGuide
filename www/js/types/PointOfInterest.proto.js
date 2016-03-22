@@ -48,10 +48,6 @@ var PointOfInterest = (function (){
     privateData.get(this).diameter = diameter;
   };
 
-  /*PointOfInterest.prototype.getNeighbourIDs = function(){
-    return privateData.get(this).neighbours;
-  };*/
-
   PointOfInterest.prototype.getTitle = function(){
     return privateData.get(this).title;
   };
