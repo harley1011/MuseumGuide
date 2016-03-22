@@ -10,9 +10,7 @@ var PointOfTransition = (function (){
     var privateMembers = {
       color: (raw.style && raw.style.color) ? raw.style.color : "#00008B",
       diameter: (raw.style && raw.style.diameter) ? raw.style.diameter : 40,
-      neighbours: raw.neighbours,
-      type: (facilities.getTypeValue(raw.subtype)) ? facilities.getTypeValue(raw.subtype) : null,
-      label: null,
+      label: raw.label,
     };
     privateData.set(this, privateMembers);
   }
@@ -44,13 +42,13 @@ var PointOfTransition = (function (){
     privateData.get(this).diameter = diameter;
   };
 
-  PointOfTransition.prototype.getNeighbourIDs = function(){
+  /*PointOfTransition.prototype.getNeighbourIDs = function(){
     return privateData.get(this).neighbours;
-  };
+  };*/
 
-  PointOfTransition.prototype.getType = function(){
+  /*PointOfTransition.prototype.getType = function(){
     return privateData.get(this).type;
-  };
+  };*/
 
   PointOfTransition.prototype.getLabel = function(){
     return privateData.get(this).label;

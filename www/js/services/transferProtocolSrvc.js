@@ -204,17 +204,17 @@ angular.module('services')
             "image": [{
               "path": "/path/to/nowhere/img.png",
               "language": "en",
-              "caption": "This is an image caption for Point " + (i+1) + " with no storyline."
+              "caption": "This is an image caption for Point 3 with no storyline."
             }],
             "video": [{
               "path": "/path/to/nowhere/video.mp4",
               "language": "en",
-              "caption": "This is a video caption for Point " + (i+1) + " with no storyline."
+              "caption": "This is a video caption for Point 3 with no storyline."
             }],
             "audio": [{
               "path": "/path/to/nowhere/audio.mp3",
               "language": "en",
-              "caption": "This is an audio caption for Point " + (i+1) + " with no storyline."
+              "caption": "This is an audio caption for Point 3 with no storyline."
             }]
           },
     			"storyPoint": [

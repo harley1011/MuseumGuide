@@ -221,8 +221,7 @@ angular.module('controllers')
 				//Check if Point is either part of current Storyline on the current floor
 				//or if a PointOfTransition on current Floor.
 				if (coord.z == floorNum &&
-					 (storyPoints.indexOf(pt.getUUID()) != -1 ||
-					 (pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					 (storyPoints.indexOf(pt.getUUID()) != -1 || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
 					gpt = new GraphicalPoint(pt, dimensions);
 					$scope.mapPoints[pt.getUUID()] = gpt;
@@ -258,14 +257,14 @@ angular.module('controllers')
 
 			//store lines connecting points of interest
 			$scope.mapLines = [];
-			paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
+			/*paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
 			if(paths !== null){
 				for(var i = 0; i < paths.length; i++){
 					if (paths[i][2]) { //if line needs to be drawn
 						$scope.mapLines.push(new Vector(paths[i][0], paths[i][1], dimensions));
 					}
 				}
-			}
+			}*/
 		}
 
 		function freeRoam() {
