@@ -1,6 +1,6 @@
 angular.module('services')
     .service('languageSrvc', function () {
-        var languageSelected;
+        var languageSelected = "fr";
 
         var languageSrvc = {};
 
@@ -8,7 +8,7 @@ angular.module('services')
             languageSelected = language;
         }
 
-        languageSrvc.getStoredQrDetails = function () {
+        languageSrvc.getStoredLanguage = function () {
             return languageSelected;
         }
 

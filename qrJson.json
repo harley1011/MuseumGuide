@@ -1,0 +1,26 @@
+{
+  "texts": [
+    {
+      "title": "Text One",
+      "language": "en",
+      "content": "This is the text one"
+    },
+    {
+      "title": "Texte Un",
+      "language": "fr",
+      "content": "Ceci est le texte d'une"
+    }
+  ],
+  "images": [
+    {
+      "url": "img/1a.png",
+      "language": "en",
+      "caption": "image one"
+    },
+    {
+      "url": "img/1a.png",
+      "language": "fr",
+      "caption": "l'image d'un"
+    }
+  ]
+}
