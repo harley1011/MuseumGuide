@@ -3,7 +3,7 @@ angular.module('controllers')
             $translatePartialLoader.addPart('qr');
 
             $scope.openQRScanner = function () {
-
+                console.log('tis openm')
                 if (!window.cordova) {
                     qrSrvc.storeQrDetails({
                             "texts": [
@@ -37,11 +37,6 @@ angular.module('controllers')
                 else {
                     cordova.plugins.barcodeScanner.scan(
                         function (result) {
-                            alert("We got a barcode\n" +
-                                "Result: " + result.text + "\n" +
-                                "Format: " + result.format + "\n" +
-                                "Cancelled: " + result.cancelled);
-
                             qrSrvc.storeQrDetails(JSON.parse(result.text));
                             $state.go('tab.qrDetails');
                         },
