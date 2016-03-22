@@ -42,108 +42,41 @@ angular.module('services')
 
     var points = {
       "poi": [{
-  			"id": 1,
-  			"title": [{
-            "language": "en",
-            "title": "Point 1 Title"
-          }, {
-            "language": "fr",
-            "title": "Titre du point 1"
-          }
-        ],
-        "description": [{
-            "language": "en",
-            "description": "Point 1 Description"
-          }, {
-            "language": "fr",
-            "description": "Description du Point 1"
-          }
-        ],
-        "x": 120,
-        "y": 1565,
-  			"floorID": 1,
-  			"iBeacon": {
-  				"uuid": "b9407f30-f5f8-466e-aff9-25556b57fe6d",
-  				"major": "undefined",
-  				"minor": "undefined"
-  			},
-  			"media": {
-          "image": [{
-            "path": "/path/to/nowhere/img.png",
-            "language": "en",
-            "caption": "This is an image caption for Point 1 with no storyline."
-          }],
-          "video": [{
-            "path": "/path/to/nowhere/video.mp4",
-            "language": "en",
-            "caption": "This is a video caption for Point 1 with no storyline."
-          }],
-          "audio": [{
-            "path": "/path/to/nowhere/audio.mp3",
-            "language": "en",
-            "caption": "This is an audio caption for Point 1 with no storyline."
-          }]
-        },
-  			"storyPoint": [
-          {
-            "storylineID": 1,
-            "title": [{
-                "language": "en",
-                "title": "Nipper: Searching for his master's voice"
-              }, {
-                "language": "fr",
-                "title": "Nipper: À la recherche de la voix de son maître"
+    			"id": 1,
+          "x": 120,
+          "y": 1565,
+    			"floorID": 1,
+    			"iBeacon": {
+    				"uuid": "b9407f30-f5f8-466e-aff9-25556b57fe6d",
+    				"major": "undefined",
+    				"minor": "undefined"
+    			},
+    			"storyPoint": [
+            {
+              "storylineID": 1,
+              "media": {
+                "image": [{
+                    "path": "img/1a.png",
+                    "language": "en",
+                    "caption": "2. Floor, stop at bottom of stairs getting into building 5a from the MOEB, the visitor is being informed that he/she is walking through the women's and men's coat room, then passing through the showroom."
+                  }, {
+                    "path": "img/1a.png",
+                    "language": "fr",
+                    "caption": "Deuxième étage, en s'arrêtant à la base des marches donnant sur le bâtiment 5a à partir du MOEB: Le visiteur est informé qu'il/elle/ille se situ.e dans ce qui composait autrefois le vestiaire pour les hommes et pour les femmes. Il/elle/ille est informé.e que la salle suivant servait autrefois en tant que showroom."
+                  }
+                ]
               }
-            ],
-            "description": [{
-                "language": "en",
-                "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-              }, {
-                "language": "fr",
-                "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-              }
-            ],
-            "media": {
-              "image": [{
-                  "path": "img/1a.png",
-                  "language": "en",
-                  "caption": "2. Floor, stop at bottom of stairs getting into building 5a from the MOEB, the visitor is being informed that he/she is walking through the women's and men's coat room, then passing through the showroom."
-                }, {
-                  "path": "img/1a.png",
-                  "language": "fr",
-                  "caption": "Deuxième étage, en s'arrêtant à la base des marches donnant sur le bâtiment 5a à partir du MOEB: Le visiteur est informé qu'il/elle/ille se situ.e dans ce qui composait autrefois le vestiaire pour les hommes et pour les femmes. Il/elle/ille est informé.e que la salle suivant servait autrefois en tant que showroom."
-                }
-              ],
-              "video": [{
-                "path": "/path/to/nowhere/video.mp4",
-                "language": "en",
-                "caption": "This is a video caption for Point 1 with no storyline."
-              }],
-              "audio": [{
-                "path": "/path/to/nowhere/audio.mp3",
-                "language": "en",
-                "caption": "This is an audio caption for Point 1 with no storyline."
-              }]
-            }
+            }, {
+              "storylineID": 2
+            }, {
+              "storylineID": 4
+            }, {
+              "storylineID": 5
+            }, {
+              "storylineID": 6
           }]
-  			}, {
+  		  }, {
     		  "id": 3,
-    			"title": [{
-              "language": "en",
-              "title": "Point 3 Title"
-            }, {
-              "language": "fr",
-              "title": "Titre du point 3"
-            }
-          ],
-          "description": [{
-              "language": "en",
-              "description": "Point 3 Description"
-            }, {
-              "language": "fr",
-              "description": "Description du Point 3"
-            }
-          ],
           "x": 295,
           "y": 1645,
     			"floorID": 1,
@@ -152,78 +85,20 @@ angular.module('services')
     				"major": "undefined",
     				"minor": "undefined"
     			},
-    			"media": {
-            "image": [{
-              "path": "/path/to/nowhere/img.png",
-              "language": "en",
-              "caption": "This is an image caption for Point 3 with no storyline."
-            }],
-            "video": [{
-              "path": "/path/to/nowhere/video.mp4",
-              "language": "en",
-              "caption": "This is a video caption for Point 3 with no storyline."
-            }],
-            "audio": [{
-              "path": "/path/to/nowhere/audio.mp3",
-              "language": "en",
-              "caption": "This is an audio caption for Point 3 with no storyline."
-            }]
-          },
     			"storyPoint": [
             {
-              "storylineID": 1,
-              "title": [{
-                  "language": "en",
-                  "title": "Nipper: Searching for his master's voice"
-                }, {
-                  "language": "fr",
-                  "title": "Nipper: À la recherche de la voix de son maître"
-                }
-              ],
-              "description": [{
-                  "language": "en",
-                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-                }, {
-                  "language": "fr",
-                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-                }
-              ],
-              "media": {
-                "image": [{
-                  "path": "/path/to/nowhere/img.png",
-                  "language": "en",
-                  "caption": "This is an image caption for Point 3 with the Story 1."
-                }],
-                "video": [{
-                  "path": "/path/to/nowhere/video.mp4",
-                  "language": "en",
-                  "caption": "This is a video caption for Point 3 with no storyline."
-                }],
-                "audio": [{
-                  "path": "/path/to/nowhere/audio.mp3",
-                  "language": "en",
-                  "caption": "This is an audio caption for Point 3 with no storyline."
-                }]
-              }
+              "storylineID": 1
+            }, {
+              "storylineID": 2
+            }, {
+              "storylineID": 4
+            }, {
+              "storylineID": 5
+            }, {
+              "storylineID": 6
           }]
     		}, {
     			"id": 5,
-    			"title": [{
-              "language": "en",
-              "title": "Point 5 Title"
-            }, {
-              "language": "fr",
-              "title": "Titre du point 5"
-            }
-          ],
-          "description": [{
-              "language": "en",
-              "description": "Point 5 Description"
-            }, {
-              "language": "fr",
-              "description": "Description du Point 5"
-            }
-          ],
           "x": 485,
           "y": 1559,
     			"floorID": 1,
@@ -232,78 +107,20 @@ angular.module('services')
     				"major": "undefined",
     				"minor": "undefined"
     			},
-    			"media": {
-            "image": [{
-              "path": "/path/to/nowhere/img.png",
-              "language": "en",
-              "caption": "This is an image caption for Point 5 with no storyline."
-            }],
-            "video": [{
-              "path": "/path/to/nowhere/video.mp4",
-              "language": "en",
-              "caption": "This is a video caption for Point 5 with no storyline."
-            }],
-            "audio": [{
-              "path": "/path/to/nowhere/audio.mp3",
-              "language": "en",
-              "caption": "This is an audio caption for Point 5 with no storyline."
-            }]
-          },
     			"storyPoint": [
             {
-              "storylineID": 1,
-              "title": [{
-                  "language": "en",
-                  "title": "Nipper: Searching for his master's voice"
-                }, {
-                  "language": "fr",
-                  "title": "Nipper: À la recherche de la voix de son maître"
-                }
-              ],
-              "description": [{
-                  "language": "en",
-                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-                }, {
-                  "language": "fr",
-                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-                }
-              ],
-              "media": {
-                "image": [{
-                  "path": "/path/to/nowhere/img.png",
-                  "language": "en",
-                  "caption": "This is an image caption for Point 5 with the Story 1."
-                }],
-                "video": [{
-                  "path": "/path/to/nowhere/video.mp4",
-                  "language": "en",
-                  "caption": "This is a video caption for Point 5 with no storyline."
-                }],
-                "audio": [{
-                  "path": "/path/to/nowhere/audio.mp3",
-                  "language": "en",
-                  "caption": "This is an audio caption for Point 5 with no storyline."
-                }]
-              }
-            }]
+              "storylineID": 1
+            }, {
+              "storylineID": 2
+            }, {
+              "storylineID": 4
+            }, {
+              "storylineID": 5
+            }, {
+              "storylineID": 6
+          }]
     		}, {
     			"id": 12,
-    			"title": [{
-              "language": "en",
-              "title": "Point 12 Title"
-            }, {
-              "language": "fr",
-              "title": "Titre du point 12"
-            }
-          ],
-          "description": [{
-              "language": "en",
-              "description": "Point 12 Description"
-            }, {
-              "language": "fr",
-              "description": "Description du Point 12"
-            }
-          ],
           "x": 630,
           "y": 1645,
     			"floorID": 3,
@@ -312,78 +129,18 @@ angular.module('services')
     				"major": "undefined",
     				"minor": "undefined"
     			},
-    			"media": {
-            "image": [{
-              "path": "/path/to/nowhere/img.png",
-              "language": "en",
-              "caption": "This is an image caption for Point 12 with no storyline."
-            }],
-            "video": [{
-              "path": "/path/to/nowhere/video.mp4",
-              "language": "en",
-              "caption": "This is a video caption for Point 12 with no storyline."
-            }],
-            "audio": [{
-              "path": "/path/to/nowhere/audio.mp3",
-              "language": "en",
-              "caption": "This is an audio caption for Point 12 with no storyline."
-            }]
-          },
     			"storyPoint": [
             {
-              "storylineID": 1,
-              "title": [{
-                  "language": "en",
-                  "title": "Nipper: Searching for his master's voice"
-                }, {
-                  "language": "fr",
-                  "title": "Nipper: À la recherche de la voix de son maître"
-                }
-              ],
-              "description": [{
-                  "language": "en",
-                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-                }, {
-                  "language": "fr",
-                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-                }
-              ],
-              "media": {
-                "image": [{
-                  "path": "/path/to/nowhere/img.png",
-                  "language": "en",
-                  "caption": "This is an image caption for Point 12 with the Story 1."
-                }],
-                "video": [{
-                  "path": "/path/to/nowhere/video.mp4",
-                  "language": "en",
-                  "caption": "This is a video caption for Point 12 with no storyline."
-                }],
-                "audio": [{
-                  "path": "/path/to/nowhere/audio.mp3",
-                  "language": "en",
-                  "caption": "This is an audio caption for Point 12 with no storyline."
-                }]
-              }
-            }]
+              "storylineID": 1
+            }, {
+              "storylineID": 4
+            }, {
+              "storylineID": 5
+            }, {
+              "storylineID": 6
+          }]
     		}, {
     			"id": 13,
-    			"title": [{
-              "language": "en",
-              "title": "Point 13 Title"
-            }, {
-              "language": "fr",
-              "title": "Titre du point 13"
-            }
-          ],
-          "description": [{
-              "language": "en",
-              "description": "Point 13 Description"
-            }, {
-              "language": "fr",
-              "description": "Description du Point 13"
-            }
-          ],
           "x": 100,
           "y": 450,
     			"floorID": 1,
@@ -392,78 +149,12 @@ angular.module('services')
     				"major": "undefined",
     				"minor": "undefined"
     			},
-    			"media": {
-            "image": [{
-              "path": "/path/to/nowhere/img.png",
-              "language": "en",
-              "caption": "This is an image caption for Point 13 with no storyline."
-            }],
-            "video": [{
-              "path": "/path/to/nowhere/video.mp4",
-              "language": "en",
-              "caption": "This is a video caption for Point 13 with no storyline."
-            }],
-            "audio": [{
-              "path": "/path/to/nowhere/audio.mp3",
-              "language": "en",
-              "caption": "This is an audio caption for Point 13 with no storyline."
-            }]
-          },
     			"storyPoint": [
             {
-              "storylineID": 3,
-              "title": [{
-                  "language": "en",
-                  "title": "Nipper: Searching for his master's voice"
-                }, {
-                  "language": "fr",
-                  "title": "Nipper: À la recherche de la voix de son maître"
-                }
-              ],
-              "description": [{
-                  "language": "en",
-                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-                }, {
-                  "language": "fr",
-                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-                }
-              ],
-              "media": {
-                "image": [{
-                  "path": "/path/to/nowhere/img.png",
-                  "language": "en",
-                  "caption": "This is an image caption for Point 13 with the Story 3."
-                }],
-                "video": [{
-                  "path": "/path/to/nowhere/video.mp4",
-                  "language": "en",
-                  "caption": "This is a video caption for Point 13 with no storyline."
-                }],
-                "audio": [{
-                  "path": "/path/to/nowhere/audio.mp3",
-                  "language": "en",
-                  "caption": "This is an audio caption for Point 13 with no storyline."
-                }]
-              }
-            }]
+              "storylineID": 3
+          }]
     		}, {
     			"id": 19,
-    			"title": [{
-              "language": "en",
-              "title": "Point 19 Title"
-            }, {
-              "language": "fr",
-              "title": "Titre du point 19"
-            }
-          ],
-          "description": [{
-              "language": "en",
-              "description": "Point 19 Description"
-            }, {
-              "language": "fr",
-              "description": "Description du Point 19"
-            }
-          ],
           "x": 600,
           "y": 325,
     			"floorID": 1,
@@ -472,60 +163,10 @@ angular.module('services')
     				"major": "undefined",
     				"minor": "undefined"
     			},
-    			"media": {
-            "image": [{
-              "path": "/path/to/nowhere/img.png",
-              "language": "en",
-              "caption": "This is an image caption for Point 19 with no storyline."
-            }],
-            "video": [{
-              "path": "/path/to/nowhere/video.mp4",
-              "language": "en",
-              "caption": "This is a video caption for Point 19 with no storyline."
-            }],
-            "audio": [{
-              "path": "/path/to/nowhere/audio.mp3",
-              "language": "en",
-              "caption": "This is an audio caption for Point 19 with no storyline."
-            }]
-          },
     			"storyPoint": [
             {
-              "storylineID": 3,
-              "title": [{
-                  "language": "en",
-                  "title": "Nipper: Searching for his master's voice"
-                }, {
-                  "language": "fr",
-                  "title": "Nipper: À la recherche de la voix de son maître"
-                }
-              ],
-              "description": [{
-                  "language": "en",
-                  "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
-                }, {
-                  "language": "fr",
-                  "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
-                }
-              ],
-              "media": {
-                "image": [{
-                  "path": "/path/to/nowhere/img.png",
-                  "language": "en",
-                  "caption": "This is an image caption for Point 19 with the Story 3."
-                }],
-                "video": [{
-                  "path": "/path/to/nowhere/video.mp4",
-                  "language": "en",
-                  "caption": "This is a video caption for Point 19 with no storyline."
-                }],
-                "audio": [{
-                  "path": "/path/to/nowhere/audio.mp3",
-                  "language": "en",
-                  "caption": "This is an audio caption for Point 19 with no storyline."
-                }]
-              }
-            }]
+              "storylineID": 3
+          }]
     		}
       ],
       "pot": [{
@@ -648,6 +289,103 @@ angular.module('services')
       	}
   		]
     };
+
+    //generate data for points of interest
+    var pois = points.poi;
+    for(var i = 0; i < pois.length; i++) {
+      var poi = pois[i];
+
+      poi.title = [{
+          "language": "en",
+          "title": "Point " + poi.id + " Title"
+        }, {
+          "language": "fr",
+          "title": "Titre du point " + poi.id
+      }];
+
+      poi.description = [{
+          "language": "en",
+          "description": "Point " + poi.id + " Description"
+        }, {
+          "language": "fr",
+          "description": "Description du Point " + poi.id
+      }];
+
+      if(poi.media === undefined)
+        poi.media = {};
+
+      if(poi.media.image === undefined || poi.media.image.length === 0){
+        poi.media.image = [{
+          "path": "/path/to/nowhere/img.png",
+          "language": "en",
+          "caption": "This is an image caption for Point " + poi.id + " with no storyline."
+        }];
+      }
+
+      if(poi.media.video === undefined || poi.media.video.length === 0){
+        poi.media.video = [{
+          "path": "/path/to/nowhere/video.mp4",
+          "language": "en",
+          "caption": "This is a video caption for Point " + poi.id + " with no storyline."
+        }];
+      }
+
+      if(poi.media.audio === undefined || poi.media.audio.length === 0){
+        poi.media.audio = [{
+          "path": "/path/to/nowhere/audio.mp3",
+          "language": "en",
+          "caption": "This is an audio caption for Point " + poi.id + " with no storyline."
+        }];
+      }
+
+      var storypoints = poi.storyPoint;
+      for(var j = 0; j < storypoints.length; j++) {
+        var storypoint = storypoints[j];
+
+        storypoint.title = [{
+            "language": "en",
+            "title": "Nipper: Searching for his master's voice"
+          }, {
+            "language": "fr",
+            "title": "Nipper: À la recherche de la voix de son maître"
+        }];
+
+        storypoint.description = [{
+            "language": "en",
+            "description": "Nipper comes back from a stroll outside and is looking for his master, who is the plant's president Elmer C. Grimley. However, a new extension has been recently added and opened (building 17), and Nipper is a bit confused. After he went to the old office (in building 5a), which is empty and close, he needs to find out, where the new president's office is. On top, it's a very busy day for his master and the factory inspections have to be done and production has started on high volume."
+          }, {
+            "language": "fr",
+            "description": "Nipper revient d'une promenade à l'extérieur et recherche son maître et président de la manufacture, Elmer C. Grimley. Malheureusement pour Nipper, un nouvel agrandissement, le bâtiment 17, à été ajouté au complexe manufacturier, et Nipper ne sait plus où donner de la tête. ..."
+        }];
+
+        if(storypoint.media === undefined)
+          storypoint.media = {};
+
+        if(storypoint.media.image === undefined || storypoint.media.image.length === 0){
+          storypoint.media.image = [{
+            "path": "/path/to/nowhere/img.png",
+            "language": "en",
+            "caption": "This is an image caption for Point " + poi.id + " with no storyline."
+          }];
+        }
+
+        if(storypoint.media.video === undefined || storypoint.media.video.length === 0){
+          storypoint.media.video = [{
+            "path": "/path/to/nowhere/video.mp4",
+            "language": "en",
+            "caption": "This is a video caption for Point " + poi.id + " with no storyline."
+          }];
+        }
+
+        if(storypoint.media.audio === undefined || storypoint.media.audio.length === 0){
+          storypoint.media.audio = [{
+            "path": "/path/to/nowhere/audio.mp3",
+            "language": "en",
+            "caption": "This is an audio caption for Point " + poi.id + " with no storyline."
+          }];
+        }
+      }
+    }
 
     var mapData = {
       "node": points,
