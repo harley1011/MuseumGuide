@@ -88,7 +88,7 @@ angular.module('services')
       "points": [1, 3, 5, 12]
     }];
 
-    var points = [
+    var points = {
       "poi": [{
   			"id": 1,
   			"title": [{
@@ -267,7 +267,7 @@ angular.module('services')
           "floorID": 1
     		}
   		]
-    ];
+    };
     /*{
       "type": "poi",
       "subtype": "",

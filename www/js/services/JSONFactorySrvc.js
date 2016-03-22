@@ -28,6 +28,7 @@ angular.module('services')
           //If not loads them
           //Load points of interest
           var pois = raw.poi;
+          console.log(raw);
           for (var i = 0; i < pois.length; i++) {
             this.extractBeaconFromPoint(pois[i]);
             this.extractMediaFromPoint(pois[i]);
