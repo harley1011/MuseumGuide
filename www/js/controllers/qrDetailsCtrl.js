@@ -8,9 +8,6 @@ angular.module('controllers')
             $scope.language = languageSrvc.getStoredLanguage();
             $scope.images = qrDetail.images;
             $scope.texts = qrDetail.texts;
-            console.log(languageSrvc.getStoredLanguage());
-
-
         }
         init();
 

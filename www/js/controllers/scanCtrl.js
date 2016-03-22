@@ -3,7 +3,6 @@ angular.module('controllers')
             $translatePartialLoader.addPart('qr');
 
             $scope.openQRScanner = function () {
-                console.log('tis openm')
                 if (!window.cordova) {
                     qrSrvc.storeQrDetails({
                             "texts": [
