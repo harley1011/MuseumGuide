@@ -43,9 +43,9 @@ angular.module('controllers')
 					var storyline = getCurrentStoryline();
 					if(storyline !== undefined){
 						if($translate.use() === "en")
-							title = storyline.getTitle().en_us;
+							title = storyline.getTitleWithLanguage("en_us");
 						else if($translate.use() === "fr")
-							title = storyline.getTitle().fr_ca;
+							title = storyline.getTitleWithLanguage("fr_ca");
 					}
 				}
 				else if($scope.mode === 2){

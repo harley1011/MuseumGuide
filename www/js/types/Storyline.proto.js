@@ -6,9 +6,9 @@ var Storyline = (function (){
   function Storyline(raw) {
     var privateMembers = {
       uuid: raw.id,
-      title: raw.name,
+      title: raw.title,
       description: raw.description,
-      points: raw.points,
+      points: raw.path,
       walkingTime: raw.walkingTimeInMinutes,
       numFloors: raw.floorsCovered,
       thumbnail: raw.thumbnail
@@ -24,6 +24,17 @@ var Storyline = (function (){
 
   Storyline.prototype.getTitle = function(){
     return privateData.get(this).title;
+  };
+
+  Storyline.prototype.getTitleWithLanguage = function(language){
+    var title;
+    var titles = privateData.get(this).title;
+    for(var i = 0; i < titles.length; i++) {
+      title = titles[i].title;
+      if(titles[i].language === language)
+        break;
+    }
+    return title;
   };
 
   Storyline.prototype.getPoints = function(){

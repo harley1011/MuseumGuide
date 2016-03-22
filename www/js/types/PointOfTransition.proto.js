@@ -8,7 +8,7 @@ var PointOfTransition = (function (){
     //super(raw)
     Point.call(this, raw);
     var privateMembers = {
-      color: (raw.style && raw.style.color) ? raw.style.color : "#00008B",
+      color: (raw.style && raw.style.color) ? raw.style.color : "#8080ff",
       diameter: (raw.style && raw.style.diameter) ? raw.style.diameter : 40,
       label: raw.label,
     };

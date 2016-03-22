@@ -28,12 +28,11 @@ angular.module('services')
           //If not loads them
           //Load points of interest
           var pois = raw.poi;
-          console.log(raw);
           for (var i = 0; i < pois.length; i++) {
             this.extractBeaconFromPoint(pois[i]);
             this.extractMediaFromPoint(pois[i]);
             this.extractTextFromPoint(pois[i]);
-            this.compileStorylinePoints(pois[i]);
+            //this.compileStorylinePoints(pois[i]);
             pt = new PointOfInterest(pois[i]);
             points.push(pt);
           }
@@ -111,7 +110,7 @@ angular.module('services')
         }
         return {title: title, description: description};
       },
-      compileStorylinePoints: function(raw) {
+      /*compileStorylinePoints: function(raw) {
         if (raw.storyPoint) {
           for (var i = 0; i < raw.storyPoint.length; i++) {
             //Add the point id to the storyline point store.
@@ -122,7 +121,7 @@ angular.module('services')
             }
           }
         }
-      },
+      },*/
       getStorylines: function(transmission) {
         var raw = transmission.storyline,
           storylines = [];
@@ -136,7 +135,7 @@ angular.module('services')
           //If not loads them
           for (var i = 0; i < raw.length; i++) {
             //Load the points
-            raw[i].points = this.store.storylinePoints[raw[i].id];
+            //raw[i].path = this.store.storylinePoints[raw[i].id];
             storylines.push(new Storyline(raw[i]));
           }
           this.store.storylines = storylines.slice();
