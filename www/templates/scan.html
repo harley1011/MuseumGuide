@@ -2,10 +2,13 @@
     <ion-nav-title>
         Scan QR Code
     </ion-nav-title>
-    <ion-content class="padding">
-        <button class="button button-full button-positive" ng-click="openQRScanner()">
-            {{ 'SCAN_BUTTON' | translate }}
-        </button>
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <button ng-click="openQRScanner()" class="button button-block button-energized">
+                    {{ 'SCAN_BUTTON' | translate }}
+                </button>
+            </div>
+        </div>
     </ion-content>
-
 </ion-view>
