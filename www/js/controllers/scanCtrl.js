@@ -1,6 +1,6 @@
 angular.module('controllers')
-.controller('scanCtrl', function($scope, $state) {
-
+.controller('scanCtrl', function($scope, $state, $translatePartialLoader) {
+    $translatePartialLoader.addPart('qr');
     $scope.openQRScanner = function() {
         cordova.plugins.barcodeScanner.scan(
             function (result) {
