@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-nav-title>
+        Details
+    </ion-nav-title>
+    <ion-content>
+        <div ng-repeat="text in texts" ng-if="text.language == language" class="card">
+            <div class="item item-divider">{{text.title}}</div>
+            <div class="item item-text-wrap">{{text.content}}</div>
+        </div>
+        <div ng-repeat="image in images" ng-if="image.language == language" class="card">
+            <div class="item item-body"><img class="full-image" ng-src="{{image.url}}">
+                <p>{{image.caption}}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

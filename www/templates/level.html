@@ -12,12 +12,11 @@
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 4}" class="level-mark" ng-click="changeFloor(4)">4</a>
             <a ng-class="{'selected-level': getCurrentFloorNumber() == 5}" class="level-mark" ng-click="changeFloor(5)">5</a>
         </div>
-
+        <div class="map-audio-container" ng-hide="hideBeaconPlayerContainer" position-bars-and-content>
+        <map-audio player="beaconPlayer"></map-audio>
+        </div>
     </ion-header-bar>
     <!-- Audio -->
-    <ion-header-bar class=" bar-subheader map-audio-container" ng-hide="hideBeaconPlayerContainer" position-bars-and-content>
-        <map-audio player="beaconPlayer"></map-audio>
-    </ion-header-bar>
 
     <!-- Map -->
     <ion-content scroll="false" overflow-scroll="true" >

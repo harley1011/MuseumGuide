@@ -1,0 +1,26 @@
+{
+  "texts": [
+    {
+      "title": "Text Two",
+      "language": "en",
+      "content": "This is the text deux"
+    },
+    {
+      "title": "Texte deux",
+      "language": "fr",
+      "content": "Ceci est le texte de deux"
+    }
+  ],
+  "images": [
+    {
+      "url": "img/1a.png",
+      "language": "en",
+      "caption": "image deux"
+    },
+    {
+      "url": "img/1a.png",
+      "language": "fr",
+      "caption": "l'image de deux"
+    }
+  ]
+}
