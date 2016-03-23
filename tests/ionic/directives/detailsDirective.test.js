@@ -42,7 +42,7 @@ describe('details directive tests', function () {
         floorSrvc = _floorSrvc_;
         textSrvc = _textSrvc_;
         transferProtocolSrvc = _transferProtocolSrvc_;
-        rawPoints = JSON.parse(JSON.stringify(transferProtocolSrvc.read("mapData").point));
+        rawPoints = JSON.parse(JSON.stringify(transferProtocolSrvc.read("mapData").node.poi));
     }));
 
 
@@ -73,7 +73,7 @@ describe('details directive tests', function () {
             var compiledElement = $compile(angular.element('<div point-details></div>'))(scope);
             scope.$digest();
             //Obtaining raw data for comparison
-            var rawPoint ;
+            var rawPoint;
             for(var i = 0 ; i < rawPoints.length ; i++){
               if(rawPoints[i].id === 1){
                 rawPoint = rawPoints[i];
