@@ -297,6 +297,7 @@ angular.module('controllers')
 		function freeRoam() {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
+			storylineSrvc.setFreeRoamMode();
 			var allpoints = pointSrvc.getPoints(),
 					floorNum = floorSrvc.getCurrentFloor().getNumber(),
 					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),

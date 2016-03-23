@@ -19,6 +19,9 @@ angular.module('services')
           currentStoryline = storyline.getUUID();
         }
       },
+      setFreeRoamMode: function() {
+        currentStoryline = undefined;
+      },
       getStorylines: function() {
         var arr = [];
         for(key in storylines){
