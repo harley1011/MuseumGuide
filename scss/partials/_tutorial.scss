@@ -12,11 +12,10 @@
 .tutorial-msg {
     color: #FFF;
     font-size: 30pt;
-    display: inline-block;
-    margin-top: 115px;
-    margin-left: 60px;
+    display: block;
     line-height: 44px;
-    margin-bottom: 18px;
+    margin: 115px auto 20px 54px;
+    width: 300px;
 }
 
 .tutorial-button { 
@@ -137,14 +136,12 @@ a.button-icon {
 }
 
 .overlay-desc .col {
-//    border: 1px solid white;
     height: 50px;
     text-align: center;
     position: relative;
 }
 
 .overlay-desc .col > div {
-//border: 1px solid red;
     position: absolute;
     bottom: 0;
     text-align: center;
@@ -152,7 +149,6 @@ a.button-icon {
 }
 
 .overlay-arrows {
-//    border: 1px solid red;
     position: absolute;
     width: 100%;
     height: 200px;
@@ -163,7 +159,6 @@ a.button-icon {
 }
 
 .overlay-arrows > div.col-25 {
-//    border: 1px solid white;
     text-align: center;
 }
 
@@ -176,7 +171,6 @@ a.button-icon {
 }
 
 .overlay-tabs {
-//    border: 1px solid red;
     position: absolute;
     bottom: 0;
     text-align: center;
@@ -193,7 +187,6 @@ a.button-icon {
     display: inline-block;
     border: 1px solid white;
     border-radius: 7px;
-//    margin: 0 20px;
   
 }
 
