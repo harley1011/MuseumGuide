@@ -9,11 +9,11 @@
                 <i class="icon icon-freeBird" style="margin-left:50px;"></i>
                 Free Exploration
                 </div>
-                
+
             </ion-item>
             <ion-item class="item-icon-left" ng-repeat="storyline in storyLines" ng-click="storyLineMode(storyline)">
                 <div style="margin-left:54px;">
-                <i class="icon icon-genericIcon" style="margin-left:50px;"></i>{{storyline.getTitle().en_us}}</div>
+                <i class="icon icon-genericIcon" style="margin-left:50px;"></i>{{storyline.getTitleWithLanguage("en_us")}}</div>
             </ion-item>
         </ion-list>
     </ion-content>

@@ -17,34 +17,32 @@ angular.module('services')
         floors: [],
         media: [],
         texts: {},
+        edges: []
       },
       getPoints: function(transmission) {
-        var raw = transmission.point,
+        var raw = transmission.node,
           points = [],
           beacons = [],
           pt;
         //Checks if points have not already been loaded
         if (this.store.points.length === 0) {
           //If not loads them
-          for (var i = 0; i < raw.length; i++) {
-            switch (raw[i].type) {
-              case "poi":
-                this.extractBeaconFromPoint(raw[i]);
-                this.extractMediaFromPoint(raw[i]);
-                this.extractTextFromPoint(raw[i]);
-                this.compileStorylinePoints(raw[i]);
-                pt = new PointOfInterest(raw[i]);
-                points.push(pt);
-                break;
-              case "dir":
-                raw[i].subtype = "intersection";
-              case "fac":
-                points.push(new PointOfTransition(raw[i]));
-                break;
-              default:
-                break;
-            }
+          //Load points of interest
+          var pois = raw.poi;
+          for (var i = 0; i < pois.length; i++) {
+            this.extractBeaconFromPoint(pois[i]);
+            this.extractMediaFromPoint(pois[i]);
+            this.extractTextFromPoint(pois[i]);
+            pt = new PointOfInterest(pois[i]);
+            points.push(pt);
           }
+
+          //Load points of transition
+          var pots = raw.pot;
+          for (var i = 0; i < pots.length; i++) {
+            points.push(new PointOfTransition(pots[i]));
+          }
+
           this.store.points = points;
         } else {
           //else simply gives a shallow copy of array
@@ -53,7 +51,7 @@ angular.module('services')
         return points;
       },
       extractBeaconFromPoint: function(raw) {
-        if (raw.beacon_id != 'undefined') {
+        if (raw.iBeacon !== undefined && raw.iBeacon.uuid != 'undefined') {
           this.store.beacons.push(new Beacon(raw));
         }
       },
@@ -112,7 +110,7 @@ angular.module('services')
         }
         return {title: title, description: description};
       },
-      compileStorylinePoints: function(raw) {
+      /*compileStorylinePoints: function(raw) {
         if (raw.storyPoint) {
           for (var i = 0; i < raw.storyPoint.length; i++) {
             //Add the point id to the storyline point store.
@@ -123,7 +121,7 @@ angular.module('services')
             }
           }
         }
-      },
+      },*/
       getStorylines: function(transmission) {
         var raw = transmission.storyline,
           storylines = [];
@@ -137,7 +135,7 @@ angular.module('services')
           //If not loads them
           for (var i = 0; i < raw.length; i++) {
             //Load the points
-            raw[i].points = this.store.storylinePoints[raw[i].id];
+            //raw[i].path = this.store.storylinePoints[raw[i].id];
             storylines.push(new Storyline(raw[i]));
           }
           this.store.storylines = storylines.slice();
@@ -160,7 +158,7 @@ angular.module('services')
         return beacons;
       },
       getFloors: function(transmission) {
-        var raw = transmission.level,
+        var raw = transmission.floorPlan,
           floors = [];
         //Checks if storylines have not already been loaded
         if (this.store.floors.length === 0) {
@@ -194,6 +192,26 @@ angular.module('services')
         } else {
           return this.store.texts;
         }
+      },
+      getEdges: function(transmission) {
+        var raw = transmission.edge,
+          edges = [];
+
+        //Checks if edges have not already been loaded
+        if (this.store.edges.length === 0) {
+          //If not loads them
+          //Load edges
+          for (var i = 0; i < raw.length; i++) {
+            edge = new Edge(raw[i]);
+            edges.push(edge);
+          }
+
+          this.store.edges = edges;
+        } else {
+          //else simply gives a shallow copy of array
+          edges = this.store.edges.slice();
+        }
+        return edges;
       }
     };
     return {
@@ -217,6 +235,9 @@ angular.module('services')
             break;
           case "texts":
             q = Factory.getTexts(tps.read("mapData"));
+            break;
+          case "edges":
+            q = Factory.getEdges(tps.read("mapData"));
             break;
           default:
             q = undefined;

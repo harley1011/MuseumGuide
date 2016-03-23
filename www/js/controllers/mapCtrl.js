@@ -1,6 +1,6 @@
 angular.module('controllers')
 	.controller('mapCtrl',
-	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc) {
+	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc) {
 
 		(function init() {
 			$translatePartialLoader.addPart('map');
@@ -12,6 +12,7 @@ angular.module('controllers')
 
 			$scope.changeFloor = function (z) {
 				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
+				$scope.$broadcast('floorChanged', {});
 				executeMode();
 			};
 
@@ -42,9 +43,9 @@ angular.module('controllers')
 					var storyline = getCurrentStoryline();
 					if(storyline !== undefined){
 						if($translate.use() === "en")
-							title = storyline.getTitle().en_us;
+							title = storyline.getTitleWithLanguage("en_us");
 						else if($translate.use() === "fr")
-							title = storyline.getTitle().fr_ca;
+							title = storyline.getTitleWithLanguage("fr_ca");
 					}
 				}
 				else if($scope.mode === 2){
@@ -79,17 +80,17 @@ angular.module('controllers')
 				findFacilities();
 			});
 
-		
+
 
 			$scope.changeFloor(1);
 
-            
+
 			if($scope.mode === undefined){
 				//storyline mode
-				
+
                 var exploreMode = exploreModeSrvc.getMode();
                 if(exploreMode == 0) {
-                    $scope.mode = 1;   
+                    $scope.mode = 1;
                 } else if(exploreMode == 1){
                     $scope.mode = exploreModeSrvc.getMode();
                     var story = exploreModeSrvc.getSelectedStoryline();
@@ -97,7 +98,7 @@ angular.module('controllers')
                 } else {
                     $scope.mode = exploreModeSrvc.getMode();
                 }
-			} 
+			}
 
 
 			executeMode();
@@ -220,14 +221,38 @@ angular.module('controllers')
 				//Check if Point is either part of current Storyline on the current floor
 				//or if a PointOfTransition on current Floor.
 				if (coord.z == floorNum &&
-					 (storyPoints.indexOf(pt.getUUID()) != -1 ||
-					 (pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					 (storyPoints.indexOf(pt.getUUID()) != -1 || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					gpt = new GraphicalPoint(pt, dimensions);
-					$scope.mapPoints[pt.getUUID()] = gpt;
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+
+					if(!isDefault){
+						gpt = new GraphicalPoint(pt, dimensions);
+						$scope.mapPoints[pt.getUUID()] = gpt;
+					}
 				}
 			}
 			return currpoints;
+		}
+
+		function getStorylineEdges(story, floorNum){
+			var storyPoints = story.getPoints(),
+				edges = edgeSrvc.getEdges(),
+				dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions();
+
+			if(storyPoints === undefined || storyPoints.length === 0)
+				return;
+
+			var previousPoint = storyPoints[0];
+			for(var i = 1; i < storyPoints.length; i++) {
+				var point = storyPoints[i];
+				var uuids = [previousPoint, point];
+				var edgeNodes = pointSrvc.getPointsByUUID(uuids);
+				if(edgeSrvc.getEdge(uuids) !== undefined && edgeNodes[0].getCoordinates().z === floorNum && edgeNodes[1].getCoordinates().z === floorNum)
+					$scope.mapLines.push(new Vector(edgeNodes[0], edgeNodes[1], dimensions));
+				previousPoint = point;
+			}
 		}
 
 		function executeMode(){
@@ -257,19 +282,22 @@ angular.module('controllers')
 
 			//store lines connecting points of interest
 			$scope.mapLines = [];
-			paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
+			getStorylineEdges(story, floorNum);
+
+			/*paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
 			if(paths !== null){
 				for(var i = 0; i < paths.length; i++){
 					if (paths[i][2]) { //if line needs to be drawn
 						$scope.mapLines.push(new Vector(paths[i][0], paths[i][1], dimensions));
 					}
 				}
-			}
+			}*/
 		}
 
 		function freeRoam() {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
+			storylineSrvc.setFreeRoamMode();
 			var allpoints = pointSrvc.getPoints(),
 					floorNum = floorSrvc.getCurrentFloor().getNumber(),
 					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
@@ -281,11 +309,16 @@ angular.module('controllers')
 				//Check if Point is either part of current Storyline on the current floor
 				//or if a PointOfTransition on current Floor.
 				if (coord.z == floorNum &&
-					((pt instanceof PointOfInterest) ||
-					(pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					 ((pt instanceof PointOfInterest) || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					gpt = new GraphicalPoint(pt, dimensions);
-					$scope.mapPoints[pt.getUUID()] = gpt;
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+
+					if(!isDefault){
+						gpt = new GraphicalPoint(pt, dimensions);
+						$scope.mapPoints[pt.getUUID()] = gpt;
+					}
 				}
 			}
 		};
