@@ -4,17 +4,17 @@ angular.module('services')
       pt;
 
     var storylines = [{
-      "path": [1, 3, 5, 12]
+      "path": [1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     }, {
-      "path": [1, 3, 5]
+      "path": [1, 2, 3, 2, 4, 5]
     }, {
-      "path": [13, 19]
+      "path": [13, 14, 15, 16, 17, 18, 19]
     }, {
-      "path": [1, 3, 5, 12]
+      "path": [1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     }, {
-      "path": [1, 3, 5, 12]
+      "path": [1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     }, {
-      "path": [1, 3, 5, 12]
+      "path": [1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     }];
 
     //generate data for storylines
@@ -387,6 +387,59 @@ angular.module('services')
       }
     }
 
+    var edges = [{
+      "startNode": 1,
+      "endNode": 2
+    }, {
+      "startNode": 2,
+      "endNode": 3
+    }, {
+      "startNode": 2,
+      "endNode": 4
+    }, {
+      "startNode": 4,
+      "endNode": 5
+    }, {
+      "startNode": 5,
+      "endNode": 6
+    }, {
+      "startNode": 6,
+      "endNode": 7
+    }, {
+      "startNode": 7,
+      "endNode": 8
+    }, {
+      "startNode": 8,
+      "endNode": 9
+    }, {
+      "startNode": 9,
+      "endNode": 10
+    }, {
+      "startNode": 10,
+      "endNode": 11
+    }, {
+      "startNode": 11,
+      "endNode": 12
+    }, {
+      "startNode": 13,
+      "endNode": 14
+    }, {
+      "startNode": 14,
+      "endNode": 15
+    }, {
+      "startNode": 15,
+      "endNode": 16
+    }, {
+      "startNode": 16,
+      "endNode": 17
+    }, {
+      "startNode": 17,
+      "endNode": 18
+    }, {
+      "startNode": 18,
+      "endNode": 19
+    }];
+
     var mapData = {
       "node": points,
       "floorPlan": [{
@@ -416,6 +469,7 @@ angular.module('services')
         "imageHeight": 1715
       }],
       "storyline": storylines,
+      "edge": edges
     };
 
     return {

@@ -17,6 +17,7 @@ angular.module('services')
         floors: [],
         media: [],
         texts: {},
+        edges: []
       },
       getPoints: function(transmission) {
         var raw = transmission.node,
@@ -32,7 +33,6 @@ angular.module('services')
             this.extractBeaconFromPoint(pois[i]);
             this.extractMediaFromPoint(pois[i]);
             this.extractTextFromPoint(pois[i]);
-            //this.compileStorylinePoints(pois[i]);
             pt = new PointOfInterest(pois[i]);
             points.push(pt);
           }
@@ -192,6 +192,26 @@ angular.module('services')
         } else {
           return this.store.texts;
         }
+      },
+      getEdges: function(transmission) {
+        var raw = transmission.edge,
+          edges = [];
+
+        //Checks if edges have not already been loaded
+        if (this.store.edges.length === 0) {
+          //If not loads them
+          //Load edges
+          for (var i = 0; i < raw.length; i++) {
+            edge = new Edge(raw[i]);
+            edges.push(edge);
+          }
+
+          this.store.edges = edges;
+        } else {
+          //else simply gives a shallow copy of array
+          edges = this.store.edges.slice();
+        }
+        return edges;
       }
     };
     return {
@@ -215,6 +235,9 @@ angular.module('services')
             break;
           case "texts":
             q = Factory.getTexts(tps.read("mapData"));
+            break;
+          case "edges":
+            q = Factory.getEdges(tps.read("mapData"));
             break;
           default:
             q = undefined;

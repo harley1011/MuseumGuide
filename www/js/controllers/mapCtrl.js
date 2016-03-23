@@ -1,6 +1,6 @@
 angular.module('controllers')
 	.controller('mapCtrl',
-	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc) {
+	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc) {
 
 		(function init() {
 			$translatePartialLoader.addPart('map');
@@ -236,6 +236,25 @@ angular.module('controllers')
 			return currpoints;
 		}
 
+		function getStorylineEdges(story, floorNum){
+			var storyPoints = story.getPoints(),
+				edges = edgeSrvc.getEdges(),
+				dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions();
+
+			if(storyPoints === undefined || storyPoints.length === 0)
+				return;
+
+			var previousPoint = storyPoints[0];
+			for(var i = 1; i < storyPoints.length; i++) {
+				var point = storyPoints[i];
+				var uuids = [previousPoint, point];
+				var edgeNodes = pointSrvc.getPointsByUUID(uuids);
+				if(edgeSrvc.getEdge(uuids) !== undefined && edgeNodes[0].getCoordinates().z === floorNum && edgeNodes[1].getCoordinates().z === floorNum)
+					$scope.mapLines.push(new Vector(edgeNodes[0], edgeNodes[1], dimensions));
+				previousPoint = point;
+			}
+		}
+
 		function executeMode(){
 			if($scope.mode === 1)
 				//storyline mode
@@ -263,6 +282,8 @@ angular.module('controllers')
 
 			//store lines connecting points of interest
 			$scope.mapLines = [];
+			getStorylineEdges(story, floorNum);
+
 			/*paths = storyLinePathSrvc.storyLinePath(floorNum, story, points);
 			if(paths !== null){
 				for(var i = 0; i < paths.length; i++){
