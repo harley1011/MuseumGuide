@@ -223,8 +223,14 @@ angular.module('controllers')
 				if (coord.z == floorNum &&
 					 (storyPoints.indexOf(pt.getUUID()) != -1 || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					gpt = new GraphicalPoint(pt, dimensions);
-					$scope.mapPoints[pt.getUUID()] = gpt;
+					var label = undefined;
+					if(pt instanceof PointOfTransition)
+						label = pt.getLabel();
+
+					if(label === undefined || label.label !== "intersection"){
+						gpt = new GraphicalPoint(pt, dimensions);
+						$scope.mapPoints[pt.getUUID()] = gpt;
+					}
 				}
 			}
 			return currpoints;
@@ -281,11 +287,16 @@ angular.module('controllers')
 				//Check if Point is either part of current Storyline on the current floor
 				//or if a PointOfTransition on current Floor.
 				if (coord.z == floorNum &&
-					((pt instanceof PointOfInterest) ||
-					(pt instanceof PointOfTransition && pt.getType() && pt.getType() !== "intersection"))) {
+					 ((pt instanceof PointOfInterest) || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					gpt = new GraphicalPoint(pt, dimensions);
-					$scope.mapPoints[pt.getUUID()] = gpt;
+					var label = undefined;
+					if(pt instanceof PointOfTransition)
+						label = pt.getLabel();
+
+					if(label === undefined || label.label !== "intersection"){
+						gpt = new GraphicalPoint(pt, dimensions);
+						$scope.mapPoints[pt.getUUID()] = gpt;
+					}
 				}
 			}
 		};
