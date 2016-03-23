@@ -223,11 +223,11 @@ angular.module('controllers')
 				if (coord.z == floorNum &&
 					 (storyPoints.indexOf(pt.getUUID()) != -1 || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					var label = undefined;
+					var isDefault = false;
 					if(pt instanceof PointOfTransition)
-						label = pt.getLabel();
+						isDefault = pt.isDefautLabel();
 
-					if(label === undefined || label.label !== "intersection"){
+					if(!isDefault){
 						gpt = new GraphicalPoint(pt, dimensions);
 						$scope.mapPoints[pt.getUUID()] = gpt;
 					}
@@ -310,11 +310,11 @@ angular.module('controllers')
 				if (coord.z == floorNum &&
 					 ((pt instanceof PointOfInterest) || (pt instanceof PointOfTransition))) {
 					//Adding points to be shown
-					var label = undefined;
+					var isDefault = false;
 					if(pt instanceof PointOfTransition)
-						label = pt.getLabel();
+						isDefault = pt.isDefautLabel();
 
-					if(label === undefined || label.label !== "intersection"){
+					if(!isDefault){
 						gpt = new GraphicalPoint(pt, dimensions);
 						$scope.mapPoints[pt.getUUID()] = gpt;
 					}

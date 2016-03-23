@@ -171,118 +171,79 @@ angular.module('services')
       ],
       "pot": [{
     			"id": 2,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 270,
           "y": 1580,
           "floorID": 1
     		}, {
     			"id": 4,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 300,
           "y": 1545,
           "floorID": 1
       	}, {
     			"id": 6,
-          "label": {
-              "language": "en",
-              "label": "stairs"
-          },
+          "label": "stairs",
           "x": 485,
           "y": 1245,
           "floorID": 1
       	}, {
     			"id": 7,
-          "label": {
-              "language": "en",
-              "label": "stairs"
-          },
+          "label": "stairs",
           "x": 485,
           "y": 1245,
           "floorID": 2
       	}, {
     			"id": 8,
-          "label": {
-              "language": "en",
-              "label": "stairs"
-          },
+          "label": "stairs",
           "x": 485,
           "y": 1245,
           "floorID": 3
       	}, {
     			"id": 9,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 520,
           "y": 1305,
           "floorID": 3
       	}, {
     			"id": 10,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 610,
           "y": 1312,
           "floorID": 3
       	}, {
     			"id": 11,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 585,
           "y": 1590,
           "floorID": 3
       	}, {
     			"id": 14,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 220,
           "y": 440,
           "floorID": 1
       	}, {
     			"id": 15,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 220,
           "y": 860,
           "floorID": 1
       	}, {
     			"id": 16,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 500,
           "y": 860,
           "floorID": 1
       	}, {
     			"id": 17,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 480,
           "y": 450,
           "floorID": 1
       	}, {
     			"id": 18,
-          "label": {
-              "language": "en",
-              "label": "intersection"
-          },
+          "label": "hallway",
           "x": 500,
           "y": 320,
           "floorID": 1

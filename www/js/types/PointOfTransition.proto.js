@@ -42,16 +42,25 @@ var PointOfTransition = (function (){
     privateData.get(this).diameter = diameter;
   };
 
-  /*PointOfTransition.prototype.getNeighbourIDs = function(){
-    return privateData.get(this).neighbours;
-  };*/
-
-  /*PointOfTransition.prototype.getType = function(){
-    return privateData.get(this).type;
-  };*/
-
   PointOfTransition.prototype.getLabel = function(){
     return privateData.get(this).label;
+  };
+
+  PointOfTransition.prototype.isDefautLabel = function(){
+    switch(privateData.get(this).label){
+      case "ramp":
+      case "stairs":
+      case "elevator":
+      case "intersection":
+      case "washroom":
+      case "exit":
+      case "entrance":
+      case "emergency exit":
+        return false;
+      default:
+        return true;
+
+    }
   };
 
   //@Override
