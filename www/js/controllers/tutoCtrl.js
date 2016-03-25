@@ -1,5 +1,5 @@
 angular.module('controllers')
-.controller('tutoCtrl', function($scope, $state, $controller, $ionicModal, $translatePartialLoader, exploreModeSrvc) {
+.controller('tutoCtrl', function($scope, $state, $controller, $ionicModal, $translatePartialLoader, exploreModeSrvc, $translate, $rootScope) {
  
 // s
     $translatePartialLoader.addPart('tutorial');
@@ -10,6 +10,7 @@ angular.module('controllers')
       $scope.modal = modal;
     });
 
+    $scope.language = $translate.use();
     $scope.openModal = function() {
       $scope.modal.show();
     };
@@ -48,6 +49,12 @@ angular.module('controllers')
          $state.go('tab.level');
   
     };
+
+    $rootScope.$on('changeLanguage', function(e, language)
+    {
+        $scope.language = $translate.use();
+        $scope.storyLines = exploreModeSrvc.getStorylines();
+    });
     
     $scope.storyLines = exploreModeSrvc.getStorylines();
     // eo
