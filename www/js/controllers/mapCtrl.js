@@ -81,8 +81,7 @@ angular.module('controllers')
 			});
 
 
-
-			$scope.changeFloor(1);
+			$scope.changeFloor(floorSrvc.getFloors()[0].getNumber());
 
 
 			if($scope.mode === undefined){

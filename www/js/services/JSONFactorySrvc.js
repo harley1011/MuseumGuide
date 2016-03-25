@@ -28,7 +28,7 @@ angular.module('services')
         if (this.store.points.length === 0) {
           //If not loads them
           //Load points of interest
-          var pois = raw.poi;
+          var pois = raw[0].poi;
           for (var i = 0; i < pois.length; i++) {
             this.extractBeaconFromPoint(pois[i]);
             this.extractMediaFromPoint(pois[i]);
@@ -38,7 +38,7 @@ angular.module('services')
           }
 
           //Load points of transition
-          var pots = raw.pot;
+          var pots = raw[0].pot;
           for (var i = 0; i < pots.length; i++) {
             points.push(new PointOfTransition(pots[i]));
           }
