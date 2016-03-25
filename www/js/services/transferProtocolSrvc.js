@@ -1,5 +1,5 @@
 angular.module('services')
-  .service('transferProtocolSrvc', function() {
+  .service('transferProtocolSrvc', function(evSchemaSrvc) {
     var points = [],
       pt;
 
