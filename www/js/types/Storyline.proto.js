@@ -29,6 +29,9 @@ var Storyline = (function (){
   Storyline.prototype.getTitleWithLanguage = function(language){
     var title;
     var titles = privateData.get(this).title;
+    if( typeof titles === 'string' ) {
+      return titles;
+    }
     for(var i = 0; i < titles.length; i++) {
       title = titles[i].title;
       if(titles[i].language === language)
