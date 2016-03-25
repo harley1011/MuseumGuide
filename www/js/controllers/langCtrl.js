@@ -1,5 +1,5 @@
 angular.module('controllers')
-    .controller('langCtrl', function ($scope, $rootScope, $state, $translate, $ionicHistory, languageSrvc) {
+    .controller('langCtrl', function ($scope, $rootScope, $state, $translate, $ionicHistory) {
         $scope.currentLanguage = $translate.use() == 'en' ? 'en' : 'fr';
 
         $scope.english = function () {
@@ -25,7 +25,6 @@ angular.module('controllers')
         $scope.changeLanguage = function (langKey) {
             $translate.use(langKey);
             $rootScope.$broadcast('changeLanguage', langKey);
-            languageSrvc.storeLanguageSelection(langKey);
         };
 
         $scope.isEnglish = function () {
