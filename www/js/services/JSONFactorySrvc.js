@@ -103,10 +103,10 @@ angular.module('services')
       extractTextFromTextProperties: function(raw){
         var title = {}, description = {};
         for(var i = 0 ; i < raw.title.length ; i++){
-          title[raw.title[i].language] = raw.title[i].title;
+          title[raw.title[i].language.toLowerCase()] = raw.title[i].title;
         }
         for(var i = 0 ; i < raw.description.length ; i++){
-          description[raw.description[i].language] = raw.description[i].description;
+          description[raw.description[i].language.toLowerCase()] = raw.description[i].description;
         }
         return {title: title, description: description};
       },
