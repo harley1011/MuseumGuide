@@ -6,14 +6,14 @@ angular.module('directives')
 			restrict: 'E',
 			templateUrl: 'templates/bottom-slide-up.html',
 			link: function (scope, element, attrs, ctrls) {
+				$rootScope.$on('changeLanguage', function(e, language)
+				{
+					scope.language = $translate.use();
+					updateLanguage();
+				});
 				$translatePartialLoader.addPart('bottomSlideUp');
 				scope.language = $translate.use();
-				scope.storyLines = JSONFactorySrvc.load("storylines");
-
-				for(var i = scope.storyLines.length; i < 3; i++)
-				{
-					scope.storyLines.push({empty: true});
-				}
+				updateLanguage();
 				var tabsCtrl = ctrls[0];
 				var subMenuElement = angular.element(element[0].querySelector('.sub-menu-list'));
 				tabsCtrl.subMenuActive = false;
@@ -45,6 +45,15 @@ angular.module('directives')
 					$rootScope.$broadcast('findFacilities');
 				};
 
+				function updateLanguage()
+				{
+					scope.storyLines = JSONFactorySrvc.load("storylines");
+
+					for(var i = scope.storyLines.length; i < 3; i++)
+					{
+						scope.storyLines.push({empty: true});
+					}
+				}
 			}
 
 

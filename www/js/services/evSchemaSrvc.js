@@ -6,7 +6,7 @@ angular.module('services')
                     "floorPlan": [
                         {
                             "floorID": "3",
-                            "imagePath": "/floor/3/floor3.png",
+                            "imagePath": "floor/3/floor3.png",
                             "imageWidth": 2343,
                             "imageHeight": 2352
                         }
