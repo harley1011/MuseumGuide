@@ -6,7 +6,7 @@ var Point = (function (){
   function Point(raw) {
     var privateMembers = {
       id: raw.id,
-      coordinates: raw.coordinate,
+      coordinates: {"x": raw.x, "y": raw.y, "z": raw.floorID},
     };
     privateData.set(this, privateMembers);
   }

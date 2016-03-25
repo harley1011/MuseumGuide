@@ -10,9 +10,8 @@ var PointOfInterest = (function (){
       beacon: raw.beacon_id,
       color: (raw.style && raw.style.color) ? raw.style.color : "#00008B",
       diameter: (raw.style && raw.style.diameter) ? raw.style.diameter : 40,
-      neighbours: raw.neighbours,
-      title: null,
-      description: null,
+      title: raw.title,
+      description: raw.description,
       media: typeof raw.media === "object" ? raw.media : null
     };
     privateData.set(this, privateMembers);
@@ -47,10 +46,6 @@ var PointOfInterest = (function (){
 
   PointOfInterest.prototype.setDiameter = function(diameter){
     privateData.get(this).diameter = diameter;
-  };
-
-  PointOfInterest.prototype.getNeighbourIDs = function(){
-    return privateData.get(this).neighbours;
   };
 
   PointOfInterest.prototype.getTitle = function(){

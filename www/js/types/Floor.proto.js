@@ -5,9 +5,9 @@ var Floor = (function (){
   //Constructor Function
   function Floor(raw) {
     var privateMembers = {
-      number: raw.number,
-      plan: new FloorPlan(raw.map),
-      points: raw.points,
+      number: raw.floorID,
+      plan: new FloorPlan(raw)/*,
+      points: raw.points,*/
     };
     privateData.set(this, privateMembers);
   }
@@ -22,9 +22,9 @@ var Floor = (function (){
     return privateData.get(this).plan;
   };
 
-  Floor.prototype.getPoints = function(){
+  /*Floor.prototype.getPoints = function(){
     return privateData.get(this).points;
-  };
+  };*/
 
   Floor.prototype.destructor = function(){
     privateData.delete(this);
