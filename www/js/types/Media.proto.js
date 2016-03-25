@@ -30,7 +30,7 @@ var Media = (function (){
       uuid: uuid,
       path: raw.path,
       type: (mediaType.getTypeValue(raw.type)) ? mediaType.getTypeValue(raw.type) : null,
-      lang: (lang.getTypeValue(raw.language)) ? lang.getTypeValue(raw.language) : null,
+      lang: (lang.getTypeValue(raw.language.toLowerCase())) ? lang.getTypeValue(raw.language.toLowerCase()) : null,
       caption: raw.caption
     };
     privateData.set(this, privateMembers);

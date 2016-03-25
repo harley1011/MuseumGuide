@@ -28,7 +28,7 @@ angular.module('services')
         if (this.store.points.length === 0) {
           //If not loads them
           //Load points of interest
-          var pois = raw.poi;
+          var pois = raw[0].poi;
           for (var i = 0; i < pois.length; i++) {
             this.extractBeaconFromPoint(pois[i]);
             this.extractMediaFromPoint(pois[i]);
@@ -38,7 +38,7 @@ angular.module('services')
           }
 
           //Load points of transition
-          var pots = raw.pot;
+          var pots = raw[0].pot;
           for (var i = 0; i < pots.length; i++) {
             points.push(new PointOfTransition(pots[i]));
           }
@@ -103,10 +103,10 @@ angular.module('services')
       extractTextFromTextProperties: function(raw){
         var title = {}, description = {};
         for(var i = 0 ; i < raw.title.length ; i++){
-          title[raw.title[i].language] = raw.title[i].title;
+          title[raw.title[i].language.toLowerCase()] = raw.title[i].title;
         }
         for(var i = 0 ; i < raw.description.length ; i++){
-          description[raw.description[i].language] = raw.description[i].description;
+          description[raw.description[i].language.toLowerCase()] = raw.description[i].description;
         }
         return {title: title, description: description};
       },

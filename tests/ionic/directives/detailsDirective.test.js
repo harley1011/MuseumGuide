@@ -42,7 +42,7 @@ describe('details directive tests', function () {
         floorSrvc = _floorSrvc_;
         textSrvc = _textSrvc_;
         transferProtocolSrvc = _transferProtocolSrvc_;
-        rawPoints = JSON.parse(JSON.stringify(transferProtocolSrvc.read("mapData").node.poi));
+        rawPoints = JSON.parse(JSON.stringify(transferProtocolSrvc.read("mapData").node[0].poi));
     }));
 
 
