@@ -7,8 +7,13 @@ angular.module('directives')
 			templateUrl: 'templates/bottom-slide-up.html',
 			link: function (scope, element, attrs, ctrls) {
 				$translatePartialLoader.addPart('bottomSlideUp');
-
+				scope.language = $translate.use();
 				scope.storyLines = JSONFactorySrvc.load("storylines");
+
+				for(var i = scope.storyLines.length; i < 3; i++)
+				{
+					scope.storyLines.push({empty: true});
+				}
 				var tabsCtrl = ctrls[0];
 				var subMenuElement = angular.element(element[0].querySelector('.sub-menu-list'));
 				tabsCtrl.subMenuActive = false;
