@@ -21,17 +21,17 @@ angular.module('services')
             var storyline = storylines[i];
             storyline.id = (i + 1);
             storyline.title = [{
-                "language": "en_us",
+                "language": "en",
                 "title": "Story " + (i + 1)
             }, {
-                "language": "fr_ca",
+                "language": "fr",
                 "title": "Histoire " + (i + 1)
             }];
             storyline.description = [{
-                "language": "en_us",
+                "language": "en",
                 "description": "This is the the description of story " + (i + 1) + "."
             }, {
-                "language": "fr_ca",
+                "language": "fr",
                 "description": "Ceci est la description de l'histoire " + (i + 1) + "."
             }];
             storyline.thumbnail = "/path/to/nowhere/thumb.png";
@@ -538,7 +538,7 @@ angular.module('services')
             download: function (url) {
             },
             read: function (url) {
-                var mode = "e";
+                var mode = "ev";
 
                 if (url === "mapData") {
                     if (mode == "ev") {
