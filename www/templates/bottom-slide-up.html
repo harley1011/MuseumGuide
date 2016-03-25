@@ -6,6 +6,6 @@
     </div>
 
     <div class="list no-margin sub-menu-list">
-        <div class="item" ng-repeat="storyline in storyLines" ng-click="choseStoryLine(storyline)">{{storyline.getTitleWithLanguage("en_us")}}</div>
+        <div class="item" ng-repeat="storyline in storyLines" ng-click="choseStoryLine(storyline)">{{!storyline.empty ? storyline.getTitleWithLanguage(language): ""}}</div>
     </div>
 </div>

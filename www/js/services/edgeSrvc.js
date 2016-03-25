@@ -8,7 +8,9 @@ angular.module('services')
           
         for(var i = 0; i < edges.length; i++) {
           var edge = edges[i];
-          if(edge.getStartNode() === nodes[0] && edge.getEndNode() === nodes[1])
+          var startNode = edge.getStartNode();
+          var endNode = edge.getEndNode();
+          if(startNode.id === nodes[0] && endNode.id === nodes[1])
             return edge;
         }
 

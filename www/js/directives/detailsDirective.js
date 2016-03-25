@@ -42,7 +42,7 @@ angular.module('directives')
           for(var i = 0 ; i < media.length ; i++){
             switch(media[i].getType()){
               case 'video':
-                mediaStr = '       <video class="full-image" src="'+ media[i].getPath()+ '" control></video>';
+                mediaStr = '       <video class="full-image" src="'+ media[i].getPath()+ '" preload controls></video>';
                 break;
               case 'image':
                 mediaStr = '       <img class="full-image" src="'+ media[i].getPath()+ '" />';

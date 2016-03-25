@@ -43,9 +43,9 @@ angular.module('controllers')
 					var storyline = getCurrentStoryline();
 					if(storyline !== undefined){
 						if($translate.use() === "en")
-							title = storyline.getTitleWithLanguage("en_us");
+							title = storyline.getTitleWithLanguage("en");
 						else if($translate.use() === "fr")
-							title = storyline.getTitleWithLanguage("fr_ca");
+							title = storyline.getTitleWithLanguage("fr");
 					}
 				}
 				else if($scope.mode === 2){
@@ -81,8 +81,7 @@ angular.module('controllers')
 			});
 
 
-
-			$scope.changeFloor(1);
+			$scope.changeFloor(floorSrvc.getFloors()[0].getNumber());
 
 
 			if($scope.mode === undefined){

@@ -29,6 +29,9 @@ var Storyline = (function (){
   Storyline.prototype.getTitleWithLanguage = function(language){
     var title;
     var titles = privateData.get(this).title;
+    if( typeof titles === 'string' ) {
+      return titles;
+    }
     for(var i = 0; i < titles.length; i++) {
       title = titles[i].title;
       if(titles[i].language === language)
@@ -48,6 +51,9 @@ var Storyline = (function (){
   Storyline.prototype.getDescriptionWithLanguage = function(language){
     var description;
     var descriptions = privateData.get(this).description;
+    if( typeof descriptions === 'string' ) {
+      return descriptions;
+    }
     for(var i = 0; i < descriptions.length; i++) {
       description = descriptions[i].description;
       if(descriptions[i].language === language)
