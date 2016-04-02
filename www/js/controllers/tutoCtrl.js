@@ -1,5 +1,5 @@
 angular.module('controllers')
-    .controller('tutoCtrl', function ($scope, $state, $ionicModal, $translatePartialLoader, exploreModeSrvc, $translate, $rootScope) {
+    .controller('tutoCtrl', function ($scope, $state, $ionicModal, $translatePartialLoader, exploreModeSrvc, $translate, $rootScope, storylineSrvc) {
 
 // s
         $translatePartialLoader.addPart('tutorial');
@@ -42,12 +42,15 @@ angular.module('controllers')
             $state.go('tab.level');
         };
 
-        $scope.storyLineMode = function (story) {
-            $scope.openModal();
-            console.log("storyline selected");
-            exploreModeSrvc.setMode(1);
-            exploreModeSrvc.setStoryline(story);
-            $state.go('tab.level');
+        $scope.storyLineMode = function (storyLine) {
+            storylineSrvc.storylinePopup(storyLine, $translate.use(), function(){
+                $scope.openModal();
+                console.log("storyline selected");
+                exploreModeSrvc.setMode(1);
+                exploreModeSrvc.setStoryline(storyLine);
+                $state.go('tab.level');
+            })
+
 
         };
 
