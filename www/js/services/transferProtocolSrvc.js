@@ -348,158 +348,56 @@ angular.module('services')
         }
 
         var edges = [{
-            "startNode": {
-                "id": 1,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 2,
-                "floorID": ""
-            }
+            "startNode": 1,
+            "endNode": 2
         }, {
-            "startNode": {
-                "id": 2,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 3,
-                "floorID": ""
-            }
+            "startNode": 2,
+            "endNode": 3
         }, {
-            "startNode": {
-                "id": 2,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 4,
-                "floorID": ""
-            }
+            "startNode": 2,
+            "endNode": 4
         }, {
-            "startNode": {
-                "id": 4,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 5,
-                "floorID": ""
-            }
+            "startNode": 4,
+            "endNode": 5
         }, {
-            "startNode": {
-                "id": 5,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 6,
-                "floorID": ""
-            }
+            "startNode": 5,
+            "endNode": 6
         }, {
-            "startNode": {
-                "id": 6,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 7,
-                "floorID": ""
-            }
+            "startNode": 6,
+            "endNode": 7
         }, {
-            "startNode": {
-                "id": 7,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 8,
-                "floorID": ""
-            }
+            "startNode": 7,
+            "endNode": 8
         }, {
-            "startNode": {
-                "id": 8,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 9,
-                "floorID": ""
-            }
+            "startNode": 8,
+            "endNode": 9
         }, {
-            "startNode": {
-                "id": 9,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 10,
-                "floorID": ""
-            }
+            "startNode": 9,
+            "endNode": 10
         }, {
-            "startNode": {
-                "id": 10,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 11,
-                "floorID": ""
-            }
+            "startNode": 10,
+            "endNode": 11
         }, {
-            "startNode": {
-                "id": 11,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 12,
-                "floorID": ""
-            }
+            "startNode": 11,
+            "endNode": 12
         }, {
-            "startNode": {
-                "id": 13,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 14,
-                "floorID": ""
-            }
+            "startNode": 13,
+            "endNode": 14
         }, {
-            "startNode": {
-                "id": 14,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 15,
-                "floorID": ""
-            }
+            "startNode": 14,
+            "endNode": 15
         }, {
-            "startNode": {
-                "id": 15,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 16,
-                "floorID": ""
-            }
+            "startNode": 15,
+            "endNode": 16
         }, {
-            "startNode": {
-                "id": 16,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 17,
-                "floorID": ""
-            }
+            "startNode": 16,
+            "endNode": 17
         }, {
-            "startNode": {
-                "id": 17,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 18,
-                "floorID": ""
-            }
+            "startNode": 17,
+            "endNode": 18
         }, {
-            "startNode": {
-                "id": 18,
-                "floorID": ""
-            },
-            "endNode": {
-                "id": 19,
-                "floorID": ""
-            }
+            "startNode": 18,
+            "endNode": 19
         }];
 
         var mapData = {
