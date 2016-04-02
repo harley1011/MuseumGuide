@@ -10,7 +10,7 @@ angular.module('services')
           var edge = edges[i];
           var startNode = edge.getStartNode();
           var endNode = edge.getEndNode();
-          if(startNode.id === nodes[0] && endNode.id === nodes[1])
+          if((startNode === nodes[0] && endNode === nodes[1]) || (startNode === nodes[1] && endNode === nodes[0]) )
             return edge;
         }
 
