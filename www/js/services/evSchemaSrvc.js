@@ -41,12 +41,12 @@ angular.module('services')
                                         "image": [],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 1 - Small.m4v",
+                                                "path": "video/MOEB POINT 1 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 1"
                                             },
                                             {
-                                                "path": "video/MOEB_Introduction - Small.m4v",
+                                                "path": "video/MOEB_Introduction - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Intro"
                                             }
@@ -104,12 +104,12 @@ angular.module('services')
                                         ],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 2  - Small.m4v",
+                                                "path": "video/MOEB POINT 2  - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 2"
                                             },
                                             {
-                                                "path": "video/MOEB POINT 3 - Small.m4v",
+                                                "path": "video/MOEB POINT 4 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 4"
                                             }
@@ -161,7 +161,7 @@ angular.module('services')
                                         "image": [],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 4 - Small.m4v",
+                                                "path": "video/MOEB POINT 4 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 4"
                                             }
