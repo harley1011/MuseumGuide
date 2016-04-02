@@ -33,11 +33,13 @@ angular.module('directives')
                     pointDiv.text(scope.point.getUUID());
 
                 var test = function() {
-                    if(pointDiv.hasClass('current-point') && pointDiv.hasClass('current-point-light')){
-                        pointDiv.removeClass('current-point-light');
-                    }
-                    else if (pointDiv.hasClass('current-point')){
-                        pointDiv.addClass('current-point-light');
+                    if (pointSrvc.isInRange(scope.point.getUUID())) {
+                        if (pointDiv.hasClass('current-point') && pointDiv.hasClass('current-point-light')) {
+                            pointDiv.removeClass('current-point-light');
+                        }
+                        else if (pointDiv.hasClass('current-point')) {
+                            pointDiv.addClass('current-point-light');
+                        }
                     }
                 }
 
