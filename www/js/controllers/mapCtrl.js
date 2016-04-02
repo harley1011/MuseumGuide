@@ -3,6 +3,7 @@ angular.module('controllers')
         function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc) {
 
             (function init() {
+
                 $translatePartialLoader.addPart('map');
                 //set to true to show point IDs on the map
                 //dead feature, can only be triggered by modifying the code
@@ -63,6 +64,11 @@ angular.module('controllers')
                     return title;
                 }
 
+                $scope.$on('loadBeacons', function() {
+                    console.log('tracking beacon');
+                    trackBeacons();
+                });
+
                 $scope.$on('storyLineChosen', function (event, storyLine) {
                     $scope.mode = 1;
                     storylineSrvc.setCurrentStoryline(storyLine);
@@ -101,12 +107,11 @@ angular.module('controllers')
 
 
                 executeMode();
-                trackBeacons();
             })();
 
             function showPopup(title, message) {
                 var titleDisplayed = 'Notification';
-                var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
+                var messageDisplayed = 'Hi, You have arrived at a point of interests! Tap on "More details" for additional information about this area.';
 
                 if (title !== null && title !== "")
                     titleDisplayed = title;
@@ -171,10 +176,11 @@ angular.module('controllers')
                             $scope.setPointInRange($scope.mapPoints[key]);
                             if ($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
                                 $scope.alreadyPopup.push(points[key].getUUID());
-                                showPopup(points[key].getUUID(), points[key].getUUID());
+                                $scope.setCurrentPoint($scope.mapPoints[key]);
+                                showPopup(null, null);
 
-                                $scope.hideBeaconPlayerContainer = false; // could be moved to directive
-                                $scope.$broadcast('playBeaconPlayer', {});
+                              //  $scope.hideBeaconPlayerContainer = false; // could be moved to directive
+                               // $scope.$broadcast('playBeaconPlayer', {});
                             }
                             $scope.$broadcast('updateMapPointsBlink', {});
                             return true;
