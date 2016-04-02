@@ -33,20 +33,20 @@ angular.module('services')
                                     ],
                                     "floorID": "3",
                                     "ibeacon": {
-                                        "uuid": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
-                                        "major": "513",
-                                        "minor": "45686"
+                                        "uuid": "8492e75f-4fd6-469d-b132-043fe94921d8",
+                                        "major": "59520",
+                                        "minor": "56840"
                                     },
                                     "media": {
                                         "image": [],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 1 - Small.mov",
+                                                "path": "video/MOEB POINT 1 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 1"
                                             },
                                             {
-                                                "path": "video/MOEB_Introduction - Small.mov",
+                                                "path": "video/MOEB_Introduction - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Intro"
                                             }
@@ -104,12 +104,12 @@ angular.module('services')
                                         ],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 2  - Small.mov",
+                                                "path": "video/MOEB POINT 2  - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 2"
                                             },
                                             {
-                                                "path": "video/MOEB POINT 3 - Small.mov",
+                                                "path": "video/MOEB POINT 4 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 4"
                                             }
@@ -161,7 +161,7 @@ angular.module('services')
                                         "image": [],
                                         "video": [
                                             {
-                                                "path": "video/MOEB POINT 4 - Small.mov",
+                                                "path": "video/MOEB POINT 4 - Small.mp4",
                                                 "language": "EN",
                                                 "caption": "MOEB Point 4"
                                             }
