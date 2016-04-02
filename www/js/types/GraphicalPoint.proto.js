@@ -33,6 +33,11 @@ var GraphicalPoint = (function (){
     return point instanceof PointOfInterest ? point.getBeaconID() : undefined;
   };
 
+  GraphicalPoint.prototype.getBeacon = function(){
+    var point = privateData.get(this).point;
+    return point instanceof PointOfInterest ? point.getBeacon() : undefined;
+  };
+
   GraphicalPoint.prototype.getDisplayOptions = function(){
     return privateData.get(this).display;
   };

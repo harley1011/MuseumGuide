@@ -124,7 +124,7 @@ angular.module('services')
                 "y": 1645,
                 "floorID": 3,
                 "ibeacon": {
-                    "uuid": "undefined",
+                    "uuid": "b9407f30-f5f8-466e-aff9-25556b57fe6d",
                     "major": "undefined",
                     "minor": "undefined"
                 },
@@ -538,7 +538,7 @@ angular.module('services')
             download: function (url) {
             },
             read: function (url) {
-                var mode = "";
+                var mode = "ev";
 
                 if (url === "mapData") {
                     if (mode == "ev") {

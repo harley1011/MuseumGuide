@@ -34,8 +34,8 @@ angular.module('services')
                                     "floorID": "3",
                                     "ibeacon": {
                                         "uuid": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
-                                        "major": "59520",
-                                        "minor": "56840"
+                                        "major": "513",
+                                        "minor": "45686"
                                     },
                                     "media": {
                                         "image": [],

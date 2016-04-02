@@ -6,9 +6,11 @@ var PointOfInterest = (function (){
   function PointOfInterest(raw) {
     //super(raw)
     Point.call(this, raw);
-	console.log(raw);
     var privateMembers = {
-      beacon: raw.ibeacon.uuid != 'undefined'? raw.ibeacon.uuid: undefined,
+      beacon: raw.ibeacon != 'undefined' ? raw.ibeacon: undefined,
+      uuid: raw.ibeacon.uuid != 'undefined'? raw.ibeacon.uuid: undefined,
+      major: raw.ibeacon.major != 'undefined'? raw.ibeacon.major: undefined,
+      minor: raw.ibeacon.minor != 'undefined'? raw.ibeacon.minor: undefined,
       color: (raw.style && raw.style.color) ? raw.style.color : "#00008B",
       diameter: (raw.style && raw.style.diameter) ? raw.style.diameter : 40,
       title: raw.title,
@@ -30,6 +32,10 @@ var PointOfInterest = (function (){
   PointOfInterest.prototype.parent = Point.prototype;
 
   PointOfInterest.prototype.getBeaconID = function(){
+    return privateData.get(this).uuid;
+  };
+
+  PointOfInterest.prototype.getBeacon = function(){
     return privateData.get(this).beacon;
   };
 
