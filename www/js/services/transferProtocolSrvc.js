@@ -45,7 +45,7 @@ angular.module('services')
                 "x": 120,
                 "y": 1565,
                 "floorID": 1,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "b9407f30-f5f8-466e-aff9-25556b57fe6d",
                     "major": "undefined",
                     "minor": "undefined"
@@ -79,7 +79,7 @@ angular.module('services')
                 "x": 295,
                 "y": 1645,
                 "floorID": 1,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "undefined",
                     "major": "undefined",
                     "minor": "undefined"
@@ -101,7 +101,7 @@ angular.module('services')
                 "x": 485,
                 "y": 1559,
                 "floorID": 1,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "8492e75f-4fd6-469d-b132-043fe94921d8",
                     "major": "undefined",
                     "minor": "undefined"
@@ -123,7 +123,7 @@ angular.module('services')
                 "x": 630,
                 "y": 1645,
                 "floorID": 3,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "undefined",
                     "major": "undefined",
                     "minor": "undefined"
@@ -143,7 +143,7 @@ angular.module('services')
                 "x": 100,
                 "y": 450,
                 "floorID": 1,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "undefined",
                     "major": "undefined",
                     "minor": "undefined"
@@ -157,7 +157,7 @@ angular.module('services')
                 "x": 600,
                 "y": 325,
                 "floorID": 1,
-                "iBeacon": {
+                "ibeacon": {
                     "uuid": "undefined",
                     "major": "undefined",
                     "minor": "undefined"

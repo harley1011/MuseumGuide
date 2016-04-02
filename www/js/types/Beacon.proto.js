@@ -5,11 +5,11 @@ var Beacon = (function (){
   //Constructor Function
   function Beacon(raw) {
     var privateMembers = {
-      uuid: raw.iBeacon.uuid,
+      uuid: raw.ibeacon.uuid,
       point: raw.id,
       coordinates: {"x": raw.x, "y": raw.y, "z": raw.floorID},
-      major: raw.iBeacon.major,
-      minor: raw.iBeacon.minor
+      major: raw.ibeacon.major,
+      minor: raw.ibeacon.minor
     };
     privateData.set(this, privateMembers);
   }

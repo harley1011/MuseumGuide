@@ -6,8 +6,9 @@ var PointOfInterest = (function (){
   function PointOfInterest(raw) {
     //super(raw)
     Point.call(this, raw);
+	console.log(raw);
     var privateMembers = {
-      beacon: raw.beacon_id,
+      beacon: raw.ibeacon.uuid != 'undefined'? raw.ibeacon.uuid: undefined,
       color: (raw.style && raw.style.color) ? raw.style.color : "#00008B",
       diameter: (raw.style && raw.style.diameter) ? raw.style.diameter : 40,
       title: raw.title,
