@@ -538,7 +538,7 @@ angular.module('services')
             download: function (url) {
             },
             read: function (url) {
-                var mode = "";
+                var mode = "ev";
 
                 if (url === "mapData") {
                     if (mode == "ev") {
