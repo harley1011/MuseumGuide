@@ -18,7 +18,7 @@ angular.module('services')
 
 	BeaconBuilder.counter = 0;
 	BeaconBuilder.hasRegion = false;
-	BeaconBuilder.inactivelimitSec = 3;
+	BeaconBuilder.inactivelimitSec = 1;
 	BeaconBuilder.registeredRegion = {};
 	BeaconBuilder.beaconCollection = {};
 	BeaconBuilder.notifyEvent = "$iBeaconSrvc:beaconRangeChange";

@@ -171,19 +171,22 @@ angular.module('controllers')
                 //Took it out of the forEach because creating a function for each point is hefty
                     loopFunc = function (points, key, beaconInrange, bkey) {
                         var beacon = points[key].getBeacon();
-                        if (beacon && beacon.uuid.toLowerCase() === beaconInrange.beacon.uuid.toLowerCase() && beacon.major === beaconInrange.beacon.major
-                            && beacon.minor === beaconInrange.beacon.minor && beaconInrange.beacon.proximity === iBeaconSrvc.BeaconBuilder.proximity.near) {
+                        if (beacon && beacon.uuid.toLowerCase() === beaconInrange.beacon.uuid.toLowerCase() &&
+							beacon.major === beaconInrange.beacon.major &&
+							beacon.minor === beaconInrange.beacon.minor &&
+							beaconInrange.beacon.accuracy <= 2) {
                             $scope.setPointInRange($scope.mapPoints[key]);
-                            if ($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
-                                $scope.alreadyPopup.push(points[key].getUUID());
-                                $scope.setCurrentPoint($scope.mapPoints[key]);
-                                showPopup(null, null);
+	                            if ($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
+	                                $scope.alreadyPopup.push(points[key].getUUID());
+	                                $scope.setCurrentPoint($scope.mapPoints[key]);
+	                                showPopup(null, null);
 
-                              //  $scope.hideBeaconPlayerContainer = false; // could be moved to directive
-                               // $scope.$broadcast('playBeaconPlayer', {});
-                            }
-                            $scope.$broadcast('updateMapPointsBlink', {});
-                            return true;
+	                              //  $scope.hideBeaconPlayerContainer = false; // could be moved to directive
+	                               // $scope.$broadcast('playBeaconPlayer', {});
+	                            }
+	                            $scope.$broadcast('updateMapPointsBlink', {});
+								
+	                            return true;
                         } else {
                             $scope.$broadcast('updateMapPointsBlink', {});
                             return false;
