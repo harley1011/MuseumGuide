@@ -75,7 +75,7 @@ angular.module('controllers')
 				freeRoam();
 			});
 
-			$scope.$on('findFacilities', function (event, storyLine) {
+			$scope.$on('findFacilities', function (event, facility) {
 				$scope.mode = 3;
 				findFacilities();
 			});
@@ -325,5 +325,28 @@ angular.module('controllers')
 		function findFacilities() {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
+            var allpoints = pointSrvc.getPoints(),
+					floorNum = floorSrvc.getCurrentFloor().getNumber(),
+					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
+					pt, coord, gpt;
+
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					 (pt instanceof PointOfTransition)) {
+					//Adding points to be shown
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+
+					if(!isDefault){
+						gpt = new GraphicalPoint(pt, dimensions);
+						$scope.mapPoints[pt.getUUID()] = gpt;
+					}
+				}
+			}
 		};
 	});
