@@ -74,7 +74,7 @@ angular.module('services')
             { text: '',
               type: 'button-cancel ion-close-circled'},
             {
-              text: 'Chose Storyline',
+              text: 'Choose Storyline',
               type: 'button-more-details',
               onTap: function(e) {
                 callback();

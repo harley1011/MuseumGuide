@@ -14,6 +14,8 @@ angular.module('directives')
 				$translatePartialLoader.addPart('bottomSlideUp');
 				scope.language = $translate.use();
 				updateLanguage();
+               
+                scope.isFacility = false;
 				var tabsCtrl = ctrls[0];
 				var subMenuElement = angular.element(element[0].querySelector('.sub-menu-list'));
 				tabsCtrl.subMenuActive = false;
@@ -26,8 +28,10 @@ angular.module('directives')
 
 				scope.choseStoryLines = function () {
 					tabsCtrl.subMenuActive = true;
+                    scope.isFacility = false;
 					tabsCtrl.changeIconForTab('icon-arrowBack');
 					subMenuElement.addClass('slide-sub-menu-list');
+					subMenuElement.removeClass('orange-list');
 				};
 
 				scope.choseStoryLine = function (storyLine) {
@@ -39,15 +43,40 @@ angular.module('directives')
 
 				scope.freeRoam = function () {
 					$rootScope.$broadcast('freeRoam');
+                    tabsCtrl.closeMenuIfOpen();
 				};
 
 				scope.findFacilities = function () {
-					$rootScope.$broadcast('findFacilities');
+                    scope.isFacility = true;
+                    tabsCtrl.subMenuActive = true;
+					tabsCtrl.changeIconForTab('icon-arrowBack');
+					subMenuElement.addClass('slide-sub-menu-list');
+                    subMenuElement.addClass('orange-list');
+                    
+                 if($translate.use() === "en") {
+                    scope.facilities = [{name: "Washroom"}, 
+                                        {name: "Stairs"}, 
+                                        {name: "Front Desk"}];
+
+                } else if($translate.use() === "fr") {
+                    scope.facilities = [{name: "Salle de Bain"}, 
+                                        {name: "Escalier"}, 
+                                        {name: "Bureau d'information"}];
+
+                }
 				};
+                
+                scope.findFacility = function (facility) {
+                    $rootScope.$broadcast('findFacilities', facility.name);
+                    tabsCtrl.closeMenuIfOpen();
+                };
+                
+                
 
 				function updateLanguage()
 				{
 					scope.storyLines = JSONFactorySrvc.load("storylines");
+                    
 
 					for(var i = scope.storyLines.length; i < 3; i++)
 					{

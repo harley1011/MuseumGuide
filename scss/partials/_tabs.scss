@@ -27,8 +27,7 @@
         }
     }
 }
-.sub-menu-list
-{
+.sub-menu-list {
     left: 25%;
     transition-duration: .5s;
     transition-property: left, right;
@@ -51,6 +50,15 @@
         }
     }
 
+}
+
+.orange-list {
+     div:nth-child(odd) {
+        background-color: #D68117;
+    }
+    div:nth-child(even) {
+        background-color: $energized;
+    }
 }
 
 ::-webkit-scrollbar {

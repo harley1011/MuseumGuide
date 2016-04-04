@@ -75,9 +75,10 @@ angular.module('controllers')
 				freeRoam();
 			});
 
-			$scope.$on('findFacilities', function (event, storyLine) {
+			$scope.$on('findFacilities', function (event, facility) {
 				$scope.mode = 3;
-				findFacilities();
+                $scope.facility = facility;
+				findFacilities(facility);
 			});
 
 
@@ -263,7 +264,7 @@ angular.module('controllers')
 				freeRoam();
 			else if($scope.mode === 3)
 				//find facilities
-				findFacilities();
+				findFacilities($scope.facility);
 		}
 
 		function prepareData() {
@@ -322,8 +323,49 @@ angular.module('controllers')
 			}
 		};
 
-		function findFacilities() {
+		function findFacilities(facility) {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
+            var allpoints = pointSrvc.getPoints(),
+                floorNum = floorSrvc.getCurrentFloor().getNumber(),
+                dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
+					pt, coord, gpt;
+             facility = ((facility != "")&&(facility != undefined)) ? facility.toLowerCase() : "";
+                    
+                    if($translate.use() === "fr") {
+                        switch(facility) {
+                            case "salle de bain":
+                                facility = "washroom";
+                                break;
+                            case "escalier":
+                                facility = "stairs";
+                                break;
+                            case "bureau d'information":
+                                facility = "front desk";
+                                break;
+                        }
+                    }
+
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					 (pt instanceof PointOfTransition)) {
+					//Adding points to be shown
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+                  
+					if(!isDefault){
+						gpt = new GraphicalPoint(pt, dimensions);
+                        if(pt.getLabel() == facility) {
+                            $scope.mapPoints[pt.getUUID()] = gpt;
+                        }
+						
+					}
+				}
+			}
 		};
 	});
