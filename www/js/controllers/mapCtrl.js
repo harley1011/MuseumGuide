@@ -172,7 +172,7 @@ angular.module('controllers')
                     loopFunc = function (points, key, beaconInrange, bkey) {
                         var beacon = points[key].getBeacon();
                         if (beacon && beacon.uuid.toLowerCase() === beaconInrange.beacon.uuid.toLowerCase() && beacon.major === beaconInrange.beacon.major
-                            && beacon.minor === beaconInrange.beacon.minor && beaconInrange.beacon.proximity === iBeaconSrvc.BeaconBuilder.proximity.immediate) {
+                            && beacon.minor === beaconInrange.beacon.minor && beaconInrange.beacon.proximity === iBeaconSrvc.BeaconBuilder.proximity.near) {
                             $scope.setPointInRange($scope.mapPoints[key]);
                             if ($scope.alreadyPopup.indexOf(points[key].getUUID()) == -1) {
                                 $scope.alreadyPopup.push(points[key].getUUID());

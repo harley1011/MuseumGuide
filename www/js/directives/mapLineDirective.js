@@ -10,7 +10,7 @@ angular.module('directives')
                 lineDiv.css('left', scope.line.getCoordinates().x + '%');
                 lineDiv.css('top', scope.line.getCoordinates().y + '%');
                 lineDiv.css('width', scope.line.getMagnitude() + '%');
-                lineDiv.css('border-top', scope.line.getHeight() + " dashed " + scope.line.getColor());
+                lineDiv.css('border-top', "4px" + " solid " + scope.line.getColor());
                 lineDiv.css({
                     '-moz-transform': 'rotate(' + scope.line.getAngle() + 'deg)',
                     '-webkit-transform': 'rotate(' + scope.line.getAngle() + 'deg)',

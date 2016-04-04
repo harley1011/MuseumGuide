@@ -40,8 +40,8 @@ angular.module('services')
                                     "floorID": "3",
                                     "ibeacon": {
                                         "uuid": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
-                                        "major": "59520",  //"513",
-                                        "minor": "56840"// "45686"
+                                        "major": "513",  //"513",
+                                        "minor": "45686"// "45686"
                                     },
                                     "media": {
                                         "image": [],
@@ -96,9 +96,9 @@ angular.module('services')
                                     ],
                                     "floorID": "3",
                                     "ibeacon": {
-                                        "uuid": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
-                                        "major": "11163",
-                                        "minor": "7229"
+                                        "uuid": "8492e75f-4fd6-469d-b132-043fe94921d8",
+                                        "major": "6118",
+                                        "minor": "6831"
                                     },
                                     "media": {
                                         "image": [

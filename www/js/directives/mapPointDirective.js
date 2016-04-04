@@ -26,8 +26,8 @@ angular.module('directives')
                 pointDiv.css('left', options.left + '%');
                 pointDiv.css('top', options.top + '%');
                 pointDiv.css('background-color', scope.point.getColor());
-                pointDiv.css('width', options.diameter.x + '%');
-                pointDiv.css('height', options.diameter.y + '%');
+                pointDiv.css('width', options.diameter.x * 2 + '%');
+                pointDiv.css('height', options.diameter.y * 2  + '%');
 
                 if(scope.showID)
                     pointDiv.text(scope.point.getUUID());
