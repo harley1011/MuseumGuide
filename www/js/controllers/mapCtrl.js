@@ -77,6 +77,7 @@ angular.module('controllers')
 
 			$scope.$on('findFacilities', function (event, facility) {
 				$scope.mode = 3;
+                $scope.facility = facility;
 				findFacilities(facility);
 			});
 
@@ -263,7 +264,7 @@ angular.module('controllers')
 				freeRoam();
 			else if($scope.mode === 3)
 				//find facilities
-				findFacilities();
+				findFacilities($scope.facility);
 		}
 
 		function prepareData() {
@@ -326,23 +327,10 @@ angular.module('controllers')
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
             var allpoints = pointSrvc.getPoints(),
-					floorNum = floorSrvc.getCurrentFloor().getNumber(),
-					dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
+                floorNum = floorSrvc.getCurrentFloor().getNumber(),
+                dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
 					pt, coord, gpt;
-
-			for(var i = 0; i < allpoints.length; i++){
-				pt = allpoints[i];
-				coord = pt.getCoordinates();
-				//Check if Point is either part of current Storyline on the current floor
-				//or if a PointOfTransition on current Floor.
-				if (coord.z == floorNum &&
-					 (pt instanceof PointOfTransition)) {
-					//Adding points to be shown
-					var isDefault = false;
-					if(pt instanceof PointOfTransition)
-						isDefault = pt.isDefautLabel();
-                  
-                    facility = facility.toLowerCase();
+             facility = ((facility != "")&&(facility != undefined)) ? facility.toLowerCase() : "";
                     
                     if($translate.use() === "fr") {
                         switch(facility) {
@@ -357,8 +345,19 @@ angular.module('controllers')
                                 break;
                         }
                     }
-                    
 
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					 (pt instanceof PointOfTransition)) {
+					//Adding points to be shown
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+                  
 					if(!isDefault){
 						gpt = new GraphicalPoint(pt, dimensions);
                         if(pt.getLabel() == facility) {
