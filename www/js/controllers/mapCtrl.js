@@ -77,7 +77,7 @@ angular.module('controllers')
 
 			$scope.$on('findFacilities', function (event, facility) {
 				$scope.mode = 3;
-				findFacilities();
+				findFacilities(facility);
 			});
 
 
@@ -322,7 +322,7 @@ angular.module('controllers')
 			}
 		};
 
-		function findFacilities() {
+		function findFacilities(facility) {
 			$scope.mapPoints = {};
 			$scope.mapLines = {};
             var allpoints = pointSrvc.getPoints(),
@@ -341,10 +341,30 @@ angular.module('controllers')
 					var isDefault = false;
 					if(pt instanceof PointOfTransition)
 						isDefault = pt.isDefautLabel();
+                  
+                    facility = facility.toLowerCase();
+                    
+                    if($translate.use() === "fr") {
+                        switch(facility) {
+                            case "salle de bain":
+                                facility = "washroom";
+                                break;
+                            case "escalier":
+                                facility = "stairs";
+                                break;
+                            case "bureau d'information":
+                                facility = "front desk";
+                                break;
+                        }
+                    }
+                    
 
 					if(!isDefault){
 						gpt = new GraphicalPoint(pt, dimensions);
-						$scope.mapPoints[pt.getUUID()] = gpt;
+                        if(pt.getLabel() == facility) {
+                            $scope.mapPoints[pt.getUUID()] = gpt;
+                        }
+						
 					}
 				}
 			}
