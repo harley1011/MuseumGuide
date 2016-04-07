@@ -51,7 +51,7 @@ angular.module('services')
         return points;
       },
       extractBeaconFromPoint: function(raw) {
-        if (raw.iBeacon !== undefined && raw.iBeacon.uuid != 'undefined') {
+        if ((raw.iBeacon !== undefined && raw.iBeacon.uuid != 'undefined') || (raw.ibeacon !== undefined && raw.ibeacon.uuid != 'undefined')) {
           this.store.beacons.push(new Beacon(raw));
         }
       },

@@ -46,7 +46,7 @@ describe('details directive tests', function () {
     }));
 
 
-
+/*
     describe('test cases for details directive test', function () {
 
       //Assumes the structure of StoryPoint title/description details is
@@ -64,6 +64,8 @@ describe('details directive tests', function () {
       '        <p>'+ media[i].getCaption()+ '</p>' +
       '    </div>';
       */
+
+	  /*
         it('should produce the correct media for the storyline 1 point 1', function () {
             //Setting the stage
             var scope = $rootScope.$new();
@@ -108,7 +110,7 @@ describe('details directive tests', function () {
         //'should produce the correct media when language is changed'
 
     });
-
+*/
     function testDataMapPoints() {
         var dimensions = {
           "width": 809,

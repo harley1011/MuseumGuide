@@ -12,13 +12,13 @@ angular.module('services')
  *       $scope.$apply();
  *   });
  */
-.service('iBeaconSrvc', function ($rootScope, $ionicPlatform, $cordovaBeacon) {
+.service('iBeaconSrvc', function ($rootScope, $ionicPlatform, $cordovaBeacon, JSONFactorySrvc) {
 
 	var BeaconBuilder = {};
 
 	BeaconBuilder.counter = 0;
 	BeaconBuilder.hasRegion = false;
-	BeaconBuilder.inactivelimitSec = 3;
+	BeaconBuilder.inactivelimitSec = 1;
 	BeaconBuilder.registeredRegion = {};
 	BeaconBuilder.beaconCollection = {};
 	BeaconBuilder.notifyEvent = "$iBeaconSrvc:beaconRangeChange";
@@ -72,18 +72,23 @@ angular.module('services')
 	/*
 	 * register a collection of beacons regions
 	 */
-	BeaconBuilder.registerBeaconRegions = function (identifier, uuid) {
+	BeaconBuilder.registerBeaconRegions = function (identifier, uuid, major, minor) {
 		if (identifier && uuid) {
 			BeaconBuilder.hasRegion = true;
 		}
 
 		BeaconBuilder.registeredRegion[identifier + uuid] = {
 			identifier: identifier,
-			uuid: uuid
+			uuid: uuid,
+			major: major,
+			minor: minor
 		};
 	};
 
-
+	BeaconBuilder.getAllBeacons = function()
+	{
+		return JSONFactorySrvc.load("beacons");
+	}
 	/*
 	 * Build the registered regions
 	 */
@@ -156,7 +161,8 @@ angular.module('services')
 			init: BeaconBuilder.init,
 			notifyEvent: BeaconBuilder.notifyEvent,
 			registerBeaconRegions: BeaconBuilder.registerBeaconRegions,
-			proximity: BeaconBuilder.proximity
+			proximity: BeaconBuilder.proximity,
+			getAllBeacons: BeaconBuilder.getAllBeacons
 		}
 	};
 })

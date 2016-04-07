@@ -57,11 +57,11 @@ angular.module('services')
           messageDisplayed = storyLine.getDescriptionWithLanguage("en");
         }
 
-        if (walkTime && walkTime.length > 0)
+        if (walkTime && walkTime.toString().length > 0)
         {
           messageDisplayed += '</br></br> Walking time is around ' + walkTime + ' minutes'
         }
-        if (numFloors && numFloors.length > 0)
+        if (numFloors && numFloors.toString().length > 0)
         {
           messageDisplayed += '</br></br>' + numFloors + ' floors covered'
         }
