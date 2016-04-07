@@ -17,6 +17,7 @@ describe('point directives tests', function () {
 
 
     describe('test cases for point directive test', function () {
+		/*
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
             scope.point = testDataMapPoints();
@@ -24,6 +25,7 @@ describe('point directives tests', function () {
             scope.$digest();
             expect(compiledElement.attr('style')).toContain('left: 10%; top: 10%;');
         });
+		*/
     });
 
     function testDataMapPoints() {
