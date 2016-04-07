@@ -1,90 +1,90 @@
 angular.module('controllers')
-    .controller('mapCtrl',
-        function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc) {
+	.controller('mapCtrl',
+	function ($scope, $state, $translatePartialLoader, $ionicPopup, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc) {
 
-            (function init() {
+		(function init() {
+			$translatePartialLoader.addPart('map');
+			//set to true to show point IDs on the map
+			//dead feature, can only be triggered by modifying the code
+			$scope.showID = false;
+			$scope.mapPoints = {};
+			$scope.hideBeaconPlayerContainer = true;
 
-                $translatePartialLoader.addPart('map');
-                //set to true to show point IDs on the map
-                //dead feature, can only be triggered by modifying the code
-                $scope.showID = false;
-                $scope.mapPoints = {};
-                $scope.hideBeaconPlayerContainer = true;
+			$scope.changeFloor = function (z) {
+				floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
+				$scope.$broadcast('floorChanged', {});
+				executeMode();
+			};
 
-                $scope.changeFloor = function (z) {
-                    floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
-                    $scope.$broadcast('floorChanged', {});
-                    executeMode();
-                };
+			$scope.getCurrentFloorNumber = function () {
+				return floorSrvc.getCurrentFloor().getNumber();
+			};
 
-                $scope.getCurrentFloorNumber = function () {
-                    return floorSrvc.getCurrentFloor().getNumber();
-                };
+			$scope.setCurrentPoint = function(point){
+				pointSrvc.setCurrentPoint(pointSrvc.getNonGraphicalPoint(point));
+			};
 
-                $scope.setCurrentPoint = function (point) {
-                    pointSrvc.setCurrentPoint(pointSrvc.getNonGraphicalPoint(point));
-                };
+			$scope.setPointInRange = function(point){
+				pointSrvc.setPointInRange(pointSrvc.getNonGraphicalPoint(point));
+			};
 
-                $scope.setPointInRange = function (point) {
-                    pointSrvc.setPointInRange(pointSrvc.getNonGraphicalPoint(point));
-                };
+			$scope.getDetails = function() {
+					$state.go('tab.details');
+			};
 
-                $scope.getDetails = function () {
-                    $state.go('tab.details');
-                };
+			$scope.hideBeaconPlayer = function(){
+				$scope.hideBeaconPlayerContainer = true;
+				$scope.$broadcast('stopBeaconPlayer', {});
+			};
 
-                $scope.hideBeaconPlayer = function () {
-                    $scope.hideBeaconPlayerContainer = true;
-                    $scope.$broadcast('stopBeaconPlayer', {});
-                };
-
-                $scope.getTitle = function () {
-                    var title = "Hello World";
-                    if ($scope.mode === 1) {
-                        var storyline = getCurrentStoryline();
-                        if (storyline !== undefined) {
-                            if ($translate.use() === "en")
-                                title = storyline.getTitleWithLanguage("en");
-                            else if ($translate.use() === "fr")
-                                title = storyline.getTitleWithLanguage("fr");
-                        }
-                    }
-                    else if ($scope.mode === 2) {
-                        if ($translate.use() === "en")
-                            title = "Free Roaming";
-                        else if ($translate.use() === "fr")
-                            title = "Marche Libre";
-                    }
-                    else if ($scope.mode === 3) {
-                        if ($translate.use() === "en")
-                            title = "Find Facilities";
-                        else if ($translate.use() === "fr")
-                            title = "Trouver Des Installations";
-                    }
-                    return title;
-                }
+			$scope.getTitle = function(){
+				var title = "Hello World";
+				if($scope.mode === 1){
+					var storyline = getCurrentStoryline();
+					if(storyline !== undefined){
+						if($translate.use() === "en")
+							title = storyline.getTitleWithLanguage("en");
+						else if($translate.use() === "fr")
+							title = storyline.getTitleWithLanguage("fr");
+					}
+				}
+				else if($scope.mode === 2){
+					if($translate.use() === "en")
+						title = "Free Roaming";
+					else if($translate.use() === "fr")
+						title = "Marche Libre";
+				}
+				else if($scope.mode === 3){
+					if($translate.use() === "en")
+						title = "Find Facilities";
+					else if($translate.use() === "fr")
+						title = "Trouver Des Installations";
+				}
+				return title;
+			}
 
                 $scope.$on('loadBeacons', function() {
                     console.log('tracking beacon');
                     trackBeacons();
                 });
 
-                $scope.$on('storyLineChosen', function (event, storyLine) {
-                    $scope.mode = 1;
-                    storylineSrvc.setCurrentStoryline(storyLine);
-                    $scope.alreadyPopup = [];
-                    prepareData();
-                });
+			$scope.$on('storyLineChosen', function (event, storyLine) {
+				$scope.mode = 1;
+				storylineSrvc.setCurrentStoryline(storyLine);
+				$scope.alreadyPopup = [];
+				prepareData();
+			});
 
-                $scope.$on('freeRoam', function (event, storyLine) {
-                    $scope.mode = 2;
-                    freeRoam();
-                });
+			$scope.$on('freeRoam', function (event, storyLine) {
+				$scope.mode = 2;
+				freeRoam();
+			});
 
-                $scope.$on('findFacilities', function (event, storyLine) {
-                    $scope.mode = 3;
-                    findFacilities();
-                });
+			$scope.$on('findFacilities', function (event, facility) {
+				$scope.mode = 3;
+                $scope.facility = facility;
+				findFacilities(facility);
+			});
 
 
                 $scope.changeFloor(floorSrvc.getFloors()[0].getNumber());
@@ -109,9 +109,9 @@ angular.module('controllers')
                 executeMode();
             })();
 
-            function showPopup(title, message) {
-                var titleDisplayed = 'Notification';
-                var messageDisplayed = 'Hi, You have arrived at a point of interests! Tap on "More details" for additional information about this area.';
+		function showPopup (title, message) {
+			var titleDisplayed = 'Notification';
+			var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
 
                 if (title !== null && title !== "")
                     titleDisplayed = title;
@@ -277,7 +277,7 @@ angular.module('controllers')
                     freeRoam();
                 else if ($scope.mode === 3)
                 //find facilities
-                    findFacilities();
+				findFacilities($scope.facility);
             }
 
             function prepareData() {
@@ -336,8 +336,49 @@ angular.module('controllers')
                 }
             };
 
-            function findFacilities() {
-                $scope.mapPoints = {};
-                $scope.mapLines = {};
+		function findFacilities(facility) {
+			$scope.mapPoints = {};
+			$scope.mapLines = {};
+            var allpoints = pointSrvc.getPoints(),
+                floorNum = floorSrvc.getCurrentFloor().getNumber(),
+                dimensions = floorSrvc.getCurrentFloor().getPlan().getDimensions(),
+					pt, coord, gpt;
+             facility = ((facility != "")&&(facility != undefined)) ? facility.toLowerCase() : "";
+                    
+                    if($translate.use() === "fr") {
+                        switch(facility) {
+                            case "salle de bain":
+                                facility = "washroom";
+                                break;
+                            case "escalier":
+                                facility = "stairs";
+                                break;
+                            case "bureau d'information":
+                                facility = "front desk";
+                                break;
+                        }
+                    }
+
+			for(var i = 0; i < allpoints.length; i++){
+				pt = allpoints[i];
+				coord = pt.getCoordinates();
+				//Check if Point is either part of current Storyline on the current floor
+				//or if a PointOfTransition on current Floor.
+				if (coord.z == floorNum &&
+					 (pt instanceof PointOfTransition)) {
+					//Adding points to be shown
+					var isDefault = false;
+					if(pt instanceof PointOfTransition)
+						isDefault = pt.isDefautLabel();
+                  
+					if(!isDefault){
+						gpt = new GraphicalPoint(pt, dimensions);
+                        if(pt.getLabel() == facility) {
+                            $scope.mapPoints[pt.getUUID()] = gpt;
+                        }
+						
+					}
+				}
+			}
             };
         });
