@@ -125,8 +125,8 @@ angular.module('services')
                 "floorID": 3,
                 "ibeacon": {
                     "uuid": "b9407f30-f5f8-466e-aff9-25556b57fe6d",
-                    "major": "undefined",
-                    "minor": "undefined"
+                    "major": "512",
+                    "minor": "45686"
                 },
                 "storyPoint": [
                     {

@@ -4,7 +4,8 @@ describe('controllers', function () {
         scope,
         $state,
         JSONFactorySrvc,
-        $ionicPopup;
+        $ionicPopup,
+		$ionicModal;
 
     beforeEach(module('controllers')); // load controllers module from project
     beforeEach(module('pascalprecht.translate'));
@@ -35,6 +36,12 @@ describe('controllers', function () {
                     }
                 }
             });
+			$provide.service('$ionicModal', function () {
+				return {
+					show: function () {
+					}
+				}
+			});
 
         });
 
@@ -43,7 +50,7 @@ describe('controllers', function () {
 
     beforeEach(inject(function (_$controller_, _$state_, _storyLinePathSrvc_,
       _storylineSrvc_, _mediaSrvc_, _pointSrvc_, _floorSrvc_, _textSrvc_,
-      iBeaconSrvc, $rootScope, _$ionicPopup_) {
+      iBeaconSrvc, $rootScope, _$ionicPopup_,_$ionicModal_) {
         scope = $rootScope.$new();
         $state = _$state_;
         $controller = _$controller_;
@@ -55,6 +62,7 @@ describe('controllers', function () {
         textSrvc = _textSrvc_;
         iBeaconSrvc1 = iBeaconSrvc;
         $ionicPopup = _$ionicPopup_;
+		$ionicModal = _$ionicModal_;
     }));
 
     describe('map controller test', function () {
@@ -84,7 +92,8 @@ describe('controllers', function () {
                 $state: $state,
                 storyLinePathSrvc: storyLinePathSrvc,
                 iBeaconSrvc: iBeaconSrvc1,
-                $ionicPopup: $ionicPopup
+                $ionicPopup: $ionicPopup,
+				$ionicModal:$ionicModal
             });
             expect(scope.mapLines.length).toBeGreaterThan(4);
         });
