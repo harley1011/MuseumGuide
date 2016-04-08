@@ -208,6 +208,7 @@ angular.module('controllers')
 										focusFirstInput: true
 									}).then(function (modal) {
 										$scope.modalVid = modal;
+										$scope.beaconVidSrc = "../www/"+ beaconMediaSrvc.getVideoPath();
 										$scope.modalVid.show();
 									});
 								};

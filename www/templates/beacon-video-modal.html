@@ -1,9 +1,10 @@
 <ion-modal-view class="transparent">
-   <div class="modal image-modal transparent" ng-click="closeModal()">
+   <div class="modal image-modal transparent" ng-click="">
 	   <ion-pane class="transparent overlay">
-		  <h1>Hasdasdasdasdasdasd</h1>
 
-		  <button class="button button-block" ng-click="getDetails(); modalVid.hide()">More Details</button>
+
+		   <video class="full-image" ng-src= "{{beaconVidSrc}}" preload controls autoplay> </video>
+		  <button class="button button-more-details" ng-click="getDetails(); modalVid.hide()">More Details</button>
 	   </ion-pane>
    </div>
 </ion-modal-view>
