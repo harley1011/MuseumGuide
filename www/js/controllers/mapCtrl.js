@@ -180,7 +180,7 @@ angular.module('controllers')
 								if ($scope.mode === 2) {
 									//$scope.hideBeaconPlayerContainer = false; // could be moved to directives
 									// $scope.$broadcast('playBeaconPlayer', {});
-									if (beaconMediaSrvc.video !== undefined) {
+									if (beaconMediaSrvc.video() !== undefined) {
 										$ionicModal.fromTemplateUrl('templates/beacon-video-modal.html', {
 											scope: $scope,
 											animation: 'slide-in-up',

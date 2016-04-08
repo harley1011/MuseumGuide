@@ -6,7 +6,7 @@ angular.module('services')
 		VideoBeacon.video = function () {
 			var point = pointSrvc.getCurrentPoint(),
 				story = storylineSrvc.getCurrentStoryline(),
-				texts, media, uuids;
+				data, media, uuids;
 
 			if (story === undefined) {
 				uuids = point.getMedia().none;
@@ -15,11 +15,14 @@ angular.module('services')
 			}
 			media = mediaSrvc.getMediaByLanguage(uuids, $translate.use());
 
-			if(media!== undefined && media[0].getType() === "video"){
-				return {path: media[0].getPath(), caption: media[0].getCaption()};
-			}else{
-				return undefined;
+			for(var i = 0 ; i < media.length ; i++){
+				if(media!== undefined && media[i].getType() === "video"){
+					data = {path: media[i].getPath(), caption: media[i].getCaption()};
+					break;
+				}
 			}
+
+			return data;
 		};
 
 		return VideoBeacon;
