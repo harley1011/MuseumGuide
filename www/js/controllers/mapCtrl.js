@@ -174,13 +174,13 @@ angular.module('controllers')
 								$scope.setCurrentPoint($scope.mapPoints[key]);
 
 								if ($scope.mode === 2) {
-									//showPopup(null, null);
+									showPopup(null, null);
 								}
-								console.log(beaconMediaSrvc.video());
-								if ($scope.mode === 2) {
-									//$scope.hideBeaconPlayerContainer = false; // could be moved to directives
-									// $scope.$broadcast('playBeaconPlayer', {});
+
+								if ($scope.mode === 2) { // CHANGE MODE TO 1 for storyline only
 									if (beaconMediaSrvc.video() !== undefined) {
+										$scope.$broadcast('pauseBeaconPlayer', {});
+
 										$ionicModal.fromTemplateUrl('templates/beacon-video-modal.html', {
 											scope: $scope,
 											animation: 'slide-in-up',
@@ -191,6 +191,11 @@ angular.module('controllers')
 											$scope.beaconVidSrc = "../www/" + beaconMediaSrvc.video().path;
 											$scope.modalVid.show();
 										});
+									} else if(beaconMediaSrvc.audio() !== undefined){
+										$scope.hideBeaconPlayerContainer = false; // could be moved to directives
+										$scope.$broadcast('playBeaconPlayer', {});
+									}else{
+										// none
 									}
 								};
 							}
