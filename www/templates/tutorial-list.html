@@ -1,0 +1,21 @@
+<ion-view class="tutorial-list" hide-nav-bar="true"> 
+    <ion-content scroll="true">
+       <div class="tutorial-msg">
+        {{ 'TUTO_SELECT' | translate }}
+        </div>
+        <ion-list class="selection-list" ng-controller="mapCtrl">
+            <ion-item class="item-icon-left" ng-click="freeMode()">
+                <div style="margin-left:54px;">
+                <i class="icon icon-freeBird" style="margin-left:50px;"></i>
+                    {{ 'TUTO_FREE' | translate }}
+                </div>
+
+            </ion-item>
+            <ion-item class="item-icon-left" ng-repeat="storyline in storyLines" ng-click="storyLineMode(storyline)">
+                <div style="margin-left:54px;">
+                <i class="icon icon-genericIcon" style="margin-left:50px;"></i>{{storyline.getTitleWithLanguage(language)}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,225 @@
+.tutorial {
+    background-color: #E39F20;   
+}
+
+.tutorial-2 {
+    background-color: #C9CB24;   
+}
+
+.tutorial-list {
+    background-color: $calm;   
+}
+.tutorial-msg {
+    color: #FFF;
+    font-size: 30pt;
+    display: block;
+    line-height: 44px;
+    margin: 115px auto 20px 54px;
+    width: 300px;
+}
+
+.tutorial-button { 
+    right: 0;
+    position: absolute;
+    margin-right: 45px;
+    bottom: 0;
+    margin-bottom: 120px;
+}
+
+a.button-icon.icon-nextWelcome:before {
+    font-size: 37px;
+}
+
+a.button-icon {
+    text-decoration: none;   
+}
+
+.selection-list {
+    ion-item.item:nth-child(odd) > a.item-content {
+        background-color: #3E8CBB;
+    }
+    
+    ion-item:nth-child(odd) {
+        background-color: #3E8CBB;
+        padding-left: 48px;
+    }
+    
+    ion-item.item:nth-child(even) > a.item-content {
+        background-color: #52498C;
+    }
+    
+    ion-item:nth-child(even) {
+        background-color: #52498C;
+        padding-left: 48px;
+    }
+    
+    ion-item.item {
+        color: white;
+        border: 0px none !important;
+        &:active {
+            background-color: #E39F20;
+        }
+    }   
+}
+
+.overlay {
+    color: #FFF; 
+}
+
+.overlay-button { 
+    right: 0;
+    position: absolute;
+    margin-right: 40px;
+    bottom: 0;
+    margin-bottom: 40vh;
+    font-size: 20pt;
+}
+
+.tag {
+    position: absolute;
+    width: 130px;
+    margin-left: -76px;
+    margin-top: 15px;
+    right: 39px;
+        
+}
+
+.overlay-levels {
+    margin-top: 44px;
+    height: 35px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay-levels > div {
+    border: 1px solid white;
+    height: inherit;
+    width: 283px;
+    display: inline-block;
+    border-radius: 7px;
+    padding-top: 4px;
+}
+
+.overlay-levels-arrow {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    margin-top: 72px;
+    z-index: 4;
+    padding: 0;
+    text-align: center;
+}
+
+.overlay-levels-arrow > div {
+    border-left: 1px solid white;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    display: inline-block;
+}
+
+.overlay-levels-desc {
+    margin-top: 110px;
+    height: 37px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay-desc {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 62px;
+}
+
+.overlay-desc .col {
+    height: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.overlay-desc .col > div {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    
+}
+
+.overlay-arrows {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    margin-bottom: 44px;
+    z-index: 4;
+    padding: 0;
+}
+
+.overlay-arrows > div.col-25 {
+    text-align: center;
+}
+
+.overlay-arrows > div.col-25 > div {
+    border-left: 1px solid white;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+}
+
+.overlay-tabs {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 51px;
+    padding: 0 !important;
+
+}
+
+.overlay-tabs > div.col-25 > div {
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 7px;
+  
+}
+
+.transparent {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+  .active .modal-backdrop-bg {
+    opacity: .5;
+  }
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+  }
+}

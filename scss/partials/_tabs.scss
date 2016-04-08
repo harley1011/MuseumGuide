@@ -27,8 +27,7 @@
         }
     }
 }
-.sub-menu-list
-{
+.sub-menu-list {
     left: 25%;
     transition-duration: .5s;
     transition-property: left, right;
@@ -45,12 +44,21 @@
     div {
         color: white;
         border: 0px none !important;
-
+        min-height: 52px !important;
         &:active {
             background-color: #E39F20;
         }
     }
 
+}
+
+.orange-list {
+     div:nth-child(odd) {
+        background-color: #D68117;
+    }
+    div:nth-child(even) {
+        background-color: $energized;
+    }
 }
 
 ::-webkit-scrollbar {

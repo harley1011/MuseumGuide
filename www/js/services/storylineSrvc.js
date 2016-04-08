@@ -19,6 +19,9 @@ angular.module('services')
           currentStoryline = storyline.getUUID();
         }
       },
+      setFreeRoamMode: function() {
+        currentStoryline = undefined;
+      },
       getStorylines: function() {
         var arr = [];
         for(key in storylines){
@@ -45,20 +48,20 @@ angular.module('services')
 
         if (language == 'fr')
         {
-          titleDisplayed = storyLine.getTitle().fr_ca;
-          messageDisplayed = storyLine.getDescription().fr_ca;
+          titleDisplayed = storyLine.getTitleWithLanguage("fr");
+          messageDisplayed = storyLine.getDescriptionWithLanguage("fr");
         }
         else
         {
-          titleDisplayed = storyLine.getTitle().en_us;
-          messageDisplayed = storyLine.getDescription().en_us;
+          titleDisplayed = storyLine.getTitleWithLanguage("en");
+          messageDisplayed = storyLine.getDescriptionWithLanguage("en");
         }
 
-        if (walkTime && walkTime.length > 0)
+        if (walkTime && walkTime.toString().length > 0)
         {
           messageDisplayed += '</br></br> Walking time is around ' + walkTime + ' minutes'
         }
-        if (numFloors && numFloors.length > 0)
+        if (numFloors && numFloors.toString().length > 0)
         {
           messageDisplayed += '</br></br>' + numFloors + ' floors covered'
         }
@@ -71,7 +74,7 @@ angular.module('services')
             { text: '',
               type: 'button-cancel ion-close-circled'},
             {
-              text: 'Chose Storyline',
+              text: 'Choose Storyline',
               type: 'button-more-details',
               onTap: function(e) {
                 callback();

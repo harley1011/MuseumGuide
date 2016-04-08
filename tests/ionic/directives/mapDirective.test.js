@@ -57,15 +57,15 @@ describe('map directive tests', function () {
 
 
 
-    describe('test cases for map directive test', function () {
+    describe('test cases for map directive test', function () {/*
         it('should produce the correct dom structure', function () {
             var scope = $rootScope.$new();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
             scope.$digest();
             var divElement = compiledElement.find('div');
             expect(divElement.length).toEqual(3);
-        });
-
+        });*/
+/*
         it('should load the image in the background of the map-image div', function () {
             var scope = $rootScope.$new();
             var compiledElement = $compile(angular.element('<map></map>'))(scope);
@@ -75,8 +75,8 @@ describe('map directive tests', function () {
 
             expect($(mapDiv[0]).css("background-image")).toContain("img/level-one.png");
         });
-
-
+*/
+/*
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
             scope.mapPoints = testDataMapPoints();
@@ -88,7 +88,8 @@ describe('map directive tests', function () {
             expect(pointDivs.length).toEqual(6);
 
         });
-    });
+		*/
+    })
 
     function testDataMapPoints() {
         var dimensions = {

@@ -39,16 +39,18 @@ angular.module('directives')
           contentChildren.push(titleChild);
 
           var mediaStr;
+		  console.log("AUDIO");
+		  console.log(media);
           for(var i = 0 ; i < media.length ; i++){
             switch(media[i].getType()){
               case 'video':
-                mediaStr = '       <video class="full-image" src="'+ media[i].getPath()+ '" control></video>';
+                mediaStr = '       <video class="full-image" src="../www/'+ media[i].getPath()+ '" preload controls></video>';
                 break;
               case 'image':
-                mediaStr = '       <img class="full-image" src="'+ media[i].getPath()+ '" />';
+                mediaStr = '       <img class="full-image" src="../www/'+ media[i].getPath()+ '" />';
                 break;
               case 'audio':
-                mediaStr = '       <audio class="full-image" src="'+ media[i].getPath()+ '" control></audio>';
+                mediaStr = '       <audio class="full-image" src="../www/'+ media[i].getPath()+ '" control></audio>';
                 break;
               default:
                 break;

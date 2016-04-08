@@ -58,6 +58,7 @@ canvas {
 }
 .line-div {
     position: absolute;
+    border-radius: 10px;
 }
 .level-mark {
     display   : inline-block;
@@ -109,6 +110,8 @@ a.selected-level {
     background-color: $mapAudio;
     opacity: 0.6;
     height: 70px;
+    position: relative !important;
+    top: 4px !important;
 }
 
 .beacon-player-exit-btn{

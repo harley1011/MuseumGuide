@@ -1,0 +1,12 @@
+{
+	"TUTO_HI": "Hello,",
+	"TUTO_WELCOME": "Welcome to Musée des Ondes",
+	"TUTO_SELECT": "Select your exploration:",
+    "TUTO_MENU": "to access the option menu",
+	"TUTO_QR": "to scan QR code",
+	"TUTO_MAP": "to return to the map",
+	"TUT0_SETTINGS": "to change settings",
+	"TUTO_LEVELS": "to change floor view map",
+	"TUTO_OK": "Got it, Go!",
+	"TUTO_FREE" : "Free Roaming"
+}

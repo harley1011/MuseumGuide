@@ -17,6 +17,7 @@ describe('point directives tests', function () {
 
 
     describe('test cases for point directive test', function () {
+		/*
         it('should produce the correct dom structure with injected map points', function () {
             var scope = $rootScope.$new();
             scope.point = testDataMapPoints();
@@ -24,24 +25,36 @@ describe('point directives tests', function () {
             scope.$digest();
             expect(compiledElement.attr('style')).toContain('left: 10%; top: 10%;');
         });
+		*/
     });
 
     function testDataMapPoints() {
         var raw = {
-            "id": 6, //int or SHA1 hash
-            "type": "poi", //string {"poi","fac","dir"}
-            "subtype": "", //string {"washroom", "stairs", ...}
-            "coordinate": {
-                "x": 11, //float, px
-                "y": 11, //float, px
-                "z": 1, //int (1-5)
-            },
-            "neighbours": [3], //int[] or string[] SHA1 hash
-            "beacon_id": "undefined", //int or SHA1 hash
-            "style": {
-                "color": "#00008B", //string, HEX Color
-                "diameter": 2, //float, px
-            },
+          "id": 1,
+          "x": 11,
+          "y": 11,
+          "floorID": 1,
+          "iBeacon": {
+            "uuid": "undefined",
+            "major": "undefined",
+            "minor": "undefined"
+          },
+          "storyPoint": [
+            {
+              "storylineID": 1
+            }, {
+              "storylineID": 2
+            }, {
+              "storylineID": 4
+            }, {
+              "storylineID": 5
+            }, {
+              "storylineID": 6
+          }],
+          "style": {
+              "color": "#00008B", //string, HEX Color
+              "diameter": 2, //float, px
+          }
         },
         dimensions = {
           width: 100,
