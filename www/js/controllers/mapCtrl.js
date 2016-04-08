@@ -138,10 +138,6 @@ angular.module('controllers')
 			function trackBeacons() {
 				var beaconSrvc = iBeaconSrvc.BeaconBuilder;
 
-				//Register beacons
-				//	beaconSrvc.registerBeaconRegions("Ipod", "8492e75f-4fd6-469d-b132-043fe94921d8");
-				//	beaconSrvc.registerBeaconRegions("School", "b9407f30-f5f8-466e-aff9-25556b57fe6d");
-
 				beaconSrvc.getAllBeacons().forEach(function (beacon) {
 					beaconSrvc.registerBeaconRegions(beacon.getUUID() + beacon.getMajor(), beacon.getUUID(), beacon.getMajor(), beacon.getMinor());
 				});
@@ -159,6 +155,7 @@ angular.module('controllers')
 			}
 
 			function updateMapPointsBlink() {
+
 				if ($scope.alreadyPopup === undefined)
 					$scope.alreadyPopup = [];
 
@@ -179,38 +176,22 @@ angular.module('controllers')
 								if ($scope.mode === 2) {
 									//showPopup(null, null);
 								}
-
-								console.log("Mode: " + $scope.mode);
-								console.log(beaconMediaSrvc.getVideoPath());
+								console.log(beaconMediaSrvc.video());
 								if ($scope.mode === 2) {
 									//$scope.hideBeaconPlayerContainer = false; // could be moved to directives
 									// $scope.$broadcast('playBeaconPlayer', {});
-									/*
-									$ionicPopup.show({
-										template:  '       <video class="full-image" src="../www/'+ beaconMediaSrvc.getVideoPath()+ '" preload controls></video>',
-										title: "Video",
-										custom: true,
-										buttons: [{
-											text: '',
-											type: 'button-cancel ion-close-circled'
-										}, {
-											text: 'More Details',
-											type: 'button-more-details',
-											onTap: function (e) {
-												$scope.getDetails();
-											}
-										}]
-									});*/
-
-									$ionicModal.fromTemplateUrl('templates/beacon-video-modal.html', {
-										scope: $scope,
-										animation: 'slide-in-up',
-										focusFirstInput: true
-									}).then(function (modal) {
-										$scope.modalVid = modal;
-										$scope.beaconVidSrc = "../www/"+ beaconMediaSrvc.getVideoPath();
-										$scope.modalVid.show();
-									});
+									if (beaconMediaSrvc.video !== undefined) {
+										$ionicModal.fromTemplateUrl('templates/beacon-video-modal.html', {
+											scope: $scope,
+											animation: 'slide-in-up',
+											focusFirstInput: true
+										}).then(function (modal) {
+											$scope.modalVid = modal;
+											$scope.beaconVidCap = beaconMediaSrvc.video().caption;
+											$scope.beaconVidSrc = "../www/" + beaconMediaSrvc.video().path;
+											$scope.modalVid.show();
+										});
+									}
 								};
 							}
 							$scope.$broadcast('updateMapPointsBlink', {});
