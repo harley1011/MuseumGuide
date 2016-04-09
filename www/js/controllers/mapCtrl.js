@@ -173,6 +173,8 @@ angular.module('controllers')
 								$scope.alreadyPopup.push(points[key].getUUID());
 								$scope.setCurrentPoint($scope.mapPoints[key]);
 
+								$scope.hideBeaconPlayerContainer = true; // hide last point player
+
 								if ($scope.mode === 2) {
 									showPopup(null, null);
 								}
@@ -192,12 +194,13 @@ angular.module('controllers')
 											$scope.modalVid.show();
 										});
 									} else if(beaconMediaSrvc.audio() !== undefined){
+
 										$scope.hideBeaconPlayerContainer = false; // could be moved to directives
-										$scope.$broadcast('playBeaconPlayer', {});
+										$scope.$broadcast('playBeaconPlayer', {path : "../www/" + beaconMediaSrvc.audio().path});
 									}else{
 										// none
 									}
-								};
+								}
 							}
 							$scope.$broadcast('updateMapPointsBlink', {});
 
@@ -207,8 +210,10 @@ angular.module('controllers')
 							return false;
 						}
 					};
+
 				pointSrvc.setPointOutOfRange();
-				for (var key in points) {
+
+				for (var key in points){
 					for (var bkey in $scope.mapBeacons) {
 						loopFunc(points, key, $scope.mapBeacons[bkey], bkey);
 					}

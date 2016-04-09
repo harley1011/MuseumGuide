@@ -45,7 +45,7 @@ angular.module('services')
                                     },
                                     "media": {
                                         "image": [],
-                                        "video": [
+                                        "video": [/*
                                             {
                                                 "path": "video/MOEB POINT 1 - Small.mp4",
                                                 "language": "EN",
@@ -56,8 +56,12 @@ angular.module('services')
                                                 "language": "EN",
                                                 "caption": "MOEB Intro"
                                             }
-                                        ],
-                                        "audio": []
+                                        */],
+                                        "audio": [{
+											"path": "audio/bird.mp3",
+											"language": "EN",
+											"caption": "MOEB Point 1"
+										}]
                                     },
                                     "storyPoint": [
                                         {
