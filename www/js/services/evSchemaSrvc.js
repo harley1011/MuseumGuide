@@ -40,12 +40,12 @@ angular.module('services')
                                     "floorID": "3",
                                     "ibeacon": {
                                         "uuid": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
-                                        "major": "59520",  //"513",
-                                        "minor": "56840"// "45686"
+                                        "major": "513",  //"59520",
+                                        "minor": "45686"// "56840"
                                     },
                                     "media": {
                                         "image": [],
-                                        "video": [
+                                        "video": [/*
                                             {
                                                 "path": "video/MOEB POINT 1 - Small.mp4",
                                                 "language": "EN",
@@ -56,8 +56,12 @@ angular.module('services')
                                                 "language": "EN",
                                                 "caption": "MOEB Intro"
                                             }
-                                        ],
-                                        "audio": []
+                                        */],
+                                        "audio": [{
+											"path": "audio/bird.mp3",
+											"language": "EN",
+											"caption": "MOEB Point 1"
+										}]
                                     },
                                     "storyPoint": [
                                         {
