@@ -61,7 +61,7 @@ angular.module('directives')
                  */
                 scope.$on('playBeaconPlayer', function(event, data) {
                     //if(data.path){
-                    audioPlayer.playBeaconPlayer();
+                    audioPlayer.playBeaconPlayer(data.path);
                     audioPlayer.tooglePauseIcon();
                     //}else {throw new Error("[audioDirective] Please provide a valid audio path ");}
                 });
@@ -87,7 +87,7 @@ angular.module('directives')
                  */
                 audioPlayer.playBeaconPlayer = function(path) {
                     if (audioPlayer.isBeaconPlayer()) {
-                        scope.audio = ngAudio.load("../www/audio/bird.mp3"); // returns NgAudioObject
+                        scope.audio = ngAudio.load(path); // returns NgAudioObject
                         scope.audio.play();
                         $rootScope.beaconAudio = scope.audio; //Hack keep track of main beacon player to stop it when we are on another page
                     }
