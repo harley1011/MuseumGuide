@@ -6,12 +6,12 @@
                     <h3 style="color: #FFF">
                         {{ beaconVidCap }}</h3>
                     <br/>
-                    <video class="full-image" ng-src="{{beaconVidSrc}}" preload controls autoplay></video>
+                    <video class="full-image" id="beaconVideoPlayer" ng-src="{{beaconVidSrc}}" preload controls autoplay></video>
                     <br/><br/>
                     <div>
-                        <button class="button button-more-details" ng-click="getDetails(); modalVid.hide()">More Details</button>
+                        <button class="button button-more-details" ng-click="getDetails(); modalVid.remove()">More Details</button>
 						<br />
-                        <button class="button button-full button-calm" ng-click="modalVid.hide()">Return to Exploration</button>
+                        <button class="button button-full button-calm" ng-click="modalVid.remove() ">Return to Exploration</button>
                     </div>
                 </div>
             </ion-scroll>
