@@ -1,5 +1,7 @@
 {
   "FLOOR": "Floor",
-  "MAP": "Map"
+  "MAP": "Map",
+  "MODVID_DETAIL" : "More Details",
+  "MODVID_RET": "Return to Map"
 
 }

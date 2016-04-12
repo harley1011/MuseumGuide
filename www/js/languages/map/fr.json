@@ -1,4 +1,6 @@
 {
 	"FLOOR": "Étage",
-    "MAP": "Carte"
+    "MAP": "Carte",
+	"MODVID_DETAIL" : "Plus d'Information",
+	"MODVID_RET": "Retourner à la Carte"
 }
