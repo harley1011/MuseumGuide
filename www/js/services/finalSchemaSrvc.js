@@ -607,7 +607,7 @@ angular.module('services')
                             "language": "FR",
                             "description": "Le chien du Presidente cherche son Maitre"
                         }],
-                        "path": [0, 2, 4],
+                        "path": [0,1,2,3,4],
                         "thumbnail": "",
                         "walkingTimeInMinutes": "",
                         "floorsCovered": [2]
@@ -627,7 +627,7 @@ angular.module('services')
                             "language": "EN",
                             "description": "Discover the history of the Edifice RCA"
                         }],
-                        "path": [0, 4, 7, 14, 17],
+                        "path": [0,1,2,3,4,3,5,6,7,9,24,25,19,14,15,16,17],
                         "thumbnail": "",
                         "walkingTimeInMinutes": "",
                         "floorsCovered": [2, 5]
