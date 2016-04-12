@@ -111,6 +111,14 @@ angular.module('controllers')
 			function showPopup(title, message) {
 				var titleDisplayed = 'Notification';
 				var messageDisplayed = 'Hi, You have arrived! Tap on "More details" for additional information about this area.';
+				var msgDispFr = "Bonjour, Vous êtes arrivés!";
+				var msgBtnFr = "Plus d'information";
+				var btntextPop = "More Details";
+
+				if ($translate.use() === "fr"){
+					messageDisplayed = msgDispFr;
+					btntextPop = msgBtnFr;
+				}
 
 				if (title !== null && title !== "")
 					titleDisplayed = title;
@@ -126,7 +134,7 @@ angular.module('controllers')
 						text: '',
 						type: 'button-cancel ion-close-circled'
 					}, {
-						text: 'More Details',
+						text: btntextPop,
 						type: 'button-more-details',
 						onTap: function (e) {
 							$scope.getDetails();
