@@ -95,7 +95,7 @@ describe('controllers', function () {
                 $ionicPopup: $ionicPopup,
 				$ionicModal:$ionicModal
             });
-            expect(scope.mapLines.length).toBeGreaterThan(4);
+            expect(scope.mapLines.length).toBeGreaterThan(0);
         });
     });
 });

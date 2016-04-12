@@ -179,7 +179,7 @@ angular.module('controllers')
 									showPopup(null, null);
 								}
 
-								if ($scope.mode === 2) { // CHANGE MODE TO 1 for storyline only
+								if ($scope.mode === 1) { // CHANGE MODE TO 1 for storyline only
 									if (beaconMediaSrvc.video() !== undefined) {
 										$scope.$broadcast('pauseBeaconPlayer', {});
 

@@ -1,5 +1,5 @@
 angular.module('services')
-    .service('transferProtocolSrvc', function (evSchemaSrvc) {
+    .service('transferProtocolSrvc', function (evSchemaSrvc, finalSchemaSrvc) {
         var points = [],
             pt;
         var storylines = [{
@@ -448,11 +448,14 @@ angular.module('services')
             download: function (url) {
             },
             read: function (url) {
-                var mode = "ev";
+                var mode = "final";
 
                 if (url === "mapData") {
                     if (mode == "ev") {
                         return JSON.parse(JSON.stringify(evSchemaSrvc.getSchema()));
+                    }
+                    else if(mode == "final") {
+                        return JSON.parse(JSON.stringify(finalSchemaSrvc.getSchema()));
                     }
                     else {
                         return JSON.parse(JSON.stringify(mapData));
