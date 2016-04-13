@@ -5,22 +5,22 @@ angular.module('services')
                 return {
                     "floorPlan": [{
                         "floorID": 2,
-                        "imagePath": "floor_plans/floor2.svg",
+                        "imagePath": "floor_plans/floor2.png",
                         "imageWidth": 4381,
                         "imageHeight": 2220
                     }, {
                         "floorID": 3,
-                        "imagePath": "floor_plans/floor3.svg",
+                        "imagePath": "floor_plans/floor3.png",
                         "imageWidth": 4381,
                         "imageHeight": 2220
                     }, {
                         "floorID": 4,
-                        "imagePath": "floor_plans/floor4.svg",
+                        "imagePath": "floor_plans/floor4.png",
                         "imageWidth": 4381,
                         "imageHeight": 2220
                     }, {
                         "floorID": 5,
-                        "imagePath": "floor_plans/floor5.svg",
+                        "imagePath": "floor_plans/floor5.png",
                         "imageWidth": 4381,
                         "imageHeight": 2220
                     }],
