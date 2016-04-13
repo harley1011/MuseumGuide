@@ -514,6 +514,18 @@ angular.module('services')
                             "x": 2379,
                             "y": 601,
                             "floorID": 2
+                        }, {
+                            "id": 27,
+                            "label": "washroom",
+                            "x": 775,
+                            "y": 235,
+                            "floorID": 2
+                        }, {
+                            "id": 28,
+                            "label": "washroom",
+                            "x": 775,
+                            "y": 215,
+                            "floorID": 3
                         }]
                     },
                     "edge": [{

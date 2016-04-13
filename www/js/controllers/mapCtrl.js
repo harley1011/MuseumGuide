@@ -1,6 +1,6 @@
 angular.module('controllers')
 	.controller('mapCtrl',
-		function ($scope, $state, $translatePartialLoader, $ionicPopup, $ionicModal, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc, beaconMediaSrvc) {
+		function ($scope, $rootScope, $state, $translatePartialLoader, $ionicPopup, $ionicModal, $translate, iBeaconSrvc, storyLinePathSrvc, pointSrvc, storylineSrvc, floorSrvc, exploreModeSrvc, edgeSrvc, beaconMediaSrvc) {
 
 			(function init() {
 				$translatePartialLoader.addPart('map');
@@ -13,7 +13,7 @@ angular.module('controllers')
 
 				$scope.changeFloor = function (z) {
 					floorSrvc.setCurrentFloor(floorSrvc.getFloorsByNumber([z])[0]);
-					$scope.$broadcast('floorChanged', {});
+					$rootScope.$broadcast('floorChanged', {});
 					executeMode();
 				};
 
