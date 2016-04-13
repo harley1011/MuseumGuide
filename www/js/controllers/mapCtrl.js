@@ -381,6 +381,9 @@ angular.module('controllers')
 					case "escalier":
 						facility = "stairs";
 						break;
+                    case "ascenseur":
+						facility = "elevator";
+						break;
 					case "bureau d'information":
 						facility = "front desk";
 						break;
@@ -391,6 +394,7 @@ angular.module('controllers')
 					pt = allpoints[i];
 					coord = pt.getCoordinates();
 					//Check if Point is either part of current Storyline on the current floor
+                    
 					//or if a PointOfTransition on current Floor.
 					if (coord.z == floorNum &&
 						(pt instanceof PointOfTransition)) {

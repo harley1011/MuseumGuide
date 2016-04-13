@@ -517,8 +517,8 @@ angular.module('services')
                         }, {
                             "id": 27,
                             "label": "washroom",
-                            "x": 775,
-                            "y": 235,
+                            "x": 505,
+                            "y": 205,
                             "floorID": 2
                         }, {
                             "id": 28,
@@ -526,6 +526,18 @@ angular.module('services')
                             "x": 775,
                             "y": 215,
                             "floorID": 3
+                        }, {
+                            "id": 29,
+                            "label": "washroom",
+                            "x": 1525,
+                            "y": 1715,
+                            "floorID": 2
+                        }, {
+                            "id": 30,
+                            "label": "washroom",
+                            "x": 2510,
+                            "y": 1705,
+                            "floorID": 2
                         }]
                     },
                     "edge": [{
