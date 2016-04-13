@@ -508,6 +508,12 @@ angular.module('services')
                             "x": 2545,
                             "y": 568,
                             "floorID": 4
+                        }, {
+                            "id": 26,
+                            "label": "none",
+                            "x": 2379,
+                            "y": 601,
+                            "floorID": 2
                         }]
                     },
                     "edge": [{
@@ -519,7 +525,15 @@ angular.module('services')
                         "endNode": 2,
                         "distance": 151.00993344810135
                     }, {
+                        "startNode": 1,
+                        "endNode": 26,
+                        "distance": 151.00993344810135
+                    }, {
                         "startNode": 2,
+                        "endNode": 3,
+                        "distance": 50.91168824543142
+                    }, {
+                        "startNode": 26,
                         "endNode": 3,
                         "distance": 50.91168824543142
                     }, {
@@ -607,7 +621,7 @@ angular.module('services')
                             "language": "FR",
                             "description": "Le chien du Presidente cherche son Maitre"
                         }],
-                        "path": [0,1,2,3,4],
+                        "path": [0, 1, 2, 3, 4],
                         "thumbnail": "",
                         "walkingTimeInMinutes": "",
                         "floorsCovered": [2]
@@ -627,7 +641,7 @@ angular.module('services')
                             "language": "EN",
                             "description": "Discover the history of the Edifice RCA"
                         }],
-                        "path": [0,1,2,3,4,3,5,6,7,9,24,25,19,14,15,16,17],
+                        "path": [0, 1, 26, 3, 4, 3, 5, 6, 7, 9, 24, 25, 19, 14, 15, 16, 17],
                         "thumbnail": "",
                         "walkingTimeInMinutes": "",
                         "floorsCovered": [2, 5]
