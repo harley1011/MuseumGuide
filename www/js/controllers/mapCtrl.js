@@ -189,6 +189,7 @@ angular.module('controllers')
 
 								if ($scope.mode === 1) { // CHANGE MODE TO 1 for storyline only
 									if (beaconMediaSrvc.video() !== undefined) {
+										console.log("popup should appear 1");
 										$scope.$broadcast('pauseBeaconPlayer', {});
 
 										$ionicModal.fromTemplateUrl('templates/beacon-video-modal.html', {
@@ -202,7 +203,6 @@ angular.module('controllers')
 											$scope.modalVid.show();
 										});
 									} else if(beaconMediaSrvc.audio() !== undefined){
-
 										$scope.hideBeaconPlayerContainer = false; // could be moved to directives
 										$scope.$broadcast('playBeaconPlayer', {path : "../www/" + beaconMediaSrvc.audio().path});
 									}else{

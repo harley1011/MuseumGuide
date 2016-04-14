@@ -37,7 +37,7 @@ angular.module('directives')
 
                         clearInterval(scope.playInterval );
                         scope.playInterval = setInterval(function(){
-                            if(scope.audio.remaining === 0){
+                            if(scope.audio.remaining === 1){
                                 audioPlayer.togglePlayIcon();
                             }
                         }, 1000);

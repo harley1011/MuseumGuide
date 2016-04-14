@@ -15,10 +15,16 @@ angular.module('services')
 
             if (story === undefined) {
                 uuids = point.getMedia().none;
+				return undefined;
             } else {
                 uuids = point.getMedia()[story.getUUID()];
             }
-            return mediaSrvc.getMediaByLanguage(uuids, $translate.use());
+
+			if(uuids === undefined){
+				return undefined;
+			}else{
+            	return mediaSrvc.getMediaByLanguage(uuids, $translate.use());
+			}
         };
 
         /**
@@ -26,6 +32,9 @@ angular.module('services')
          */
         BeaconMedia.video = function() {
             var media = BeaconMedia.fetchMedia();
+			if(media === undefined){
+				return undefined;
+			}
 
             for (var i = 0; i < media.length; i++) {
                 if (media !== undefined && media[i].getType() === "video") {
@@ -42,6 +51,9 @@ angular.module('services')
          */
         BeaconMedia.audio = function() {
             var media = BeaconMedia.fetchMedia();
+			if(media === undefined){
+				return undefined;
+			}
 
             for (var i = 0; i < media.length; i++) {
                 if (media !== undefined && media[i].getType() === "audio") {
