@@ -206,7 +206,7 @@ angular.module('controllers')
 										$scope.hideBeaconPlayerContainer = false; // could be moved to directives
 										$scope.$broadcast('playBeaconPlayer', {path : "../www/" + beaconMediaSrvc.audio().path});
 									}else{
-										// none
+										showPopup(null, null);
 									}
 								}
 							}
@@ -394,7 +394,7 @@ angular.module('controllers')
 					pt = allpoints[i];
 					coord = pt.getCoordinates();
 					//Check if Point is either part of current Storyline on the current floor
-                    
+
 					//or if a PointOfTransition on current Floor.
 					if (coord.z == floorNum &&
 						(pt instanceof PointOfTransition)) {
