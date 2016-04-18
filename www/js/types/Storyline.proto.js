@@ -34,7 +34,7 @@ var Storyline = (function (){
     }
     for(var i = 0; i < titles.length; i++) {
       title = titles[i].title;
-      if(titles[i].language === language)
+      if(titles[i].language.toLowerCase() === language.toLowerCase())
         break;
     }
     return title;
@@ -56,7 +56,7 @@ var Storyline = (function (){
     }
     for(var i = 0; i < descriptions.length; i++) {
       description = descriptions[i].description;
-      if(descriptions[i].language === language)
+      if(descriptions[i].language.toLowerCase() === language.toLowerCase())
         break;
     }
     return description;

@@ -56,11 +56,13 @@ angular.module('directives')
                  if($translate.use() === "en") {
                     scope.facilities = [{name: "Washroom"}, 
                                         {name: "Stairs"}, 
+                                        {name: "Elevator"}, 
                                         {name: "Front Desk"}];
 
                 } else if($translate.use() === "fr") {
                     scope.facilities = [{name: "Salle de Bain"}, 
                                         {name: "Escalier"}, 
+                                        {name: "Ascenseur"}, 
                                         {name: "Bureau d'information"}];
 
                 }

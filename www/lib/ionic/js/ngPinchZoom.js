@@ -61,6 +61,39 @@ angular.module('ngPinchZoom', [])
                 }
 
             });
+            $rootScope.$on('floorChanged', function(e){
+
+                // distance between two touche points (mode : 'pinch')
+                distance = 0;
+                initialDistance = 0;
+
+                // image scaling
+                scale = 1;
+                relativeScale = 1;
+                initialScale = 1;
+                maxScale = parseInt(attrs.maxScale, 10);
+                if (isNaN(maxScale) || maxScale <= 1) {
+                    maxScale = 3;
+                }
+
+                // position of the upper left corner of the element
+                positionX = 0;
+                positionY = 0;
+
+                initialPositionX = 0;
+                initialPositionY = 0;
+
+                // central origin (mode : 'pinch')
+                originX = 0;
+                originY = 0;
+
+                // start coordinate and amount of movement (mode : 'swipe')
+                startX = 0;
+                startY = 0;
+                moveX = 0;
+                moveY = 0;
+                transformElement();
+            });
 
             $rootScope.$on('zoomOut', function () {
                 if (scale > 1) {
